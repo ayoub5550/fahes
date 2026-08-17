@@ -1,0 +1,46 @@
+# المقاول الذاتي — مرسوم تنفيذي 23-285، الوكالة الوطنية للمقاول الذاتي (ANAE).
+cond:
+  valeur: oui
+montant:
+  valeur: oui
+
+nationalite:
+  question: هل تحمل الجنسية الجزائرية؟
+age:
+  question: سنّك
+  unité: an
+salarie:
+  question: هل أنت أجير أو موظف حالياً؟
+chiffre affaires:
+  question: رقم أعمالك السنوي المتوقّع
+  unité: DA
+activite eligible:
+  question: هل نشاطك ضمن قائمة النشاطات المؤهلة المنشورة من ANAE؟
+
+cond . nationalite:
+  titre: الجنسية الجزائرية
+  description: الوضع مخصص للمواطنين الجزائريين.
+  valeur: nationalite = oui
+cond . age:
+  titre: السن 19 سنة فأكثر
+  description: الحد الأدنى للسن هو 19 سنة.
+  valeur: age >= 19 an
+cond . non salarie:
+  titre: عدم كونك أجيراً أو موظفاً
+  description: لا يمكن الجمع بين وضع المقاول الذاتي ومنصب عمل مأجور.
+  valeur: salarie = non
+cond . plafond:
+  titre: رقم الأعمال السنوي لا يتجاوز 5 ملايين دج
+  description: فوق 5 ملايين دج تخرج من الوضع المبسط وتنتقل إلى السجل التجاري العادي.
+  valeur: chiffre affaires <= 5000000 DA
+cond . activite:
+  titre: النشاط ضمن القائمة المؤهلة
+  description: تحقّق من قائمة النشاطات المؤهلة على موقع ANAE قبل التسجيل.
+  valeur: activite eligible = oui
+
+montant . ifu:
+  titre: الضريبة الجزافية الوحيدة التقديرية (2%)
+  valeur: chiffre affaires * 2%
+montant . casnos:
+  titre: أدنى اشتراك سنوي في CASNOS
+  valeur: 43200 DA

@@ -1,0 +1,50 @@
+# CNAC — دعم إنشاء النشاطات للبطالين 30 إلى 50 سنة.
+cond:
+  valeur: oui
+
+age:
+  question: سنّك
+  unité: an
+nationalite:
+  question: هل تحمل الجنسية الجزائرية؟
+emploi:
+  question: هل تشغل عملاً مأجوراً أو تمارس نشاطاً لحسابك؟
+inscrit:
+  question: هل أنت مسجّل في ANEM كطالب عمل أو مستفيد من CNAC؟
+qualification:
+  question: هل لديك مؤهل مهني أو دراية بالنشاط المستهدف؟
+capacite:
+  question: هل تستطيع تعبئة مساهمة مالية في المشروع؟
+aide anterieure:
+  question: هل استفدت من جهاز دعم لإنشاء نشاط من قبل؟
+
+cond . age:
+  titre: السن بين 30 و50 سنة
+  description: خارج شريحة CNAC. تحت 35 سنة توجّه إلى ANADE، وبلا رأس مال إلى ANGEM.
+  toutes ces conditions:
+    - age >= 30 an
+    - age <= 50 an
+cond . nationalite:
+  titre: الجنسية الجزائرية
+  description: الجنسية الجزائرية شرط أساسي.
+  valeur: nationalite = oui
+cond . emploi:
+  titre: عدم ممارسة عمل مأجور أو نشاط خاص
+  description: الجهاز للبطالين حصراً وقت إيداع الطلب.
+  valeur: emploi = non
+cond . inscrit:
+  titre: التسجيل لدى ANEM أو الاستفادة من CNAC
+  description: التسجيل كطالب عمل شرط قبْلي.
+  valeur: inscrit = oui
+cond . qualification:
+  titre: مؤهل أو دراية بالنشاط
+  description: يجب إثبات المؤهل أو الخبرة في النشاط المستهدف.
+  valeur: qualification = oui
+cond . capacite:
+  titre: القدرة على المساهمة المالية
+  description: المساهمة الشخصية شرط في هيكلة التمويل الثلاثي.
+  valeur: capacite = oui
+cond . aide:
+  titre: عدم الاستفادة سابقاً
+  description: دعم واحد فقط لإنشاء نشاط.
+  valeur: aide anterieure = non

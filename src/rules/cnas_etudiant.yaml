@@ -1,0 +1,33 @@
+# التأمين الاجتماعي وبطاقة الشفاء للطالب — CNAS.
+cond:
+  valeur: oui
+
+inscrit:
+  question: هل أنت مسجّل في مؤسسة جامعية؟
+ayant droit:
+  question: هل أنت مؤمَّن أصلاً كذي حق لدى أحد والديك (بطاقة شفاء عائلية)؟
+acte naissance:
+  question: هل لديك شهادة ميلاد رقم 12؟
+certificat:
+  question: هل لديك شهادة تسجيل جامعية للسنة الحالية؟
+cheque:
+  question: هل لديك صك بريدي أو بنكي مشطوب؟
+
+cond . inscrit:
+  titre: التسجيل الجامعي
+  description: صفة المؤمَّن الاجتماعي للطالب مرتبطة بالتسجيل الجامعي.
+  valeur: inscrit = oui
+cond . cumul:
+  titre: عدم التغطية كذي حق
+  description: إن كنت مغطّى أصلاً كذي حق لدى والديك فأنت مستفيد من الخدمات ولا تحتاج انتساباً منفصلاً.
+  valeur: ayant droit = non
+cond . documents:
+  titre: الوثائق الأساسية (شهادة ميلاد 12 + شهادة تسجيل)
+  description: استمارة SECU01 تُرفق بشهادة الميلاد رقم 12 وشهادة التسجيل الجامعي.
+  toutes ces conditions:
+    - acte naissance = oui
+    - certificat = oui
+cond . cheque:
+  titre: صك مشطوب
+  description: الصك المشطوب يُودَع لدى مركز الانتساب للاستفادة من الأداءات.
+  valeur: cheque = oui

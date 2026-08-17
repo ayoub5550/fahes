@@ -1,0 +1,46 @@
+# القرض الفلاحي المدعّم وبطاقة الفلاح — بنك الفلاحة والتنمية الريفية + الصندوق الوطني للتنمية الفلاحية.
+cond:
+  valeur: oui
+
+carte falah:
+  question: هل تملك البطاقة المهنية للفلاح (بطاقة فلاح)؟
+exploitation:
+  question: هل تملك أرضاً فلاحية أو تحوزها بصفة قانونية (عقد، امتياز، عقد حيازة)؟
+activite reelle:
+  question: هل تمارس النشاط الفلاحي فعلياً (لست مالكاً فقط)؟
+type:
+  question: نوع التمويل المطلوب
+  une possibilité:
+    - campagne
+    - investissement
+type . campagne:
+  titre: قرض الحملة الفلاحية (بذور، أسمدة، أعلاف)
+type . investissement:
+  titre: قرض الاستثمار الفلاحي (عتاد، سقي، تجهيز)
+dettes:
+  question: هل عليك ديون غير مسدَّدة تجاه البنك الفلاحي؟
+etude:
+  question: هل لديك دراسة تقنية اقتصادية أو فواتير أوّلية للمشروع؟
+
+cond . carte:
+  titre: بطاقة الفلاح
+  description: البطاقة المهنية للفلاح هي بوابة كل أجهزة الدعم الفلاحي، وتُستخرج من مصالح الفلاحة للبلدية أو الدائرة.
+  valeur: carte falah = oui
+cond . foncier:
+  titre: ملكية أو حيازة قانونية لأرض فلاحية
+  description: بلا سند قانوني للأرض لا يُدرس الملف.
+  valeur: exploitation = oui
+cond . activite:
+  titre: ممارسة فعلية للنشاط الفلاحي
+  description: الدعم موجّه للمستغلّ الفعلي لا لمالك الأرض غير الممارس.
+  valeur: activite reelle = oui
+cond . dettes:
+  titre: عدم وجود ديون غير مسدَّدة
+  description: الديون القديمة تجاه البنك الفلاحي تمنع أي تمويل جديد.
+  valeur: dettes = non
+cond . etude:
+  titre: دراسة أو فواتير أوّلية
+  description: قرض الاستثمار يتطلب دراسة تقنية اقتصادية وفواتير proforma.
+  une de ces conditions:
+    - type = 'campagne'
+    - etude = oui

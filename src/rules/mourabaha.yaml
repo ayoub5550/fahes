@@ -1,0 +1,61 @@
+# مرابحة سيارة — بنك التنمية المحلية BDL (الصيرفة الإسلامية).
+cond:
+  valeur: oui
+montant:
+  valeur: oui
+
+nationalite:
+  question: هل تحمل الجنسية الجزائرية وتقيم في الجزائر؟
+age:
+  question: سنّك عند تقديم الطلب
+  unité: an
+vehicule local:
+  question: هل السيارة مصنَّعة أو مجمَّعة في الجزائر؟
+prix:
+  question: ثمن السيارة (بكل الرسوم)
+  unité: DA
+revenu:
+  question: دخلك الشهري الصافي المنتظم
+  unité: DA
+duree:
+  question: مدة التمويل التي تريدها
+  unité: an
+revenu prouve:
+  question: هل تستطيع إثبات دخلك (كشوف راتب أو تصريح ضريبي)؟
+
+montant . marge:
+  valeur: prix * 8.5%
+montant . total:
+  titre: المبلغ الإجمالي مع هامش الربح 8.5%
+  valeur: prix + montant . marge
+montant . mensualite:
+  titre: القسط الشهري التقديري
+  valeur: montant . total / (duree * 12 / 1 an)
+montant . capacite:
+  titre: أقصى قسط يقبله البنك (30% من الدخل)
+  valeur: revenu * 30%
+
+cond . nationalite:
+  titre: الجنسية الجزائرية والإقامة في الجزائر
+  description: شرط أساسي في منتج المرابحة.
+  valeur: nationalite = oui
+cond . age:
+  titre: السن لا يتجاوز 65 سنة عند الطلب
+  description: حدّ السن في منتج مرابحة السيارات هو 65 سنة يوم إيداع الطلب.
+  valeur: age <= 65 an
+cond . vehicule:
+  titre: سيارة مصنَّعة أو مجمَّعة في الجزائر
+  description: المنتج يموّل السيارات المصنَّعة أو المجمَّعة محلياً فقط.
+  valeur: vehicule local = oui
+cond . plafond:
+  titre: المبلغ لا يتجاوز 3.500.000 دج
+  description: سقف مرابحة المركبات هو 3.500.000 دج.
+  valeur: prix <= 3500000 DA
+cond . revenu:
+  titre: إثبات الدخل
+  description: بلا إثبات دخل منتظم لا يُدرس الملف.
+  valeur: revenu prouve = oui
+cond . capacite:
+  titre: القسط لا يتجاوز 30% من الدخل الصافي
+  description: نسبة المديونية محدَّدة بـ 30% من الدخل الشهري الصافي. مدّد المدة أو اختر سيارة أرخص.
+  valeur: montant . mensualite <= montant . capacite

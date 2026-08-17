@@ -1,0 +1,50 @@
+# التقاعد — الصندوق الوطني للتقاعد CNR. التقاعد النسبي وتقاعد ما دون السن ملغيان (تأكيد رسمي مارس 2026).
+cond:
+  valeur: oui
+montant:
+  valeur: oui
+
+age:
+  question: سنّك
+  unité: an
+annees:
+  question: سنوات العمل المصرّح بها في الضمان الاجتماعي
+  unité: an
+sexe:
+  question: الجنس
+  une possibilité:
+    - homme
+    - femme
+sexe . homme:
+  titre: رجل
+sexe . femme:
+  titre: امرأة
+enfants:
+  question: عدد الأبناء (للنساء تخفيض سنة عن كل ابن في حدود 3)
+  unité: pers
+attestations:
+  question: هل تملك كل شهادات العمل ومسار مسيرتك المهنية؟
+
+montant . reduction:
+  variations:
+    - si: sexe = 'femme'
+      alors:
+        valeur: enfants * 1 an / 1 pers
+        plafond: 3 an
+    - sinon: 0 an
+montant . age legal:
+  titre: السن القانونية في حالتك
+  valeur: 60 an - montant . reduction
+
+cond . age:
+  titre: بلوغ السن القانونية للتقاعد
+  description: لم تبلغ بعد السن القانونية، والتقاعد النسبي وتقاعد ما دون السن ملغيان.
+  valeur: age >= montant . age legal
+cond . annees:
+  titre: 15 سنة عمل واشتراك على الأقل
+  description: الحد الأدنى هو 15 سنة اشتراك مصرّح بها في الضمان الاجتماعي.
+  valeur: annees >= 15 an
+cond . dossier:
+  titre: توفّر شهادات العمل
+  description: انقطاعات المسار المهني غير المثبتة أكبر سبب لتأخّر الملفات، فاجمع شهادات العمل من كل مستخدميك.
+  valeur: attestations = oui

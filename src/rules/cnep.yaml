@@ -1,0 +1,76 @@
+# قرض CNEP لشراء مسكن — الشروط العامة المعلنة من البنك.
+cond:
+  valeur: oui
+montant:
+  valeur: oui
+
+age:
+  question: سنّك الحالي
+  unité: an
+
+duree:
+  question: مدة القرض التي تريدها
+  unité: an
+
+revenu:
+  question: دخلك الشهري الصافي
+  unité: DA
+
+autres credits:
+  question: مجموع أقساط قروضك الحالية شهرياً
+  unité: DA
+
+prix:
+  question: ثمن السكن
+  unité: DA
+
+revenu stable:
+  question: هل دخلك ثابت ومنتظم (راتب أو تصريح ضريبي)؟
+
+epargnant:
+  question: هل لك دفتر توفير في CNEP منذ أكثر من سنتين؟
+
+montant . credit:
+  titre: مبلغ القرض (90% من الثمن)
+  valeur: prix * 90%
+
+montant . nb mois:
+  valeur: duree * 12 / 1 an
+
+montant . taux mensuel:
+  variations:
+    - si: epargnant
+      alors: 0.47917%
+    - sinon: 0.54167%
+
+montant . facteur:
+  valeur: (1 + montant . taux mensuel) ** montant . nb mois
+
+montant . mensualite:
+  titre: القسط الشهري التقديري
+  valeur: montant . credit * montant . taux mensuel * montant . facteur / (montant . facteur - 1)
+
+montant . capacite:
+  valeur: revenu * 40% - autres credits
+
+cond . age:
+  titre: السن بين 21 و70 سنة
+  description: شرط السن 21 إلى 70 سنة، مع تمديد استثنائي إلى 75.
+  toutes ces conditions:
+    - age >= 21 an
+    - age <= 70 an
+
+cond . age fin:
+  titre: العمر عند آخر قسط لا يتجاوز 75 سنة
+  description: قصّر مدة القرض حتى لا يتجاوز عمرك 75 سنة عند آخر قسط.
+  valeur: age + duree <= 75 an
+
+cond . revenu:
+  titre: دخل ثابت مثبت
+  description: بلا دخل مثبت لا يُدرس الملف.
+  valeur: revenu stable = oui
+
+cond . capacite:
+  titre: القسط لا يتجاوز 40% من الدخل الصافي
+  description: القسط المقدَّر يتجاوز قدرتك. قلّل ثمن السكن، أو مدّد المدة، أو زد المساهمة الشخصية.
+  valeur: montant . mensualite <= montant . capacite

@@ -1,0 +1,59 @@
+# إعانة السكن الريفي — وزارة السكن + الصندوق الوطني للسكن.
+cond:
+  valeur: oui
+montant:
+  valeur: oui
+
+snmg:
+  valeur: 24000 DA
+
+revenu:
+  question: دخل الزوجين الشهري
+  unité: DA
+
+terrain:
+  question: هل تملك أرضاً صالحة للبناء (أو سكناً عائلياً تبني فوقه)؟
+
+proprietaire:
+  question: هل تملك سكناً كاملاً بالملكية التامة؟
+
+aide anterieure:
+  question: هل استفدت من إعانة الدولة أو من تنازل عن سكن للدولة؟
+
+milieu rural:
+  question: هل تقيم أو تمارس نشاطاً في الوسط الريفي؟
+
+sud:
+  question: هل ولايتك من ولايات الجنوب العشر (أدرار، تمنراست، إليزي، تندوف، الأغواط، بسكرة، بشار، ورقلة، الوادي، غرداية)؟
+
+cond . revenu:
+  titre: الدخل لا يتجاوز 6 مرات SNMG (144.000 دج)
+  description: فوق سقف الإعانة.
+  valeur: revenu <= 6 * snmg
+
+cond . terrain:
+  titre: امتلاك أرض صالحة للبناء
+  description: الإعانة موجّهة للبناء الذاتي، فبلا وعاء عقاري لا يمكن إيداع الملف.
+  valeur: terrain = oui
+
+cond . propriete:
+  titre: عدم ملكية سكن
+  description: ملكية سكن كامل تُقصيك.
+  valeur: proprietaire = non
+
+cond . aide:
+  titre: عدم الاستفادة سابقاً
+  description: إعانة واحدة فقط.
+  valeur: aide anterieure = non
+
+cond . milieu:
+  titre: إثبات النشاط أو الإقامة في الوسط الريفي
+  description: وثيقة إثبات مزاولة نشاط في الوسط الريفي مطلوبة في الملف.
+  valeur: milieu rural = oui
+
+montant . aide:
+  titre: مبلغ الإعانة
+  variations:
+    - si: sud
+      alors: 1000000 DA
+    - sinon: 700000 DA

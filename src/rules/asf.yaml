@@ -1,0 +1,41 @@
+# الصندوق الجزائري لتمويل الشركات الناشئة (ASF) وصناديق الولاية.
+cond:
+  valeur: oui
+
+label:
+  question: هل تملك لابل «ستارت أب» أو «مشروع مبتكر»؟
+societe:
+  question: هل الشركة مسجّلة في الجزائر؟
+produit:
+  question: هل لديك منتج قابل للعرض (نموذج أولي على الأقل)؟
+equipe:
+  question: هل لديك فريق مؤسِّس (لست وحدك في كل شيء)؟
+business plan:
+  question: هل لديك مخطط أعمال ونموذج إيرادات واضح؟
+marche:
+  question: هل يمكنك إثبات وجود سوق أو زبائن أوائل؟
+
+cond . label:
+  titre: الحصول على اللابل
+  description: التمويل موجّه أساساً لحاملي لابل ستارت أب أو مشروع مبتكر. ابدأ بطلب اللابل من startup.dz.
+  valeur: label = oui
+cond . societe:
+  titre: شركة مسجّلة في الجزائر
+  description: الاستثمار يتم في كيان قانوني جزائري.
+  valeur: societe = oui
+cond . produit:
+  titre: منتج أو نموذج أولي
+  description: التقييم يشمل المنتج والسوق ونموذج العمل والحوكمة، والفكرة وحدها لا تكفي.
+  valeur: produit = oui
+cond . equipe:
+  titre: فريق مؤسِّس
+  description: المؤسِّس الوحيد نقطة ضعف معروفة في تقييم صناديق الاستثمار.
+  valeur: equipe = oui
+cond . business plan:
+  titre: مخطط أعمال ونموذج إيرادات
+  description: يجب توضيح كيف يجني المشروع المال وكيف سيُستعمل التمويل.
+  valeur: business plan = oui
+cond . marche:
+  titre: إثبات وجود سوق
+  description: زبائن أوائل أو أرقام استعمال تقوّي الملف كثيراً أمام لجنة الاستثمار.
+  valeur: marche = oui

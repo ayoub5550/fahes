@@ -1,0 +1,35 @@
+# دعم السخان الشمسي المنزلي — APRUE، برنامج التحكم في الطاقة.
+cond:
+  valeur: oui
+montant:
+  valeur: oui
+
+logement:
+  question: هل أنت صاحب سكن (فردي أو جماعي) في الجزائر؟
+inscription:
+  question: هل سجّلت طلبك على المنصة الرقمية لـ APRUE؟
+installateur:
+  question: هل اخترت مؤسسة تركيب من القائمة المعتمدة؟
+prealable:
+  question: هل اشتريت أو ركّبت السخان قبل إيداع الطلب؟
+
+cond . logement:
+  titre: سكن مؤهَّل
+  description: الدعم موجّه للسكنات الفردية والجماعية.
+  valeur: logement = oui
+cond . inscription:
+  titre: التسجيل على منصة APRUE
+  description: التسجيل الإلكتروني هو القناة الوحيدة للاستفادة.
+  valeur: inscription = oui
+cond . installateur:
+  titre: اختيار مركِّب معتمد
+  description: التركيب خارج قائمة المؤسسات المعتمدة يُسقط حقك في الدعم.
+  valeur: installateur = oui
+cond . anteriorite:
+  titre: عدم شراء أو تركيب السخان قبل الطلب
+  description: الدعم يُمنح لعملية جديدة تمر عبر المنصة، لا لتركيب سابق.
+  valeur: prealable = non
+
+montant . aide:
+  titre: مبلغ الدعم
+  valeur: 65000 DA

@@ -1,0 +1,43 @@
+# بطاقة ومنحة الشخص ذي الاحتياجات الخاصة — البلدية + مديرية النشاط الاجتماعي.
+cond:
+  valeur: oui
+
+age:
+  question: سنّك
+  unité: an
+taux:
+  question: نسبة العجز المثبتة طبياً
+  unité: '%'
+carte:
+  question: هل تملك بطاقة الشخص ذي الاحتياجات الخاصة؟
+revenu:
+  question: هل لك دخل؟
+autre pension:
+  question: هل تستفيد من منحة المجاهدين أو معاش التقاعد؟
+securite sociale:
+  question: هل أنت منتسب لـ CNAS أو CASNOS؟
+
+cond . carte:
+  titre: بطاقة المعاق مستخرَجة
+  description: ابدأ بالبطاقة عبر ملف البلدية مع استمارة طبية من طبيب مختص حسب طبيعة الإعاقة.
+  valeur: carte = oui
+cond . age:
+  titre: السن 18 سنة فأكثر لمنحة العجز
+  description: دون 18 سنة تُصرف المنحة للعائلة المتكفِّلة بالطفل ذي الاحتياجات الخاصة.
+  valeur: age >= 18 an
+cond . revenu:
+  titre: عدم وجود دخل
+  description: المنحة مشروطة بانعدام الدخل، والتحقق آلي.
+  valeur: revenu = non
+cond . cumul:
+  titre: عدم الاستفادة من منحة المجاهدين أو التقاعد
+  description: لا يمكن الجمع بين هذه المنح.
+  valeur: autre pension = non
+cond . securite:
+  titre: عدم الانتساب للضمان الاجتماعي
+  description: شهادتا عدم الانتساب لـ CNAS وCASNOS مطلوبتان.
+  valeur: securite sociale = non
+cond . taux:
+  titre: نسبة عجز مؤهِّلة (100% لمنحة العجز الكامل)
+  description: نسبة أقل من 100% تعطي الحق في العلاوة الشهرية للأشخاص ذوي العاهات وليس منحة العجز الكامل.
+  valeur: taux >= 100%

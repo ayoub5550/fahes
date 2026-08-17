@@ -1,0 +1,48 @@
+# قرعة الحج — وزارة الداخلية والجماعات المحلية.
+cond:
+  valeur: oui
+
+nationalite:
+  question: هل تحمل الجنسية الجزائرية؟
+age:
+  question: سنّك يوم التسجيل
+  unité: an
+hajj recent:
+  question: هل أدّيت الحج خلال السبع سنوات الأخيرة؟
+une commune:
+  question: هل ستسجّل في بلدية واحدة فقط؟
+sexe:
+  question: الجنس
+  une possibilité:
+    - homme
+    - femme
+sexe . homme:
+  titre: رجل
+sexe . femme:
+  titre: امرأة
+mahram:
+  question: هل يرافقك محرم شرعي؟ (إن كنت امرأة)
+
+cond . nationalite:
+  titre: الجنسية الجزائرية
+  description: شرط أساسي للتسجيل.
+  valeur: nationalite = oui
+cond . age:
+  titre: بلوغ 19 سنة كاملة يوم التسجيل
+  description: السن الأدنى للتسجيل في القرعة هو 19 سنة كاملة.
+  valeur: age >= 19 an
+cond . hajj:
+  titre: عدم أداء الحج خلال 7 سنوات الأخيرة
+  description: من أدّى الحج خلال السبع سنوات الأخيرة لا يمكنه التسجيل، ويُستثنى المحرم لامرأة لم تحج خلال هذه المدة.
+  valeur: hajj recent = non
+cond . commune:
+  titre: التسجيل في بلدية واحدة فقط
+  description: التسجيل في أكثر من بلدية يُلغي تسجيلك.
+  valeur: une commune = oui
+cond . mahram:
+  titre: المحرم الشرعي للمرأة دون 45 سنة
+  description: المرأة التي يقل سنها عن 45 سنة يلزمها محرم شرعي، ومن تجاوزت 45 سنة يمكنها التسجيل بمفردها.
+  une de ces conditions:
+    - sexe = 'homme'
+    - age >= 45 an
+    - mahram = oui

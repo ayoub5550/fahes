@@ -1,0 +1,65 @@
+# السكن العمومي الإيجاري (الاجتماعي) — مرسوم تنفيذي 08-142، سقف الدخل 24.000 دج (مؤكَّد ديسمبر 2025).
+cond:
+  valeur: oui
+
+revenu:
+  question: الدخل الشهري الصافي للأسرة (الزوجان معاً)
+  unité: DA
+
+proprietaire:
+  question: هل تملك أنت أو زوجك سكناً أو أرضاً صالحة للبناء؟
+
+aide anterieure:
+  question: هل استفدت من إعانة سكن أو سكن عمومي من قبل؟
+
+anciennete:
+  question: كم سنة تقيم في البلدية؟
+  unité: an
+
+situation logement:
+  question: وضعك السكني الحالي
+  une possibilité:
+    - precaire
+    - ruine
+    - surpeuple
+    - locataire
+    - famille
+    - normal
+
+situation logement . precaire:
+  titre: سكن هشّ أو قصديري
+situation logement . ruine:
+  titre: سكن آيل للسقوط
+situation logement . surpeuple:
+  titre: اكتظاظ شديد
+situation logement . locataire:
+  titre: مستأجر عند الخواص
+situation logement . famille:
+  titre: أسكن مع الأهل
+situation logement . normal:
+  titre: وضع عادي
+
+cond . revenu:
+  titre: الدخل لا يتجاوز 24.000 دج
+  description: سقف الدخل للسكن الاجتماعي لا يزال 24.000 دج. فوق ذلك وجهتك عدل 3 أو الترقوي المدعم LPA.
+  valeur: revenu <= 24000 DA
+
+cond . propriete:
+  titre: عدم ملكية أي عقار
+  description: ملكية سكن أو أرض صالحة للبناء تُقصيك من هذه الصيغة.
+  valeur: proprietaire = non
+
+cond . aide:
+  titre: عدم الاستفادة سابقاً
+  description: الاستفادة السابقة من سكن عمومي أو إعانة دولة تعني الرفض الآلي.
+  valeur: aide anterieure = non
+
+cond . anciennete:
+  titre: أقدمية الإقامة في البلدية (5 سنوات فأكثر)
+  description: أقدمية الإقامة معيار تنقيط أساسي في لجنة الدائرة، وتحت 5 سنوات تكون نقطتك ضعيفة جداً.
+  valeur: anciennete >= 5 an
+
+cond . priorite:
+  titre: وضع سكني يعطي أولوية في التنقيط
+  description: التوزيع يتم بالتنقيط والأولوية للسكن الهشّ والآيل للسقوط والاكتظاظ. مع وضع عادي أو السكن مع الأهل تكون النقطة ضعيفة والانتظار طويلاً.
+  valeur: situation logement != 'normal'

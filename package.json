@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "فاحص — افحص أهليتك قبل أن تودع الملف",
   "main": "src/server.js",
-  "scripts": { "start": "node src/server.js" },
-  "dependencies": { "express": "^4.19.2" }
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "publicodes": "^1.10.1",
+    "yaml": "^2.9.0"
+  }
 }

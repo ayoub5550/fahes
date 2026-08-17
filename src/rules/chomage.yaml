@@ -1,0 +1,72 @@
+# منحة البطالة — منصة ANEM. الجريدة الرسمية 26 جانفي 2026 (المدة والالتزامات).
+cond:
+  valeur: oui
+montant:
+  valeur: oui
+
+age:
+  question: سنّك
+  unité: an
+premier emploi:
+  question: هل أنت طالب عمل لأول مرة (لم تعمل قط بعقد مصرّح به)؟
+demande active:
+  question: هل طلب العمل مسجّل وساري المفعول لدى ANEM؟
+etudiant:
+  question: هل أنت طالب جامعي أو في تكوين مهني حالياً؟
+activite propre:
+  question: هل تمارس نشاطاً خاصاً (سجل تجاري، حرفي، فلاح)؟
+revenu personnel:
+  question: هل لك دخل من التقاعد (CNR) أو أي دخل أجري؟
+revenu conjoint:
+  question: هل لزوجك دخل أجري أو دخل من نشاط خاص؟
+aide anterieure:
+  question: هل استفدت من جهاز مساعدة على الإدماج المهني أو دعم دولة؟
+offres refusees:
+  question: كم عرض عمل رفضته بعد التوجيه؟
+  unité: offre
+
+cond . age:
+  titre: السن بين 19 و40 سنة
+  description: المنحة محصورة في الفئة 19 إلى 40 سنة.
+  toutes ces conditions:
+    - age >= 19 an
+    - age <= 40 an
+cond . premier emploi:
+  titre: طالب عمل لأول مرة
+  description: المنحة موجّهة لمن لم يسبق له العمل بعقد مصرّح به.
+  valeur: premier emploi = oui
+cond . demande:
+  titre: طلب العمل ساري المفعول
+  description: ابدأ بتسجيل أو تجديد طلب العمل لدى ANEM قبل أي شيء.
+  valeur: demande active = oui
+cond . etudes:
+  titre: عدم الدراسة أو التكوين حالياً
+  description: الطلبة والمتكوّنون غير معنيين عند التسجيل الأول.
+  valeur: etudiant = non
+cond . activite:
+  titre: عدم ممارسة نشاط خاص
+  description: أي نشاط مسجّل باسمك يُقصيك آلياً، والتحقق يتم عبر السجل التجاري.
+  valeur: activite propre = non
+cond . revenu:
+  titre: عدم وجود دخل شخصي
+  description: وجود دخل أو معاش يُقصيك من الجهاز.
+  valeur: revenu personnel = non
+cond . conjoint:
+  titre: عدم وجود دخل للزوج
+  description: دخل الزوج، أجرياً كان أو من نشاط خاص، شرط مانع صريح.
+  valeur: revenu conjoint = non
+cond . aide:
+  titre: عدم الاستفادة من أجهزة الدعم
+  description: الاستفادة السابقة من جهاز إدماج أو دعم دولة تُقصيك.
+  valeur: aide anterieure = non
+cond . offres:
+  titre: عدد عروض العمل المرفوضة أقل من 2
+  description: رفض عرضين مطابقين لمؤهلاتك يعني الإقصاء من الجهاز.
+  valeur: offres refusees < 2 offre
+
+montant . mensuel:
+  titre: مبلغ المنحة الشهري
+  valeur: 18000 DA
+montant . annuel:
+  titre: مجموع ما ستقبضه في سنة
+  valeur: montant . mensuel * 12

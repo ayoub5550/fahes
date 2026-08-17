@@ -1,0 +1,38 @@
+# المنحة الجامعية — منصة E-minha (PROGRES).
+cond:
+  valeur: oui
+
+snmg:
+  valeur: 24000 DA
+inscrit:
+  question: هل أنت مسجّل بصفة نظامية في مؤسسة جامعية عمومية؟
+ccp:
+  question: هل الحساب البريدي الجاري (CCP) مفتوح باسمك أنت حصراً؟
+progres:
+  question: هل تملك حساب PROGRES نشطاً (رقم البكالوريا وكلمة السر)؟
+revenu parents:
+  question: الدخل الشهري الإجمالي للأولياء
+  unité: DA
+redoublant:
+  question: هل أنت معيد للسنة أكثر من مرة؟
+
+cond . inscrit:
+  titre: التسجيل الجامعي النظامي
+  description: المنحة للطلبة المسجّلين في مؤسسة جامعية عمومية.
+  valeur: inscrit = oui
+cond . ccp:
+  titre: حساب CCP باسم الطالب حصراً
+  description: أشهر سبب رفض هو حساب باسم الأب أو الأم. النظام يطابق الهوية آلياً، فافتح CCP باسمك.
+  valeur: ccp = oui
+cond . progres:
+  titre: حساب PROGRES نشط
+  description: الدخول إلى منصة E-minha يتم بنفس بيانات PROGRES.
+  valeur: progres = oui
+cond . revenu:
+  titre: دخل الأولياء ضمن الشرائح المؤهِّلة
+  description: قيمة المنحة تُحدَّد حسب شريحة دخل الأولياء، ودخل مرتفع يعني أدنى شريحة أو الرفض.
+  valeur: revenu parents <= 6 * snmg
+cond . redoublement:
+  titre: عدم إعادة السنة أكثر من مرة
+  description: إعادة السنة أكثر من مرة قد تؤدي إلى تعليق المنحة حسب لوائح المؤسسة.
+  valeur: redoublant = non

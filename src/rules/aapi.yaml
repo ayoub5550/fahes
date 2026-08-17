@@ -1,0 +1,41 @@
+# امتيازات الاستثمار — الوكالة الجزائرية لترقية الاستثمار (AAPI)، قانون الاستثمار 22-18.
+cond:
+  valeur: oui
+
+societe:
+  question: هل لديك شركة مسجّلة في الجزائر (سجل تجاري ورقم جبائي)؟
+projet:
+  question: طبيعة المشروع
+  une possibilité:
+    - creation
+    - extension
+    - rehabilitation
+projet . creation:
+  titre: إنشاء نشاط جديد
+projet . extension:
+  titre: توسيع قدرات إنتاج قائمة
+projet . rehabilitation:
+  titre: إعادة تأهيل
+liste negative:
+  question: هل نشاطك خارج قائمة النشاطات المستثناة من الامتيازات؟
+enregistrement:
+  question: هل سجّلت المشروع على المنصة الرقمية للمستثمر أو لدى الشباك الوحيد؟
+delai:
+  question: هل تلتزم بآجال إنجاز المشروع المصرَّح بها؟
+
+cond . societe:
+  titre: كيان قانوني مسجّل
+  description: الامتيازات تُمنح لمشروع استثماري باسم شخص طبيعي أو معنوي مسجّل قانوناً.
+  valeur: societe = oui
+cond . liste:
+  titre: النشاط غير مستثنى
+  description: راجع قائمة النشاطات المستثناة قبل الإيداع، فبعض النشاطات التجارية البحتة لا تستفيد.
+  valeur: liste negative = oui
+cond . enregistrement:
+  titre: تسجيل المشروع على المنصة الرقمية للمستثمر
+  description: التسجيل عبر المنصة أو الشباك الوحيد هو نقطة الانطلاق الرسمية لملف الامتيازات.
+  valeur: enregistrement = oui
+cond . delai:
+  titre: الالتزام بآجال الإنجاز
+  description: عدم احترام آجال الإنجاز المصرَّح بها يؤدي إلى سحب الامتيازات واسترجاع ما استُفيد منه.
+  valeur: delai = oui

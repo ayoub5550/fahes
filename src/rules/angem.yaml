@@ -1,0 +1,62 @@
+# ANGEM — القرض المصغّر. المرجع: وزارة المالية (جهاز ANGEM).
+cond:
+  valeur: oui
+montant:
+  valeur: oui
+
+age:
+  question: سنّك
+  unité: an
+revenu:
+  question: دخلك الشهري الحالي
+  unité: DA
+formule:
+  question: الصيغة المطلوبة
+  une possibilité:
+    - matieres
+    - materiel
+formule . matieres:
+  titre: شراء مواد أولية فقط (حتى 100.000 دج)
+formule . materiel:
+  titre: عتاد صغير + مواد أولية (حتى 1.000.000 دج)
+cout:
+  question: تكلفة النشاط الإجمالية
+  unité: DA
+apport:
+  question: المساهمة الشخصية المتوفرة
+  unité: DA
+aide anterieure:
+  question: هل استفدت من جهاز دعم آخر؟
+
+cond . age:
+  titre: السن 18 سنة فأكثر
+  description: الجهاز موجّه لمن تجاوز 18 سنة.
+  valeur: age >= 18 an
+cond . revenu:
+  titre: بدون دخل أو بدخل ضعيف غير منتظم
+  description: الفئة المستهدفة هي المواطنون بلا دخل أو بدخل صغير غير مستقر. بدخل مستقر أعلى وجهتك ANADE أو CNAC.
+  valeur: revenu <= 24000 DA
+cond . plafond:
+  titre: التكلفة ضمن سقف الصيغة المختارة
+  description: التكلفة تتجاوز سقف الصيغة (100.000 دج للمواد الأولية، 1.000.000 دج للعتاد).
+  une de ces conditions:
+    - toutes ces conditions:
+        - formule = 'matieres'
+        - cout <= 100000 DA
+    - toutes ces conditions:
+        - formule = 'materiel'
+        - cout <= 1000000 DA
+cond . apport:
+  titre: المساهمة الشخصية الدنيا (1% للعتاد، 0% للمواد الأولية)
+  description: وفّر 1% على الأقل من تكلفة النشاط عند اختيار صيغة العتاد.
+  une de ces conditions:
+    - formule = 'matieres'
+    - apport >= cout * 1%
+cond . aide:
+  titre: عدم الاستفادة من جهاز آخر
+  description: لا يمكن الجمع بين جهازين للدعم.
+  valeur: aide anterieure = non
+
+montant . apport min:
+  titre: أدنى مساهمة مطلوبة
+  valeur: cout * 1%

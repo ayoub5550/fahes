@@ -1,0 +1,77 @@
+# ANADE — إنشاء مؤسسة مصغرة (التمويل الثلاثي).
+cond:
+  valeur: oui
+montant:
+  valeur: oui
+
+age:
+  question: سنّك
+  unité: an
+trois emplois:
+  question: هل سيوفّر المشروع 3 مناصب شغل دائمة على الأقل؟
+qualification:
+  question: هل لديك شهادة أو مؤهل مهني أو خبرة مثبتة في مجال المشروع؟
+emploi salarie:
+  question: هل تشغل منصب عمل مأجوراً حالياً؟
+inscrit anem:
+  question: هل أنت مسجّل كطالب عمل لدى ANEM؟
+en formation:
+  question: هل أنت مسجّل في جامعة أو مركز تكوين حالياً؟
+aide anterieure:
+  question: هل استفدت من جهاز دعم لإنشاء نشاط من قبل؟
+cout projet:
+  question: تكلفة المشروع الإجمالية
+  unité: DA
+apport:
+  question: مساهمتك الشخصية المتوفرة
+  unité: DA
+
+cond . age:
+  titre: السن بين 19 و35 سنة (حتى 40 إذا وفّر المشروع 3 مناصب دائمة)
+  description: خارج شريحة السن. فوق 40 سنة وجهتك CNAC (30 إلى 50 سنة) أو ANGEM.
+  une de ces conditions:
+    - toutes ces conditions:
+        - age >= 19 an
+        - age <= 35 an
+    - toutes ces conditions:
+        - trois emplois
+        - age >= 19 an
+        - age <= 40 an
+cond . qualification:
+  titre: شهادة أو مؤهل أو خبرة في نشاط المشروع
+  description: يجب إثبات المعرفة بالنشاط بشهادة أو شهادة عمل أو مؤهل مهني.
+  valeur: qualification = oui
+cond . emploi:
+  titre: عدم شغل منصب عمل مأجور
+  description: الجهاز موجّه لطالبي العمل.
+  valeur: emploi salarie = non
+cond . anem:
+  titre: التسجيل لدى ANEM كطالب عمل
+  description: التسجيل في ANEM شرط قبْلي.
+  valeur: inscrit anem = oui
+cond . formation:
+  titre: عدم التسجيل في جامعة أو مركز تكوين
+  description: يُستثنى فقط التكوين التحسيني في نفس النشاط.
+  valeur: en formation = non
+cond . aide:
+  titre: عدم الاستفادة من دعم سابق
+  description: دعم واحد فقط لإنشاء نشاط.
+  valeur: aide anterieure = non
+cond . plafond:
+  titre: تكلفة المشروع لا تتجاوز 10 ملايين دج
+  description: فوق السقف راجع المخطط أو توجّه إلى تمويلات أخرى مثل ASF.
+  valeur: cout projet <= 10000000 DA
+cond . apport:
+  titre: المساهمة الشخصية 5% على الأقل
+  description: وفّر 5% على الأقل من تكلفة المشروع كأموال خاصة.
+  valeur: apport >= cout projet * 5%
+
+montant . apport min:
+  titre: أدنى مساهمة مطلوبة منك (5%)
+  valeur: cout projet * 5%
+montant . part anade:
+  titre: مساهمة ANADE التقديرية (20%)
+  valeur: cout projet * 20%
+montant . part banque:
+  titre: القرض البنكي التقديري (70%)
+  valeur: cout projet * 70%

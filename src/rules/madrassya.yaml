@@ -1,0 +1,33 @@
+# المنحة المدرسية الخاصة — مرسوم تنفيذي 25-166 (22 جوان 2025).
+cond:
+  valeur: oui
+
+snmg:
+  valeur: 24000 DA
+scolarise:
+  question: هل التلميذ مسجّل بصفة نظامية في مؤسسة تربوية عمومية؟
+revenu pere:
+  question: الدخل الشهري للأب
+  unité: DA
+revenu mere:
+  question: الدخل الشهري للأم
+  unité: DA
+cheque:
+  question: هل لديك صك بريدي مشطوب باسم المستفيد؟
+
+cond . scolarise:
+  titre: التسجيل النظامي في مؤسسة عمومية
+  description: المنحة خاصة بمؤسسات التربية والتعليم العمومية والمتخصصة العمومية.
+  valeur: scolarise = oui
+cond . revenu pere:
+  titre: دخل الأب لا يتجاوز SNMG (24.000 دج)
+  description: الشرط هو انعدام الدخل أو أن يكون دخل الأب وحده أقل أو يساوي SNMG دون جمعه بدخل الأم.
+  valeur: revenu pere <= snmg
+cond . revenu mere:
+  titre: دخل الأم لا يتجاوز SNMG (24.000 دج)
+  description: نفس الشرط يُطبَّق على دخل الأم كلٌّ على حدة دون جمع.
+  valeur: revenu mere <= snmg
+cond . cheque:
+  titre: صك بريدي مشطوب
+  description: الصك البريدي المشطوب باسم المستفيد وثيقة إلزامية في الملف.
+  valeur: cheque = oui

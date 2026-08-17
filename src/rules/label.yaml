@@ -1,0 +1,52 @@
+# لابل «مشروع مبتكر» و«ستارت أب» — startup.dz / وزارة اقتصاد المعرفة والمؤسسات الناشئة.
+cond:
+  valeur: oui
+
+type:
+  question: أي لابل تطلب؟
+  une possibilité:
+    - projet innovant
+    - startup
+type . projet innovant:
+  titre: لابل مشروع مبتكر (فكرة أو نموذج أولي، بلا سجل تجاري)
+type . startup:
+  titre: لابل ستارت أب (شركة مسجّلة)
+registre:
+  question: هل لديك سجل تجاري (شركة مسجّلة)؟
+anciennete:
+  question: كم سنة مضت على تسجيل الشركة؟
+  unité: an
+innovation:
+  question: هل يقوم المشروع على ابتكار حقيقي في المنتج أو نموذج العمل أو التكنولوجيا؟
+prototype:
+  question: هل لديك نموذج أولي أو منتج قابل للعرض (صورة أو عرض تقديمي)؟
+pitchdeck:
+  question: هل حضّرت ملف العرض (PitchDeck) حسب النموذج الرسمي؟
+cond . type:
+  titre: مطابقة اللابل لوضعك
+  description: لابل «ستارت أب» يتطلب شركة مسجّلة، ولابل «مشروع مبتكر» موجّه لمن لا يملك سجلاً تجارياً بعد.
+  une de ces conditions:
+    - toutes ces conditions:
+        - type = 'startup'
+        - registre = oui
+    - toutes ces conditions:
+        - type = 'projet innovant'
+        - registre = non
+cond . anciennete:
+  titre: أقدمية الشركة لا تتجاوز 8 سنوات (للابل ستارت أب)
+  description: لابل ستارت أب مخصص للشركات الحديثة، والأقدمية الكبيرة تُخرجك من الجهاز.
+  une de ces conditions:
+    - type = 'projet innovant'
+    - anciennete <= 8 an
+cond . innovation:
+  titre: طابع ابتكاري واضح
+  description: اللجنة ترفض المشاريع التقليدية. اشرح في 400 حرف لماذا مشروعك مبتكر تحديداً.
+  valeur: innovation = oui
+cond . prototype:
+  titre: نموذج أولي أو منتج
+  description: الاستمارة تطلب صورة النموذج ومدى تقدّم المشروع، والفكرة وحدها ضعيفة أمام اللجنة.
+  valeur: prototype = oui
+cond . pitchdeck:
+  titre: ملف العرض حسب النموذج الرسمي
+  description: حمّل نموذج PitchDeck من الموقع والتزم به، فالملفات خارج النموذج تُقصى شكلياً.
+  valeur: pitchdeck = oui

@@ -1,0 +1,64 @@
+# عدل 3 — البيع بالإيجار. المرجع: مرسوم تنفيذي 24-203 + الموقع الرسمي AADL.
+# SNMG = 24.000 دج منذ 01 جانفي 2026 (مرسوم رئاسي 26-01).
+
+snmg:
+  valeur: 24000 DA
+
+age:
+  question: سنّك يوم التسجيل
+  unité: an
+
+revenu:
+  question: الدخل الشهري الصافي لك ولزوجك مجتمعاً
+  unité: DA
+
+proprietaire:
+  question: هل تملك (أو سبق أن ملكت) أنت أو زوجك سكناً أو أرضاً صالحة للبناء؟
+
+aide anterieure:
+  question: هل استفدت أنت أو زوجك من إعانة الدولة للسكن من قبل؟
+
+residence:
+  question: هل تملك ما يثبت الإقامة (شهادة إقامة مطابقة لعنوانك)؟
+
+cond:
+  valeur: oui
+
+cond . age:
+  titre: السن بين 19 و70 سنة يوم التسجيل
+  description: 19 سنة على الأقل، ولا تتجاوز 70 سنة يوم التسجيل.
+  toutes ces conditions:
+    - age >= 19 an
+    - age <= 70 an
+
+cond . revenu min:
+  titre: الدخل أكبر من 24.000 دج
+  description: دخلك تحت الحد الأدنى لعدل. صيغتك الأنسب هي السكن العمومي الإيجاري (سقفه 24.000 دج).
+  valeur: revenu > snmg
+
+cond . revenu max:
+  titre: الدخل لا يتجاوز 6 مرات SNMG (144.000 دج)
+  description: دخلك فوق السقف. وجهتك هي السكن الترقوي الحر أو قرض بنكي عادي.
+  valeur: revenu <= 6 * snmg
+
+cond . propriete:
+  titre: عدم ملكية سكن أو أرض صالحة للبناء
+  description: الملكية السابقة سبب رفض مباشر، والتحقق آلي عبر مصالح أملاك الدولة والحفظ العقاري.
+  valeur: proprietaire = non
+
+cond . aide:
+  titre: عدم الاستفادة من إعانة سكن سابقة
+  description: الاستفادة السابقة من إعانة الدولة تُقصيك نهائياً من هذه الصيغة.
+  valeur: aide anterieure = non
+
+cond . residence:
+  titre: إثبات الإقامة
+  description: نتائج التحقيق حول الإقامة سبب رفض متكرر، فجهّز شهادة إقامة مطابقة لعنوانك الفعلي.
+  valeur: residence = oui
+
+montant:
+  valeur: oui
+
+montant . mensualite max:
+  titre: أقصى قسط شهري معقول (30% من دخل الأسرة)
+  valeur: revenu * 30%

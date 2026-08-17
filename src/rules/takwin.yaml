@@ -1,0 +1,46 @@
+# التكوين المهني — منصة تكوين (takwin.dz)، وزارة التكوين والتعليم المهنيين.
+cond:
+  valeur: oui
+
+age:
+  question: سنّك
+  unité: an
+niveau:
+  question: مستواك الدراسي
+  une possibilité:
+    - sous college
+    - college
+    - secondaire
+    - bac
+    - universitaire
+niveau . sous college:
+  titre: أقل من الرابعة متوسط
+niveau . college:
+  titre: الرابعة متوسط
+niveau . secondaire:
+  titre: مستوى ثانوي
+niveau . bac:
+  titre: بكالوريا
+niveau . universitaire:
+  titre: مستوى جامعي
+compte:
+  question: هل أنشأت حساباً على منصة takwin.dz؟
+periode:
+  question: هل نحن ضمن فترة التسجيلات المعلنة (سبتمبر أو فيفري عادة)؟
+
+cond . age:
+  titre: السن 15 سنة فأكثر
+  description: الحد الأدنى للالتحاق بالتكوين المهني هو 15 سنة.
+  valeur: age >= 15 an
+cond . niveau:
+  titre: مستوى دراسي يسمح بتخصص ما
+  description: حتى دون الرابعة متوسط توجد تخصصات بالتمهين، لكن الاختيار يضيق كثيراً.
+  valeur: niveau != 'sous college'
+cond . compte:
+  titre: حساب على منصة تكوين
+  description: التسجيل يتم حصرياً عبر takwin.dz بلا وثائق ورقية.
+  valeur: compte = oui
+cond . periode:
+  titre: التسجيل داخل الفترة المعلنة
+  description: خارج فترة التسجيلات لا يُقبل أي طلب، فتابع الإعلان الرسمي للدورة القادمة.
+  valeur: periode = oui

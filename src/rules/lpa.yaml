@@ -1,0 +1,67 @@
+# السكن الترقوي المدعم LPA — مرسوم تنفيذي 10-235 + الصندوق الوطني للسكن.
+cond:
+  valeur: oui
+montant:
+  valeur: oui
+
+snmg:
+  valeur: 24000 DA
+
+revenu:
+  question: الدخل الشهري الصافي للزوجين
+  unité: DA
+
+proprietaire:
+  question: هل تملك سكناً أو أرضاً صالحة للبناء؟
+
+aide anterieure:
+  question: هل استفدت من إعانة الدولة للسكن؟
+
+locataire public:
+  question: هل تستأجر سكناً عمومياً إيجارياً؟
+
+statut:
+  question: وضعك المهني
+  une possibilité:
+    - salarie
+    - independant
+    - retraite
+    - sans emploi
+
+statut . salarie:
+  titre: أجير
+statut . independant:
+  titre: غير أجير (تاجر أو حرفي)
+statut . retraite:
+  titre: متقاعد
+statut . sans emploi:
+  titre: بدون عمل
+
+cond . revenu:
+  titre: الدخل لا يتجاوز 6 مرات SNMG (144.000 دج)
+  description: فوق السقف صيغتك هي الترقوي الحر أو قرض بنكي عادي.
+  valeur: revenu <= 6 * snmg
+
+cond . propriete:
+  titre: عدم ملكية سكن أو أرض
+  description: الملكية سبب إقصاء مباشر.
+  valeur: proprietaire = non
+
+cond . aide:
+  titre: عدم الاستفادة من إعانة الدولة
+  description: إعانة سكن واحدة فقط في العمر.
+  valeur: aide anterieure = non
+
+cond . location publique:
+  titre: عدم استئجار سكن عمومي (إلا بإرجاعه)
+  description: يُقبل الملف فقط إذا التزمت بإرجاع السكن العمومي للمؤجر.
+  valeur: locataire public = non
+
+montant . aide etat:
+  titre: مبلغ إعانة الدولة المتوقّع
+  variations:
+    - si: revenu <= 4 * snmg
+      alors: 700000 DA
+    - si: revenu <= 6 * snmg
+      alors: 400000 DA
+    - sinon: 0 DA

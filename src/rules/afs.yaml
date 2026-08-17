@@ -1,0 +1,83 @@
+# المنحة الجزافية للتضامن AFS — مرسوم تنفيذي 24-325 (01 أكتوبر 2024) + وكالة التنمية الاجتماعية.
+cond:
+  valeur: oui
+montant:
+  valeur: oui
+
+nationalite:
+  question: هل تحمل الجنسية الجزائرية وتقيم في الجزائر؟
+categorie:
+  question: فئتك
+  une possibilité:
+    - chef incapable
+    - seul incapable
+    - femme chef
+    - senior
+    - malade chronique
+    - handicap total
+    - famille handicap
+    - aucune
+categorie . chef incapable:
+  titre: رب عائلة عاجز بدنياً عن العمل
+categorie . seul incapable:
+  titre: شخص يعيش بمفرده وعاجز بدنياً عن العمل
+categorie . femme chef:
+  titre: امرأة ربّة عائلة أقل من 60 سنة
+categorie . senior:
+  titre: شخص عمره 60 سنة فأكثر غير مُودَع في مؤسسة متخصصة
+categorie . malade chronique:
+  titre: مريض مزمن 18 سنة فأكثر يُسبّب مرضه العجز
+categorie . handicap total:
+  titre: شخص ذو احتياجات خاصة 18 سنة فأكثر ببطاقة 100%
+categorie . famille handicap:
+  titre: عائلة تتكفّل بذي احتياجات خاصة 100% أقل من 18 سنة
+categorie . aucune:
+  titre: لا شيء مما سبق
+revenu:
+  question: هل لك أي دخل (عمل، معاش، نشاط)؟
+securite sociale:
+  question: هل أنت منتسب لـ CNAS أو CASNOS؟
+carte handicap:
+  question: هل تملك بطاقة الشخص ذي الاحتياجات الخاصة (إن كان ينطبق عليك)؟
+personnes a charge:
+  question: عدد الأشخاص المتكفَّل بهم
+  unité: pers
+
+cond . nationalite:
+  titre: الجنسية الجزائرية والإقامة في الجزائر
+  description: شرط أساسي في المرسوم التنفيذي 24-325.
+  valeur: nationalite = oui
+cond . categorie:
+  titre: الانتماء لإحدى الفئات المؤهلة
+  description: الجهاز محصور في الفئات المذكورة في المرسوم.
+  valeur: categorie != 'aucune'
+cond . revenu:
+  titre: بدون أي دخل
+  description: المنحة للفئات بدون دخل حصراً، والتحقق آلي عبر CNAS وCASNOS وCNR والسجل التجاري.
+  valeur: revenu = non
+cond . securite:
+  titre: عدم الانتساب للضمان الاجتماعي
+  description: شهادتا عدم الانتساب لـ CNAS وCASNOS مطلوبتان في الملف.
+  valeur: securite sociale = non
+cond . carte:
+  titre: بطاقة المعاق لفئة ذوي الاحتياجات الخاصة
+  description: ابدأ باستخراج بطاقة الشخص ذي الاحتياجات الخاصة من البلدية قبل طلب المنحة.
+  une de ces conditions:
+    - toutes ces conditions:
+        - categorie != 'handicap total'
+        - categorie != 'famille handicap'
+    - carte handicap = oui
+
+montant . base:
+  variations:
+    - si: categorie = 'handicap total'
+      alors: 12000 DA
+    - si: categorie = 'famille handicap'
+      alors: 12000 DA
+    - sinon: 7000 DA
+montant . supplement:
+  valeur: personnes a charge * 250 DA / 1 pers
+  plafond: 750 DA
+montant . total:
+  titre: المنحة الشهرية التقديرية
+  valeur: montant . base + montant . supplement
