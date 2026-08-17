@@ -1,0 +1,63 @@
+# قرض شراء سيارة جديدة مُنتَجة أو مركَّبة في الجزائر — بنوك عمومية (مثال CPA).
+cond:
+  valeur: oui
+montant:
+  valeur: oui
+
+vehicule local:
+  question: هل السيارة جديدة ومنتجة أو مركَّبة في الجزائر؟
+revenu:
+  question: دخلك الشهري الصافي
+  unité: DA
+anciennete:
+  question: أقدميتك في العمل أو النشاط
+  unité: an
+apport:
+  question: نسبة التمويل الذاتي التي يمكنك دفعها
+  unité: '%'
+prix:
+  question: ثمن السيارة
+  unité: DA
+duree:
+  question: مدة التسديد المطلوبة
+  unité: an
+autres credits:
+  question: مجموع أقساطك الشهرية الحالية
+  unité: DA
+age:
+  question: سنّك
+  unité: an
+
+cond . vehicule:
+  titre: سيارة جديدة منتجة محلياً
+  description: القرض الاستهلاكي البنكي محصور في المركبات المنتجة أو المركَّبة في الجزائر.
+  valeur: vehicule local = oui
+cond . revenu:
+  titre: دخل يعادل 1.5 مرة SNMG على الأقل
+  description: 36.000 دج على أساس SNMG = 24.000 دج.
+  valeur: revenu >= 36000 DA
+cond . anciennete:
+  titre: سنة أقدمية على الأقل في النشاط
+  description: تُثبَت بشهادة عمل أو التصريح الضريبي.
+  valeur: anciennete >= 1 an
+cond . apport:
+  titre: تمويل ذاتي 10% على الأقل
+  description: البنك يموّل حتى 90% من ثمن المركبة الجديدة.
+  valeur: apport >= 10%
+cond . age:
+  titre: السن لا يتجاوز 65 سنة عند آخر قسط
+  description: قاعدة معتمدة لدى البنوك لتغطية القرض بالتأمين.
+  valeur: age + duree <= 65 an
+cond . capacite:
+  titre: الأقساط لا تتجاوز 30% من الدخل
+  description: قدرة السداد تُحسَب بعد خصم كل القروض الجارية.
+  valeur: montant . mensualite + autres credits <= revenu * 30%
+
+montant . credit:
+  titre: مبلغ القرض
+  valeur: prix * (100% - apport)
+montant . mensualite:
+  titre: القسط الشهري التقديري
+  valeur: montant . credit * (1 + 6.75%) / montant . mois
+montant . mois:
+  valeur: duree * 12 / 1 an

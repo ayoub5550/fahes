@@ -1,0 +1,7 @@
+<resources>
+  <color name="brand_dark">#3F0A10</color>
+  <color name="brand">#B31C2C</color>
+  <color name="brand_light">#DD2438</color>
+  <color name="bg">#FAF7F7</color>
+  <color name="white">#FFFFFF</color>
+</resources>

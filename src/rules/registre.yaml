@@ -1,0 +1,57 @@
+# السجل التجاري — المركز الوطني للسجل التجاري CNRC (sidjilcom).
+cond:
+  valeur: oui
+montant:
+  valeur: oui
+
+age:
+  question: سنّك
+  unité: an
+local:
+  question: هل تملك إثبات محل مؤهل (عقد ملكية أو إيجار أو امتياز)؟
+capacite:
+  question: هل تتمتع بالأهلية القانونية ولا يمنعك حكم قضائي من التجارة؟
+activite reglementee:
+  question: هل نشاطك مقنّن (يحتاج رخصة أو اعتماد مسبق)؟
+agrement:
+  question: هل تملك تلك الرخصة أو الاعتماد المؤقت؟
+forme:
+  question: شكل التسجيل
+  une possibilité:
+    - personne physique
+    - societe
+forme . personne physique:
+  titre: شخص طبيعي
+forme . societe:
+  titre: شركة (شخص معنوي)
+statuts:
+  question: "للشركات: هل أعددت القانون الأساسي ونشرته في النشرة الرسمية؟"
+
+cond . age:
+  titre: بلوغ 19 سنة
+  description: سنّ ممارسة التجارة القانونية.
+  valeur: age >= 19 an
+cond . local:
+  titre: إثبات محل مؤهل للنشاط
+  description: عقد ملكية أو إيجار أو امتياز أو مقرر تخصيص من هيئة عمومية.
+  valeur: local = oui
+cond . capacite:
+  titre: الأهلية القانونية
+  description: بعض الأحكام القضائية تمنع من ممارسة التجارة.
+  valeur: capacite = oui
+cond . agrement:
+  titre: الرخصة أو الاعتماد للنشاطات المقننة
+  description: النشاطات المقننة تحتاج موافقة الإدارة المختصة قبل القيد.
+  une de ces conditions:
+    - activite reglementee = non
+    - agrement = oui
+cond . statuts:
+  titre: القانون الأساسي منشور بالنسبة للشركات
+  description: نسخة من القانون الأساسي وإعلان نشره مطلوبان في ملف الشركة.
+  une de ces conditions:
+    - forme = 'personne physique'
+    - statuts = oui
+
+montant . timbre:
+  titre: حقوق الطابع الضريبي
+  valeur: 4000 DA

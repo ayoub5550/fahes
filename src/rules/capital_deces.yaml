@@ -1,0 +1,53 @@
+# رأس مال الوفاة — CNAS (يُصرف مرة واحدة لذوي الحقوق).
+cond:
+  valeur: oui
+montant:
+  valeur: oui
+
+qualite:
+  question: صفتك
+  une possibilité:
+    - conjoint
+    - enfant
+    - ascendant
+    - autre
+qualite . conjoint:
+  titre: الزوج أو الزوجة
+qualite . enfant:
+  titre: ولد مكفول
+qualite . ascendant:
+  titre: أصل مكفول (أب/أم)
+qualite . autre:
+  titre: قرابة أخرى
+jours travail:
+  question: عدد أيام عمل المتوفى خلال 3 أشهر قبل الوفاة
+  unité: jour
+delai:
+  question: عدد السنوات منذ تاريخ الوفاة
+  unité: an
+salaire:
+  question: أفضل أجر شهري خاضع للاشتراك خلال السنة السابقة للوفاة
+  unité: DA
+beneficiaires:
+  question: عدد المستفيدين المصرَّح بهم
+  unité: pers
+
+cond . qualite:
+  titre: صفة ذي حق (زوج، ولد مكفول، أصل مكفول)
+  description: القرابات الأخرى لا تفتح الحق في رأس مال الوفاة.
+  valeur: qualite != 'autre'
+cond . travail:
+  titre: 15 يوم عمل خلال 3 أشهر قبل الوفاة
+  description: شرط منح رأس مال الوفاة للأجراء.
+  valeur: jours travail >= 15
+cond . delai:
+  titre: المطالبة خلال 4 سنوات من الوفاة
+  description: بعد 4 سنوات يسقط الحق في المطالبة.
+  valeur: delai <= 4 an
+
+montant . base:
+  valeur: salaire * 12
+  plancher: 288000 DA
+montant . part:
+  titre: نصيبك التقديري
+  valeur: montant . base / beneficiaires * 1 pers

@@ -1,0 +1,44 @@
+# تقاعد غير الأجراء — CASNOS (2.5% عن كل سنة مصادق عليها، سقف 80%).
+cond:
+  valeur: oui
+montant:
+  valeur: oui
+
+age:
+  question: سنّك
+  unité: an
+annees:
+  question: عدد السنوات المصادق عليها (مدفوعة الاشتراكات)
+  unité: an
+assiette:
+  question: الدخل السنوي المصرّح به المعتمد كأساس
+  unité: DA
+dettes:
+  question: هل سوّيت كل اشتراكاتك المتأخرة لدى CASNOS؟
+cessation:
+  question: هل توقفت عن النشاط أو ستتوقف عند التقاعد؟
+
+cond . age:
+  titre: بلوغ 60 سنة على الأقل
+  description: سنّ التقاعد القانوني لغير الأجراء.
+  valeur: age >= 60 an
+cond . annees:
+  titre: 15 سنة اشتراك على الأقل
+  description: أقل من 15 سنة (وفوق 5) قد يفتح الحق في منحة لا في معاش كامل.
+  valeur: annees >= 15 an
+cond . dettes:
+  titre: تسوية الاشتراكات المتأخرة
+  description: الدفع ممكن إلكترونياً عبر منصة ضمانكم damancom.casnos.dz.
+  valeur: dettes = oui
+cond . cessation:
+  titre: التوقف عن النشاط
+  description: لا يُجمع بين معاش التقاعد ومواصلة النشاط المصرّح به.
+  valeur: cessation = oui
+
+montant . taux:
+  titre: نسبة المعاش
+  valeur: annees * 2.5% / 1 an
+  plafond: 80%
+montant . mensuel:
+  titre: المعاش الشهري التقديري
+  valeur: assiette / 12 * montant . taux

@@ -1,0 +1,58 @@
+# منح المجاهدين وذوي الحقوق — وزارة المجاهدين وذوي الحقوق (قانون 99-07، مرسوم 25-80).
+cond:
+  valeur: oui
+
+categorie:
+  question: صفتك
+  une possibilité:
+    - moudjahid
+    - veuve
+    - enfant chahid
+    - ascendant chahid
+    - victime civile
+    - aucune
+categorie . moudjahid:
+  titre: مجاهد
+categorie . veuve:
+  titre: أرملة شهيد أو أرملة مجاهد
+categorie . enfant chahid:
+  titre: ابن أو ابنة شهيد
+categorie . ascendant chahid:
+  titre: أصل شهيد (أب/أم)
+categorie . victime civile:
+  titre: ضحية مدنية أو ضحية أجهزة متفجرة
+categorie . aucune:
+  titre: لا شيء مما سبق
+dossier:
+  question: هل لديك ملف معترف به لدى مديرية المجاهدين للولاية؟
+remariage:
+  question: "للأرملة: هل تزوجت من جديد؟"
+  une possibilité:
+    - non concernee
+    - pas remariee
+    - remariee
+remariage . non concernee:
+  titre: غير معنية
+remariage . pas remariee:
+  titre: لم تتزوج
+remariage . remariee:
+  titre: تزوجت من جديد
+cumul:
+  question: هل تتقاضى معاشاً آخر من نفس الطبيعة عن ذات الصفة؟
+
+cond . categorie:
+  titre: الانتماء لإحدى الفئات المعترف بها
+  description: الفئات محددة في القانون 99-07 المتعلق بالمجاهد والشهيد.
+  valeur: categorie != 'aucune'
+cond . dossier:
+  titre: ملف معترف به لدى مديرية المجاهدين
+  description: الاعتراف بالصفة يمرّ عبر مديرية المجاهدين لولاية الإقامة.
+  valeur: dossier = oui
+cond . remariage:
+  titre: وضعية الأرملة تجاه الزواج
+  description: زواج الأرملة من جديد قد يوقف المعاش حسب الحالة.
+  valeur: remariage != 'remariee'
+cond . cumul:
+  titre: عدم الجمع بين معاشين من نفس الطبيعة
+  description: لا يُجمع بين معاشين عن الصفة ذاتها.
+  valeur: cumul = non

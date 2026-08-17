@@ -1,0 +1,70 @@
+# جواز السفر البيومتري — وزارة الداخلية (القانون 14-03).
+cond:
+  valeur: oui
+montant:
+  valeur: oui
+
+cnibe:
+  question: هل تملك بطاقة تعريف وطنية أو مستخرج ميلاد رقم 12؟
+motif:
+  question: سبب الطلب
+  une possibilité:
+    - premiere
+    - renouvellement
+    - perte
+motif . premiere:
+  titre: طلب أول
+motif . renouvellement:
+  titre: تجديد
+motif . perte:
+  titre: ضياع أو سرقة أو إتلاف
+mois restants:
+  question: "للتجديد: كم شهراً يتبقى على انتهاء صلاحية جوازك؟"
+  unité: mois
+declaration perte:
+  question: "في حالة الضياع: هل لديك تصريح بالضياع من الأمن؟"
+duree:
+  question: مدة الصلاحية المطلوبة
+  une possibilité:
+    - cinq ans
+    - dix ans
+duree . cinq ans:
+  titre: 5 سنوات (28 صفحة)
+duree . dix ans:
+  titre: 10 سنوات (48 صفحة)
+mineur:
+  question: هل صاحب الطلب قاصر (أقل من 19 سنة)؟
+tuteur:
+  question: "للقاصر: هل ملحق الولي الشرعي مرفق؟"
+
+cond . identite:
+  titre: وثائق الهوية متوفرة
+  description: مستخرج الميلاد رقم 12 أو البطاقة البيومترية أساس الملف.
+  valeur: cnibe = oui
+cond . renouvellement:
+  titre: التجديد ضمن الآجال
+  description: يُقبل التجديد خلال الأشهر السابقة لانتهاء الصلاحية (المادة 14 من القانون 14-03).
+  une de ces conditions:
+    - motif != 'renouvellement'
+    - mois restants <= 6
+cond . perte:
+  titre: تصريح بالضياع في حالة الفقدان
+  description: التصريح لدى مصالح الأمن إجباري قبل إيداع الملف.
+  une de ces conditions:
+    - motif != 'perte'
+    - declaration perte = oui
+cond . tuteur:
+  titre: ملحق الولي الشرعي للقاصرين
+  description: القاصر لا يودع ملفاً بلا موافقة الولي الشرعي.
+  une de ces conditions:
+    - mineur = non
+    - tuteur = oui
+
+montant . timbre:
+  titre: الطابع الجبائي التقديري
+  variations:
+    - si: mineur = oui
+      alors: 2500 DA
+    - si: duree = 'dix ans'
+      alors: 12000 DA
+    - sinon: 6000 DA

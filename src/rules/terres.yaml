@@ -1,0 +1,49 @@
+# امتياز الأراضي الفلاحية للاستصلاح — الديوان الوطني للأراضي الفلاحية ONTA / ODAS.
+cond:
+  valeur: oui
+
+nationalite:
+  question: هل تحمل الجنسية الجزائرية؟
+age:
+  question: سنّك
+  unité: an
+capacite technique:
+  question: هل لديك مؤهل فلاحي أو خبرة أو شريك تقني؟
+moyens:
+  question: هل تثبت القدرة المالية أو تمويلاً بنكياً لإنجاز الاستصلاح؟
+cahier:
+  question: هل تقبل الاكتتاب في دفتر الشروط وآجال الإنجاز؟
+beneficiaire avant:
+  question: هل سبق أن استفدت من امتياز فلاحي لم تستغله؟
+superficie:
+  question: المساحة المطلوبة
+  unité: ha
+
+cond . nationalite:
+  titre: الجنسية الجزائرية
+  description: الامتياز مفتوح للأشخاص الطبيعيين الجزائريين والأشخاص المعنويين الخاضعين للقانون الجزائري.
+  valeur: nationalite = oui
+cond . age:
+  titre: بلوغ 19 سنة
+  description: أهلية التعاقد مع الديوان.
+  valeur: age >= 19 an
+cond . technique:
+  titre: مؤهل أو خبرة فلاحية
+  description: تُقيَّم الملفات على أساس القدرة التقنية على إنجاز الاستصلاح.
+  valeur: capacite technique = oui
+cond . moyens:
+  titre: قدرة مالية أو تمويل مثبت
+  description: الاستصلاح يشمل تعبئة المياه والطاقة والتهيئة والسقي والغرس.
+  valeur: moyens = oui
+cond . cahier:
+  titre: قبول دفتر الشروط وآجال الإنجاز
+  description: عدم إنجاز الأشغال في الآجال يعرّض الامتياز للسحب.
+  valeur: cahier = oui
+cond . anterieur:
+  titre: عدم وجود امتياز سابق غير مستغل
+  description: الاستفادة السابقة بلا استغلال تُقصي الملف.
+  valeur: beneficiaire avant = non
+cond . superficie:
+  titre: مساحة مطلوبة معقولة ومبررة
+  description: المساحة يجب أن تتناسب مع القدرات المصرَّح بها في الملف.
+  valeur: superficie > 0 ha

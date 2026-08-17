@@ -3,9 +3,12 @@ const { layout, esc, num } = require('./views');
 const { CATEGORIES, SERVICES, BY_ID, byCat } = require('./services');
 const { ruleSet, evaluate, VERDICTS } = require('./engine');
 const visaRouter = require('./routes/visa');
+const accountRouter = require('./routes/account');
+const auth = require('./auth');
 
 const app = express();
 app.use(express.urlencoded({ extended: false }));
+app.use(auth.attachUser);
 
 const TOTAL_CONDITIONS = SERVICES.reduce((n, s) => n + ruleSet(s.id).conditions.length, 0);
 
@@ -83,7 +86,7 @@ app.get('/', (req, res) => {
   })();
   </script>`;
 
-  res.send(layout('افحص أهليتك قبل الإيداع', body, { hero }));
+  res.send(layout('افحص أهليتك قبل الإيداع', body, { hero, user: req.user, active: 'home' }));
 });
 
 /* ═══════════ استمارة خدمة ونتيجتها ═══════════ */
@@ -126,7 +129,7 @@ function formPage(s, body = {}) {
 app.get('/s/:id', (req, res) => {
   const s = BY_ID[req.params.id];
   if (!s) return res.status(404).send(layout('غير موجود', '<div class="card"><h3>الخدمة غير موجودة</h3><p><a href="/">عد إلى قائمة الخدمات</a></p></div>'));
-  res.send(layout(s.name, formPage(s)));
+  res.send(layout(s.name, formPage(s), { user: req.user, active: 'services' }));
 });
 
 app.post('/s/:id', (req, res) => {
@@ -173,6 +176,21 @@ app.post('/s/:id', (req, res) => {
     ${s.money ? `<div class="money" style="margin-top:14px">💰 ${esc(s.money)}</div>` : ''}
   </div>
 
+  ${req.user ? `<form method="post" action="/me/save" class="card" style="text-align:center;margin-bottom:14px">
+      <input type="hidden" name="service" value="${s.id}">
+      <input type="hidden" name="payload" value="${esc(JSON.stringify({ verdict: r.verdict, passed: r.passed, total: r.total,
+        missing: r.checks.filter((c) => c.status !== 'pass').map((c) => c.label) }))}">
+      <b>احفظ هذا الفحص في «ملفاتي»</b>
+      <p class="sub" style="margin:4px 0 12px">لتتابع الشروط الناقصة ووثائق الملف لاحقاً.</p>
+      <button class="btn block" type="submit">💾 احفظ في ملفاتي</button>
+    </form>`
+    : `<div class="card" style="text-align:center;margin-bottom:14px">
+      <b>أنشئ حساباً مجانياً لحفظ نتيجتك</b>
+      <p class="sub" style="margin:4px 0 12px">تتابع وثائقك وشروطك الناقصة في أي وقت، من الهاتف أو الحاسوب.</p>
+      <a class="btn block" href="/signup">إنشاء حساب مجاني</a>
+      <div style="margin-top:10px"><a href="/login">لدي حساب — دخول</a></div>
+    </div>`}
+
   <div class="card" style="text-align:center">
     <h2 class="sec" style="font-size:19px">أودِع ملفك في المكان الرسمي</h2>
     <p class="sub">${esc(s.agency)}</p>
@@ -182,8 +200,27 @@ app.post('/s/:id', (req, res) => {
       · الشروط تتغيّر بالمراسيم، والموقع الرسمي هو المرجع النهائي.</div>
   </div>`;
 
-  res.send(layout('نتيجة الفحص · ' + s.name, body));
+  res.send(layout('نتيجة الفحص · ' + s.name, body, { user: req.user, active: 'services' }));
 });
+
+/* ═══════════ حفظ نتيجة الفحص ═══════════ */
+app.post('/me/save', auth.requireUser, (req, res) => {
+  let payload = {};
+  try { payload = JSON.parse(req.body.payload || '{}'); } catch { payload = {}; }
+  if (BY_ID[req.body.service]) {
+    auth.saveFile(req.user.id, {
+      service: req.body.service,
+      verdict: payload.verdict || 'incomplete',
+      passed: Number(payload.passed) || 0,
+      total: Number(payload.total) || 0,
+      missing: Array.isArray(payload.missing) ? payload.missing.slice(0, 12) : [],
+    });
+  }
+  res.redirect('/me');
+});
+
+/* ═══════════ الحساب ═══════════ */
+app.use('/', accountRouter);
 
 /* ═══════════ وحدة التأشيرات ═══════════ */
 app.use('/visa', visaRouter);
@@ -206,7 +243,7 @@ app.get('/how', (req, res) => {
   <section><h2 class="sec">المحرّك</h2>
   <p>قواعد فاحص مكتوبة بلغة <a href="https://publi.codes/" target="_blank" rel="noopener">Publicodes</a> مفتوحة المصدر،
   وهي نفس التقنية التي تستعملها الإدارة الفرنسية لحساب أهلية المساعدات الاجتماعية.
-  كل شرط ملف نصّي مقروء يمكن مراجعته وتصحيحه فور صدور مرسوم جديد.</p></section>`));
+  كل شرط ملف نصّي مقروء يمكن مراجعته وتصحيحه فور صدور مرسوم جديد.</p></section>`, { user: req.user }));
 });
 
 app.get('/about', (req, res) => {
@@ -217,7 +254,8 @@ app.get('/about', (req, res) => {
     <ul class="docs">
       <li>لا نقبل ملفات ولا نودعها نيابة عنك.</li>
       <li>لا نبيع مواعيد ولا نعد بقبول أي ملف.</li>
-      <li>لا نطلب اسمك ولا هاتفك ولا وثائقك، ولا نحتفظ بأي بيانات.</li>
+      <li>لا نطلب وثائقك ولا نحتفظ بشيء إن استعملت فاحص بلا حساب.</li>
+      <li>الحساب اختياري: يخدم فقط حفظ نتائج فحوصك ومتابعة وثائقك، ويمكنك حذف أي ملف متى شئت.</li>
       <li>لسنا جهة حكومية ولا ممثلاً لأي وكالة.</li>
     </ul></div>
   <h2 class="sec" style="font-size:19px">المصادر</h2>
@@ -225,7 +263,7 @@ app.get('/about', (req, res) => {
   إذا تغيّر نصّ رسمي، الموقع الرسمي هو المرجع، لا فاحص.</p>
   <div class="money">📌 مرجع محيّن: الأجر الوطني الأدنى المضمون (SNMG) = 24.000 دج منذ 01 جانفي 2026 (مرسوم رئاسي 26-01)،
    وهو أساس حساب سقوف الدخل في صيغ السكن والمنح.</div>
-  </section>`));
+  </section>`, { user: req.user }));
 });
 
 app.use((req, res) => res.status(404).send(layout('غير موجود',

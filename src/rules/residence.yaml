@@ -1,0 +1,45 @@
+# شهادة الإقامة وشهادة عدم الملكية — البلدية والحفظ العقاري.
+cond:
+  valeur: oui
+
+document:
+  question: الوثيقة المطلوبة
+  une possibilité:
+    - certificat residence
+    - fiche residence
+    - non propriete
+document . certificat residence:
+  titre: شهادة إقامة
+document . fiche residence:
+  titre: بطاقة إقامة
+document . non propriete:
+  titre: شهادة سلبية (عدم الملكية)
+identite:
+  question: هل تملك بطاقة التعريف الوطنية؟
+preuve adresse:
+  question: هل لديك ما يثبت العنوان (فاتورة، عقد إيجار، سند ملكية، شهادة إيواء)؟
+temoins:
+  question: "عند الحاجة: هل يمكنك إحضار شاهدين من الحي؟"
+commune:
+  question: هل تطلبها من بلدية إقامتك الفعلية؟
+frais:
+  question: هل حجزت موعداً أو تعرف مصلحة الإيداع؟
+
+cond . identite:
+  titre: بطاقة التعريف الوطنية
+  description: أساس كل طلب لدى البلدية.
+  valeur: identite = oui
+cond . adresse:
+  titre: إثبات العنوان
+  description: فاتورة كهرباء أو ماء أو عقد إيجار أو شهادة إيواء موقّعة من صاحب السكن.
+  une de ces conditions:
+    - preuve adresse = oui
+    - temoins = oui
+cond . commune:
+  titre: الطلب من بلدية الإقامة الفعلية
+  description: الشهادة تُسلَّم من بلدية الإقامة لا من بلدية الميلاد.
+  valeur: commune = oui
+cond . guichet:
+  titre: معرفة مصلحة الإيداع
+  description: شهادة عدم الملكية تُطلب من المحافظة العقارية لا من البلدية.
+  valeur: frais = oui

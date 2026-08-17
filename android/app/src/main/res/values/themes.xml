@@ -1,0 +1,10 @@
+<resources>
+  <style name="Theme.Fahes" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <item name="android:statusBarColor">@color/brand_dark</item>
+    <item name="android:navigationBarColor">@color/white</item>
+    <item name="android:windowBackground">@color/bg</item>
+  </style>
+  <style name="Theme.Fahes.Splash" parent="Theme.Fahes">
+    <item name="android:windowBackground">@drawable/splash</item>
+  </style>
+</resources>

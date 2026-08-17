@@ -1,0 +1,6 @@
+<resources>
+  <string name="app_name">فاحص</string>
+  <string name="offline_title">لا يوجد اتصال بالإنترنت</string>
+  <string name="offline_body">فاحص يحتاج اتصالاً لتحميل الشروط الرسمية المحيَّنة. تحقق من اتصالك ثم أعد المحاولة.</string>
+  <string name="retry">أعد المحاولة</string>
+</resources>

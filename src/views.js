@@ -155,15 +155,63 @@ footer a{color:#ffb3ba}
   .verdict{padding:28px 30px} .verdict h1{font-size:25px}
   .verdict .ring{width:74px;height:74px;flex-basis:74px;font-size:34px}
 }
+
+/* ── الشريط السفلي (إحساس التطبيق) ── */
+.tabbar{position:fixed;inset-inline:0;bottom:0;z-index:70;display:none;background:rgba(255,255,255,.96);
+  backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
+.tabbar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10.5px;font-weight:700;
+  color:var(--muted);padding:5px 2px;border-radius:12px}
+.tabbar a i{font-style:normal;font-size:19px;line-height:1}
+.tabbar a.on{color:var(--r600);background:#fdf0f1}
+@media(max-width:820px){.tabbar{display:flex}body{padding-bottom:66px}.nav nav{display:none}.nav .wrap{justify-content:space-between}}
+
+/* ── الحساب ── */
+.authcard{max-width:430px;margin:26px auto;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);
+  padding:24px 20px;box-shadow:var(--sh2)}
+.authcard h1{margin:0 0 4px;font-size:23px}
+.authcard .lead{color:var(--muted);font-size:14px;margin:0 0 18px}
+.field{margin-bottom:14px}
+.field label{display:block;font-weight:700;font-size:14.5px;margin-bottom:6px}
+.field input{width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:13px;font-family:inherit;font-size:16px;background:#fff}
+.field input:focus{outline:0;border-color:var(--r500);box-shadow:0 0 0 4px rgba(221,36,56,.1)}
+.alert{background:#fff3f3;border:1px solid #ffd4d8;color:#8b1424;padding:11px 13px;border-radius:12px;font-size:14px;margin-bottom:14px}
+.ok{background:#eefaf3;border:1px solid #c4ecd6;color:#0f8a4d;padding:11px 13px;border-radius:12px;font-size:14px;margin-bottom:14px}
+.avatar{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--r400),var(--r700));color:#fff;
+  display:grid;place-items:center;font-weight:800;font-size:17px}
+.userrow{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.filecard{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:15px 16px;margin-bottom:12px;box-shadow:var(--sh)}
+.filecard .top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.badge{font-size:12px;font-weight:800;padding:4px 10px;border-radius:999px}
+.badge.ready{background:#eefaf3;color:#0f8a4d}
+.badge.incomplete{background:#fff6e6;color:#a56a00}
+.badge.reject{background:#fdeced;color:#b31c2c}
+.docs{list-style:none;padding:0;margin:8px 0 0}
+.docs li{display:flex;align-items:flex-start;gap:9px;padding:5px 0;font-size:14.5px;border-bottom:1px dashed var(--line)}
+.docs li:last-child{border-bottom:0}
+.docs button{background:none;border:0;cursor:pointer;font-size:17px;padding:0;line-height:1.4}
+.docs li.done span{color:var(--muted);text-decoration:line-through}
+.navuser{display:flex;align-items:center;gap:6px;color:#fff;font-weight:700;font-size:13.5px;
+  background:rgba(255,255,255,.16);padding:5px 11px;border-radius:999px;white-space:nowrap}
 `;
 
 function layout(title, body, opts = {}) {
+  const user = opts.user || null;
+  const active = opts.active || '';
   const nav = [
     ['/', 'الخدمات'],
     ['/visa', 'التأشيرات'],
     ['/how', 'كيف يعمل'],
     ['/about', 'عن فاحص'],
   ].map(([h, t]) => `<a class="link" href="${h}">${t}</a>`).join('');
+  const account = user
+    ? `<a class="navuser" href="/me">👤 ${esc((user.name || '').split(' ')[0] || 'حسابي')}</a>`
+    : `<a class="navuser" href="/login">دخول</a>`;
+  const tabs = [
+    ['/', '🏠', 'الرئيسية', 'home'],
+    ['/#services', '🗂️', 'الخدمات', 'services'],
+    ['/visa', '✈️', 'التأشيرات', 'visa'],
+    [user ? '/me' : '/login', '👤', user ? 'ملفاتي' : 'حسابي', 'me'],
+  ].map(([h, i, t, k]) => `<a href="${h}" class="${active === k ? 'on' : ''}"><i>${i}</i>${t}</a>`).join('');
   return `<!doctype html><html lang="ar" dir="rtl"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#3f0a10">
@@ -175,15 +223,19 @@ function layout(title, body, opts = {}) {
 <header class="nav"><div class="wrap">
   <a class="brand" href="/"><span class="dot">✓</span> فاحص</a>
   <nav>${nav}</nav>
+  ${account}
 </div></header>
 ${opts.hero || ''}
 <main><div class="wrap">${body}</div></main>
 <footer><div class="wrap">
   <b style="color:#fff">فاحص</b> — أداة توجيه مبنية على النصوص والمواقع الرسمية الجزائرية.
   لسنا جهة حكومية ولا وسيطاً، ولا نقبل ملفات ولا نضمن نتيجة: كل خدمة تُودَع حصراً عبر موقعها الرسمي.
-  <br>لا نحتفظ ببياناتك: كل ما تدخله يُحسب في اللحظة ثم يُنسى.
+  <br>بلا حساب: لا نحتفظ بأي شيء، وكل ما تدخله يُحسب في اللحظة ثم يُنسى.
+  بحساب: نحفظ فقط ما تختار حفظه في «ملفاتي»، ويمكنك حذفه في أي وقت.
   <br><span style="opacity:.7">محرّك القواعد: Publicodes مفتوح المصدر · بلا ذكاء اصطناعي</span>
-</div></footer></body></html>`;
+</div></footer>
+<div class="tabbar">${tabs}</div>
+</body></html>`;
 }
 
 module.exports = { layout, esc, num, CSS };

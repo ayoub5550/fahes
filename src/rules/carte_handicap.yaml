@@ -1,0 +1,30 @@
+# بطاقة الشخص ذي الاحتياجات الخاصة — مديرية النشاط الاجتماعي (قانون 02-09).
+cond:
+  valeur: oui
+
+certificat:
+  question: هل لديك تقرير طبي من القطاع العمومي يثبت الإعاقة؟
+taux:
+  question: نسبة العجز المُقرّة طبياً
+  unité: '%'
+commission:
+  question: هل مررت على لجنة الخبرة الطبية الولائية (أو مستعد للمرور)؟
+residence:
+  question: هل تملك شهادة إقامة ووثائق الحالة المدنية؟
+
+cond . certificat:
+  titre: تقرير طبي من مؤسسة عمومية
+  description: التقارير من القطاع الخاص وحدها لا تكفي لملف البطاقة.
+  valeur: certificat = oui
+cond . taux:
+  titre: نسبة عجز معترف بها (50% فأكثر للبطاقة)
+  description: نسبة 100% تفتح الحق في المنحة الشهرية، وما دونها في البطاقة والتخفيضات.
+  valeur: taux >= 50%
+cond . commission:
+  titre: المرور على لجنة الخبرة الطبية الولائية
+  description: اللجنة هي من تُقرّ نسبة العجز، ويمكن الطعن أمام اللجنة الوطنية عند الرفض.
+  valeur: commission = oui
+cond . dossier:
+  titre: استكمال الوثائق الإدارية
+  description: شهادة إقامة وشهادة ميلاد وصور شمسية.
+  valeur: residence = oui

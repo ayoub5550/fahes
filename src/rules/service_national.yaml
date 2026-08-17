@@ -1,0 +1,66 @@
+# الخدمة الوطنية: الإعفاء والتأجيل — الأمر 14-06 والمرسوم الرئاسي 24-184.
+cond:
+  valeur: oui
+
+annee naissance:
+  question: سنة ميلادك
+  unité: an
+statut:
+  question: وضعيتك الحالية
+  une possibilité:
+    - non recense
+    - recense
+    - accompli
+    - insoumis
+statut . non recense:
+  titre: لم أُحصَ بعد
+statut . recense:
+  titre: محصى ولم أُجنَّد
+statut . accompli:
+  titre: أدّيت الخدمة
+statut . insoumis:
+  titre: في وضعية تخلّف
+motif:
+  question: سبب طلبك
+  une possibilité:
+    - exemption age
+    - exemption medicale
+    - exemption sociale
+    - report etudes
+    - attestation
+motif . exemption age:
+  titre: إعفاء بحكم السن (مواليد ما قبل 1995)
+motif . exemption medicale:
+  titre: إعفاء لسبب طبي
+motif . exemption sociale:
+  titre: إعفاء لسبب اجتماعي (ابن وحيد، وفاة الوالدين، عائلة كثيرة العدد)
+motif . report etudes:
+  titre: تأجيل للدراسة
+motif . attestation:
+  titre: شهادة وضعية فقط
+justificatif:
+  question: هل تملك الوثائق التي تبرّر السبب (تقارير طبية عمومية أو وثائق الحالة الاجتماعية)؟
+inscrit universite:
+  question: هل أنت مسجّل حالياً في مؤسسة تعليم أو تكوين؟
+
+cond . age:
+  titre: الإعفاء بالسن للمولودين قبل 1995
+  description: المرسوم الرئاسي 24-184 أعفى المواطنين المولودين قبل 01 جانفي 1995 ولم يُجنَّدوا بعد.
+  une de ces conditions:
+    - motif != 'exemption age'
+    - toutes ces conditions:
+        - annee naissance < 1995 an
+        - statut != 'accompli'
+cond . justificatif:
+  titre: وثائق تبرير الإعفاء
+  description: الشهادات الطبية يجب أن تكون من القطاع العمومي.
+  une de ces conditions:
+    - motif = 'attestation'
+    - motif = 'exemption age'
+    - justificatif = oui
+cond . etudes:
+  titre: إثبات التمدرس لطلب التأجيل
+  description: التأجيل مرتبط بمتابعة دراسة أو تكوين ساري.
+  une de ces conditions:
+    - motif != 'report etudes'
+    - inscrit universite = oui

@@ -9,7 +9,7 @@ const Publicodes = require('publicodes');
 const Engine = Publicodes.default || Publicodes;
 const RULES_DIR = path.join(__dirname, 'rules');
 
-const UNIT_AR = { an: 'سنة', DA: 'دج', '%': '%', pers: 'شخص', mois: 'شهر', jour: 'يوم', offre: 'عرض' };
+const UNIT_AR = { an: 'سنة', DA: 'دج', '%': '%', pers: 'شخص', mois: 'شهر', jour: 'يوم', niveau: 'طابق', point: 'نقطة', m2: 'م²', ha: 'هكتار', offre: 'عرض' };
 
 /** يحمّل ملف قواعد ويستخرج الأسئلة والشروط بترتيب كتابتها. */
 function loadRuleSet(id) {

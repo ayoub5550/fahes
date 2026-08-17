@@ -1,0 +1,59 @@
+# القرض الاستهلاكي للمنتجات المصنَّعة محلياً — مرسوم تنفيذي 15-114.
+cond:
+  valeur: oui
+montant:
+  valeur: oui
+
+produit local:
+  question: هل السلعة مصنَّعة أو مركَّبة في الجزائر؟
+revenu:
+  question: دخلك الشهري الصافي
+  unité: DA
+anciennete:
+  question: أقدميتك في العمل أو النشاط
+  unité: an
+autres credits:
+  question: مجموع أقساطك الشهرية الحالية
+  unité: DA
+prix:
+  question: ثمن السلعة
+  unité: DA
+duree:
+  question: مدة التسديد المطلوبة
+  unité: an
+apport:
+  question: هل يمكنك دفع 10% على الأقل كتمويل ذاتي؟
+
+cond . produit:
+  titre: السلعة مصنَّعة محلياً
+  description: القرض الاستهلاكي محصور قانوناً في المنتجات المصنَّعة أو المركَّبة في الجزائر.
+  valeur: produit local = oui
+cond . revenu:
+  titre: دخل يساوي 1.5 مرة SNMG على الأقل (36.000 دج)
+  description: شرط بنكي معتمد في عروض القرض الاستهلاكي.
+  valeur: revenu >= 36000 DA
+cond . anciennete:
+  titre: سنة أقدمية على الأقل
+  description: يثبتها كشف الراتب أو التصريح الضريبي حسب طبيعة النشاط.
+  valeur: anciennete >= 1 an
+cond . apport:
+  titre: تمويل ذاتي 10% على الأقل
+  description: البنك يموّل حتى 90% من الثمن.
+  valeur: apport = oui
+cond . duree:
+  titre: مدة التسديد لا تتجاوز 5 سنوات
+  description: القرض الاستهلاكي قصير أو متوسط المدى.
+  valeur: duree <= 5 an
+cond . capacite:
+  titre: مجموع الأقساط لا يتجاوز 30% من الدخل
+  description: قاعدة قدرة السداد المعتمدة لدى البنوك.
+  valeur: montant . mensualite + autres credits <= revenu * 30%
+
+montant . credit:
+  titre: مبلغ القرض (90% من الثمن)
+  valeur: prix * 90%
+montant . mensualite:
+  titre: القسط الشهري التقديري
+  valeur: montant . credit * (1 + 6%) / montant . mois
+montant . mois:
+  valeur: duree * 12 / 1 an

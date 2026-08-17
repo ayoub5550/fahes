@@ -1,0 +1,45 @@
+# السكن الترقوي العمومي LPP — المؤسسة الوطنية للترقية العقارية ENPI.
+cond:
+  valeur: oui
+montant:
+  valeur: oui
+
+age:
+  question: سنّك
+  unité: an
+revenu:
+  question: الدخل الشهري الصافي لك ولزوجك مجتمعاً
+  unité: DA
+proprietaire:
+  question: هل تملك أنت أو زوجك سكناً أو استفدت من إعانة سكنية من الدولة؟
+apport:
+  question: المبلغ الذي يمكنك دفعه كمساهمة أولية
+  unité: DA
+prix:
+  question: ثمن السكن المعروض
+  unité: DA
+
+cond . age:
+  titre: السن 21 سنة فأكثر
+  description: يشترط بلوغ سنّ الرشد القانوني عند الاكتتاب.
+  valeur: age >= 21 an
+cond . revenu min:
+  titre: الدخل يفوق 6 مرات SNMG
+  description: LPP موجّه للطبقة المتوسطة التي يتجاوز دخلها سقف السكن المدعم.
+  valeur: revenu > 144000 DA
+cond . revenu max:
+  titre: الدخل لا يتجاوز 12 مرة SNMG (288.000 دج)
+  description: فوق هذا السقف يوجَّه الطلب نحو الترقوي الحر LPL بلا شروط دخل.
+  valeur: revenu <= 288000 DA
+cond . propriete:
+  titre: عدم امتلاك سكن أو الاستفادة من إعانة سابقة
+  description: الاستفادة مرة واحدة فقط من الصيغ المدعمة.
+  valeur: proprietaire = non
+cond . apport:
+  titre: القدرة على دفع المساهمة الأولى (25% على الأقل)
+  description: يُدفع الثمن على أشطر من الأموال الخاصة، والشطر الأول عادة ربع الثمن.
+  valeur: apport >= prix * 25%
+
+montant . reste:
+  titre: المبلغ المتبقي بعد المساهمة الأولى
+  valeur: prix - apport

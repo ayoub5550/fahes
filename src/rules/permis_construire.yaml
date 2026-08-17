@@ -1,0 +1,47 @@
+# رخصة البناء — قانون التهيئة والتعمير 90-29 والمرسوم 15-19، تُودع بالبلدية.
+cond:
+  valeur: oui
+
+titre foncier:
+  question: هل تملك عقد ملكية أو عقداً إدارياً للقطعة؟
+zone:
+  question: وضعية القطعة
+  une possibilité:
+    - urbanisable
+    - lotissement
+    - agricole
+zone . urbanisable:
+  titre: داخل المحيط العمراني
+zone . lotissement:
+  titre: داخل تجزئة برخصة تجزئة
+zone . agricole:
+  titre: أرض فلاحية أو خارج المحيط العمراني
+surface:
+  question: المساحة المبنية الإجمالية
+  unité: m2
+architecte:
+  question: هل أعدّ المخططات مهندس معماري ومهندس مدني معتمدان؟
+niveaux:
+  question: عدد الطوابق (بما فيها الأرضي)
+  unité: niveau
+
+cond . titre:
+  titre: سند ملكية أو عقد إداري للقطعة
+  description: بلا عقد مشهر أو عقد إداري لا يُدرس الملف أصلاً.
+  valeur: titre foncier = oui
+cond . zone:
+  titre: القطعة قابلة للبناء
+  description: الأرض الفلاحية تحتاج نزع الطابع الفلاحي قبل أي رخصة.
+  valeur: zone != 'agricole'
+cond . architecte:
+  titre: مخططات مُمضاة من مهندس معماري ومهندس مدني
+  description: إمضاء المهندسين إجباري لكل بناء يتجاوز سكناً فردياً بسيطاً.
+  valeur: architecte = oui
+cond . etude:
+  titre: دراسة تقنية إجبارية فوق 300 م2 أو 3 طوابق
+  description: المشاريع الكبيرة تمرّ على لجنة الدائرة أو الولاية لا البلدية وحدها.
+  une de ces conditions:
+    - toutes ces conditions:
+        - surface <= 300 m2
+        - niveaux <= 3
+    - architecte = oui

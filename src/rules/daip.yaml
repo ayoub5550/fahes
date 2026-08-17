@@ -1,0 +1,47 @@
+# جهاز المساعدة على الإدماج المهني — ANEM (عقود الإدماج CID/CIP/CFI).
+cond:
+  valeur: oui
+
+age:
+  question: سنّك
+  unité: an
+premier emploi:
+  question: هل أنت طالب شغل مبتدئ (لم تعمل بعقد دائم من قبل)؟
+inscrit anem:
+  question: هل أنت مسجّل لدى وكالة التشغيل ANEM في مكان إقامتك؟
+diplome:
+  question: مستواك
+  une possibilité:
+    - universitaire
+    - technicien
+    - formation
+    - sans
+diplome . universitaire:
+  titre: شهادة جامعية (ليسانس/ماستر/مهندس)
+diplome . technicien:
+  titre: تقني سامٍ أو شهادة تكوين مهني
+diplome . formation:
+  titre: مستوى ثانوي أو تكوين قصير
+diplome . sans:
+  titre: بدون مستوى ولا تأهيل
+activite:
+  question: هل لديك حالياً نشاط تجاري أو وظيفة؟
+
+cond . age:
+  titre: السن بين 18 و35 سنة
+  description: يمكن استثناء سنّ 16 سنة لمن يقبل تكويناً في شعبة يشكو منها سوق العمل.
+  toutes ces conditions:
+    - age >= 18 an
+    - age <= 35 an
+cond . premier:
+  titre: طالب شغل مبتدئ
+  description: الجهاز مخصص لمن لم يسبق له الإدماج المهني.
+  valeur: premier emploi = oui
+cond . anem:
+  titre: التسجيل لدى ANEM
+  description: التسجيل شرط مسبق ويتم إلكترونياً على منصة ANEM.
+  valeur: inscrit anem = oui
+cond . activite:
+  titre: عدم ممارسة نشاط أو وظيفة حالياً
+  description: لا يُجمع بين عقد الإدماج ونشاط مصرّح به.
+  valeur: activite = non

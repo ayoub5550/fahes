@@ -1,0 +1,49 @@
+# بطاقة الحرفي وسجل الصناعة التقليدية — غرفة الصناعة التقليدية والحرف (مرسوم 97-142).
+cond:
+  valeur: oui
+
+age:
+  question: سنّك
+  unité: an
+qualification:
+  question: مؤهلك في الحرفة
+  une possibilité:
+    - diplome
+    - experience
+    - examen
+    - aucun
+qualification . diplome:
+  titre: شهادة تكوين مهني في الحرفة
+qualification . experience:
+  titre: خبرة مثبتة في الحرفة
+qualification . examen:
+  titre: نجاح في الامتحان التأهيلي لرتبة حرفي
+qualification . aucun:
+  titre: بلا مؤهل ولا خبرة
+activite listee:
+  question: هل حرفتك ضمن قائمة نشاطات الصناعة التقليدية والحرف؟
+local:
+  question: هل لديك مكان لممارسة النشاط (ولو بالمنزل)؟
+casnos:
+  question: هل أنت مستعد للانتساب إلى CASNOS بعد التسجيل؟
+
+cond . age:
+  titre: بلوغ 19 سنة
+  description: سنّ التسجيل في سجل الصناعة التقليدية والحرف.
+  valeur: age >= 19 an
+cond . qualification:
+  titre: مؤهل أو خبرة أو نجاح في الامتحان التأهيلي
+  description: بلا مؤهل، تجتاز الامتحان التأهيلي المنظَّم من الغرفة في مؤسسة تكوين مهني.
+  valeur: qualification != 'aucun'
+cond . activite:
+  titre: النشاط ضمن قائمة الحرف المعتمدة
+  description: "القائمة محددة تنظيمياً في ثلاث فئات: فنية، إنتاج مواد وخدمات، حرف تقليدية."
+  valeur: activite listee = oui
+cond . local:
+  titre: مكان لممارسة النشاط
+  description: يمكن ممارسة عدة حرف من المنزل بشرط التصريح بالعنوان.
+  valeur: local = oui
+cond . casnos:
+  titre: الانتساب لـ CASNOS
+  description: الحرفي غير أجير، فالتأمين الاجتماعي يمرّ عبر CASNOS.
+  valeur: casnos = oui

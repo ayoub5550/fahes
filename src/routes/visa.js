@@ -68,7 +68,7 @@ router.get('/', (req, res) => {
   res.send(layout('فاحص ملف التأشيرة', tabs('check') + form({
     departure: d(45), return_: d(55), travellers: '1', daysUsed180: '0', balanceCur: 'EUR',
     hasAccommodation: '1', hasReturnTicket: '1',
-  })));
+  }), { user: req.user, active: 'visa' }));
 });
 
 router.post('/', (req, res) => {
@@ -106,7 +106,7 @@ router.post('/', (req, res) => {
     ${r.country && r.country.site ? `<a class="btn block" style="margin-top:14px" href="${esc(r.country.site)}" target="_blank" rel="noopener">الموقع الرسمي للإيداع ↗</a>` : ''}
   </div>
   <div class="card" style="text-align:center"><a href="/visa">↺ أعد الفحص</a> · <a href="/visa/countries">كل دول العالم</a></div>`;
-  res.send(layout('نتيجة فحص التأشيرة', body));
+  res.send(layout('نتيجة فحص التأشيرة', body, { user: req.user, active: 'visa' }));
 });
 
 /* ── كل دول العالم ── */
@@ -158,7 +158,7 @@ router.get('/countries', (req, res) => {
       chips.forEach(function(x){x.classList.remove('on')}); c.classList.add('on'); f=c.dataset.f; apply();
     })});
   })();
-  </script>`));
+  </script>`, { user: req.user, active: 'visa' }));
 });
 
 /* ── أسباب الرفض الرسمية ── */
@@ -170,7 +170,7 @@ router.get('/refusals', (req, res) => {
     ${REFUSAL_REASONS.map((r) => `<li style="padding:6px 0">${esc(typeof r === 'string' ? r : r.ar || r.text || '')}</li>`).join('')}
   </ol>
   <div class="src">المصدر: الملحق السادس من مدوّنة التأشيرات الأوروبية (نموذج تبليغ رفض التأشيرة).</div></div>
-  </section>`));
+  </section>`, { user: req.user, active: 'visa' }));
 });
 
 module.exports = router;

@@ -1,0 +1,47 @@
+# التعويض عن العطلة المرضية — CNAS (المادة 14 من القانون 83-11).
+cond:
+  valeur: oui
+montant:
+  valeur: oui
+
+assure:
+  question: هل أنت مؤمَّن اجتماعياً لدى CNAS؟
+declaration:
+  question: هل أرسلت شهادة التوقف خلال 48 ساعة؟
+jours arret:
+  question: عدد أيام التوقف عن العمل
+  unité: jour
+salaire:
+  question: أجرك الشهري الخاضع للاشتراك
+  unité: DA
+longue maladie:
+  question: هل يتعلق الأمر بمرض طويل الأمد أو استشفاء؟
+sortie:
+  question: هل تلتزم بالبقاء في المنزل خارج 10سا–16سا؟
+
+cond . assure:
+  titre: صفة مؤمَّن اجتماعياً
+  description: التعويض اليومي حق للمؤمَّن المصرَّح به.
+  valeur: assure = oui
+cond . declaration:
+  titre: التصريح بالتوقف خلال 48 ساعة
+  description: التأخر في التصريح قد يُسقط الحق عن الفترة التي تعذّرت فيها المراقبة.
+  valeur: declaration = oui
+cond . controle:
+  titre: احترام قواعد المراقبة الطبية
+  description: الغياب عن المنزل بين 10سا و16سا بلا ترخيص طبي يُعرّض للاقتطاع.
+  valeur: sortie = oui
+
+montant . taux:
+  variations:
+    - si: longue maladie = oui
+      alors: 100%
+    - si: jours arret <= 15
+      alors: 50%
+    - sinon: 100%
+montant . journalier:
+  titre: التعويض اليومي التقديري
+  valeur: salaire / 30 * montant . taux
+montant . total:
+  titre: التعويض الإجمالي التقديري عن الفترة
+  valeur: montant . journalier * jours arret

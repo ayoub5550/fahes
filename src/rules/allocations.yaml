@@ -1,0 +1,48 @@
+# المنح العائلية ومنحة التمدرس — CNAS (المادة 3 من القانون 83-11).
+cond:
+  valeur: oui
+montant:
+  valeur: oui
+
+salarie:
+  question: هل أنت عامل أجير مصرَّح به أو متقاعد؟
+salaire:
+  question: أجرك الشهري الخاضع للاشتراك
+  unité: DA
+enfants:
+  question: عدد الأولاد المكفولين (أقل من 17 سنة أو 21 سنة إن كانوا يدرسون)
+  unité: pers
+scolarises:
+  question: كم منهم متمدرس فعلياً؟
+  unité: pers
+conjoint:
+  question: هل يتقاضى زوجك المنح العائلية عن نفس الأولاد؟
+
+cond . salarie:
+  titre: صفة عامل أجير أو متقاعد مصرَّح به
+  description: المنح العائلية حق مرتبط بالتصريح لدى CNAS، ويقدّمها المستخدم.
+  valeur: salarie = oui
+cond . enfants:
+  titre: وجود ولد مكفول واحد على الأقل
+  description: السن 17 سنة، أو 21 سنة للمتمدرس أو المتربص أو العاجز.
+  valeur: enfants >= 1 pers
+cond . cumul:
+  titre: عدم ازدواج الصرف بين الزوجين
+  description: تُصرف المنح لطرف واحد فقط عن نفس الأولاد.
+  valeur: conjoint = non
+cond . coherence:
+  titre: عدد المتمدرسين لا يتجاوز عدد الأولاد
+  description: منحة التمدرس تُصرف مرة في السنة عن كل ولد متمدرس.
+  valeur: scolarises <= enfants
+
+montant . taux enfant:
+  variations:
+    - si: salaire <= 15000 DA
+      alors: 600 DA
+    - sinon: 300 DA
+montant . mensuel:
+  titre: المنح العائلية الشهرية التقديرية
+  valeur: enfants * montant . taux enfant / 1 pers
+montant . scolarite:
+  titre: منحة التمدرس السنوية التقديرية
+  valeur: scolarises * 800 DA / 1 pers

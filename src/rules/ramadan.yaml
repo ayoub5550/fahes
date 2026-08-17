@@ -1,0 +1,42 @@
+# منحة التضامن (رمضان) — وزارة الداخلية، منصة prestations.interieur.gov.dz.
+cond:
+  valeur: oui
+montant:
+  valeur: oui
+
+cnibe:
+  question: هل تملك بطاقة التعريف الوطنية البيومترية؟
+revenu:
+  question: الدخل الشهري للأسرة
+  unité: DA
+aide autre:
+  question: هل تستفيد من منحة تضامن أخرى (AFS مثلاً) بنفس الصفة؟
+inscription:
+  question: هل التسجيل مفتوح حالياً (فترة المراجعة السنوية)؟
+commune:
+  question: هل أنت مسجَّل في بلدية إقامتك الفعلية؟
+
+cond . cnibe:
+  titre: بطاقة التعريف البيومترية إلزامية
+  description: التسجيل الإلكتروني محصور في حاملي البطاقة البيومترية.
+  valeur: cnibe = oui
+cond . revenu:
+  titre: الأسرة معوزة (دخل ضعيف)
+  description: المنحة موجّهة للأسر المعوزة، والتحقق يتم عبر البلدية واللجان المحلية.
+  valeur: revenu <= 24000 DA
+cond . inscription:
+  titre: التسجيل مفتوح
+  description: التسجيل موسمي (مراجعة سنوية للبطاقة الرقمية للمستفيدين) قبل رمضان.
+  valeur: inscription = oui
+cond . commune:
+  titre: التسجيل في بلدية الإقامة
+  description: بلدية واحدة فقط لكل أسرة، والتكرار يُقصي الملف.
+  valeur: commune = oui
+
+montant . total:
+  titre: قيمة المنحة
+  valeur: 10000 DA
+cond . cumul:
+  titre: عدم الجمع مع منحة تضامن أخرى بنفس الصفة
+  description: القوائم تُنقّى آلياً لتفادي ازدواج الاستفادة.
+  valeur: aide autre = non

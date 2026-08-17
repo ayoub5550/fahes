@@ -1,0 +1,55 @@
+# التسجيل الأولي والتوجيه الجامعي — منصة circulaire.mesrs.dz (المنشور الوزاري 01).
+cond:
+  valeur: oui
+
+bac:
+  question: هل تحوز شهادة البكالوريا؟
+moyenne:
+  question: معدل البكالوريا
+  unité: point
+filiere:
+  question: شعبة البكالوريا
+  une possibilité:
+    - sciences
+    - maths
+    - techniques
+    - lettres
+    - gestion
+filiere . sciences:
+  titre: علوم تجريبية
+filiere . maths:
+  titre: رياضيات أو تقني رياضي
+filiere . techniques:
+  titre: تقني
+filiere . lettres:
+  titre: آداب وفلسفة أو لغات
+filiere . gestion:
+  titre: تسيير واقتصاد
+plateforme:
+  question: هل أنشأت حسابك على منصة التسجيلات الأولية؟
+delai:
+  question: عدد الأيام المتبقية على غلق إدخال الرغبات
+  unité: jour
+double inscription:
+  question: هل أنت مسجّل بالفعل في مؤسسة جامعية أخرى؟
+
+cond . bac:
+  titre: حيازة شهادة البكالوريا
+  description: شرط أساسي للالتحاق بالتعليم العالي.
+  valeur: bac = oui
+cond . plateforme:
+  titre: إنشاء الحساب على المنصة الرقمية
+  description: كل الإجراءات (الرغبات، التأكيد، الطعون، التسجيل النهائي) إلكترونية حصراً.
+  valeur: plateforme = oui
+cond . delai:
+  titre: أجل إدخال الرغبات لم ينقضِ
+  description: الآجال قصيرة جداً وتُنشر في المنشور الوزاري السنوي.
+  valeur: delai > 0
+cond . unicite:
+  titre: أحادية التسجيل
+  description: حامل أكثر من بكالوريا لا يستفيد سوى من تسجيل جامعي واحد.
+  valeur: double inscription = non
+cond . moyenne:
+  titre: معدل يسمح بالتوجيه
+  description: الترتيب يتم بالمعدل الموزون حسب الميدان لا بالمعدل العام وحده.
+  valeur: moyenne >= 10

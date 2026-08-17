@@ -1,0 +1,63 @@
+# رخصة السياقة — قانون المرور المعدَّل 2026، عبر مدرسة سياقة معتمدة.
+cond:
+  valeur: oui
+
+age:
+  question: سنّك
+  unité: an
+categorie:
+  question: الصنف المطلوب
+  une possibilité:
+    - a1
+    - b
+    - c
+    - d
+categorie . a1:
+  titre: أ1 — دراجة نارية صغيرة
+categorie . b:
+  titre: ب — سيارة سياحية
+categorie . c:
+  titre: ج — شاحنة
+categorie . d:
+  titre: د — نقل الأشخاص
+niveau:
+  question: هل تُتقن القراءة والكتابة (لاجتياز الاختبار النظري)؟
+medical:
+  question: هل لديك شهادة طبية تثبت القدرة البدنية وتحاليل سلبية للمخدرات؟
+heures:
+  question: هل أتممت كل ساعات التكوين النظري والتطبيقي المقررة؟
+casier:
+  question: هل صحيفة سوابقك القضائية سليمة؟
+
+cond . age:
+  titre: بلوغ السن القانوني للصنف
+  description: 18 سنة للصنف ب، و21 سنة لأصناف الشاحنات ونقل الأشخاص.
+  une de ces conditions:
+    - toutes ces conditions:
+        - categorie = 'a1'
+        - age >= 16 an
+    - toutes ces conditions:
+        - categorie = 'b'
+        - age >= 18 an
+    - toutes ces conditions:
+        - categorie = 'c'
+        - age >= 21 an
+    - toutes ces conditions:
+        - categorie = 'd'
+        - age >= 21 an
+cond . medical:
+  titre: الملف الطبي مكتمل
+  description: قانون 2026 أضاف إلزامية تحاليل سلبية تؤكد عدم تعاطي المخدرات.
+  valeur: medical = oui
+cond . heures:
+  titre: إتمام ساعات التكوين
+  description: لا يُبرمَج المترشح للامتحان قبل استيفاء كل الساعات المقررة في مدرسة معتمدة.
+  valeur: heures = oui
+cond . niveau:
+  titre: القدرة على اجتياز الاختبار النظري
+  description: الاختبار النظري كتابي ورقمي.
+  valeur: niveau = oui
+cond . casier:
+  titre: صحيفة سوابق سليمة
+  description: بعض الأحكام تمنع من الحصول على الرخصة أو تُوقفها.
+  valeur: casier = oui

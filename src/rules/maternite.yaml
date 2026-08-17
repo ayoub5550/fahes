@@ -1,0 +1,47 @@
+# التأمين على الأمومة — CNAS (القانون 83-11 المادتان 54 و55، مرسوم 84-27).
+cond:
+  valeur: oui
+montant:
+  valeur: oui
+
+assuree:
+  question: هل أنت عاملة أجيرة مصرَّح بها لدى CNAS؟
+jours 3 mois:
+  question: عدد أيام العمل خلال 3 أشهر قبل أول معاينة للحمل
+  unité: jour
+jours 12 mois:
+  question: عدد أيام العمل خلال 12 شهراً قبل أول معاينة للحمل
+  unité: jour
+certificats:
+  question: هل أودعت شهادات الفحص (الشهر 3 و6 و8) في آجالها؟
+arret:
+  question: هل توقفت عن العمل فعلياً بشهادة توقف 150 يوماً؟
+salaire:
+  question: أجرك الشهري الخاضع للاشتراك
+  unité: DA
+
+cond . assuree:
+  titre: صفة مؤمَّن لها اجتماعياً
+  description: التعويض النقدي خاص بالعاملات الأجيرات المصرَّح بهن.
+  valeur: assuree = oui
+cond . duree:
+  titre: 15 يوم عمل خلال 3 أشهر أو 60 يوماً خلال 12 شهراً
+  description: يكفي استيفاء أحد الشرطين (المادة 55 من القانون 83-11).
+  une de ces conditions:
+    - jours 3 mois >= 15
+    - jours 12 mois >= 60
+cond . certificats:
+  titre: إيداع شهادات ما قبل الولادة في الآجال
+  description: التأخر في إيداع الشهادات يُسقط الحق في التعويض العيني 100%.
+  valeur: certificats = oui
+cond . arret:
+  titre: التوقف الفعلي عن العمل
+  description: التعويض يبدأ من تاريخ التوقف الفعلي لا من تاريخ الولادة.
+  valeur: arret = oui
+
+montant . journalier:
+  titre: التعويض اليومي التقديري (100% من الأجر)
+  valeur: salaire / 30
+montant . total:
+  titre: تعويض عطلة الأمومة (150 يوماً)
+  valeur: montant . journalier * 150

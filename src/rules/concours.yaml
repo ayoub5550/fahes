@@ -1,0 +1,52 @@
+# مسابقات التوظيف في الوظيف العمومي — الديوان الوطني للامتحانات والمسابقات.
+cond:
+  valeur: oui
+
+nationalite:
+  question: هل تحمل الجنسية الجزائرية؟
+diplome exige:
+  question: هل تحوز الشهادة المطلوبة في التخصص المعلن عنه؟
+service national:
+  question: وضعيتك تجاه الخدمة الوطنية (للرجال)
+  une possibilité:
+    - regularise
+    - non concerne
+    - non regularise
+service national . regularise:
+  titre: مسوّاة (مؤدّى أو معفى)
+service national . non concerne:
+  titre: غير معني (امرأة)
+service national . non regularise:
+  titre: غير مسوّاة
+casier:
+  question: هل صحيفة سوابقك القضائية خالية مما يتنافى مع الوظيفة؟
+licenciement:
+  question: هل سبق أن سُرِّحت أو عُزلت من وظيفة عمومية؟
+delai:
+  question: عدد أيام العمل المتبقية على غلق التسجيل
+  unité: jour
+
+cond . nationalite:
+  titre: الجنسية الجزائرية
+  description: شرط قانوني في كل مسابقات الوظيف العمومي.
+  valeur: nationalite = oui
+cond . diplome:
+  titre: حيازة الشهادة المطلوبة في التخصص
+  description: يجب مطابقة التخصص حرفياً لما ورد في الإعلان، مع كشف النقاط.
+  valeur: diplome exige = oui
+cond . service:
+  titre: وضعية قانونية تجاه الخدمة الوطنية
+  description: الرجال يقدّمون شهادة أداء أو إعفاء أو تأجيل ساري المفعول.
+  valeur: service national != 'non regularise'
+cond . casier:
+  titre: صحيفة سوابق قضائية سليمة
+  description: الملاحظات المتنافية مع ممارسة الوظيفة تُقصي الترشح.
+  valeur: casier = oui
+cond . licenciement:
+  titre: عدم سبق التسريح من وظيفة عمومية
+  description: من سُرِّح أو عُزل لا يحق له المشاركة.
+  valeur: licenciement = non
+cond . delai:
+  titre: التسجيل ما زال مفتوحاً
+  description: مدة التسجيل 15 يوم عمل من أول إعلان في الصحافة، والإيداع إلكتروني حصراً.
+  valeur: delai > 0

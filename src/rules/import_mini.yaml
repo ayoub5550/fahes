@@ -1,0 +1,36 @@
+# الاستيراد المصغَّر للمقاول الذاتي — مرسوم تنفيذي 25-170 (28 جوان 2025).
+cond:
+  valeur: oui
+
+carte:
+  question: هل تملك بطاقة المقاول الذاتي سارية؟
+activite listee:
+  question: هل نشاطك ضمن قائمة النشاطات المسموح لها بالاستيراد المصغَّر؟
+compte devise:
+  question: هل فتحت حساباً بنكياً بالعملة الصعبة مخصصاً للنشاط؟
+montant annuel:
+  question: القيمة السنوية المتوقعة للاستيراد
+  unité: DA
+fiscal:
+  question: هل وضعيتك الجبائية (IFU) وCASNOS مسوّاة؟
+
+cond . carte:
+  titre: بطاقة المقاول الذاتي سارية
+  description: الاستيراد المصغَّر حق حصري لحاملي بطاقة المقاول الذاتي.
+  valeur: carte = oui
+cond . activite:
+  titre: النشاط مؤهل للاستيراد المصغَّر
+  description: القائمة محددة بقرار وزاري، والنشاطات خارجها تحتاج سجلاً تجارياً كاملاً.
+  valeur: activite listee = oui
+cond . compte:
+  titre: حساب بالعملة الصعبة مفتوح
+  description: التحويل يمرّ حصراً عبر القنوات البنكية الرسمية.
+  valeur: compte devise = oui
+cond . plafond:
+  titre: احترام السقف السنوي للاستيراد المصغَّر
+  description: تجاوز السقف يستوجب التحول إلى وضع مستورد بسجل تجاري.
+  valeur: montant annuel <= 5000000 DA
+cond . fiscal:
+  titre: وضعية جبائية واجتماعية مسوّاة
+  description: شهادة الوضعية الجبائية مطلوبة عند كل عملية.
+  valeur: fiscal = oui

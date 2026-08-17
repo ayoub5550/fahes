@@ -1,0 +1,49 @@
+# بطاقة التعريف الوطنية البيومترية الإلكترونية — البلدية / الدائرة.
+cond:
+  valeur: oui
+montant:
+  valeur: oui
+
+age:
+  question: سنّك
+  unité: an
+acte 12:
+  question: هل استخرجت مستخرج عقد الميلاد رقم 12؟
+residence:
+  question: هل لديك شهادة إقامة أو وثيقة تثبت العنوان؟
+groupe sanguin:
+  question: هل لديك شهادة الفصيلة الدموية؟
+photos:
+  question: هل صورك الشمسية بخلفية بيضاء ومطابقة للمعايير؟
+tuteur:
+  question: "للقاصر: هل الاستمارة موقّعة من الولي الشرعي؟"
+
+cond . acte:
+  titre: مستخرج ميلاد رقم 12
+  description: يُستخرج من البلدية أو إلكترونياً من بوابة الحالة المدنية.
+  valeur: acte 12 = oui
+cond . residence:
+  titre: إثبات العنوان
+  description: شهادة إقامة أو فاتورة أو دفتر عائلي حسب الحالة.
+  valeur: residence = oui
+cond . sang:
+  titre: شهادة الفصيلة الدموية
+  description: تُنجَز في أي مخبر أو مركز صحي معتمد.
+  valeur: groupe sanguin = oui
+cond . photos:
+  titre: صور مطابقة للمعايير البيومترية
+  description: خلفية بيضاء، الوجه كاملاً، بلا نظارات ولا ابتسامة.
+  valeur: photos = oui
+cond . tuteur:
+  titre: توقيع الولي الشرعي للقاصر
+  description: الاستمارة يوقّعها الولي إن كان صاحب الطلب أقل من 19 سنة.
+  une de ces conditions:
+    - age >= 19 an
+    - tuteur = oui
+
+montant . timbre:
+  titre: الطابع الجبائي
+  variations:
+    - si: age < 19 an
+      alors: 0 DA
+    - sinon: 1000 DA
