@@ -1,0 +1,30 @@
+# ماستر إيراسموس موندوس المشترك — المفوضية الأوروبية (برنامج Erasmus+) عبر EACEA. المصدر: https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك بالسنوات؟"
+  unité: an
+licence:
+  question: "هل تحوز على شهادة الليسانس أو ما يعادلها؟"
+anglais:
+  question: "هل تتوفر على شهادة إثبات مستوى اللغة المطلوبة؟"
+programme:
+  question: "هل اخترت برنامج ماستر محدد من الكتالوج؟"
+
+cond . age_min:
+  titre: "السن القانوني"
+  description: "لا يوجد حد أقصى للسن رسميًا حسب تأكيد eesic.eu FAQ ومصادر أخرى."
+  valeur: age >= 18 an
+cond . licence_req:
+  titre: "شهادة الليسانس"
+  description: "يجب حيازة شهادة ليسانس (أو معادلة) أو أن يكون المترشح في السنة الأخيرة."
+  valeur: licence = oui
+cond . anglais_req:
+  titre: "مستوى اللغة"
+  description: "يحدَّد لكل قنصرسيوم على حدة (عادة IELTS/TOEFL للإنجليزية) حسب النص."
+  valeur: anglais = oui
+cond . programme_req:
+  titre: "اختيار البرنامج"
+  description: "يجب اختيار ماستر محدد من كتالوج Erasmus Mundus."
+  valeur: programme = oui

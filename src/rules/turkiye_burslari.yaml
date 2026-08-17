@@ -1,0 +1,31 @@
+# منحة "بورسلاري" التركية الحكومية — رئاسة الأتراك بالمهجر والمجتمعات ذات الصلة (YTB) — الحكومة التركية. المصدر: https://www.turkiyeburslari.gov.tr/en/
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك؟"
+  unité: an
+moyenne:
+  question: "ما هو معدلك الأكاديمي؟"
+  unité: point
+turkish citizen:
+  question: "هل أنت حاصل على الجنسية التركية؟"
+resident in turkey:
+  question: "هل أنت مقيم بتركيا حالياً لأغراض الدراسة؟"
+
+cond . age_limit:
+  titre: "شرط السن"
+  description: "السن ≤ 30 سنة للماستر، ≤ 21 لليسانس (turkiyeburslari.gov.tr/scholarshipsprograms)"
+  valeur: age <= 30 an
+cond . academic_score:
+  titre: "المعدل الأكاديمي"
+  description: "حد أدنى للمعدل يختلف حسب البرنامج (turkiyeburslari.gov.tr)"
+  valeur: moyenne >= 10 point
+cond . not_turkish_citizen:
+  titre: "الجنسية"
+  description: "غير حاصل على الجنسية التركية (turkiyeburslari.gov.tr/scholarshipsprograms)"
+  valeur: turkish citizen = non
+cond . not_resident:
+  titre: "الإقامة بتركيا"
+  description: "غير مقيم بتركيا حاليا لأغراض الدراسة (turkiyeburslari.gov.tr/scholarshipsprograms)"
+  valeur: resident in turkey = non

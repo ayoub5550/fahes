@@ -1,0 +1,32 @@
+# زمالة أنزيشا لرواد الأعمال الشباب الأفارقة — African Leadership Academy × Mastercard Foundation. المصدر: https://anzisha.org/apply/
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك بالسنوات؟"
+  unité: an
+citoyen:
+  question: "هل أنت مواطن من دولة أفريقية؟"
+fondateur:
+  question: "هل أنت المؤسس الفعلي للمشروع؟"
+projetactif:
+  question: "هل لدى مشروعك عملاء أو مبيعات فعلية؟"
+
+cond . age:
+  titre: "العمر"
+  description: "العمر المسموح به بين 15 و 22 سنة حسب (anzisha.org/apply)."
+  toutes ces conditions:
+    - age >= 15 an
+    - age <= 22 an
+cond . citoyennete:
+  titre: "الجنسية أفريقية"
+  description: "يجب أن يكون المتقدم مواطناً من دولة أفريقية ولديه بطاقة هوية أو جواز سفر ساري حسب (anzisha.org/apply)."
+  valeur: citoyen = oui
+cond . fondateur:
+  titre: "مؤسس فعلي"
+  description: "يجب أن يكون المتقدم عضواً مؤسساً للمشروع أو الشركة حسب (anzisha.org/apply)."
+  valeur: fondateur = oui
+cond . activite:
+  titre: "نشاط قائم فعلياً"
+  description: "يجب أن يكون للمشروع عملاء أو مبيعات أو مستفيدين فعليين وليس مجرد فكرة حسب (anzisha.org/apply)."
+  valeur: projetactif = oui

@@ -1,0 +1,30 @@
+# علامة مؤسسة ناشئة (Label Startup) وصندوق ASF الجزائري للتمويل — وزارة اقتصاد المعرفة والمؤسسات الناشئة والمؤسسات المصغرة (لجنة منح العلامة) / Algerian Startup Fund (ASF). المصدر: https://asf.dz/ar
+cond:
+  valeur: oui
+
+nombre employes:
+  question: "ما هو عدد عمال المؤسسة؟"
+  unité: pers
+projet innovant:
+  question: "هل المشروع ذو طابع مبتكر وقابل للنمو والتوسع؟"
+inscription plateforme:
+  question: "هل تم الترشح عبر البوابة الوطنية startup.dz؟"
+validation comite:
+  question: "هل تم الحصول على موافقة لجنة منح العلامة؟"
+
+cond . innovation:
+  titre: "طابع الابتكار وقابلية النمو والتوسع"
+  description: "معيار أساسي للجنة منح علامة Startup (المرسوم التنفيذي 20-254 المؤرخ 15 سبتمبر 2020)."
+  valeur: projet innovant = oui
+cond . employees_limit:
+  titre: "عدد العمال لا يتجاوز 250 عاملاً"
+  description: "سقف حجم المؤسسة المؤهلة (oran-invest.dz)."
+  valeur: nombre employes <= 250 pers
+cond . platform_reg:
+  titre: "الترشح حصرياً عبر البوابة الوطنية"
+  description: "مرفقاً بوثائق التعريف الجبائي (NIF) والإحصائي (NIS)."
+  valeur: inscription plateforme = oui
+cond . committee_approval:
+  titre: "موافقة لجنة منح العلامة"
+  description: "التابعة لوزير اقتصاد المعرفة والمؤسسات الناشئة."
+  valeur: validation comite = oui

@@ -6,6 +6,10 @@ const CATEGORIES = [
   { id: 'business', name: 'المشاريع والاستثمار', icon: '🚀', desc: 'اللابل، تمويل الشركات الناشئة، امتيازات الاستثمار، الدعم الفلاحي' },
   { id: 'papers', name: 'الوثائق والإدارة', icon: '📄', desc: 'الجواز، البطاقة البيومترية، رخصة السياقة، الخدمة الوطنية، شهادة الإقامة' },
   { id: 'life', name: 'الحياة اليومية', icon: '🧭', desc: 'التكوين المهني، قرعة الحج، مرابحة السيارة، دعم الطاقة الشمسية' },
+  { id: 'study', name: 'الدراسة بالخارج', icon: '🎓', desc: 'منح تركيا وألمانيا وفرنسا والصين واليابان وكوريا والمجر وإيطاليا وبريطانيا وأمريكا' },
+  { id: 'migration', name: 'الهجرة والعمل بالخارج', icon: '🌍', desc: 'كندا، كيبيك، البطاقة الزرقاء، ألمانيا، فرنسا، البرتغال، إسبانيا، بريطانيا، الإمارات، أستراليا' },
+  { id: 'global', name: 'فرص وتمويل دولي', icon: '🌐', desc: 'مسابقات، مسرّعات، منح بذرية، كريديت سحابي، تبادل شبابي' },
+  { id: 'extra', name: 'خدمات جزائرية إضافية', icon: '🇩🇿', desc: 'الدكتوراه، المعادلة، الشفاء، التاكسي، الصادرات، بطاقة الفلاح، اللابل' },
 ];
 
 const SERVICES = [
@@ -491,6 +495,1510 @@ const SERVICES = [
     sources: [{ label: 'CPA — قرض السيارة', url: 'https://www.cpa-bank.dz/' }],
   },
 ];
+
+
+// ── (auto) الخدمات الدولية والجزائرية الإضافية — مولّدة من بحث موثّق بمصادر رسمية ──
+SERVICES.push({
+  "id": "canada_express_entry",
+  "cat": "migration",
+  "icon": "🇨🇦",
+  "name": "نظام الدخول السريع الكندي (Express Entry) ونظام النقاط الشامل CRS",
+  "agency": "Immigration, Refugees and Citizenship Canada (IRCC)",
+  "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score/crs-criteria.html",
+  "summary": "نظام اتحادي كندي يدير ثلاثة برامج هجرة اقتصادية (FSWP وCEC وFSTP) عبر تجمّع مرشحين يُصنَّفون بنظام Comprehensive Ranking System (CRS) من أصل 1200 نقطة، وتُسحب الدعوات بشكل دوري لأصحاب أعلى النقاط.",
+  "money": "لا توجد منحة؛ يُشترط لبرنامج FSWP إثبات أموال كافية (Proof of Funds) بمبلغ يتغير سنويًا حسب حجم الأسرة.",
+  "season": "مفتوح طوال السنة",
+  "tips": [
+    "متابعة نتائج السحوبات الحديثة بانتظام على موقع IRCC الرسمي",
+    "التحقق من إعداد تقرير ECA واختبار اللغة قبل إنشاء الملف"
+  ],
+  "docs": [
+    "جواز سفر",
+    "نتائج اختبار لغة معتمد (IELTS/CELPIP/TEF/TCF أقل من سنتين)",
+    "تقرير ECA",
+    "خطابات خبرة عمل",
+    "إثبات أموال",
+    "فحص طبي",
+    "سجل عدلي"
+  ],
+  "sources": [
+    {
+      "label": "CRS criteria",
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score/crs-criteria.html"
+    },
+    {
+      "label": "Who can apply",
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/who-can-apply.html"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "quebec_pstq",
+  "cat": "migration",
+  "icon": "⚜️",
+  "name": "برنامج اختيار العمال المهرة في كيبيك (PSTQ)",
+  "agency": "Ministère de l'Immigration, de la Francisation et de l'Intégration (MIFI), Québec",
+  "url": "https://www.quebec.ca/immigration/permanente/travailleurs-qualifies/programme-selection-travailleurs-qualifies/exigences",
+  "summary": "برنامج كيبيكي بأربعة مسارات مبني على دعوة رسمية، يُصنَّف المرشحون بنظام نقاط حسب رأس المال البشري واحتياجات سوق العمل.",
+  "money": "يتطلب توقيع عقد الاكتفاء الذاتي المالي بمبالغ تُحدث سنوياً حسب بارèmes وزارة الهجرة في كيبيك.",
+  "season": "مفتوح طوال السنة",
+  "tips": [
+    "تأكد من صلاحية اختبارات اللغة الفرنسية المعتمدة.",
+    "تابع جولات الدعوة الرسمية بانتظام حيث أن تصريح الاهتمام صالح لمدة 12 شهراً فقط."
+  ],
+  "docs": [
+    "تصريح الاهتمام (déclaration d'intérêt)",
+    "شهادات لغة فرنسية",
+    "شهادات دراسية",
+    "خطابات عمل لآخر 5 سنوات",
+    "جواز سفر"
+  ],
+  "sources": [
+    {
+      "label": "Exigences PSTQ",
+      "url": "https://www.quebec.ca/immigration/permanente/travailleurs-qualifies/programme-selection-travailleurs-qualifies/exigences"
+    },
+    {
+      "label": "Invitation PSTQ",
+      "url": "https://www.quebec.ca/immigration/permanente/travailleurs-qualifies/programme-selection-travailleurs-qualifies/invitation"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "eu_blue_card_germany",
+  "cat": "migration",
+  "icon": "🇪🇺",
+  "name": "البطاقة الزرقاء الأوروبية بألمانيا (EU Blue Card)",
+  "agency": "السلطات الألمانية للهجرة / المفوضية الأوروبية (بوابة الهجرة)",
+  "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-germany_en",
+  "summary": "تصريح إقامة عمل للمهنيين ذوي المؤهل الجامعي الراغبين في العمل بألمانيا بعقد عمل يتجاوز عتبة أجر رسمية.",
+  "money": "عتبة الأجر القياسية 2025 = 48,300 يورو إجمالي سنويًا؛ عتبة أدنى للمهن الشحيحة والخريجين الجدد = 43,759.80 يورو (2025).",
+  "season": "مفتوح طوال السنة",
+  "tips": [
+    "تأكد من معادلة شهادتك عبر قاعدة Anabin أو تقييم ZAB مسبقاً.",
+    "احرص على أن يتجاوز عقد العمل عتبة الأجر المحددة للمهن القياسية أو الشحيحة."
+  ],
+  "docs": [
+    "جواز سفر",
+    "عقد عمل موقّع",
+    "شهادة جامعية مع وثيقة معادلة",
+    "تأمين صحي",
+    "صور شخصية"
+  ],
+  "sources": [
+    {
+      "label": "EU Blue Card Germany – EC portal",
+      "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-germany_en"
+    },
+    {
+      "label": "Federal Foreign Office – EU Blue Card",
+      "url": "https://canada.diplo.de/ca-en/consular-services/visa/eu-blue-card-2653126"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "germany_chancenkarte",
+  "cat": "migration",
+  "icon": "🇩🇪",
+  "name": "بطاقة الفرص الألمانية Chancenkarte",
+  "agency": "مكتب الهجرة واللاجئين الألماني (BAMF) استناداً للمادتين §20a/§20b من قانون الإقامة (AufenthG)",
+  "url": "https://www.gesetze-im-internet.de/aufenthg_2004/__20b.html",
+  "summary": "تصريح إقامة للبحث عن عمل أو إجراءات الاعتراف بالمؤهلات الأجنبية، عبر مسار الفاخكرافت أو نظام النقاط (حد أدنى 6 نقاط)، ساري منذ 1 يونيو 2024.",
+  "money": "لا منحة مالية؛ يُشترط تأمين مورد العيش (Lebensunterhalt gesichert) طوال مدة الإقامة.",
+  "season": "مفتوح طوال السنة",
+  "tips": [
+    "تأكد من تحقيق 6 نقاط على الأقل قبل التقديم في نظام النقاط.",
+    "تجهيز حساب مجمّد أو كفيل لتغطية تكاليف الإقامة طوال مدة البطاقة."
+  ],
+  "docs": [
+    "شهادة جامعية أو مهنية مع معادلة ZAB",
+    "شهادة لغة",
+    "إثبات مورد عيش",
+    "تأمين صحي سفر"
+  ],
+  "sources": [
+    {
+      "label": "§20b AufenthG",
+      "url": "https://www.gesetze-im-internet.de/aufenthg_2004/__20b.html"
+    },
+    {
+      "label": "Federal Foreign Office – Chancenkarte",
+      "url": "https://uk.diplo.de/uk-en/02/chancenkarte-2659588"
+    },
+    {
+      "label": "BMAS – إعلان النظام يونيو 2024",
+      "url": "https://www.bmas.de/DE/Service/Presse/Pressemitteilungen/2024/mehr-anreize-fuer-dringend-benoetigte-fachkraefte.html"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "germany_skilled_worker_visa",
+  "cat": "migration",
+  "icon": "🇩🇪",
+  "name": "تأشيرة العامل المؤهل الألمانية (قانون هجرة الكفاءات)",
+  "agency": "مكتب الهجرة واللاجئين الألماني (BAMF)",
+  "url": "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Arbeit/Fachkraft/fachkraft-node.html",
+  "summary": "تصريح عمل لأصحاب التأهيل المهني (Ausbildung) أو الجامعي المعترف به في ألمانيا مقابل عقد عمل أو عرض عمل فعلي.",
+  "money": "لا حد أدنى ثابت للأجر منفصل — يُشترط أجر مطابق لنظرائه في نفس المهنة محليًا.",
+  "season": "مفتوح طوال السنة",
+  "tips": [
+    "تأكد من الاعتراف بمؤهلك عبر منصة anerkennung-in-deutschland.de",
+    "احرص على تجهيز شهادة اللغة الألمانية المعتمدة B1",
+    "تأكد من كفاية الأجر وتطابقه مع معايير المهنة في ألمانيا"
+  ],
+  "docs": [
+    "شهادة تدريب أو شهادة جامعية",
+    "قرار الاعتراف الرسمي",
+    "شهادة لغة B1",
+    "عقد عمل",
+    "جواز سفر"
+  ],
+  "sources": [
+    {
+      "label": "BAMF – Skilled workers with vocational training",
+      "url": "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Arbeit/Fachkraft/fachkraft-node.html"
+    },
+    {
+      "label": "make-it-in-germany.com – Skilled Immigration Act",
+      "url": "https://www.make-it-in-germany.com/en/visa-residence/skilled-immigration-act"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "france_passeport_talent",
+  "cat": "migration",
+  "icon": "🛂",
+  "name": "جواز المواهب الفرنسي (Passeport Talent)",
+  "agency": "وزارة الداخلية الفرنسية / France-Visas",
+  "url": "https://france-visas.gouv.fr/web/france-visas/passeport-talents",
+  "summary": "تصريح إقامة متعدد السنوات (حتى 4 سنوات) لفئات المواهب الاقتصادية في فرنسا (عامل مؤهل، عامل شديد التأهل، منتدَب، باحث، مستثمر، مقاول مبتكر...).",
+  "money": "عتبة الأجر لـ عامل مؤهل = 39,582 يورو إجمالي سنوياً؛ لعامل شديد التأهل = 59,373 يورو.",
+  "season": "مفتوح طوال السنة",
+  "tips": [],
+  "docs": [
+    "عقد عمل",
+    "دبلوم/معادلة",
+    "إثبات أجر",
+    "جواز سفر"
+  ],
+  "sources": [
+    {
+      "label": "Légifrance – arrêté 21 أوت 2025",
+      "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000052158124"
+    },
+    {
+      "label": "Haute-Garonne – Passeport Talent",
+      "url": "https://www.haute-garonne.gouv.fr/Demarches/Immigration-et-integration/Titres-de-sejour-et-documents-de-voyage/Passeport-Talent2"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "portugal_job_seeker_or_d8",
+  "cat": "migration",
+  "icon": "💼",
+  "name": "تأشيرة البحث عن عمل البرتغالية (Job Seeker) أو تأشيرة D8 للعمل عن بعد",
+  "agency": "وزارة الخارجية البرتغالية (MNE) / AIMA",
+  "url": "https://vistos.mne.gov.pt/en/national-visas/necessary-documentation/means-of-subsistence",
+  "summary": "مساران بديلان: تأشيرة البحث عن عمل حتى 120 يومًا، أو تأشيرة D8 لإقامة أطول للعمل عن بُعد لصالح جهة خارج البرتغال.",
+  "money": "مطلوب موارد مالية تعادل أضعاف الحد الأدنى للأجور (مثال: D8 يتطلب دخل شهري يعادل 4 أضعاف الحد الأدنى أي نحو 3,480 يورو).",
+  "season": "مفتوح طوال السنة",
+  "tips": [
+    "تأكد من تحديث الأرقام الرسمية للحد الأدنى للأجور في البرتغال لعام 2026 قبل التقديم",
+    "يُفضل تحضير جميع الوثائق مترجمة وموثقة (Apostille)"
+  ],
+  "docs": [
+    "جواز سفر ساري",
+    "عقد عمل أو خدمة أو إثبات تسجيل IEFP",
+    "كشوف حساب بنكي لـ3 أشهر",
+    "تأمين سفر يغطي المصاريف الطبية",
+    "صحيفة سوابق عدلية نظيفة",
+    "عقد سكن أو إثبات سكن في البرتغال"
+  ],
+  "sources": [
+    {
+      "label": "vistos.mne.gov.pt – Means of subsistence",
+      "url": "https://vistos.mne.gov.pt/en/national-visas/necessary-documentation/means-of-subsistence"
+    },
+    {
+      "label": "VFS Global – Job Seeker Visa checklist",
+      "url": "https://www.vfsglobal.com/one-pager/portugal/uk/english/pdf/JOB-SEEKER-VISA-T1-Updated.pdf"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "spain_digital_nomad_visa",
+  "cat": "migration",
+  "icon": "💻",
+  "name": "تأشيرة الرحّالة الرقمي الإسبانية (Digital Nomad Visa)",
+  "agency": "Ministerio de Inclusión, Seguridad Social y Migraciones / UGE",
+  "url": "https://one.gob.es/en/procedures/application-digital-nomad-visa",
+  "summary": "تصريح/تأشيرة إقامة للعاملين عن بُعد الدوليين بموجب القانون 14/2013، يسمح بالعمل لصالح شركات خارج إسبانيا حصريًا عبر وسائل تقنية.",
+  "money": "الحد الأدنى للدخل الشهري = 200% من الحد الأدنى للأجور الإسباني (SMI). بمرجعية 2025: SMI=1,184€/شهر → 200%=2,762€/شهر.",
+  "season": "مفتوح طوال السنة",
+  "tips": [
+    "تأكد من تحديث الحد الأدنى للدخل سنوياً وفقاً لقرارات الحكومة الإسبانية.",
+    "التقديم متاح عبر القنصلية أو داخل إسبانيا مباشرة."
+  ],
+  "docs": [
+    "عقد عمل/خدمة + تفويض العمل عن بُعد",
+    "شهادة تسجيل الشركة",
+    "إثبات دخل (كشوف رواتب/فواتير)",
+    "شهادة ضمان اجتماعي",
+    "تأمين صحي",
+    "جواز سفر"
+  ],
+  "sources": [
+    {
+      "label": "one.gob.es – Digital Nomad Visa application",
+      "url": "https://one.gob.es/en/procedures/application-digital-nomad-visa"
+    },
+    {
+      "label": "The Local ES – تحديث الدخل 2025",
+      "url": "https://www.thelocal.es/20250130/confirmed-spains-new-income-requirement-for-digital-nomads-in-2025"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "uk_skilled_worker_visa",
+  "cat": "migration",
+  "icon": "🇬🇧",
+  "name": "تأشيرة العامل المؤهل البريطانية",
+  "agency": "Home Office (المملكة المتحدة) / GOV.UK",
+  "url": "https://www.gov.uk/skilled-worker-visa/your-job",
+  "summary": "تأشيرة عمل بريطانية تتطلب كفالة من صاحب عمل مرخّص، ومهنة ضمن مستوى RQF 6 فأعلى، مع حد أدنى للأجر £41,700 سنويًا.",
+  "money": "الحد الأدنى العام للأجر £41,700 سنوياً أو الأجر المعتمد للمهنة أيهما أعلى.",
+  "season": "مفتوح طوال السنة",
+  "tips": [
+    "تأكد من حصول صاحب العمل على ترخيص كفالة ساري وإصدار شهادة كفالة CoS.",
+    "تحقق من أن مهنتك مطابقة للمستوى المهاري المطلوب RQF 6 فأعلى."
+  ],
+  "docs": [
+    "جواز سفر",
+    "شهادة كفالة CoS",
+    "شهادة لغة إنجليزية معتمدة",
+    "إثبات أموال",
+    "فحص السل",
+    "سجل جنائي"
+  ],
+  "sources": [
+    {
+      "label": "GOV.UK – Skilled Worker visa: your job",
+      "url": "https://www.gov.uk/skilled-worker-visa/your-job"
+    },
+    {
+      "label": "GOV.UK – Explanatory memorandum HC 997",
+      "url": "https://www.gov.uk/government/publications/statement-of-changes-to-the-immigration-rules-hc-997-1-july-2025/explanatory-memorandum-to-the-statement-of-changes-to-the-immigration-rules-hc-997-1-july-2025-accessible"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "uk_global_talent_visa",
+  "cat": "migration",
+  "icon": "🇬🇧",
+  "name": "تأشيرة المواهب العالمية البريطانية (Global Talent)",
+  "agency": "Home Office (المملكة المتحدة) / هيئات مصادِقة (Royal Society، British Academy، Royal Academy of Engineering، Arts Council England، Tech Nation/UKRI)",
+  "url": "https://www.gov.uk/global-talent",
+  "summary": "تأشيرة للقادة أو القادة المحتملين في العلوم/الهندسة/العلوم الإنسانية/الطب، التكنولوجيا الرقمية، أو الفنون والثقافة، دون الحاجة لعرض عمل مسبق.",
+  "money": "لا حد أدنى للأجر أو منحة رسمية؛ توجد رسوم تصديق ورسوم تأشيرة ورسم صحة سنوي (IHS) تُحدَّث دوريًا على GOV.UK.",
+  "season": "مفتوح طوال السنة",
+  "tips": [
+    "تأكد من إعداد 3 خطابات توصية قوية وأدلة إنجاز واضحة قبل التقديم.",
+    "تحقق من الرسوم الحالية لرسوم الصحة والتأشيرة على موقع GOV.UK قبل إرسال الطلب."
+  ],
+  "docs": [
+    "خطاب تصديق من الهيئة المعتمدة",
+    "سيرة ذاتية مفصلة",
+    "3 خطابات توصية",
+    "أدلة إنجاز (منشورات/جوائز/مساهمات)",
+    "جواز سفر ساري المفعول"
+  ],
+  "sources": [
+    {
+      "label": "GOV.UK – Global Talent overview",
+      "url": "https://www.gov.uk/global-talent"
+    },
+    {
+      "label": "GOV.UK – Appendix Global Talent (Immigration Rules)",
+      "url": "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-global-talent"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "uae_golden_visa",
+  "cat": "migration",
+  "icon": "🇦🇪",
+  "name": "تأشيرة الإقامة الذهبية الإماراتية",
+  "agency": "الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+  "url": "https://u.ae/en/information-and-services/visa-and-emirates-id/residence-visas/golden-visa",
+  "summary": "إقامة طويلة الأمد (5 أو 10 سنوات) قابلة للتجديد التلقائي بدون كفيل، لفئات المستثمرين ورواد الأعمال وأصحاب المواهب الاستثنائية والمهنيين ذوي الراتب المرتفع.",
+  "money": "استثمار عقاري ≥ 2 مليون درهم، استثمار مالي ≥ 2 مليون درهم، راتب شهري ≥ 30,000 درهم، ضريبة سنوية ≥ 250,000 درهم.",
+  "season": "مفتوح طوال السنة",
+  "tips": [
+    "تأكد من استيفاء شروط المسار المختار بدقة قبل التقديم.",
+    "التقديم يتم حصراً عبر القنوات الرسمية للهيئة الاتحادية للهوية والجنسية."
+  ],
+  "docs": [
+    "عقد ملكية عقار مسجّل أو شهادة إيداع بنكي",
+    "جواز سفر",
+    "عقد عمل وكشف راتب",
+    "فحص طبي"
+  ],
+  "sources": [
+    {
+      "label": "u.ae – Golden Visa",
+      "url": "https://u.ae/en/information-and-services/visa-and-emirates-id/residence-visas/golden-visa"
+    },
+    {
+      "label": "The National – تحديثات قواعد 2025",
+      "url": "https://www.thenationalnews.com/news/uae/2025/01/01/how-rules-for-obtaining-uaes-10-year-golden-visa-have-been-updated/"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "australia_skillselect_189",
+  "cat": "migration",
+  "icon": "🇦🇺",
+  "name": "تأشيرة العامل المهني المستقل الأسترالية (Skilled Independent) — الفئة 189",
+  "agency": "Department of Home Affairs (أستراليا) عبر نظام SkillSelect",
+  "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-independent-189",
+  "summary": "تأشيرة إقامة دائمة أسترالية لعمال مهرة مستقلين (بدون كفالة صاحب عمل أو ترشيح ولاية)، تعتمد على نظام نقاط واختيار مهنة من قائمة MLTSSL.",
+  "money": "لا منحة مالية؛ رسوم التأشيرة تبدأ من 6,135 دولارًا أستراليًا للمتقدم الرئيسي.",
+  "season": "مفتوح طوال السنة",
+  "tips": [
+    "يُنصح بتأكيد جدول النقاط لكل مهنة مباشرة من مستند Home Affairs الرسمي قبل الاستخدام.",
+    "تأكد من إدراج مهنتك ضمن قائمة MLTSSL الحالية."
+  ],
+  "docs": [
+    "تقييم مهارات معتمد",
+    "نتيجة اختبار لغة إنجليزية (IELTS/PTE/TOEFL)",
+    "جواز سفر",
+    "سجل عدلي",
+    "فحص طبي",
+    "إثبات خبرة عمل"
+  ],
+  "sources": [
+    {
+      "label": "Home Affairs – Skilled Independent visa (189)",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-independent-189"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "turkiye_burslari",
+  "cat": "study",
+  "icon": "🎓",
+  "name": "منحة \"بورسلاري\" التركية الحكومية",
+  "agency": "رئاسة الأتراك بالمهجر والمجتمعات ذات الصلة (YTB) — الحكومة التركية",
+  "url": "https://www.turkiyeburslari.gov.tr/en/",
+  "summary": "منحة حكومية تركية شاملة (تعليم + سكن + تأمين صحي + تذكرة سفر) لدراسة الليسانس/الماستر/الدكتوراه في تركيا لطلاب من جميع الجنسيات بمن فيهم الجزائريون.",
+  "money": "تغطية كاملة: رسوم دراسية + منحة شهرية + سكن + تذكرة طيران ذهاب وإياب + تأمين صحي (turkiyeburslari.gov.tr)",
+  "season": "10 يناير – 20 فبراير (سنوياً)",
+  "tips": [
+    "التقديم في المواعيد المحددة بين 10 يناير و20 فبراير",
+    "تجهيز رسالة دافع قوية وجميع الوثائق المطلوبة"
+  ],
+  "docs": [
+    "جواز سفر ساري",
+    "كشوف نقاط",
+    "شهادة تخرج/بكالوريا",
+    "رسالة دافع (Motivation Letter)",
+    "شهادات لغة إن وُجدت"
+  ],
+  "sources": [
+    {
+      "label": "معايير التقديم",
+      "url": "https://www.turkiyeburslari.gov.tr/scholarshipsprograms"
+    },
+    {
+      "label": "إعلان دورة 2026",
+      "url": "https://www.turkiyeburslari.gov.tr/announcements/turkiye-scholarships-2026-applications-121"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "daad_germany",
+  "cat": "study",
+  "icon": "🎓",
+  "name": "منح خدمة التبادل الأكاديمي الألماني (DAAD)",
+  "agency": "DAAD (الحكومة الألمانية)",
+  "url": "https://www.daad.de/en/studying-in-germany/scholarships/information-for-scholarship-applicants/",
+  "summary": "مظلة تضم عشرات البرامج (ماستر/دكتوراه/بحث) لكل بلد ولكل مستوى دراسي؛ لكل برنامج فرعي شروطه الخاصة عبر قاعدة بيانات funding-guide.de.",
+  "money": "يختلف حسب البرنامج؛ عادة تغطي المنحة الرسوم + معيشة + تأمين صحي + سفر",
+  "season": "يختلف حسب البرنامج الفرعي (مثال EPOS: يُعلن سنويًا)",
+  "tips": [
+    "راجع قاعدة بيانات funding-guide.de لاختيار البرنامج المناسب",
+    "تابع مواعيد الترشح الخاصة بكل برنامج فرعي بدقة"
+  ],
+  "docs": [
+    "شهادات جامعية",
+    "كشوف نقاط",
+    "شهادة لغة",
+    "رسالة دافع",
+    "خطة بحث"
+  ],
+  "sources": [
+    {
+      "label": "الأسئلة الشائعة الرسمية",
+      "url": "https://www.daad.de/en/studying-in-germany/scholarships/information-for-scholarship-applicants/"
+    },
+    {
+      "label": "برامج DAAD المخصصة للجزائر 2026/2027 (جامعة الوادي)",
+      "url": "https://www.univ-eloued.dz/wp-content/uploads/2025/08/documentation-DAAD-1.pdf"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "erasmus_mundus_jm",
+  "cat": "study",
+  "icon": "🇪🇺",
+  "name": "ماستر إيراسموس موندوس المشترك",
+  "agency": "المفوضية الأوروبية (برنامج Erasmus+) عبر EACEA",
+  "url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+  "summary": "ماستر مشترك بين جامعتين أوروبيتين أو أكثر، مع منح كاملة للطلبة الأفضل تصنيفًا من كل العالم بما فيهم الجزائر.",
+  "money": "تغطي تكاليف المشاركة + السفر + التأشيرة + بدل معيشة شهري",
+  "season": "التقديم عادة بين أكتوبر ويناير لكل ماستر على حدة",
+  "tips": [
+    "اختر الماستر المناسب من كتالوج Erasmus Mundus بعناية",
+    "تأكد من استيفاء متطلبات اللغة الخاصة بالبرنامج المختار"
+  ],
+  "docs": [
+    "شهادة ليسانس أو كشف نقاط",
+    "شهادة لغة",
+    "جواز سفر",
+    "رسالة دافع",
+    "توصيات أكاديمية"
+  ],
+  "sources": [
+    {
+      "label": "صفحة EMJM الرسمية Erasmus+",
+      "url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters"
+    },
+    {
+      "label": "كتالوج ماستر Erasmus Mundus",
+      "url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en?page=0"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "chevening_uk",
+  "cat": "study",
+  "icon": "🇬🇧",
+  "name": "منحة شيفنينغ البريطانية",
+  "agency": "مكتب الخارجية البريطاني (FCDO) عبر British Council",
+  "url": "https://www.chevening.org/scholarship/algeria/",
+  "summary": "منحة ماجستير كاملة لسنة واحدة في أي جامعة بريطانية، مخصصة للقادة الشباب الواعدين.",
+  "money": "تغطي الرسوم الدراسية + بدل معيشة شهري + تذكرة سفر ذهاب وإياب + تكاليف تأشيرة",
+  "season": "تُفتح عادة في أوت/سبتمبر من كل سنة",
+  "tips": [
+    "يُنصح بمتابعة الموقع الرسمي مباشرة للاطلاع على مواعيد فتح الترشح وتحديثات الدورات القادمة",
+    "تأكد من توفير كافة الوثائق المطلوبة وإعداد مقالات الترشح بعناية",
+    "راجع صفحة الأهلية الرسمية بانتظام للتأكد من استيفاء كافة الشروط والمستندات"
+  ],
+  "docs": [
+    "جواز سفر",
+    "شهادة ليسانس وكشف نقاط",
+    "إثبات خبرة عمل",
+    "عرض قبول جامعي",
+    "مقالات الترشح (Essays)"
+  ],
+  "sources": [
+    {
+      "label": "صفحة الجزائر الرسمية",
+      "url": "https://www.chevening.org/scholarship/algeria/"
+    },
+    {
+      "label": "شروط الأهلية الرسمية",
+      "url": "https://www.chevening.org/resource-hub/guidance/eligibility/"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "fulbright_algeria",
+  "cat": "study",
+  "icon": "🇺🇸",
+  "name": "برنامج فولبرايت الأمريكي للطلاب الأجانب - الجزائر",
+  "agency": "السفارة الأمريكية بالجزائر عبر Amideast / IIE",
+  "url": "https://foreign.fulbrightonline.org/about/foreign-student-program",
+  "summary": "منحة دراسات عليا (ماستر أساسًا، وبحث دكتوراه محدود) كاملة للدراسة بالولايات المتحدة، بإشراف السفارة الأمريكية والوكالة الأمريكية Amideast.",
+  "money": "تغطي كامل الرسوم الدراسية + بدل معيشة شهري + تأمين صحي + تذكرة سفر",
+  "season": "يُرجى متابعة موقع السفارة الأمريكية بالجزائر لمعرفة مواعيد الفتح",
+  "tips": [
+    "متابعة موقع السفارة الأمريكية بالجزائر مباشرة لمعرفة مواعيد فتح الدورات الجديدة"
+  ],
+  "docs": [
+    "جواز سفر",
+    "شهادة ليسانس وكشف نقاط",
+    "شهادة إنجليزية (TOEFL/IELTS)",
+    "توصيات أكاديمية",
+    "خطة دراسية"
+  ],
+  "sources": [
+    {
+      "label": "دليل الجزائر 2026 (جامعة عنابة)",
+      "url": "https://www.univ-annaba.dz/wp-content/uploads/2025/05/2026-Country-Specific-Two-Pager-Algeria-3.pdf"
+    },
+    {
+      "label": "صفحة فولبرايت الرسمية للطلاب الأجانب",
+      "url": "https://foreign.fulbrightonline.org/about/foreign-student-program"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "campus_france_algeria",
+  "cat": "study",
+  "icon": "🎓",
+  "name": "إجراء الدراسات في فرنسا (كامبوس فرانس)",
+  "agency": "Institut français d'Algérie / Campus France",
+  "url": "https://www.algerie.campusfrance.org/la-procedure-campus-france-algerie-pour-qui",
+  "summary": "إجراء إلزامي لكل طالب جزائري يرغب في التسجيل بمؤسسة تعليم عالٍ فرنسية للحصول على شهادة نهاية الإجراء اللازمة لتأشيرة الدراسة.",
+  "money": "20,000 دج رسوم الملف",
+  "season": "1 أكتوبر إلى 30 نوفمبر من كل سنة",
+  "tips": [
+    "تأكد من إنشاء الملف برقم جواز سفر ساري المفعول",
+    "احترم آجال التسجيل واختيار المؤسسات في المواعيد المحددة"
+  ],
+  "docs": [
+    "جواز سفر",
+    "شهادات دراسية سابقة وكشوف نقاط",
+    "شهادة لغة فرنسية (TCF/DELF-DALF)",
+    "إيصال دفع رسوم الملف"
+  ],
+  "sources": [
+    {
+      "label": "الإجراء لمن؟",
+      "url": "https://www.algerie.campusfrance.org/la-procedure-campus-france-algerie-pour-qui"
+    },
+    {
+      "label": "إجراء Hors DAP والتقويم",
+      "url": "https://www.algerie.campusfrance.org/procedure-d-inscription-hors-dap-hors-demande-d-admission-prealable"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "csc_china",
+  "cat": "study",
+  "icon": "🇨🇳",
+  "name": "المنحة الحكومية الصينية (CSC)",
+  "agency": "China Scholarship Council (CSC) عبر السفارة الصينية",
+  "url": "https://ee.china-embassy.gov.cn/eng/dssghd/202511/t20251108_11749277.htm",
+  "summary": "منح دراسية صينية حكومية لمرحلة الليسانس والماستر والدكتوراه عبر التقديم المباشر أو العرض الجزائري المخصص.",
+  "money": "تغطي الرسوم الدراسية بالكامل؛ لا تغطي تكاليف السفر الدولي حسب نص العرض الجزائري 2026-2027.",
+  "season": "أواخر 2026 (للدورة القادمة 2027/2028)",
+  "tips": [
+    "الحصول على قبول مسبق من جامعة صينية يزيد بشكل كبير من فرص قبولك.",
+    "التحضير لاختبارات اللغة HSK مبكراً يضمن استيفاء الشروط الأكاديمية.",
+    "التأكد من مصادقة جميع الشهادات وكشوف النقاط المطلوبة."
+  ],
+  "docs": [
+    "جواز سفر",
+    "دبلوم مُصادَق عليه",
+    "كشوف نقاط لكل السنوات",
+    "شهادة HSK إن وجدت",
+    "رسالة قبول مبدئية",
+    "خطة دراسية أو بحثية",
+    "شهادة صحية"
+  ],
+  "sources": [
+    {
+      "label": "الإعلان الرسمي 2026/2027 - سفارة الصين",
+      "url": "https://ee.china-embassy.gov.cn/eng/dssghd/202511/t20251108_11749277.htm"
+    },
+    {
+      "label": "إعلان جامعة تلمسان الجزائرية",
+      "url": "https://vrex.univ-tlemcen.dz/actualites/368/call-for-applications-chinese-government-scholarships"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "mext_japan",
+  "cat": "study",
+  "icon": "🇯🇵",
+  "name": "المنحة الحكومية اليابانية (MEXT)",
+  "agency": "وزارة التعليم اليابانية (MEXT) عبر السفارة اليابانية",
+  "url": "https://www.studyinjapan.go.jp/en/smap-stopj-applications-research.html",
+  "summary": "منحة حكومية يابانية شاملة (طالب بحث/ماستر ودكتوراه/ليسانس) عبر توصية السفارة اليابانية في بلد الإقامة، بما فيها الجزائر.",
+  "money": "تغطي الرسوم الدراسية بالكامل + بدل معيشة شهري + تذكرة سفر",
+  "season": "من أفريل إلى ماي من كل سنة",
+  "tips": [
+    "راجع موقع السفارة اليابانية في بلدك لمعرفة المواعيد الدقيقة بدقة",
+    "تأكد من استيفاء كافة الوثائق المطلوبة وترجمتها عند الحاجة",
+    "تحقق من توفر خطة بحث واضحة لطلبة الدراسات العليا"
+  ],
+  "docs": [
+    "استمارة ترشح رسمية",
+    "شهادة صحية موقعة من طبيب",
+    "رسالة توصية",
+    "كشوف نقاط",
+    "جواز سفر",
+    "خطة بحث (لطلبة البحث)"
+  ],
+  "sources": [
+    {
+      "label": "دليل التقديم عبر السفارة (طالب بحث)",
+      "url": "https://www.studyinjapan.go.jp/en/smap-stopj-applications-research.html"
+    },
+    {
+      "label": "الأسئلة الشائعة الرسمية MEXT",
+      "url": "https://www.studyinjapan.go.jp/en/faq/mext-scholarship/"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "gks_korea",
+  "cat": "study",
+  "icon": "🇰🇷",
+  "name": "منحة كوريا الجنوبية الحكومية (GKS/KGSP)",
+  "agency": "المعهد الوطني الكوري للتعليم الدولي (NIIED)",
+  "url": "https://www.niied.go.kr/web/NIIED/contents/niiedEng/eng_gksDegree",
+  "summary": "منحة حكومية كورية لليسانس والماستر/الدكتوراه، تشمل سنة تحضيرية لتعلم اللغة الكورية قبل بداية الدراسة الفعلية.",
+  "money": "تغطي الرسوم + بدل معيشة شهري + تأمين صحي + تذكرة طيران + منحة استقرار مبدئية",
+  "season": "عادة بين فيفري ومارس من كل سنة",
+  "tips": [
+    "التحضير المبكر للملفات والخطة الدراسية",
+    "التأكد من مطابقة شروط المعدل والسن حسب التخصص المطلوب"
+  ],
+  "docs": [
+    "استمارة ترشح",
+    "شهادة ميلاد",
+    "شهادة جنسية والدين",
+    "كشوف نقاط",
+    "شهادة تخرج",
+    "شهادة صحية",
+    "خطة دراسية/بحثية",
+    "رسائل توصية"
+  ],
+  "sources": [
+    {
+      "label": "شروط GKS الرسمية (NIIED)",
+      "url": "https://www.niied.go.kr/web/NIIED/contents/niiedEng/eng_gksDegree"
+    },
+    {
+      "label": "دليل التقديم 2026 (جامعة دونغغوك)",
+      "url": "https://en.dongguk.edu/resources/files/2026_KGSP-G_Application%20Guidelines%20(English).pdf"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "stipendium_hungaricum",
+  "cat": "study",
+  "icon": "🇭🇺",
+  "name": "منحة \"ستيبنديوم هنغاريكوم\" المجرية",
+  "agency": "Tempus Public Foundation (المجر)",
+  "url": "https://stipendiumhungaricum.hu/apply/",
+  "summary": "منحة حكومية مجرية تغطي كل المستويات (ليسانس/ماستر/دكتوراه)، والجزائر مُدرجة رسميًا ضمن الشركاء المُرسِلين.",
+  "money": "تغطي الرسوم الدراسية بالكامل + منحة شهرية + بدل سكن + تأمين صحي",
+  "season": "تُفتح عادة في أكتوبر/نوفمبر من كل سنة (مغلق حالياً - أوت 2026)",
+  "tips": [
+    "تأكد من التقديم عبر منصة DreamApply والجهة الوطنية في نفس الوقت",
+    "اختر برنامجين دراسيين كحد أقصى"
+  ],
+  "docs": [
+    "جواز سفر",
+    "شهادة بكالوريا أو شهادة جامعية",
+    "كشوف النقاط",
+    "شهادة لغة",
+    "رسالة دافع",
+    "شهادة طبية"
+  ],
+  "sources": [
+    {
+      "label": "نداء الترشح 2026/2027",
+      "url": "https://stipendiumhungaricum.hu/wp-content/uploads/2025/10/BA_MA_OTM_Call_for_Applications_2026_27.pdf"
+    },
+    {
+      "label": "قائمة الشركاء المُرسِلين",
+      "url": "https://stipendiumhungaricum.hu/partners/"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "russia_quota_opendoors",
+  "cat": "study",
+  "icon": "🇷🇺",
+  "name": "منحة الحكومة الروسية وأولمبياد الأبواب المفتوحة Open Doors",
+  "agency": "Rossotrudnichestvo (البيت الروسي بالجزائر) + رابطة الجامعات العالمية (Open Doors)",
+  "url": "https://rs.gov.ru/en/service/obrazovanie-v-rossii/",
+  "summary": "مساران متكاملان للحصول على منحة دراسية مجانية في الجامعات الروسية: عبر نظام الحصص (education-in-russia.com) أو عبر أولمبياد الأبواب المفتوحة (Open Doors).",
+  "money": "تعليم مجاني بالكامل (رسوم الدراسة فقط)؛ لا يشمل تذاكر السفر أو التأمين أو السكن أو التأشيرة (rs.gov.ru / urfu.ru).",
+  "season": "التسجيل يبدأ عادة في 7 أكتوبر للحصص، ومن 20 أوت إلى 1 نوفمبر لأولمبياد Open Doors (urfu.ru).",
+  "tips": [
+    "حرص على ترجمة وتصديق جميع الوثائق الأكاديمية قانونياً (Notarized).",
+    "التقديم في المواعيد المحددة عبر المنصات الرسمية لمسارات الحصص أو الأولمبياد."
+  ],
+  "docs": [
+    "جواز سفر",
+    "شهادات دراسية مترجمة ومصادَق عليها قانونيًا (Notarized)",
+    "كشوف نقاط",
+    "شهادة صحية",
+    "صورة شخصية"
+  ],
+  "sources": [
+    {
+      "label": "خدمة التعليم بروسيا (Rossotrudnichestvo)",
+      "url": "https://rs.gov.ru/en/service/obrazovanie-v-rossii/"
+    },
+    {
+      "label": "شروط مشاركة Open Doors الرسمية",
+      "url": "https://od.globaluni.ru/attachment/3698416/download"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "maeci_italy",
+  "cat": "study",
+  "icon": "🇮🇹",
+  "name": "منحة وزارة الخارجية الإيطالية (MAECI) للطلبة الأجانب",
+  "agency": "وزارة الخارجية والتعاون الدولي الإيطالية (MAECI)",
+  "url": "https://www.esteri.it/en/servizi-opportunita/opportunita/borse-di-studio/per-cittadini-stranieri/borsestudio_stranieri/",
+  "summary": "منحة حكومية إيطالية لدراسة ماستر/دكتوراه/دراسات لغوية في إيطاليا، مفتوحة أمام الجزائريين ضمن قائمة الدول المؤهلة رسميًا 2026-2027.",
+  "money": "تغطي المنحة الرسوم + بدل معيشة شهري (المبلغ الشهري باليورو غير متحقق رقميًا)؛ مدة المنحة للماستر 9 أشهر.",
+  "season": "نوفمبر - ديسمبر (أو بداية العام الموالي)",
+  "tips": [
+    "تأكد من التسجيل في بوابة Study in Italy الرسمية",
+    "يجب أن تكون رسالة القبول للدكتوراه نهائية وليست مبدئية",
+    "الترشح يكون عبر دولة واحدة فقط"
+  ],
+  "docs": [
+    "جواز سفر أو بطاقة هوية سارية",
+    "شهادة ليسانس أو إثبات التخرج",
+    "كشوف النقاط",
+    "رسالة قبول رسمية للدكتوراه"
+  ],
+  "sources": [
+    {
+      "label": "بوابة Study in Italy - النداء الرسمي",
+      "url": "https://www.esteri.it/en/servizi-opportunita/opportunita/borse-di-studio/per-cittadini-stranieri/borsestudio_stranieri/"
+    },
+    {
+      "label": "نص النداء الكامل (PDF) 2026-2027",
+      "url": "https://www.esteri.it/wp-content/uploads/2026/03/Bando-26-27-ITA.pdf"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "tef_entrepreneurship",
+  "cat": "global",
+  "icon": "🌱",
+  "name": "برنامج مؤسسة توني إيلوميلو لريادة الأعمال",
+  "agency": "Tony Elumelu Foundation (نيجيريا)",
+  "url": "https://www.tonyelumelufoundation.org/tef-entrepreneurship-programme",
+  "summary": "برنامج تدريب وتمويل بذري لرواد أعمال أفارقة، يشمل 3 أشهر تدريب أعمال + إرشاد + منحة بذرية غير مستردة.",
+  "money": "5,000 دولار أمريكي منحة بذرية غير مستردة",
+  "season": "من 1 يناير إلى 1 مارس سنوياً",
+  "tips": [
+    "تأكد من تقديم خطة عمل واضحة وتوقعات مالية دقيقة.",
+    "جهز فيديو العرض (Pitch) بعناية بحيث لا يتجاوز 3 دقائق."
+  ],
+  "docs": [
+    "بطاقة هوية أو جواز سفر",
+    "تسجيل على TEFConnect",
+    "خطة عمل",
+    "توقعات مالية",
+    "فيديو عرض قصير",
+    "حساب بنكي لدى بنك شريك"
+  ],
+  "sources": [
+    {
+      "label": "TEF Entrepreneurship Programme",
+      "url": "https://www.tonyelumelufoundation.org/tef-entrepreneurship-programme"
+    },
+    {
+      "label": "TEF Apply",
+      "url": "https://www.tonyelumelufoundation.org/apply"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "anzisha_fellowship",
+  "cat": "global",
+  "icon": "🌍",
+  "name": "زمالة أنزيشا لرواد الأعمال الشباب الأفارقة",
+  "agency": "African Leadership Academy × Mastercard Foundation",
+  "url": "https://anzisha.org/apply/",
+  "summary": "برنامج متعدد السنوات لدعم رواد أعمال أفارقة شباب يديرون مشاريع فعلية قائمة، عبر تمويل وتدريب لتسريع النمو.",
+  "money": "غير متحقق",
+  "season": "يفتح عادة في شهر أكتوبر من كل عام (مغلق حالياً)",
+  "tips": [
+    "الدورة الحالية مغلقة؛ يُنصح بمتابعة الموقع الرسمي للدورات القادمة.",
+    "تأكد من توفر أدلة على وجود عملاء أو مستفيدين فعليين للمشروع."
+  ],
+  "docs": [
+    "إثبات هوية أو جواز سفر ساري",
+    "دليل على نشاط العمل وعملاء أو مبيعات فعلية",
+    "استمارة الترشح"
+  ],
+  "sources": [
+    {
+      "label": "Anzisha Apply Page",
+      "url": "https://anzisha.org/apply/"
+    },
+    {
+      "label": "Anzisha Fellowship Overview",
+      "url": "https://anzisha.org/fellowship/"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "hult_prize",
+  "cat": "global",
+  "icon": "🏆",
+  "name": "جائزة هَلت (Hult Prize)",
+  "agency": "Hult Prize Foundation (بالشراكة مع Hult International Business School وEF Education First)",
+  "url": "https://www.hultprize.org/how-it-works",
+  "summary": "أكبر مسابقة عالمية لريادة الأعمال الطلابية؛ الفريق الفائز يحصل على مليون دولار لتنفيذ حل مستدام لتحدٍ عالمي.",
+  "money": "1,000,000 دولار أمريكي تمويل للفريق الفائز",
+  "season": "مفتوح طوال السنة",
+  "tips": [
+    "تأكد من تكوين فريق متكامل من 2 إلى 4 أعضاء قبل التسجيل",
+    "قم بتحضير فكرة مشروع مستدامة تحل تحدياً عالمياً واضحاً"
+  ],
+  "docs": [
+    "إثبات تسجيل جامعي حالي",
+    "فكرة أو نموذج عمل (business idea)",
+    "تسجيل فريق أونلاين عبر المنصة"
+  ],
+  "sources": [
+    {
+      "label": "Hult Prize – How it Works",
+      "url": "https://www.hultprize.org/how-it-works"
+    },
+    {
+      "label": "Hult Prize Register",
+      "url": "https://www.hultprize.org/register"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "global_ugrad",
+  "cat": "global",
+  "icon": "🎓",
+  "name": "برنامج التبادل الجامعي العالمي (Global UGRAD)",
+  "agency": "وزارة الخارجية الأمريكية (تديره World Learning، وسفارة الولايات المتحدة بالجزائر/AMIDEAST)",
+  "url": "https://exchanges.state.gov/non-us/program/global-undergraduate-exchange-program-global-ugrad",
+  "summary": "منحة فصل دراسي واحد غير مؤدٍ لشهادة في جامعة أمريكية، مع تدريب مهني وخدمة مجتمعية، والجزائر مُدرجة رسمياً ضمن دول منطقة الشرق الأدنى المشاركة.",
+  "money": "منحة كاملة (تذكرة سفر + رسوم دراسية + سكن + إعاشة + تأمين صحي J-1) حسب تقدير الجامعة المضيفة.",
+  "season": "يُعلن دورياً حسب الدورات (خريف أو ربيع) عبر صفحة السفارة الأمريكية بالجزائر.",
+  "tips": [
+    "تأكد من متابعة صفحة السفارة الأمريكية بالجزائر لمعرفة مواعيد التقديم بدقة.",
+    "استعد لتقديم رسائل توصية ونماذج World Learning بعناية."
+  ],
+  "docs": [
+    "جواز سفر ساري المفعول",
+    "كشف نقاط جامعي",
+    "رسالتا توصية (نماذج World Learning)",
+    "استمارة طبية",
+    "مقال أو مقابلة شخصية عبر السفارة"
+  ],
+  "sources": [
+    {
+      "label": "State.gov – Global UGRAD",
+      "url": "https://exchanges.state.gov/non-us/program/global-undergraduate-exchange-program-global-ugrad"
+    },
+    {
+      "label": "Global UGRAD – Participating Countries (Algeria مذكورة)",
+      "url": "https://www.globalugrad.org/participating-countries/"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "y_combinator",
+  "cat": "global",
+  "icon": "🚀",
+  "name": "واي كومبيناتور (مسرّعة الشركات الناشئة)",
+  "agency": "Y Combinator LLC (الولايات المتحدة)",
+  "url": "https://www.ycombinator.com/apply",
+  "summary": "أشهر مسرّعة ناشئة عالمياً؛ استثمار قياسي 500 ألف دولار مقابل حصة أسهم، مع برنامج 3 أشهر في سان فرانسيسكو.",
+  "money": "500,000 دولار: 125,000$ مقابل 7٪ من الشركة + 375,000$ عبر MFN SAFE غير محدود السقف (مذكور رسمياً في صفحة \"The Deal\").",
+  "season": "دفعة Fall 2026 مفتوحة للتقديم حالياً (أكتوبر–ديسمبر 2026 بسان فرانسيسكو)",
+  "tips": [
+    "احرص على تقديم فيديو تعريفي واضح وموجز لفكرتك.",
+    "أظهر التزاماً كاملاً من الفريق المؤسس بدوام كامل."
+  ],
+  "docs": [
+    "استمارة تقديم أونلاين (فيديو تعريفي، وصف المنتج/الفكرة، بيانات الفريق)"
+  ],
+  "sources": [
+    {
+      "label": "YC Apply",
+      "url": "https://www.ycombinator.com/apply"
+    },
+    {
+      "label": "YC Standard Deal",
+      "url": "https://www.ycombinator.com/deal"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "techstars_accelerator",
+  "cat": "global",
+  "icon": "🚀",
+  "name": "مسرّعة تكستارز",
+  "agency": "Techstars (الولايات المتحدة، برامج متعددة حول العالم)",
+  "url": "https://www.techstars.com/apply",
+  "summary": "مسرّعة عالمية لشركات ناشئة في مرحلة مبكرة جداً؛ 3 أشهر إرشاد مكثّف مع استثمار وشبكة مستثمرين.",
+  "money": "استثمار مالي (يُرجى التحقق من الموقع الرسمي لصفحة Terms)",
+  "season": "مفتوح طوال السنة",
+  "tips": [
+    "تأكد من تحضير فيديو تعريفي احترافي",
+    "جهّز عرضاً تقديمياً (pitch deck) واضحاً للمشروع"
+  ],
+  "docs": [
+    "استمارة تقديم أونلاين",
+    "فيديو تعريفي",
+    "عرض تقديمي (pitch deck)"
+  ],
+  "sources": [
+    {
+      "label": "Techstars Apply",
+      "url": "https://www.techstars.com/apply"
+    },
+    {
+      "label": "Techstars Accelerators",
+      "url": "https://www.techstars.com/accelerators"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "aws_activate",
+  "cat": "global",
+  "icon": "☁️",
+  "name": "برنامج AWS أكتيفيت للشركات الناشئة",
+  "agency": "Amazon Web Services (AWS)",
+  "url": "https://aws.amazon.com/startups/credits",
+  "summary": "أرصدة استخدام مجانية على AWS للشركات الناشئة، بحسب مرحلة التمويل، بدون مقابل حصص أو رسوم.",
+  "money": "3 مستويات مذكورة رسمياً: (أ) Founders Self-funded (1,000$ إلى 5,000$)؛ (ب) Pre-Series B (حتى 200,000$)؛ (ج) 200,000$+ للتوسّع.",
+  "season": "مفتوح طوال السنة",
+  "tips": [],
+  "docs": [
+    "حساب AWS مفعّل",
+    "بيانات الشركة (اسم، موقع، مرحلة التمويل، الموقع الإلكتروني)",
+    "Org ID إن انطبق"
+  ],
+  "sources": [
+    {
+      "label": "AWS Activate Credits",
+      "url": "https://aws.amazon.com/startups/credits"
+    },
+    {
+      "label": "AWS Activate Providers",
+      "url": "https://aws.amazon.com/startups/providers"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "ms_founders_hub",
+  "cat": "global",
+  "icon": "🚀",
+  "name": "مايكروسوفت فور ستارت أبس – فاوندرز هَب",
+  "agency": "Microsoft Corporation",
+  "url": "https://foundershub.startups.microsoft.com/",
+  "summary": "برنامج دعم عالمي مجاني للشركات الناشئة (من مرحلة الفكرة فما فوق) يمنح أرصدة أزور وأدوات AI وGitHub، بدون أخذ حصص ملكية.",
+  "money": "حتى 150,000 دولار أرصدة (Azure/AI credits) بحسب مرحلة الشركة ونوع الاشتراك.",
+  "season": "مفتوح طوال السنة",
+  "tips": [
+    "تأكد من تقديم وصف دقيق لتقنيات مشروعك للاستفادة القصوى من أرصدة أزور"
+  ],
+  "docs": [
+    "تسجيل حساب Microsoft/Azure",
+    "بيانات أساسية عن المشروع أو الشركة"
+  ],
+  "sources": [
+    {
+      "label": "Microsoft for Startups",
+      "url": "https://www.microsoft.com/en-us/startups"
+    },
+    {
+      "label": "Founders Hub",
+      "url": "https://foundershub.startups.microsoft.com/"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "github_student_pack",
+  "cat": "global",
+  "icon": "🎒",
+  "name": "حزمة مطوّري GitHub للطلاب",
+  "agency": "GitHub (مايكروسوفت)",
+  "url": "https://education.github.com/pack",
+  "summary": "حزمة أدوات ومنتجات مجانية ومخفَّضة للطلاب (استضافة، أزور، أدوات تطوير) بعد التحقق من الوضع الطلابي.",
+  "money": "قيمة تراكمية تُقدَّر بآلاف الدولارات (مثال: 100$ رصيد Azure للطلاب 18+ وأدوات تطوير مجانية أخرى)",
+  "season": "مفتوح طوال السنة",
+  "tips": [
+    "تأكد من ربط بريدك الأكاديمي بحساب GitHub إن توفر",
+    "استخدم وثيقة طالب واضحة وتاريخ صلاحيتها ساري"
+  ],
+  "docs": [
+    "بطاقة طالب أو جدول دراسي أو كشف نقاط أو رسالة انتساب",
+    "حساب GitHub شخصي"
+  ],
+  "sources": [
+    {
+      "label": "GitHub Education Pack",
+      "url": "https://education.github.com/pack"
+    },
+    {
+      "label": "Apply as Student",
+      "url": "https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "erasmus_youth_exchange",
+  "cat": "global",
+  "icon": "🇪🇺",
+  "name": "إيراسموس+ للتبادل الشبابي",
+  "agency": "المفوضية الأوروبية / الوكالات الوطنية لإيراسموس+",
+  "url": "https://erasmus-plus.ec.europa.eu/programme-guide/part-b/key-action-1/youth-exchanges",
+  "summary": "برنامج تبادل شبابي غير رسمي يجمع مجموعات شباب من دول مختلفة في نشاط قصير مموَّل بالكامل. الجزائر مؤهَّلة رسمياً ضمن دول جنوب المتوسط (Region 3).",
+  "money": "تمويل كامل (سفر + إقامة + إعاشة) عبر مساهمة في التكاليف الوحدوية حسب المسافة والدولة المستقبِلة.",
+  "season": "مواعيد متعددة تحددها الوكالة الوطنية أو المنظمة الشريكة",
+  "tips": [
+    "تأكد من التقديم عبر منظمة شبابية معتمدة لأن التقديم الفردي غير متاح",
+    "الجزائر مؤهلة كدولة شريكة ضمن Region 3"
+  ],
+  "docs": [
+    "جواز سفر",
+    "استمارة تسجيل عبر المنظمة الشريكة",
+    "Youthpass (شهادة تعلم غير رسمي)"
+  ],
+  "sources": [
+    {
+      "label": "Erasmus+ Youth Exchanges Guide",
+      "url": "https://erasmus-plus.ec.europa.eu/programme-guide/part-b/key-action-1/youth-exchanges"
+    },
+    {
+      "label": "Eligible Countries – Region 3 (Algeria)",
+      "url": "https://erasmus-plus.ec.europa.eu/programme-guide/part-a/eligible-countries"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "falling_walls_lab",
+  "cat": "global",
+  "icon": "🧪",
+  "name": "مختبر فولينغ وولز",
+  "agency": "Falling Walls Foundation",
+  "url": "https://falling-walls.com/lab/apply",
+  "summary": "مسابقة عرض أفكار عالمية (3 دقائق) للطلاب والباحثين الشباب في كل المجالات؛ الفائزون بكل لاب محلي يتأهلون للنهائي العالمي في برلين.",
+  "money": "لا جائزة مالية مباشرة مذكورة رسمياً؛ 100 فائز يذهبون للنهائي العالمي في برلين وتغطية حسب كل لاب.",
+  "season": "من 1 فبراير حتى 15 سبتمبر 2026",
+  "tips": [
+    "التقديم لأقرب لاب جغرافياً",
+    "التأكد من مطابقة شروط الفئة العمرية أو الأكاديمية"
+  ],
+  "docs": [
+    "عرض تقديمي (pitch) 3 دقائق",
+    "استمارة تقديم أونلاين",
+    "إثبات الوضع الأكاديمي أو المهني"
+  ],
+  "sources": [
+    {
+      "label": "Falling Walls Lab – Apply",
+      "url": "https://falling-walls.com/lab/apply"
+    },
+    {
+      "label": "Falling Walls Lab Overview",
+      "url": "https://falling-walls.com/lab"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "falling_walls_lab",
+  "cat": "global",
+  "icon": "🔬",
+  "name": "مسابقة فولينغ والز لاب",
+  "agency": "Falling Walls Foundation",
+  "url": "https://falling-walls.com/lab/apply",
+  "summary": "منصة دولية مرموقة لعرض الأفكار والأبحاث الابتكارية للشباب والباحثين، مع عدم توفر لاب مخصص للجزائر حالياً واختيار أقرب لاب جغرافياً.",
+  "money": "دعم مالي وجوائز عالمية للمشاريع الابتكارية",
+  "season": "مفتوح طوال السنة",
+  "tips": [
+    "اختر أقرب لاب جغرافي إليك نظراً لعدم وجود لاب مخصص للجزائر في القائمة الحالية",
+    "تأكد من إعداد عرض تقديمي مختصر وفعال"
+  ],
+  "docs": [
+    "جواز السفر",
+    "السيرة الذاتية",
+    "ملخص المشروع البحثي"
+  ],
+  "sources": [
+    {
+      "label": "Falling Walls Lab Apply",
+      "url": "https://falling-walls.com/lab/apply"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "doctorat_lmd_competition",
+  "cat": "extra",
+  "icon": "🎓",
+  "name": "مسابقة الالتحاق بالتكوين في الدكتوراه (الطور الثالث LMD)",
+  "agency": "وزارة التعليم العالي والبحث العلمي",
+  "url": "https://progres.mesrs.dz/webdoctorat/",
+  "summary": "مسابقة وطنية سنوية للالتحاق بالدكتوراه تُدار حصراً عبر منصة PROGRES، حسب طاقة استيعاب كل تخصص وجامعة.",
+  "money": "لا منحة مالية عند القبول؛ رسوم تسجيل جامعية عادية تُدفع عبر منصة بروغريس.",
+  "season": "ديسمبر من كل سنة (إيداع الترشحات عادة في ديسمبر والمسابقة في جانفي)",
+  "tips": [
+    "تأكد من التسجيل في الآجال المحددة حصراً عبر منصة PROGRES",
+    "تابع إعلانات الكلية أو القسم الجامعي المعني بالتخصص",
+    "احتفظ بوثائق التسجيل الإلكتروني ووصل الدفع"
+  ],
+  "docs": [
+    "شهادة الماستر أو الشهادة المعادلة",
+    "كشوف النقاط",
+    "سيرة ذاتية",
+    "بطاقة تعريف وطنية",
+    "شهادة ميلاد"
+  ],
+  "sources": [
+    {
+      "label": "منصة PROGRES – الدكتوراه",
+      "url": "https://progres.mesrs.dz/webdoctorat/"
+    },
+    {
+      "label": "جامعة سطيف 1 – إعلان مسابقة الدكتوراه",
+      "url": "https://www.univ-setif.dz/actualites-principales/concours-doctorat-07-12-02-2026-ar-563"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "foreign_diploma_equivalence",
+  "cat": "extra",
+  "icon": "🎓",
+  "name": "معادلة/الاعتراف بالشهادات الجامعية الأجنبية",
+  "agency": "وزارة التعليم العالي والبحث العلمي – المجلس الوطني لتقييم الشهادات (CNC) عبر منصة progres.mesrs.dz/webequivalence",
+  "url": "https://progres.mesrs.dz/webequivalence/pages/index.xhtml",
+  "summary": "إجراء إلكتروني حصري لمعادلة شهادة جامعية أجنبية بشهادة جزائرية مكافئة، وفق القرار الوزاري رقم 1260 لسنة 2015.",
+  "money": "لا رسوم مالية موحدة معلنة رسمياً",
+  "season": "فترة الصيف أو بداية الموسم الجامعي (حسب التعميم الوزاري السنوي)",
+  "tips": [
+    "تأكد من إدراج كافة الوثائق المطلوبة عبر المنصة الإلكترونية حصرياً وفق الآجال المعلنة.",
+    "تحقق من مطابقة مصفوفة المعادلة القُطرية لدى CNC."
+  ],
+  "docs": [
+    "الشهادة الأصلية",
+    "كشف النقاط",
+    "بطاقة تعريف أو جواز سفر",
+    "وثيقة مصادقة قنصلية"
+  ],
+  "sources": [
+    {
+      "label": "منصة المعادلات – MESRS",
+      "url": "https://progres.mesrs.dz/webequivalence/pages/procedure/procedures.xhtml"
+    },
+    {
+      "label": "CNC – الاعتراف بالشهادات",
+      "url": "https://cnc.mesrs.dz/ar/reconnaissance-diplomes"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "chifa_card_cnas",
+  "cat": "extra",
+  "icon": "💳",
+  "name": "بطاقة الشفاء الإلكترونية",
+  "agency": "الصندوق الوطني للتأمينات الاجتماعية للعمال الأجراء (CNAS)",
+  "url": "https://cnas.dz/بطاقة-الشفاء/",
+  "summary": "بطاقة إلكترونية تُثبت الانخراط في الضمان الاجتماعي وتُستعمل للتعويض عن العلاج والأدوية لدى الصيدليات والمصالح الصحية المتعاقدة.",
+  "money": "إصدار البطاقة مجاني؛ نسب التعويض تختلف حسب نوع العلاج (60–80% أو 100% لأمراض مزمنة معينة).",
+  "season": "مفتوح طوال السنة",
+  "tips": [
+    "تأكد من تحديث معلوماتك لدى وكالة CNAS بانتظام",
+    "احتفظ بالبطاقة في مكان آمن ومحمي"
+  ],
+  "docs": [
+    "صورة شمسية",
+    "بطاقة تعريف وطنية",
+    "بطاقة فصيلة الدم (اختياري)",
+    "وثائق قرابة لذوي الحقوق"
+  ],
+  "sources": [
+    {
+      "label": "CNAS – بطاقة الشفاء",
+      "url": "https://cnas.dz/بطاقة-الشفاء/"
+    },
+    {
+      "label": "CNAS EN – Chifa Card",
+      "url": "https://cnas.dz/en/presentation-of-the-chifa-card/"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "foreign_scholarship_mobility",
+  "cat": "extra",
+  "icon": "🎓",
+  "name": "منح التكوين الإقامي وبرنامج الحركية القصيرة المدى بالخارج",
+  "agency": "وزارة التعليم العالي والبحث العلمي (MESRS)",
+  "url": "https://services.mesrs.dz/DCEU/course/index.php?categoryid=1",
+  "summary": "برامج تكوين وتحسين مستوى للطلبة والأساتذة بالخارج، تشمل تكويناً إقامياً طويل المدى وبرنامج حركية قصيرة المدى (تربصات).",
+  "money": "منحة شهرية بالعملة الصعبة تُدفع حسب بلد الاستقبال",
+  "season": "سنوياً (عادة في مارس-أفريل)",
+  "tips": [
+    "تأكد من الحصول على رسالة قبول معتمدة من مؤسسة أجنبية",
+    "التسجيل عبر المنصة الإلكترونية المخصصة في الآجال المحددة"
+  ],
+  "docs": [
+    "رسالة قبول أجنبية",
+    "كشوف نقاط",
+    "شهادات سابقة",
+    "جواز سفر"
+  ],
+  "sources": [
+    {
+      "label": "مرسوم رئاسي 14-196",
+      "url": "https://fshs.univ-tlemcen.dz/assets/uploads/2019/VDPG/dec14-196ar.pdf"
+    },
+    {
+      "label": "منصة الحركية القصيرة المدى 2026",
+      "url": "https://services.mesrs.dz/DCEU/course/index.php?categoryid=1"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "taxi_license",
+  "cat": "extra",
+  "icon": "🚕",
+  "name": "رخصة استغلال خدمة سيارة أجرة (تاكسي)",
+  "agency": "وزارة النقل بالتنسيق مع البلديات",
+  "url": "https://www.commerce.gov.dz/reglementation/arrete-du-14-aout-2016-cahier-des-charges",
+  "summary": "رخصة تسمح باستغلال نشاط النقل بسيارة أجرة وفق دفتر شروط محدد بقرار وزاري 2016 ومرسوم تنفيذي 12-230.",
+  "money": "رسوم ملف ورخصة إدارية (المبلغ الدقيق يختلف حسب البلدية).",
+  "season": "مفتوح طوال السنة",
+  "tips": [
+    "التأكد من مطابقة المركبة للشروط التقنية ودفتر الشروط",
+    "استيفاء كافة الوثائق المطلوبة لدى المصالح المختصة بالبلدية أو الولاية"
+  ],
+  "docs": [
+    "بطاقة تعريف وطنية",
+    "رخصة السياقة",
+    "السجل العدلي",
+    "وثيقة ملكية أو إيجار المركبة",
+    "شهادة إقامة"
+  ],
+  "sources": [
+    {
+      "label": "قرار 14 أوت 2016 – دفتر الشروط",
+      "url": "https://www.commerce.gov.dz/reglementation/arrete-du-14-aout-2016-cahier-des-charges"
+    },
+    {
+      "label": "المرسوم التنفيذي 12-230",
+      "url": "http://www.almanach-dz.com/index.php?fiche=2867&op=fiche"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "algerian_nationality_certificate",
+  "cat": "extra",
+  "icon": "📜",
+  "name": "شهادة الجنسية الجزائرية واكتساب الجنسية",
+  "agency": "وزارة العدل",
+  "url": "https://courdeguelma.mjustice.dz/شهادة_الجنسية",
+  "summary": "وثيقة تثبت الجنسية الجزائرية للمواطنين، وإجراء منفصل لاكتساب الجنسية بالزواج أو التجنس وفق الأمر 70-86 المعدل.",
+  "money": "لا رسوم",
+  "season": "مفتوح طوال السنة",
+  "tips": [],
+  "docs": [
+    "شهادة ميلاد",
+    "بطاقة تعريف وطنية",
+    "عقد زواج",
+    "شهادة إقامة",
+    "سجل عدلي"
+  ],
+  "sources": [
+    {
+      "label": "وزارة العدل – شهادة الجنسية (مجلس قضاء قالمة)",
+      "url": "https://courdeguelma.mjustice.dz/شهادة_الجنسية"
+    },
+    {
+      "label": "قانون الجنسية الجزائرية – الأمر 70-86",
+      "url": "https://www.univdz.com/bibliotheque/5-textes-juridiques/252-قانون-الجنسية-الجزائرية"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "public_procurement_20pct_micro",
+  "cat": "extra",
+  "icon": "📄",
+  "name": "تخصيص حصة من الصفقات العمومية للمؤسسات المصغرة والناشئة",
+  "agency": "وزارة المالية (تنظيم الصفقات العمومية)",
+  "url": "https://www.mf.gov.dz/index.php/ar/activites-ar/1212-2023-08-13-15-52-56",
+  "summary": "القانون 23-12 (5 أوت 2023) يسمح بتخصيص ما يصل إلى 20% من الطلب العمومي كحصة محفوظة أو دفتر شروط منفصل لفائدة المؤسسات المصغرة/الناشئة.",
+  "money": "لا مبلغ ثابت؛ الأفضلية هي في الوصول لصفقة محجوزة/حصة من طلب عمومي بقيمة تصل حتى 20% من الحاجة الإجمالية.",
+  "season": "مفتوح طوال السنة",
+  "tips": [
+    "تابع إعلانات الصفقات العمومية للبحث عن الحصص المخصصة 20% للمؤسسات المصغرة والناشئة.",
+    "تأكد من سارية شهاداتك الضريبية وشبه الجبائية بصفة دورية."
+  ],
+  "docs": [
+    "السجل التجاري",
+    "شهادة تصنيف مؤسسة مصغرة/ناشئة",
+    "الشهادات الضريبية وشبه الجبائية",
+    "عرض تقني ومالي"
+  ],
+  "sources": [
+    {
+      "label": "قانون 23-12 – الصفقات العمومية",
+      "url": "https://www.univdz.com/component/phocadownload/file/14721-قانون-رقم-23-12"
+    },
+    {
+      "label": "وزارة المالية – نشر القانون 23-12",
+      "url": "https://www.mf.gov.dz/index.php/ar/activites-ar/1212-2023-08-13-15-52-56"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "export_support_fspe",
+  "cat": "extra",
+  "icon": "📦",
+  "name": "الصندوق الخاص لترقية الصادرات (FSPE)",
+  "agency": "وزارة التجارة الخارجية وترقية الصادرات (MCEPE) / الوكالة الوطنية لترقية التجارة الخارجية (ALGEX)",
+  "url": "https://commerce.gov.dz/a-fonds-special-pour-la-promotion-des-exportations-fspe",
+  "summary": "دعم مالي للمصدرين الجزائريين لتغطية جزء من نفقات ترقية وتسويق منتجاتهم في الأسواق الخارجية، أُحدث بموجب قانون المالية لسنة 1996.",
+  "money": "نسب تعويض النفقات محددة بقرار وزاري مشترك 7 ديسمبر 2022 (الجريدة الرسمية عدد 82).",
+  "season": "مفتوح طوال السنة",
+  "tips": [
+    "تأكد من مطابقة النفقات للقرار الوزاري المشترك لـ 7 ديسمبر 2022",
+    "قدّم الملف عبر الوكالة الوطنية لترقية التجارة الخارجية ALGEX"
+  ],
+  "docs": [
+    "السجل التجاري (نشاط تصدير)",
+    "فواتير النفقات",
+    "شهادة منشأ",
+    "تقرير النشاط الترويجي"
+  ],
+  "sources": [
+    {
+      "label": "وزارة التجارة – FSPE",
+      "url": "https://commerce.gov.dz/a-fonds-special-pour-la-promotion-des-exportations-fspe"
+    },
+    {
+      "label": "ALGEX – الوكالة الوطنية لترقية التجارة الخارجية",
+      "url": "https://commerce.gov.dz/agence-nationale-de-la-promotion-du-commerce-exterieur-algex"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "tourist_forex_allowance",
+  "cat": "extra",
+  "icon": "🧳",
+  "name": "حق الصرف السنوي (المنحة السياحية بالعملة الصعبة)",
+  "agency": "بنك الجزائر (يُنفَّذ عبر البنوك العمومية المعتمدة)",
+  "url": "https://www.bdl.dz/ar/حق-الصرف/",
+  "summary": "إجراء يسمح للمواطنين المسافرين للخارج بشراء عملة صعبة بمبلغ سنوي محدد، دخل حيز التطبيق فعلياً 20 جويلية 2025 وساري حتى 25 جويلية 2026.",
+  "money": "750 يورو للبالغين؛ 300 يورو للقاصرين (12-18 سنة)",
+  "season": "مفتوح طوال السنة",
+  "tips": [
+    "تأكد من تجهيز حسابك بالعملة الصعبة قبل السفر",
+    "احترام فترة 12 شهراً بين كل استفادة"
+  ],
+  "docs": [
+    "بطاقة التعريف الوطنية",
+    "جواز سفر وتذكرة سفر",
+    "حساب بنكي بالدينار وبالعملة الصعبة"
+  ],
+  "sources": [
+    {
+      "label": "بنك التنمية المحلية – حق الصرف",
+      "url": "https://www.bdl.dz/ar/حق-الصرف/"
+    },
+    {
+      "label": "FAQ Allocation Touristique – Fransabank",
+      "url": "https://www.fransabank.dz/wp-content/uploads/2025/08/FAQ-–-Allocation-Touristique-arabe-.pdf"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "carte_fellah",
+  "cat": "extra",
+  "icon": "🌾",
+  "name": "البطاقة المهنية للفلاح (بطاقة الفلاح)",
+  "agency": "وزارة الفلاحة والتنمية الريفية والصيد البحري",
+  "url": "https://madr.gov.dz/",
+  "summary": "بطاقة مهنية تُثبت صفة الفلاح وتُستعمل للاستفادة من الدعم الفلاحي والقروض والتسجيل في منصات رقمية مثل Hassad.dz.",
+  "money": "لا رسوم مباشرة للاستخراج",
+  "season": "مفتوح طوال السنة",
+  "tips": [
+    "التواصل المباشر مع الغرفة الفلاحية الولائية للمعرفة الدقيقة للشروط الإضافية."
+  ],
+  "docs": [
+    "بطاقة تعريف وطنية",
+    "عقد ملكية أو إيجار الأرض",
+    "شهادة ممارسة نشاط فلاحي",
+    "طلب خطي للغرفة الفلاحية"
+  ],
+  "sources": [
+    {
+      "label": "وزارة الفلاحة MADRP",
+      "url": "https://madr.gov.dz/"
+    },
+    {
+      "label": "شرح إجراءات طلب بطاقة فلاح",
+      "url": "https://ar.awrasaljazair.com/طلب-بطاقة-فلاح/"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "exporter_accreditation",
+  "cat": "extra",
+  "icon": "📦",
+  "name": "الاعتماد كمصدّر / شهادة للمصدّر لدى مديرية التجارة",
+  "agency": "وزارة التجارة (مديريات التجارة الولائية) بالتنسيق مع الجمارك الجزائرية",
+  "url": "https://www.dcwalger.dz/index.php/commerce-exterieur/expcc",
+  "summary": "شهادة تُسلّمها مديرية التجارة المختصة إقليمياً للمصدّرين الخاضعين لدفتر شروط، تُقدَّم لمصالح الجمارك قبل كل عملية تصدير (المرسوم التنفيذي 07-102 المؤرخ 2 أفريل 2007).",
+  "money": "لا منحة مالية؛ إجراء إداري لتنظيم نشاط التصدير.",
+  "season": "مفتوح طوال السنة",
+  "tips": [
+    "التقرب من مديرية التجارة الولائية المختصة إقليمياً للحصول على شهادة الاعتماد.",
+    "التأكد من إرفاق شهادة المنشأ والفاتورة التجارية قبل كل عملية شحن."
+  ],
+  "docs": [
+    "السجل التجاري",
+    "شهادة المنشأ",
+    "الفاتورة التجارية",
+    "دفتر الشروط الخاص بالمنتج"
+  ],
+  "sources": [
+    {
+      "label": "مديرية التجارة – ولاية الجزائر: التصدير الخاضع لدفتر الشروط",
+      "url": "https://www.dcwalger.dz/index.php/commerce-exterieur/expcc"
+    },
+    {
+      "label": "المديرية العامة للجمارك – دليل المصدّر",
+      "url": "https://www.douane.gov.dz/?lang=ar"
+    }
+  ]
+});
+SERVICES.push({
+  "id": "startup_label_asf",
+  "cat": "extra",
+  "icon": "🚀",
+  "name": "علامة مؤسسة ناشئة (Label Startup) وصندوق ASF الجزائري للتمويل",
+  "agency": "وزارة اقتصاد المعرفة والمؤسسات الناشئة والمؤسسات المصغرة (لجنة منح العلامة) / Algerian Startup Fund (ASF)",
+  "url": "https://asf.dz/ar",
+  "summary": "علامة رسمية تمنحها لجنة وطنية للمؤسسات الناشئة المستوفية لمعايير الابتكار وقابلية النمو، تفتح الباب أمام تمويل صندوق ASF ومزايا جبائية.",
+  "money": "تمويل صندوق ASF يختلف حسب المرحلة والمشروع — غير متحقق كمبلغ ثابت موحّد؛ مدة سريان العلامة 4 سنوات",
+  "season": "مفتوح طوال السنة",
+  "tips": [
+    "الترشح حصرياً عبر البوابة الوطنية startup.dz",
+    "تأكد من توفر وثائق التعريف الجبائي والإحصائي وخطة العمل"
+  ],
+  "docs": [
+    "النظام الأساسي للشركة",
+    "رقم التعريف الجبائي NIF والإحصائي NIS",
+    "خطة عمل/نموذج الأعمال",
+    "سجل تجاري"
+  ],
+  "sources": [
+    {
+      "label": "Algerian Startup Fund (ASF)",
+      "url": "https://asf.dz/ar"
+    },
+    {
+      "label": "المركز القانوني للجنة منح علامة Startup",
+      "url": "https://dspace.ummto.dz/items/77d79f85-2aa5-4b15-bbfe-27f747ed86ba"
+    }
+  ]
+});
 
 const BY_ID = Object.fromEntries(SERVICES.map((s) => [s.id, s]));
 const byCat = (cat) => SERVICES.filter((s) => s.cat === cat);

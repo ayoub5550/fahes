@@ -1,0 +1,30 @@
+# برنامج اختيار العمال المهرة في كيبيك (PSTQ) — Ministère de l'Immigration, de la Francisation et de l'Intégration (MIFI), Québec. المصدر: https://www.quebec.ca/immigration/permanente/travailleurs-qualifies/programme-selection-travailleurs-qualifies/exigences
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك بالسنوات؟"
+  unité: an
+maitrise francais:
+  question: "هل تمتلك مستوى معتمد في اللغة الفرنسية؟"
+engagement financier:
+  question: "هل توافق على توقيع عقد الاكتفاء الذاتي المالي؟"
+valeurs democratiques:
+  question: "هل التزمت بالحصول على شهادة تعلم القيم الديمقراطية؟"
+
+cond . age_min:
+  titre: "السن الأدنى للترشح"
+  description: "يجب أن لا يقل عمر المتقدم عن 18 عاماً وفقاً لمتطلبات وزارة الهجرة في كيبيك (MIFI)."
+  valeur: age >= 18 an
+cond . langue_fr:
+  titre: "إتقان الفرنسية"
+  description: "متطلب أساسي لمعرفة اللغة الفرنسية في بعض مسارات برنامج PSTQ الرسمي حسب إرشادات الوزارة."
+  valeur: maitrise francais = oui
+cond . finance:
+  titre: "العقد المالي"
+  description: "توقيع عقد الاكتفاء الذاتي المالي لتغطية نفقات المعيشة لفترة 3 أشهر الأولى بعد الاستقرار في كيبيك."
+  valeur: engagement financier = oui
+cond . valeurs_qc:
+  titre: "القيم الكيبيكية"
+  description: "الحصول على شهادة تعلم القيم الديمقراطية والقيبيكية لكل فرد بالغ في الأسرة."
+  valeur: valeurs democratiques = oui

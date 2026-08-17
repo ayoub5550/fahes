@@ -1,0 +1,30 @@
+# برنامج AWS أكتيفيت للشركات الناشئة — Amazon Web Services (AWS). المصدر: https://aws.amazon.com/startups/credits
+cond:
+  valeur: oui
+
+age societe:
+  question: "ما هو عمر الشركة بالسنوات؟"
+  unité: an
+compte payant:
+  question: "هل تمتلك حساب AWS على خطة مدفوعة؟"
+financement propre:
+  question: "هل الشركة ذاتية التمويل بلا مستثمرين خارجيين؟"
+partenaire agree:
+  question: "هل حصلت على معرف من مسرّعة أو مستثمر شريك معتمد؟"
+
+cond . age_max:
+  titre: "عمر الشركة"
+  description: "تأسست الشركة خلال آخر 10 سنوات حسب شروط AWS Activate."
+  valeur: age societe <= 10 an
+cond . paid_account:
+  titre: "حساب AWS مدفوع"
+  description: "يجب امتلاك حساب AWS على خطة مدفوعة (Paid Tier)."
+  valeur: compte payant = oui
+cond . bootstrapped:
+  titre: "التمويل الذاتي"
+  description: "لفئة Founders Self-funded: يجب أن تكون الشركة ذاتية التمويل بلا مستثمرين خارجيين."
+  valeur: financement propre = oui
+cond . partner_org:
+  titre: "شريك معتمد"
+  description: "لفئة Portfolio: يجب الحصول على Org ID من مسرّعة أو مستثمر شريك معتمد لدى AWS."
+  valeur: partenaire agree = oui

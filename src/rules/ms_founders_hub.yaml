@@ -1,0 +1,31 @@
+# مايكروسوفت فور ستارت أبس – فاوندرز هَب — Microsoft Corporation. المصدر: https://foundershub.startups.microsoft.com/
+cond:
+  valeur: oui
+
+age entreprise:
+  question: "كم عمر الشركة الناشئة بالأشهر؟"
+  unité: mois
+nombre membres:
+  question: "كم عدد أعضاء الفريق في الشركة؟"
+  unité: pers
+compte microsoft:
+  question: "هل تمتلك حساب Microsoft أو Azure مفعل؟"
+projet technologique:
+  question: "هل المشروع ذو طابع تقني أو برمجيات؟"
+
+cond . age_cond:
+  titre: "مرحلة عمر الشركة"
+  description: "مفتوح من مرحلة الفكرة حتى مراحل النمو المتقدمة بحسب موقع Microsoft for Startups."
+  valeur: age entreprise >= 0 mois
+cond . team_cond:
+  titre: "حجم الفريق"
+  description: "البرنامج مصمم لدعم الشركات الناشئة بمختلف أحجام فرقها، وفقاً لـ Microsoft for Startups."
+  valeur: nombre membres >= 1 pers
+cond . ms_account:
+  titre: "حساب مايكروسوفت"
+  description: "يلزم التسجيل بحساب Microsoft أو الأزور لتفعيل الأرصدة (microsoft.com/en-us/startups)."
+  valeur: compte microsoft = oui
+cond . tech_proj:
+  titre: "طبيعة المشروع"
+  description: "البرنامج مخصص لدعم المشاريع والشركات الناشئة التقنية، حسب شروط Microsoft for Startups."
+  valeur: projet technologique = oui

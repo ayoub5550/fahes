@@ -11,11 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.CookieManager;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.activity.OnBackPressedCallback;
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
   private WebView web;
   private SwipeRefreshLayout refresh;
   private View offline;
+  private ProgressBar bar;
   private boolean loadFailed = false;
 
   @SuppressLint("SetJavaScriptEnabled")
@@ -50,6 +53,12 @@ public class MainActivity extends AppCompatActivity {
     s.setUseWideViewPort(true);
     s.setCacheMode(WebSettings.LOAD_DEFAULT);
     s.setSupportZoom(false);
+    s.setDatabaseEnabled(true);
+    s.setMixedContentMode(WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE);
+    // تمرير أنعم: تسريع عتادي صريح وإلغاء توهّج الحواف
+    web.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+    web.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+    web.setVerticalScrollBarEnabled(false);
     web.setBackgroundColor(Color.parseColor("#FAF7F7"));
     web.setOverScrollMode(View.OVER_SCROLL_NEVER);
     CookieManager.getInstance().setAcceptCookie(true);
@@ -82,6 +91,18 @@ public class MainActivity extends AppCompatActivity {
       }
     });
 
+    bar = new ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal);
+    bar.setMax(100);
+    bar.setVisibility(View.GONE);
+
+    web.setWebChromeClient(new WebChromeClient() {
+      @Override
+      public void onProgressChanged(WebView v, int p) {
+        bar.setProgress(p);
+        bar.setVisibility(p >= 100 ? View.GONE : View.VISIBLE);
+      }
+    });
+
     refresh = new SwipeRefreshLayout(this);
     refresh.setColorSchemeColors(Color.parseColor("#B31C2C"));
     refresh.addView(web, new ViewGroup.LayoutParams(
@@ -93,6 +114,8 @@ public class MainActivity extends AppCompatActivity {
 
     LinearLayout root = new LinearLayout(this);
     root.setOrientation(LinearLayout.VERTICAL);
+    root.addView(bar, new LinearLayout.LayoutParams(
+        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
     root.addView(refresh, new LinearLayout.LayoutParams(
         ViewGroup.LayoutParams.MATCH_PARENT, 0, 1f));
     root.addView(offline, new LinearLayout.LayoutParams(

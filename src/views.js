@@ -14,7 +14,7 @@ const CSS = `
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:'Tajawal',system-ui,-apple-system,'Segoe UI',sans-serif;
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,'Segoe UI','Noto Naskh Arabic','Noto Sans Arabic',Tahoma,sans-serif;
   font-size:16px;line-height:1.7;overflow-x:hidden}
 img{max-width:100%}
 a{color:var(--r600);text-decoration:none}
@@ -69,6 +69,14 @@ header.nav{position:sticky;top:0;z-index:60;background:rgba(63,10,16,.94);backdr
 .chip{flex:0 0 auto;background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:8px 15px;
   font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;color:var(--ink2)}
 .chip.on{background:linear-gradient(135deg,var(--r500),var(--r700));border-color:transparent;color:#fff}
+
+/* شريط تقدّم علوي عند التنقل — إحساس فوري بالاستجابة */
+#nprog{position:fixed;top:0;inset-inline-start:0;height:3px;width:0;z-index:99;
+  background:linear-gradient(90deg,var(--r400),#ffd9ac);transition:width .25s ease;opacity:0}
+#nprog.on{opacity:1}
+
+/* أداء: لا يُرسم القسم خارج الشاشة إلا عند الوصول إليه */
+.catsec{content-visibility:auto;contain-intrinsic-size:auto 520px}
 
 /* البطاقات */
 main{padding:26px 0 60px}
@@ -194,6 +202,8 @@ footer a{color:#ffb3ba}
   background:rgba(255,255,255,.16);padding:5px 11px;border-radius:999px;white-space:nowrap}
 `;
 
+const CSS_HASH = require('crypto').createHash('sha1').update(CSS).digest('hex').slice(0, 10);
+
 function layout(title, body, opts = {}) {
   const user = opts.user || null;
   const active = opts.active || '';
@@ -217,9 +227,7 @@ function layout(title, body, opts = {}) {
 <meta name="theme-color" content="#3f0a10">
 <title>${esc(title)} · فاحص</title>
 <meta name="description" content="فاحص — افحص أهليتك للسكن والمنح والقروض والتأشيرات في الجزائر قبل أن تودع الملف، بشروط رسمية وحساب دقيق.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-<style>${CSS}</style></head><body>
+<link rel="stylesheet" href="/a/app.${CSS_HASH}.css"></head><body>
 <header class="nav"><div class="wrap">
   <a class="brand" href="/"><span class="dot">✓</span> فاحص</a>
   <nav>${nav}</nav>
@@ -234,8 +242,14 @@ ${opts.hero || ''}
   بحساب: نحفظ فقط ما تختار حفظه في «ملفاتي»، ويمكنك حذفه في أي وقت.
   <br><span style="opacity:.7">محرّك القواعد: Publicodes مفتوح المصدر · بلا ذكاء اصطناعي</span>
 </div></footer>
+<div id="nprog"></div>
 <div class="tabbar">${tabs}</div>
+<script>(function(){var d={};function p(u){if(d[u]||!u)return;d[u]=1;var l=document.createElement('link');l.rel='prefetch';l.href=u;document.head.appendChild(l);}
+document.addEventListener('touchstart',function(e){var a=e.target.closest&&e.target.closest('a[href^="/"]');if(a)p(a.getAttribute('href'));},{passive:true,capture:true});
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="/"]');
+ if(!a||a.hash||a.target)return;var b=document.getElementById('nprog');b.className='on';b.style.width='75%';},{capture:true});
+document.addEventListener('mouseover',function(e){var a=e.target.closest&&e.target.closest('a[href^="/"]');if(a)p(a.getAttribute('href'));},{passive:true,capture:true});})();</script>
 </body></html>`;
 }
 
-module.exports = { layout, esc, num, CSS };
+module.exports = { layout, esc, num, CSS, CSS_HASH };

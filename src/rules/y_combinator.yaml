@@ -1,0 +1,37 @@
+# واي كومبيناتور (مسرّعة الشركات الناشئة) — Y Combinator LLC (الولايات المتحدة). المصدر: https://www.ycombinator.com/apply
+cond:
+  valeur: oui
+
+nombre fondateurs:
+  question: "كم عدد المؤسسين في الشركة؟"
+  unité: pers
+fondateur temps plein:
+  question: "هل يوجد مؤسس واحد على الأقل متفرغ كلياً للشركة؟"
+entreprise enregistree:
+  question: "هل الشركة مسجلة في الولايات المتحدة أو كندا أو سنغافورة أو جزر كايمان (أو مستعدة للقيام بذلك)؟"
+entretien reussi:
+  question: "هل تم اجتياز المقابلة الشخصية بنجاح مع مسرعة واي كومبيناتور؟"
+revenu mensuel:
+  question: "ما هو حجم الإيرادات الشهرية للشركة بالدولار؟"
+  unité: USD
+
+cond . equipe:
+  titre: "حجم الفريق المؤسس"
+  description: "تتطلب YC فريقاً مؤسساً قادراً على بناء المنتج؛ الحد الأدنى هو مؤسس واحد على الأقل (المصدر: YC Apply)."
+  valeur: nombre fondateurs >= 1 pers
+cond . temps_plein:
+  titre: "التفرغ الكامل"
+  description: "تفضل YC وجود مؤسس واحد على الأقل ملتزم بدوام كامل (المصدر: YC Apply)."
+  valeur: fondateur temps plein = oui
+cond . structure_legale:
+  titre: "الشكل القانوني"
+  description: "يجب أن تكون الشركة (أو تصبح) مؤسسة في الولايات المتحدة، كندا، جزر كايمان أو سنغافورة (المصدر: YC Apply)."
+  valeur: entreprise enregistree = oui
+cond . entretien:
+  titre: "المقابلة الشخصية"
+  description: "اجتياز مقابلة قصيرة (10 دقائق) بعد فرز الطلب المكتوب (المصدر: YC Apply)."
+  valeur: entretien reussi = oui
+cond . revenu:
+  titre: "الإيرادات والمرحلة"
+  description: "من فكرة إلى نمو مبكر — لا حد أدنى صارم للإيرادات (المصدر: YC Apply)."
+  valeur: revenu mensuel >= 0 USD

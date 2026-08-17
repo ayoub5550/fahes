@@ -50,4 +50,5 @@ montant . base:
   plancher: 288000 DA
 montant . part:
   titre: نصيبك التقديري
+  non applicable si: beneficiaires = 0 pers
   valeur: montant . base / beneficiaires * 1 pers

@@ -1,0 +1,36 @@
+# منحة وزارة الخارجية الإيطالية (MAECI) للطلبة الأجانب — وزارة الخارجية والتعاون الدولي الإيطالية (MAECI). المصدر: https://www.esteri.it/en/servizi-opportunita/opportunita/borse-di-studio/per-cittadini-stranieri/borsestudio_stranieri/
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو سنك؟"
+  unité: an
+possede licence:
+  question: "هل تحوز شهادة ليسانس أو ما يعادلها؟"
+lettre acceptation:
+  question: "هل لديك رسالة قبول رسمية للدكتوراه؟"
+passeport valide:
+  question: "هل لديك جواز سفر أو بطاقة هوية سارية المفعول؟"
+candidature unique:
+  question: "هل تترشح عبر دولة واحدة فقط؟"
+
+cond . age_requis:
+  titre: "السن القانوني الأدنى"
+  description: "يشترط بلوغ سن الرشد القانوني (18 سنة فما فوق) حسب الشروط العامة للمنح الدراسية."
+  valeur: age >= 18 an
+cond . licence_requise:
+  titre: "حيازة شهادة ليسانس"
+  description: "حيازة شهادة ليسانس (Laurea Triennale أو معادلة) للالتحاق بماستر إيطالي حسب المادة 2.1 من نداء MAECI 2026-2027."
+  valeur: possede licence = oui
+cond . acceptation_phd:
+  titre: "رسالة قبول الدكتوراه"
+  description: "لمسار الدكتوراه: يجب تقديم رسالة قبول رسمية من دكتوراه إيطالي (رسائل ما قبل القبول غير مقبولة) حسب المادة 2.1 من نداء MAECI."
+  valeur: lettre acceptation = oui
+cond . passeport_valide:
+  titre: "جواز سفر ساري"
+  description: "إلزامية رفع نسخة جواز سفر أو بطاقة هوية سارية المفعول عند التسجيل وإلا يُستبعد الملف (المادة 2 من نداء MAECI)."
+  valeur: passeport valide = oui
+cond . pays_unique:
+  titre: "اختيار بلد واحد فقط"
+  description: "لا يمكن الترشح إلا عبر بلد واحد (الجزائر)، حتى لو كان المترشح يحمل جنسيات متعددة."
+  valeur: candidature unique = oui

@@ -1,0 +1,36 @@
+# برنامج فولبرايت الأمريكي للطلاب الأجانب - الجزائر — السفارة الأمريكية بالجزائر عبر Amideast / IIE. المصدر: https://foreign.fulbrightonline.org/about/foreign-student-program
+cond:
+  valeur: oui
+
+nationalite algerienne:
+  question: "هل أنت مواطن جزائري ومقيم بالجزائر؟"
+niveau anglais:
+  question: "هل تتقن اللغة الإنجليزية أو لديك القدرة على حضور برنامج تقوية لغوية؟"
+annees experience:
+  question: "كم عدد سنوات الخبرة المهنية لديك؟"
+  unité: an
+nationalite americaine:
+  question: "هل تحمل الجنسية الأمريكية أو الإقامة الدائمة الأمريكية؟"
+specialite medicale:
+  question: "هل تخصصك في الطب السريري أو التمريض الإكلينيكي؟"
+
+cond . nationality:
+  titre: "الجنسية والإقامة"
+  description: "مواطن جزائري ومقيم بالجزائر طوال مراحل الترشح والاختيار والترشيح والتنسيب (حسب دليل الجزائر 2026)."
+  valeur: nationalite algerienne = oui
+cond . english:
+  titre: "مستوى اللغة الإنجليزية"
+  description: "إتقان الإنجليزية، أو القدرة على حضور برنامج تقوية لغوية (LTE) قبل بداية البرنامج (حسب دليل الجزائر 2026)."
+  valeur: niveau anglais = oui
+cond . experience:
+  titre: "الخبرة المهنية"
+  description: "خبرة عمل سنتين تُفضَّل وليست إلزامية (Optional) (حسب دليل الجزائر 2026)."
+  valeur: annees experience >= 0 an
+cond . us_citizen:
+  titre: "عدم ازدواج الجنسية الأمريكية"
+  description: "غير حامل للجنسية الأمريكية أو الإقامة الدائمة الأمريكية (حسب دليل الجزائر 2026)."
+  valeur: nationalite americaine = non
+cond . medical:
+  titre: "التخصصات الممنوعة"
+  description: "لا يُسمح بتخصصات الطب السريري والتمريض الإكلينيكي؛ العلوم الصحية غير السريرية (كالصحة العامة) مسموحة (حسب دليل الجزائر 2026)."
+  valeur: specialite medicale = non

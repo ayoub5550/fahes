@@ -1,0 +1,31 @@
+# حق الصرف السنوي (المنحة السياحية بالعملة الصعبة) — بنك الجزائر (يُنفَّذ عبر البنوك العمومية المعتمدة). المصدر: https://www.bdl.dz/ar/حق-الصرف/
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك؟"
+  unité: an
+duree voyage:
+  question: "ما هي مدة السفر بالأيام؟"
+  unité: jour
+compte bancaire:
+  question: "هل تمتلك حساباً بالدينار وحساباً بالعملة الصعبة؟"
+benefice recent:
+  question: "هل استفدت من المنحة السياحية خلال الـ 12 شهراً الأخيرة؟"
+
+cond . age_min:
+  titre: "السن الأدنى 12 سنة"
+  description: "شرط أساسي للاستفادة من حق الصرف، ألا يقل السن عن 12 سنة (بنك التنمية المحلية BDL)."
+  valeur: age >= 12 an
+cond . bank_account:
+  titre: "حيازة حساب بنكي"
+  description: "شرط إداري لتفعيل العملية وامتلاك حساب بالدينار والعملة الصعبة."
+  valeur: compte bancaire = oui
+cond . travel_duration:
+  titre: "مدة السفر 7 أيام على الأقل"
+  description: "مدة سفر لا تقل عن 7 أيام متتالية باستثناء سفر الحج (حسب FAQ بنك فرنسا الجزائر)."
+  valeur: duree voyage >= 7 jour
+cond . no_recent_benefit:
+  titre: "عدم الاستفادة خلال 12 شهراً"
+  description: "قاعدة عدم التكرار السنوي، ألا يكون قد استفاد منها خلال 12 شهراً الأخيرة."
+  valeur: benefice recent = non

@@ -1,0 +1,37 @@
+# المنحة الحكومية الصينية (CSC) — China Scholarship Council (CSC) عبر السفارة الصينية. المصدر: https://ee.china-embassy.gov.cn/eng/dssghd/202511/t20251108_11749277.htm
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك بالسنوات؟"
+  unité: an
+non chinois:
+  question: "هل أنت غير حامل للجنسية الصينية؟"
+acceptation prealable:
+  question: "هل لديك رسالة قبول مبدئية من جامعة صينية؟"
+classement top:
+  question: "هل أنت من أوائل دفعتك الأكاديمية؟"
+niveau hsk:
+  question: "ما هو مستواك في اختبار HSK؟"
+  unité: point
+
+cond . age_limite:
+  titre: "السن"
+  description: "ليسانس: أقل من 25 سنة؛ ماستر: أقل من 35 سنة؛ دكتوراه: أقل من 40 سنة (china-embassy.gov.cn)"
+  valeur: age <= 40 an
+cond . nationalite:
+  titre: "الجنسية"
+  description: "أن يكون المترشح غير حامل للجنسية الصينية حسب الشروط الرسمية."
+  valeur: non chinois = oui
+cond . acceptation:
+  titre: "قبول مسبق"
+  description: "يجب تقديم رسالة قبول مبدئية على الأقل من جامعة صينية واحدة قبل التقديم (شرط للعرض الجزائري المخصص)."
+  valeur: acceptation prealable = oui
+cond . classement:
+  titre: "الترتيب الأكاديمي"
+  description: "يشترط أن يكون الطالب من أوائل دفعته (شهادة ترتيب Ranking Certificate) للعرض الجزائري."
+  valeur: classement top = oui
+cond . hsk:
+  titre: "اللغة الصينية HSK"
+  description: "HSK3 للدراسة العامة بالصينية، HSK4 للماستر والدكتوراه بالصينية (china-embassy.gov.cn)."
+  valeur: niveau hsk >= 3 point

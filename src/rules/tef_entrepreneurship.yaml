@@ -1,0 +1,36 @@
+# برنامج مؤسسة توني إيلوميلو لريادة الأعمال — Tony Elumelu Foundation (نيجيريا). المصدر: https://www.tonyelumelufoundation.org/tef-entrepreneurship-programme
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك بالسنوات؟"
+  unité: an
+africain:
+  question: "هل أنت مواطن أفريبي ومقيم في أفريقيا؟"
+entreprise:
+  question: "هل لديك عمل قائم فعلياً؟"
+evaluation:
+  question: "هل اجتاز اختبار تقييم الأعمال؟"
+formation:
+  question: "هل أتممت 100% من وحدات التدريب؟"
+
+cond . age_requis:
+  titre: "العمر"
+  description: "18 سنة فما فوق."
+  valeur: age >= 18 an
+cond . residence_afrique:
+  titre: "الجنسية والإقامة"
+  description: "أن يكون المتقدم أفريقياً، مقيماً في أفريقيا، وينوي تأسيس/تشغيل عمله في أفريقيا (tonyelumelufoundation.org)."
+  valeur: africain = oui
+cond . phase_entreprise:
+  titre: "مرحلة العمل"
+  description: "يجب أن يكون لديه عمل قائم فعلياً (فكرة فقط غير كافية حسب الممارسة المعتمدة في العملية)."
+  valeur: entreprise = oui
+cond . evaluation_test:
+  titre: "التقييم"
+  description: "اجتياز اختبار تقييم الأعمال (business assessment) على المنصة."
+  valeur: evaluation = oui
+cond . formation_obligatoire:
+  titre: "التدريب الإلزامي"
+  description: "إتمام 100٪ من وحدات التدريب على TEFConnect."
+  valeur: formation = oui

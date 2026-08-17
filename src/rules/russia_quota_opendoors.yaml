@@ -1,0 +1,32 @@
+# منحة الحكومة الروسية وأولمبياد الأبواب المفتوحة Open Doors — Rossotrudnichestvo (البيت الروسي بالجزائر) + رابطة الجامعات العالمية (Open Doors). المصدر: https://rs.gov.ru/en/service/obrazovanie-v-rossii/
+cond:
+  valeur: oui
+
+age:
+  question: "كم عمرك بالسنوات؟"
+  unité: an
+nationalite etrangere:
+  question: "هل أنت من جنسية أجنبية (غير روسية)؟"
+avoir licence:
+  question: "هل تحوز شهادة ليسانس أو ما يعادلها؟"
+avoir master:
+  question: "هل تحوز شهادة ماستر أو ما يعادلها؟"
+
+cond . age_limit:
+  titre: "السن المقبول"
+  description: "السن يجب أن يكون ضمن الفئات المحددة حسب المسار (من 16 إلى 39 سنة) وفقاً لشروط مسار الحصص وأولمبياد Open Doors (rs.gov.ru)."
+  toutes ces conditions:
+    - age >= 16 an
+    - age <= 39 an
+cond . nationality_check:
+  titre: "الجنسية الأجنبية"
+  description: "أجنبي أو عديم الجنسية (بما فيهم الجزائريون)؛ غير مواطن روسي وفقاً لـ (rs.gov.ru)."
+  valeur: nationalite etrangere = oui
+cond . licence_check:
+  titre: "شهادة الليسانس"
+  description: "حيازة شهادة ليسانس على الأقل أو في طور إتمامها للمسارات المتقدمة (urfu.ru)."
+  valeur: avoir licence = oui
+cond . master_check:
+  titre: "شهادة الماستر"
+  description: "حيازة شهادة ماستر على الأقل لمسار الدكتوراه وما بعد الدكتوراه (urfu.ru)."
+  valeur: avoir master = oui

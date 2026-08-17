@@ -1,0 +1,29 @@
+# البطاقة المهنية للفلاح (بطاقة الفلاح) — وزارة الفلاحة والتنمية الريفية والصيد البحري. المصدر: https://madr.gov.dz/
+cond:
+  valeur: oui
+
+land ownership:
+  question: "هل تمتلك أو تستغل أرضاً زراعية؟"
+farming activity:
+  question: "هل تمارس نشاطاً فلاحياً أو إنتاجاً حيوانياً فعلياً؟"
+residence:
+  question: "هل تقيم بصفة دائمة في الولاية المعنية؟"
+written request:
+  question: "هل قمت بتحضير طلب خطي موجه للغرفة الفلاحية؟"
+
+cond . land_ownership:
+  titre: "امتلاك أو استغلال أرض زراعية"
+  description: "بعقد ملكية أو عقد إيجار/امتياز ساري المفعول."
+  valeur: land ownership = oui
+cond . farming_activity:
+  titre: "ممارسة فعلية للنشاط الفلاحي"
+  description: "إثبات بشهادة من الغرفة الفلاحية أو معاينة ميدانية لممارسة النشاط."
+  valeur: farming activity = oui
+cond . residence_cond:
+  titre: "الإقامة الدائمة في الولاية"
+  description: "شرط إداري لتقديم الطلب لدى الغرفة الفلاحية المختصة بالولاية."
+  valeur: residence = oui
+cond . written_request_cond:
+  titre: "تقديم طلب خطي للغرفة الفلاحية"
+  description: "مرفقاً بالوثائق المطلوبة لاستخراج البطاقة."
+  valeur: written request = oui

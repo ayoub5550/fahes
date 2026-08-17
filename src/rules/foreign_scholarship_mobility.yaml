@@ -1,0 +1,30 @@
+# منح التكوين الإقامي وبرنامج الحركية القصيرة المدى بالخارج — وزارة التعليم العالي والبحث العلمي (MESRS). المصدر: https://services.mesrs.dz/DCEU/course/index.php?categoryid=1
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك؟"
+  unité: an
+lettre acceptation:
+  question: "هل تمتلك رسالة قبول من مؤسسة أجنبية معترف بها؟"
+inscription electronique:
+  question: "هل قمت بالتسجيل عبر المنصة الإلكترونية الرسمية؟"
+benefice anterieur:
+  question: "هل استفدت من نفس البرنامج مسبقاً؟"
+
+cond . max_age:
+  titre: "السن الأقصى"
+  description: "بحسب المرسوم الرئاسي 14-196 وتطبيقاته الجامعية: لا يتجاوز 25 سنة لحاملي شهادة الماستر/مهندس دولة."
+  valeur: age <= 25 an
+cond . acceptance_letter:
+  titre: "رسالة قبول من مؤسسة أجنبية معترف بها"
+  description: "شرط أساسي منصوص عليه في المرسوم 14-196."
+  valeur: lettre acceptation = oui
+cond . electronic_registration:
+  titre: "التسجيل عبر منصة إلكترونية رسمية"
+  description: "لكل برنامج منصة مخصصة (DCEU لحركية 2026)."
+  valeur: inscription electronique = oui
+cond . no_previous_benefit:
+  titre: "عدم استفادة سابقة مكررة"
+  description: "حسب شروط كل قرار وزاري سنوي."
+  valeur: benefice anterieur = non

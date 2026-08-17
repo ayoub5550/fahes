@@ -1,0 +1,38 @@
+# إيراسموس+ للتبادل الشبابي — المفوضية الأوروبية / الوكالات الوطنية لإيراسموس+. المصدر: https://erasmus-plus.ec.europa.eu/programme-guide/part-b/key-action-1/youth-exchanges
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك بالسنوات؟"
+  unité: an
+duree activite:
+  question: "ما هي مدة النشاط بالأيام؟"
+  unité: jour
+taille groupe:
+  question: "ما هو عدد المشاركين في النشاط؟"
+  unité: pers
+organisation partenaire:
+  question: "هل تنضم عبر منظمة شبابية أو مجموعة غير رسمية معتمدة؟"
+
+cond . age_participant:
+  titre: "العمر"
+  description: "13–30 سنة للمشاركين العاديين (erasmus-plus.ec.europa.eu، Region 3 يشمل الجزائر)."
+  toutes ces conditions:
+    - age >= 13 an
+    - age <= 30 an
+cond . duree_activite:
+  titre: "مدة النشاط"
+  description: "من 5 إلى 21 يوماً (باستثناء أيام السفر) حسب دليل إيراسموس+."
+  toutes ces conditions:
+    - duree activite >= 5 jour
+    - duree activite <= 21 jour
+cond . taille_groupe:
+  titre: "حجم المجموعة"
+  description: "من 16 إلى 60 مشاركاً في النشاط (erasmus-plus.ec.europa.eu)."
+  toutes ces conditions:
+    - taille groupe >= 16 pers
+    - taille groupe <= 60 pers
+cond . organisation_partenaire:
+  titre: "جهة منظِّمة"
+  description: "يجب الانضمام عبر منظمة شبابية أو مجموعة غير رسمية معتمدة كطرف مشارك (لا يمكن التقديم الفردي المباشر)."
+  valeur: organisation partenaire = oui

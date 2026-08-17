@@ -1,0 +1,31 @@
+# جواز المواهب الفرنسي (Passeport Talent) — وزارة الداخلية الفرنسية / France-Visas. المصدر: https://france-visas.gouv.fr/web/france-visas/passeport-talents
+cond:
+  valeur: oui
+
+salaire annuel:
+  question: "ما هو راتبك السنوي الإجمالي باليورو؟"
+  unité: EUR
+duree contrat:
+  question: "ما هي مدة عقد العمل بالأشهر؟"
+  unité: mois
+contrat valide:
+  question: "هل لديك عقد عمل معتمد (CDI أو CDD)؟"
+diplome master:
+  question: "هل لديك شهادة ماستر على الأقل؟"
+
+cond . salaire:
+  titre: "عتبة الأجر الأدنى"
+  description: "يجب أن يصل الأجر السنوي الإجمالي إلى 39,582 يورو على الأقل لفئة العامل المؤهل (وفقاً لمرسوم 21 أوت 2025)."
+  valeur: salaire annuel >= 39582 EUR
+cond . duree:
+  titre: "مدة العقد"
+  description: "يجب ألا تقل مدة عقد العمل (CDI أو CDD) عن 6 أشهر."
+  valeur: duree contrat >= 6 mois
+cond . contrat:
+  titre: "نوع عقد العمل"
+  description: "يشترط توفر عقد عمل ساري ومقبول رسمياً من نوع CDI أو CDD."
+  valeur: contrat valide = oui
+cond . qualification:
+  titre: "المؤهل الأكاديمي"
+  description: "يشترط الحصول على شهادة ماستر على الأقل (أو مؤهل معادل)."
+  valeur: diplome master = oui

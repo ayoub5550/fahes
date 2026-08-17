@@ -1,0 +1,37 @@
+# تأشيرة العامل المهني المستقل الأسترالية (Skilled Independent) — الفئة 189 — Department of Home Affairs (أستراليا) عبر نظام SkillSelect. المصدر: https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-independent-189
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك؟"
+  unité: an
+points:
+  question: "كم عدد نقاطك المحققة في نظام SkillSelect؟"
+  unité: point
+niveau anglais:
+  question: "هل تمتلك مستوى اللغة الإنجليزية المطلوب (Competent English) على الأقل؟"
+evaluation competences:
+  question: "هل لديك تقييم مهارات صالح ومناسب لمهنتك؟"
+expression interet:
+  question: "هل قمت بتقديم تعبير عن الاهتمام (EOI)؟"
+
+cond . age_max:
+  titre: "شرط العمر"
+  description: "يجب أن يكون عمر المتقدم أقل من 45 سنة عند تقديم أو تلقي الدعوة وفق نظام SkillSelect (Department of Home Affairs)."
+  valeur: age <= 45 an
+cond . min_points:
+  titre: "الحد الأدنى للنقاط"
+  description: "الحد الأدنى القانوني للنقاط لدخول تجمع SkillSelect هو 65 نقطة (Department of Home Affairs)."
+  valeur: points >= 65 point
+cond . english_test:
+  titre: "شرط اللغة الإنجليزية"
+  description: "يتطلب الحصول على مستوى إنجليزي Competent English على الأقل (Department of Home Affairs)."
+  valeur: niveau anglais = oui
+cond . skills_assessment:
+  titre: "تقييم المهارات"
+  description: "وجود تقييم مهارات صالح ومناسب للمهنة من الهيئة المعتمدة (Department of Home Affairs)."
+  valeur: evaluation competences = oui
+cond . eoi_submitted:
+  titre: "تعبير عن الاهتمام"
+  description: "تقديم تعبير عن الاهتمام (EOI) عبر SkillSelect (Department of Home Affairs)."
+  valeur: expression interet = oui

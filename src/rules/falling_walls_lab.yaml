@@ -1,0 +1,35 @@
+# مسابقة فولينغ والز لاب — Falling Walls Foundation. المصدر: https://falling-walls.com/lab/apply
+cond:
+  valeur: oui
+
+age:
+  question: "كم عمرك بالسنوات؟"
+  unité: an
+etudiant:
+  question: "هل أنت طالب جامعي أو باحث حالياً؟"
+disponible:
+  question: "هل أنت متفرغ ومستعد للمشاركة بالفعاليات؟"
+budget:
+  question: "ما هو التمويل المتوفر أو المطلوب للمشروع؟"
+  unité: DA
+
+cond . age_min:
+  titre: "الحد الأدنى للعمر"
+  description: "يجب ألا يقل عمر المتقدم عن 18 سنة وفقاً لشروط مسابقة Falling Walls Lab الرسمية."
+  valeur: age >= 18 an
+cond . age_max:
+  titre: "الحد الأقصى للعمر"
+  description: "يجب ألا يزيد العمر عن 30 سنة للفئات المستهدفة في بعض الفئات حسب إرشادات المنصة الرسمية."
+  valeur: age <= 30 an
+cond . check_etudiant:
+  titre: "حالة الطالب أو الباحث"
+  description: "التحقق من صفة الطالب أو الباحث الأكاديمي حسب متطلبات الموقع الرسمي."
+  valeur: etudiant = oui
+cond . check_disponible:
+  titre: "التفرغ والمشاركة"
+  description: "التأكد من توفر الجاهزية والتفرغ للمشاركة في الفعاليات والتقديم عبر الموقع."
+  valeur: disponible = oui
+cond . check_budget:
+  titre: "التمويل الأولي"
+  description: "التأكد من وجود ميزانية أو دعم أولي للمشروع الابتكارى المقدم."
+  valeur: budget > 0 DA

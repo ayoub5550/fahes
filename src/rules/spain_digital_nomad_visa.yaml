@@ -1,0 +1,32 @@
+# تأشيرة الرحّالة الرقمي الإسبانية (Digital Nomad Visa) — Ministerio de Inclusión, Seguridad Social y Migraciones / UGE. المصدر: https://one.gob.es/en/procedures/application-digital-nomad-visa
+cond:
+  valeur: oui
+
+revenu mensuel:
+  question: "ما هو دخلك الشهري باليورو؟"
+  unité: EUR
+anciennete travail:
+  question: "ما هي أقدميتك في العمل الحالي بالأشهر؟"
+  unité: mois
+age entreprise:
+  question: "كم سنة مضت على تأسيس وتسجيل شركتك الأجنبية؟"
+  unité: an
+residence espagne:
+  question: "هل أقمت في إسبانيا خلال آخر 5 سنوات؟"
+
+cond . income_req:
+  titre: "الحد الأدنى للدخل الشهري"
+  description: "الحد الأدنى للدخل الشهري يجب ألا يقل عن 200% من الحد الأدنى للأجور الإسباني (2,762 يورو لعام 2025). المصدر: one.gob.es."
+  valeur: revenu mensuel >= 2762 EUR
+cond . seniority_req:
+  titre: "أقدمية علاقة العمل"
+  description: "يجب أن تكون أقدمية علاقة العمل أو التعاقد 3 أشهر على الأقل قبل تقديم الطلب. المصدر: one.gob.es."
+  valeur: anciennete travail >= 3 mois
+cond . company_age:
+  titre: "عمر الشركة الأجنبية"
+  description: "يجب إثبات نشاط الشركة الأجنبية منذ سنة على الأقل عبر شهادة تسجيل تجاري. المصدر: one.gob.es."
+  valeur: age entreprise >= 1 an
+cond . no_residence:
+  titre: "عدم الإقامة السابقة في إسبانيا"
+  description: "يُشترط عدم الإقامة في إسبانيا خلال آخر 5 سنوات لطالبي التأشيرة الجديدة من الخارج. المصدر: one.gob.es."
+  valeur: residence espagne = non

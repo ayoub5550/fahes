@@ -1,0 +1,31 @@
+# منحة كوريا الجنوبية الحكومية (GKS/KGSP) — المعهد الوطني الكوري للتعليم الدولي (NIIED). المصدر: https://www.niied.go.kr/web/NIIED/contents/niiedEng/eng_gksDegree
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك بالسنوات؟"
+  unité: an
+moyenne:
+  question: "ما هو معدلك التراكمي؟"
+  unité: point
+etranger:
+  question: "هل أنت من دولة مؤهلة وغير حامل للجنسية الكورية؟"
+deja etudie:
+  question: "هل أتممت أي درجة سابقة في كوريا الجنوبية؟"
+
+cond . cond_age:
+  titre: "السن"
+  description: "أقل من 40 سنة (أو أقل من 25 سنة للليسانس) حسب شروط NIIED الرسمية."
+  valeur: age <= 40 an
+cond . cond_moyenne:
+  titre: "المعدل الدراسي"
+  description: "معدل تراكمي (CGPA) لا يقل عن 80% أو ما يعادله طبقاً لبيانات NIIED."
+  valeur: moyenne >= 80 point
+cond . cond_etranger:
+  titre: "الجنسية"
+  description: "من دولة مؤهلة ضمن قائمة NIIED وغير حامل للجنسية الكورية."
+  valeur: etranger = oui
+cond . cond_etudes:
+  titre: "السجل الدراسي في كوريا"
+  description: "عدم إتمام أي درجة سابقة في كوريا الجنوبية."
+  valeur: deja etudie = non

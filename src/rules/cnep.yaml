@@ -48,6 +48,7 @@ montant . facteur:
 
 montant . mensualite:
   titre: القسط الشهري التقديري
+  non applicable si: duree = 0 an
   valeur: montant . credit * montant . taux mensuel * montant . facteur / (montant . facteur - 1)
 
 montant . capacite:

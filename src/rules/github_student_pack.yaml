@@ -1,0 +1,30 @@
+# حزمة مطوّري GitHub للطلاب — GitHub (مايكروسوفت). المصدر: https://education.github.com/pack
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك بالسنوات؟"
+  unité: an
+etudiant:
+  question: "هل أنت مسجل حالياً في برنامج دراسي أو تدريبي؟"
+compte github:
+  question: "هل تمتلك حساب GitHub شخصي نشط؟"
+justificatif:
+  question: "هل تتوفر لديك وثيقة إثبات طالب سارية المفعول؟"
+
+cond . age_requis:
+  titre: "العمر المقبول"
+  description: "يجب أن يكون عمر المتقدم 13 سنة فما فوق حسب توثيق منصة GitHub (docs.github.com)."
+  valeur: age >= 13 an
+cond . statut_academique:
+  titre: "الوضع الأكاديمي"
+  description: "أن يكون الطالب مسجَّلاً فعلياً في برنامج يمنح شهادة أو دبلوم معترف به (ثانوية، جامعة، تعليم منزلي)."
+  valeur: etudiant = oui
+cond . compte_github:
+  titre: "حساب GitHub"
+  description: "امتلاك حساب GitHub شخصي فعّال للتقديم على الحزمة."
+  valeur: compte github = oui
+cond . preuve_etudiant:
+  titre: "إثبات التسجيل"
+  description: "تقديم وثيقة تثبت الوضع الطلابي الحالي مثل بطاقة طالب أو كشف نقاط ساري الصلاحية."
+  valeur: justificatif = oui

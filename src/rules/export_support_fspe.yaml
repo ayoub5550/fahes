@@ -1,0 +1,31 @@
+# الصندوق الخاص لترقية الصادرات (FSPE) — وزارة التجارة الخارجية وترقية الصادرات (MCEPE) / الوكالة الوطنية لترقية التجارة الخارجية (ALGEX). المصدر: https://commerce.gov.dz/a-fonds-special-pour-la-promotion-des-exportations-fspe
+cond:
+  valeur: oui
+
+registre commerce:
+  question: "هل تمتلك سجلاً تجارياً نشطاً في نشاط التصدير؟"
+montant depense:
+  question: "ما هو مبلغ النفقات المؤهلة لترقية الصادرات؟"
+  unité: DA
+annees experience:
+  question: "كم عدد سنوات خبرتك كمُصدِّر؟"
+  unité: an
+participation feire:
+  question: "هل شاركت في معارض أو فعاليات ترويجية دولية؟"
+
+cond . registre:
+  titre: "صفة مُصدِّر جزائري مسجل"
+  description: "يجب أن يكون المتعامل الاقتصادي مصدراً معتمداً وله سجل تجاري نشط في نشاط التصدير وفقاً لمتطلبات الصندوق الخاص لترقية الصادرات (FSPE)."
+  valeur: registre commerce = oui
+cond . depense:
+  titre: "النفقة ضمن قائمة النفقات المؤهلة"
+  description: "محددة بالقرار الوزاري المشترك المؤرخ في 7 ديسمبر 2022 (مشاركة في معارض دولية، إشهار، دراسات أسواق، شهادات جودة...)."
+  valeur: montant depense > 0 DA
+cond . experience:
+  titre: "الخبرة في التصدير"
+  description: "يجب توفر حد أدنى من الخبرة العملية في مجال التصدير وفقاً للوائح الصندوق."
+  valeur: annees experience >= 1 an
+cond . participation:
+  titre: "المشاركة في الأنشطة الترويجية"
+  description: "إثبات المشاركة الفعلية في الأنشطة التسويقية والترويجية المستهدفة بالدعم."
+  valeur: participation feire = oui

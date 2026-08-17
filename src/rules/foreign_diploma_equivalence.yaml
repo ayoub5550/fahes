@@ -1,0 +1,29 @@
+# معادلة/الاعتراف بالشهادات الجامعية الأجنبية — وزارة التعليم العالي والبحث العلمي – المجلس الوطني لتقييم الشهادات (CNC) عبر منصة progres.mesrs.dz/webequivalence. المصدر: https://progres.mesrs.dz/webequivalence/pages/index.xhtml
+cond:
+  valeur: oui
+
+institution reconnue:
+  question: "هل مؤسسة الإصدار معترف بها في بلد الإصدار؟"
+depot electronique:
+  question: "هل يتم الإيداع عبر المنصة الإلكترونية حصرياً؟"
+certification consulaire:
+  question: "هل الشهادة مصادق عليها من القنصلية الجزائرية؟"
+delai respecte:
+  question: "هل تم تقديم الطلب في الآجال المحددة بالتعميم الوزاري؟"
+
+cond . institution:
+  titre: "اعتراف رسمي بمؤسسة الإصدار"
+  description: "الشهادة يجب أن تكون صادرة عن مؤسسة تعليم عالٍ معترف بها في بلد الإصدار."
+  valeur: institution reconnue = oui
+cond . depot:
+  titre: "الإيداع الإلكتروني الحصري"
+  description: "وفق القرار الوزاري رقم 1260 المؤرخ 20 ديسمبر 2015، لا يُقبل الإيداع الورقي المباشر."
+  valeur: depot electronique = oui
+cond . certification:
+  titre: "مصادقة قنصلية"
+  description: "نسخة مصادق عليها من الشهادة وكشف النقاط عبر القنصلية الجزائرية ببلد الإصدار."
+  valeur: certification consulaire = oui
+cond . delai:
+  titre: "احترام الآجال السنوية"
+  description: "تختلف حسب التعميم الوزاري لكل موسم."
+  valeur: delai respecte = oui

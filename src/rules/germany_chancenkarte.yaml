@@ -1,0 +1,38 @@
+# بطاقة الفرص الألمانية Chancenkarte — مكتب الهجرة واللاجئين الألماني (BAMF) استناداً للمادتين §20a/§20b من قانون الإقامة (AufenthG). المصدر: https://www.gesetze-im-internet.de/aufenthg_2004/__20b.html
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك بالسنوات؟"
+  unité: an
+annees experience:
+  question: "كم عدد سنوات الخبرة المهنية لديك؟"
+  unité: an
+points:
+  question: "كم عدد النقاط التي حصلت عليها في نظام النقاط؟"
+  unité: point
+diplome reconnu:
+  question: "هل لديك شهادة جامعية أو تدريب مهني معترف به؟"
+niveau b deux anglais:
+  question: "هل لديك مستوى لغة إنجليزية B2 كحد أدنى؟"
+
+cond . age_max:
+  titre: "السن المناسب للنقاط"
+  description: "السن أقل من أو يساوي 40 سنة للحصول على نقاط العمر بحسب المادة §20b AufenthG."
+  valeur: age <= 40 an
+cond . points_minimum:
+  titre: "الحد الأدنى للنقاط"
+  description: "يتطلب الحصول على بطاقة الفرص حد أدنى 6 نقاط في نظام النقاط بحسب المادة §20b AufenthG."
+  valeur: points >= 6 point
+cond . diplome_requis:
+  titre: "الاعتراف بالمؤهل"
+  description: "شهادة جامعية (مدة دراسة سنتان على الأقل) معترف بها رسمياً أو تدريب مهني معترف به."
+  valeur: diplome reconnu = oui
+cond . langue_requise:
+  titre: "مستوى اللغة الإنجليزية"
+  description: "إتقان اللغة الإنجليزية بمستوى B2 كحد أدنى كبديل للغة الألمانية بحسب متطلبات الخارجية الألمانية."
+  valeur: niveau b deux anglais = oui
+cond . experience_requise:
+  titre: "الخبرة المهنية"
+  description: "خبرة مهنية لتعزيز النقاط (5 سنوات من آخر 7 سنوات تمنح نقاطاً أعلى)."
+  valeur: annees experience >= 1 an

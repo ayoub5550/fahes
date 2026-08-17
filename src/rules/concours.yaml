@@ -49,4 +49,4 @@ cond . licenciement:
 cond . delai:
   titre: التسجيل ما زال مفتوحاً
   description: مدة التسجيل 15 يوم عمل من أول إعلان في الصحافة، والإيداع إلكتروني حصراً.
-  valeur: delai > 0
+  valeur: delai > 0 jour

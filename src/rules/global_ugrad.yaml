@@ -1,0 +1,36 @@
+# برنامج التبادل الجامعي العالمي (Global UGRAD) — وزارة الخارجية الأمريكية (تديره World Learning، وسفارة الولايات المتحدة بالجزائر/AMIDEAST). المصدر: https://exchanges.state.gov/non-us/program/global-undergraduate-exchange-program-global-ugrad
+cond:
+  valeur: oui
+
+age:
+  question: "كم عمرك؟"
+  unité: an
+nationalite:
+  question: "هل أنت مواطن جزائري ومقيم فعلياً في الجزائر؟"
+etudiant:
+  question: "هل أنت طالب ليسانس مسجل بانتظام ولديه سنة على الأقل متبقية؟"
+visa:
+  question: "هل أنت مؤهل للحصول على تأشيرة تبادل طلابي J-1؟"
+retour:
+  question: "هل تلتزم بالعودة للجزائر بعد انتهاء البرنامج؟"
+
+cond . age_cond:
+  titre: "العمر"
+  description: "يجب أن يكون عمر المترشح أكبر من 18 سنة وفقاً لمتطلبات البرنامج الرسمية في State.gov."
+  valeur: age >= 18 an
+cond . nat_cond:
+  titre: "الجنسية والإقامة"
+  description: "يجب أن يكون المترشح مواطناً جزائرياً ومقيماً فعلياً في الجزائر وقت التقديم."
+  valeur: nationalite = oui
+cond . stu_cond:
+  titre: "الوضع الجامعي"
+  description: "أن يكون طالباً جامعياً (ليسانس) مسجلاً بانتظام ولديه سنة واحدة على الأقل متبقية بجامعته."
+  valeur: etudiant = oui
+cond . visa_cond:
+  titre: "التأشيرة"
+  description: "الأهلية للحصول على تأشيرة تبادل طلابي J-1 والمحافظة عليها."
+  valeur: visa = oui
+cond . ret_cond:
+  titre: "الالتزام بالعودة"
+  description: "الالتزام بالعودة إلى الجزائر بعد انتهاء البرنامج."
+  valeur: retour = oui

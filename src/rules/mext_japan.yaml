@@ -1,0 +1,38 @@
+# المنحة الحكومية اليابانية (MEXT) — وزارة التعليم اليابانية (MEXT) عبر السفارة اليابانية. المصدر: https://www.studyinjapan.go.jp/en/smap-stopj-applications-research.html
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك بالسنوات؟"
+  unité: an
+annees etudes:
+  question: "كم عدد سنوات التعليم التي أتممتها؟"
+  unité: an
+nationalite eligible:
+  question: "هل تحمل جنسية دولة مؤهلة ولها علاقات دبلوماسية؟"
+certificat medical:
+  question: "هل لديك شهادة صحية من طبيب مختص؟"
+gpa:
+  question: "ما هو معدلك التراكمي (GPA) من 5.0؟"
+  unité: point
+
+cond . cond_age:
+  titre: "السن المطلوب"
+  description: "أقل من 35 سنة عمومًا لطلبة البحث حسب دليل MEXT الرسمي."
+  valeur: age <= 35 an
+cond . cond_etudes:
+  titre: "المستوى التعليمي"
+  description: "إتمام 16 سنة من التعليم على الأقل للالتحاق بماستر/دكتوراه أو معادلة معترف بها."
+  valeur: annees etudes >= 16 an
+cond . cond_nationalite:
+  titre: "الجنسية المؤهلة"
+  description: "أن يكون المترشح من جنسية دولة لها علاقات دبلوماسية مع اليابان (الجزائر مؤهلة)، وغير حامل للجنسية اليابانية."
+  valeur: nationalite eligible = oui
+cond . cond_sante:
+  titre: "الشهادة الصحية"
+  description: "تعبئة استمارة صحية من طبيب مختص كجزء أساسي من الملف."
+  valeur: certificat medical = oui
+cond . cond_gpa:
+  titre: "المعدل الأكاديمي"
+  description: "يُشترط أحيانًا GPA لا يقل عن 3.5 من 5.0 (حسب متطلبات بعض السفارات)."
+  valeur: gpa >= 3.5 point

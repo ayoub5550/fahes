@@ -1,0 +1,38 @@
+# تأشيرة البحث عن عمل البرتغالية (Job Seeker) أو تأشيرة D8 للعمل عن بعد — وزارة الخارجية البرتغالية (MNE) / AIMA. المصدر: https://vistos.mne.gov.pt/en/national-visas/necessary-documentation/means-of-subsistence
+cond:
+  valeur: oui
+
+revenu mensuel:
+  question: "ما هو دخلك الشهري المتوسط باليورو؟"
+  unité: EUR
+epargne disponible:
+  question: "ما هي المدخرات المتوفرة لديك باليورو؟"
+  unité: EUR
+contrat hors portugal:
+  question: "هل لديك عقد عمل أو خدمة مع جهة خارج البرتغال؟"
+casier judiciaire:
+  question: "هل لديك صحيفة سوابق عدلية نظيفة؟"
+anciennete travail:
+  question: "ما هي أقدميتك في العمل بالشهور؟"
+  unité: mois
+
+cond . revenu_d:
+  titre: "شرط الدخل الشهري لتأشيرة D8"
+  description: "يتطلب الحصول على تأشيرة D8 دخلاً شهرياً متوسطاً يعادل 4 أضعاف الحد الأدنى للأجور (نحو 3,480 يورو مرجعية 2025). المصدر: وزارة الخارجية البرتغالية."
+  valeur: revenu mensuel >= 3480 EUR
+cond . epargne_visiteur:
+  titre: "شرط المدخرات المالية"
+  description: "يُوصى بتوفر مدخرات إضافية تقارب 10,000 يورو للفرد كضمان للاستدامة المالية. المصدر: إرشادات الدعم المالي البرتغالية."
+  valeur: epargne disponible >= 10000 EUR
+cond . contrat_externe:
+  titre: "شرط عقد العمل الخارجي"
+  description: "يتطلب مسار D8 وجود علاقة عمل أو عقد خدمة مع جهة خارج البرتغال. المصدر: متطلبات تأشيرة الرحل الرقمي."
+  valeur: contrat hors portugal = oui
+cond . casier_propre:
+  titre: "شرط السوابق العدلية"
+  description: "يجب تقديم صحيفة سوابق عدلية نظيفة ومصدقة عند التقديم. المصدر: متطلبات التأشيرات الوطنية البرتغالية."
+  valeur: casier judiciaire = oui
+cond . anciennete_min:
+  titre: "شرط أقدمية العمل"
+  description: "يجب أن يكون لدى المتقدم أقدمية لا تقل عن 3 أشهر في العمل الخارجي (D8). المصدر: وثائق التقديم."
+  valeur: anciennete travail >= 3 mois

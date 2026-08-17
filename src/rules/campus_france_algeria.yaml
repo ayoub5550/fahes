@@ -1,0 +1,37 @@
+# إجراء الدراسات في فرنسا (كامبوس فرانس) — Institut français d'Algérie / Campus France. المصدر: https://www.algerie.campusfrance.org/la-procedure-campus-france-algerie-pour-qui
+cond:
+  valeur: oui
+
+age:
+  question: "كم سنك بالسنوات؟"
+  unité: an
+budget:
+  question: "ما هو رصيدك المالي المتاح لدفع رسوم الملف؟"
+  unité: DA
+possede passeport:
+  question: "هل تملك جواز سفر ساري المفعول؟"
+niveau tcf:
+  question: "هل تحصلت على شهادة TCF بمستوى B1 على الأقل؟"
+residence algerie:
+  question: "هل أنت مقيم في الجزائر؟"
+
+cond . age_min:
+  titre: "السن القانوني"
+  description: "يجب أن يكون المترشح بالسن القانوني للالتحاق بالتعليم العالي."
+  valeur: age >= 18 an
+cond . frais_dossier:
+  titre: "رسوم الملف"
+  description: "رسوم ملف بقيمة 20,000 دج غير قابلة للاسترجاع (algerie.campusfrance.org)."
+  valeur: budget > 0 DA
+cond . passeport_valide:
+  titre: "جواز السفر"
+  description: "إلزامية إنشاء الملف الإلكتروني برقم جواز سفر ساري المفعول (algerie.campusfrance.org)."
+  valeur: possede passeport = oui
+cond . langue_fr:
+  titre: "مستوى اللغة الفرنسية"
+  description: "TCF بمستوى B1 كحد أدنى إلزامي لإتمام الإجراء (algerie.campusfrance.org)."
+  valeur: niveau tcf = oui
+cond . residence:
+  titre: "الإقامة بالجزائر"
+  description: "مخصص للمقيمين بالجزائر الراغبين في الدراسة بفرنسا (algerie.campusfrance.org)."
+  valeur: residence algerie = oui

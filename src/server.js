@@ -1,5 +1,5 @@
 const express = require('express');
-const { layout, esc, num } = require('./views');
+const { layout, esc, num, CSS, CSS_HASH } = require('./views');
 const { CATEGORIES, SERVICES, BY_ID, byCat } = require('./services');
 const { ruleSet, evaluate, VERDICTS } = require('./engine');
 const visaRouter = require('./routes/visa');
@@ -8,6 +8,30 @@ const auth = require('./auth');
 
 const app = express();
 app.use(express.urlencoded({ extended: false }));
+
+/* ═══════════ أداء: ضغط gzip + ملف تنسيق مخزَّن أبدياً ═══════════ */
+const zlib = require('zlib');
+app.use((req, res, next) => {
+  if (!/\bgzip\b/.test(req.headers['accept-encoding'] || '')) return next();
+  const send = res.send.bind(res);
+  res.send = (body) => {
+    if (typeof body !== 'string' || body.length < 1024 || res.getHeader('content-encoding')) return send(body);
+    const gz = zlib.gzipSync(Buffer.from(body), { level: 6 });
+    res.setHeader('content-encoding', 'gzip');
+    res.setHeader('vary', 'accept-encoding');
+    res.setHeader('content-length', gz.length);
+    if (!res.getHeader('content-type')) res.type('html');
+    return res.end(gz);
+  };
+  next();
+});
+
+app.get('/a/app.:hash.css', (req, res) => {
+  res.type('css');
+  res.setHeader('cache-control', req.params.hash === CSS_HASH
+    ? 'public, max-age=31536000, immutable' : 'public, max-age=60');
+  res.send(CSS);
+});
 app.use(auth.attachUser);
 
 const TOTAL_CONDITIONS = SERVICES.reduce((n, s) => n + ruleSet(s.id).conditions.length, 0);

@@ -58,6 +58,7 @@ montant . credit:
   valeur: prix * (100% - apport)
 montant . mensualite:
   titre: القسط الشهري التقديري
+  non applicable si: duree = 0 an
   valeur: montant . credit * (1 + 6.75%) / montant . mois
 montant . mois:
   valeur: duree * 12 / 1 an

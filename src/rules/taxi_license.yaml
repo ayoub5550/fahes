@@ -1,0 +1,30 @@
+# رخصة استغلال خدمة سيارة أجرة (تاكسي) — وزارة النقل بالتنسيق مع البلديات. المصدر: https://www.commerce.gov.dz/reglementation/arrete-du-14-aout-2016-cahier-des-charges
+cond:
+  valeur: oui
+
+age:
+  question: "كم سنك؟"
+  unité: an
+permis:
+  question: "هل لديك رخصة سياقة سارية المفعول؟"
+vehicule:
+  question: "هل تحوز أو تستأجر مركبة مطابقة للمواصفات؟"
+casier:
+  question: "هل السجل العدلي خالٍ من موانع مزاولة المهنة؟"
+
+cond . cond_age:
+  titre: "السن الأدنى 25 سنة"
+  description: "السن الأدنى 25 سنة منصوص عليه في المادة 10 من المرسوم التنفيذي 12-230 والقرار المؤرخ 14 أوت 2016."
+  valeur: age >= 18 an
+cond . cond_permis:
+  titre: "رخصة سياقة سارية المفعول"
+  description: "رخصة سياقة سارية المفعول من الصنف المناسب حسب دفتر الشروط لنشاط التاكسي."
+  valeur: permis = oui
+cond . cond_vehicule:
+  titre: "حيازة أو استئجار مركبة مطابقة للمواصفات"
+  description: "حيازة أو استئجار مركبة مطابقة للمواصفات وفق دفتر الشروط (نموذج، سن المركبة، التجهيزات)."
+  valeur: vehicule = oui
+cond . cond_casier:
+  titre: "السجل العدلي خالٍ من موانع مزاولة المهنة"
+  description: "السجل العدلي خالٍ من موانع مزاولة المهنة كشرط إداري أساسي."
+  valeur: casier = oui

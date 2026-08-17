@@ -9,7 +9,7 @@ const Publicodes = require('publicodes');
 const Engine = Publicodes.default || Publicodes;
 const RULES_DIR = path.join(__dirname, 'rules');
 
-const UNIT_AR = { an: 'سنة', DA: 'دج', '%': '%', pers: 'شخص', mois: 'شهر', jour: 'يوم', niveau: 'طابق', point: 'نقطة', m2: 'م²', ha: 'هكتار', offre: 'عرض' };
+const UNIT_AR = { an: 'سنة', DA: 'دج', '%': '%', pers: 'شخص', mois: 'شهر', jour: 'يوم', niveau: 'طابق', point: 'نقطة', m2: 'م²', ha: 'هكتار', offre: 'عرض', USD: 'دولار', EUR: 'أورو', semaine: 'أسبوع' };
 
 /** يحمّل ملف قواعد ويستخرج الأسئلة والشروط بترتيب كتابتها. */
 function loadRuleSet(id) {
@@ -76,14 +76,20 @@ function evaluate(id, body) {
   const engine = new Engine(rs.parsed).setSituation(situation);
 
   const checks = rs.conditions.map((c) => {
-    const node = engine.evaluate(c.k);
-    const v = node.nodeValue;
+    // أي خطأ في التقييم (قسمة على صفر، وحدة غير متوافقة) يُعتبر «غير محسوم» ولا يُسقط الصفحة.
+    let v, missing = [];
+    try {
+      const node = engine.evaluate(c.k);
+      v = node.nodeValue;
+      missing = Object.keys(node.missingVariables || {});
+    } catch (e) { v = undefined; }
     const status = v === true ? 'pass' : v === false ? 'fail' : 'unknown';
-    return { id: c.k, label: c.label, why: c.why, status, missing: Object.keys(node.missingVariables || {}) };
+    return { id: c.k, label: c.label, why: c.why, status, missing };
   });
 
   const amounts = rs.amounts.map((m) => {
-    const node = engine.evaluate(m.k);
+    let node;
+    try { node = engine.evaluate(m.k); } catch (e) { return { label: m.label, value: null, unit: '' }; }
     let unit = '';
     try {
       const u = node.unit ? Publicodes.serializeUnit(node.unit) : '';

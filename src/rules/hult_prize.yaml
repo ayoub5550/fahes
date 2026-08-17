@@ -1,0 +1,35 @@
+# جائزة هَلت (Hult Prize) — Hult Prize Foundation (بالشراكة مع Hult International Business School وEF Education First). المصدر: https://www.hultprize.org/how-it-works
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك؟"
+  unité: an
+etudiant:
+  question: "هل أنت مسجل حالياً في برنامج جامعي؟"
+taille equipe:
+  question: "كم عدد أفراد الفريق المشارك؟"
+  unité: pers
+idee:
+  question: "هل لديك فكرة مشروع أو نموذج عمل؟"
+
+cond . age_requis:
+  titre: "الشرط العمري"
+  description: "يجب أن يكون عمر المشارك 18 سنة فما فوق وقت التسجيل حسب (hultprize.org/how-it-works)."
+  valeur: age >= 18 an
+cond . statut_academique:
+  titre: "الوضع الأكاديمي"
+  description: "يجب أن يكون الطالب مسجَّلاً فعلياً في أي برنامج جامعي (ليسانس أو دراسات عليا) وقت التسجيل."
+  valeur: etudiant = oui
+cond . equipe_min:
+  titre: "الحد الأدنى للفريق"
+  description: "يجب أن يتكون الفريق من طالبين على الأقل حسب (hultprize.org/how-it-works)."
+  valeur: taille equipe >= 2 pers
+cond . equipe_max:
+  titre: "الحد الأقصى للفريق"
+  description: "يجب ألا يتجاوز عدد أفراد الفريق 4 طلاب حسب (hultprize.org/how-it-works)."
+  valeur: taille equipe <= 4 pers
+cond . idee_projet:
+  titre: "فكرة المشروع"
+  description: "يجب توفر فكرة مشروع أو نموذج عمل (business idea) للمشاركة."
+  valeur: idee = oui

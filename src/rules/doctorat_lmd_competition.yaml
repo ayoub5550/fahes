@@ -1,0 +1,30 @@
+# مسابقة الالتحاق بالتكوين في الدكتوراه (الطور الثالث LMD) — وزارة التعليم العالي والبحث العلمي. المصدر: https://progres.mesrs.dz/webdoctorat/
+cond:
+  valeur: oui
+
+master:
+  question: "هل تحوز على شهادة الماستر أو ما يعادلها؟"
+inscription:
+  question: "هل قمت بالتسجيل إلكترونياً عبر منصة PROGRES؟"
+concours:
+  question: "هل اجتزت المسابقة الكتابية والشفوية؟"
+age:
+  question: "ما هو عمرك بالسنوات؟"
+  unité: an
+
+cond . master_degree:
+  titre: "شهادة الماستر أو ما يعادلها"
+  description: "حيازة شهادة ماستر أو مهندس دولة أو شهادة معادلة في التخصص المطلوب حسب إعلان المسابقة المحلي."
+  valeur: master = oui
+cond . progres_reg:
+  titre: "التسجيل الإلكتروني حصراً"
+  description: "التسجيل الحصري إلكترونياً عبر منصة PROGRES ضمن الآجال المعلنة ودون ملفات ورقية."
+  valeur: inscription = oui
+cond . exam_pass:
+  titre: "اجتياز المسابقة"
+  description: "اجتياز المسابقة الكتابية والشفوية بنجاح حسب برنامج كل قسم واختصاص."
+  valeur: concours = oui
+cond . age_limit:
+  titre: "شرط السن والترشح"
+  description: "استيفاء الشروط التنظيمية الداخلية للمؤسسة الجامعية المعنية."
+  valeur: age <= 30 an

@@ -1,0 +1,39 @@
+# تأشيرة الإقامة الذهبية الإماراتية — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP). المصدر: https://u.ae/en/information-and-services/visa-and-emirates-id/residence-visas/golden-visa
+cond:
+  valeur: oui
+
+valeur bien:
+  question: "ما هي قيمة العقار المملوك؟"
+  unité: DA
+valeur depot:
+  question: "ما هي قيمة الوديعة أو الاستثمار المالي؟"
+  unité: DA
+salaire mensuel:
+  question: "ما هو راتبك الإجمالي الشهري؟"
+  unité: DA
+montant impot:
+  question: "ما هي قيمة الضريبة السنوية المدفوعة؟"
+  unité: DA
+entrepreneur:
+  question: "هل أنت رائد أعمال لديك مشروع مبتكر معتمد؟"
+
+cond . real_estate:
+  titre: "شرط الاستثمار العقاري"
+  description: "يتطلب امتلاك عقار بقيمة لا تقل عن 2,000,000 درهم (حسب الهيئة الاتحادية للهوية والجنسية)."
+  valeur: valeur bien >= 2000000 DA
+cond . financial_investment:
+  titre: "شرط الاستثمار المالي"
+  description: "يتطلب وديعة أو صندوق استثماري أو رأسمال شركة بقيمة لا تقل عن 2,000,000 درهم (حسب موقع u.ae)."
+  valeur: valeur depot >= 2000000 DA
+cond . high_salary:
+  titre: "شرط المهنيين ذوي الرواتب المرتفعة"
+  description: "يتطلب راتباً إجمالياً شهرياً لا يقل عن 30,000 درهم (حسب إرشادات التأشيرة الذهبية)."
+  valeur: salaire mensuel >= 30000 DA
+cond . annual_tax:
+  titre: "شرط الضرائب السنوية"
+  description: "يتطلب دفع ضريبة سنوية لا تقل عن 250,000 درهم (حسب متطلبات الاستثمار المالي)."
+  valeur: montant impot >= 250000 DA
+cond . entrepreneur_cond:
+  titre: "شرط ريادة الأعمال"
+  description: "يتطلب مشروعاً مبتكراً وتقنياً مع خطاب من حاضنة أعمال معتمدة."
+  valeur: entrepreneur = oui

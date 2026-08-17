@@ -1,0 +1,32 @@
+# شهادة الجنسية الجزائرية واكتساب الجنسية — وزارة العدل. المصدر: https://courdeguelma.mjustice.dz/شهادة_الجنسية
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو سنك؟"
+  unité: an
+duree mariage:
+  question: "كم مدة الزواج بالجزائري أو الجزائرية بالسنوات؟"
+  unité: an
+duree residence:
+  question: "كم مدة الإقامة في الجزائر بالسنوات؟"
+  unité: an
+casier judiciaire vierge:
+  question: "هل السجل العدلي خلو من السوابق؟"
+
+cond . age_requis:
+  titre: "السن القانوني"
+  description: "شرط العمر للحصول على الوثائق أو تقديم الطلبات وفق التنظيم المعمول به."
+  valeur: age >= 18 an
+cond . condition_mariage:
+  titre: "اكتساب الجنسية بالزواج"
+  description: "المادة 9 مكرر (الأمر 05-01): يمكن اكتساب الجنسية بالزواج من جزائري/جزائرية متى توفرت مدة زواج وإقامة معتبرة."
+  valeur: duree mariage >= 2 an
+cond . condition_residence:
+  titre: "اكتساب الجنسية بالتجنس"
+  description: "المادة 10 من قانون الجنسية: طلب موجه لوزير العدل بشروط إقامة وسلوك ولغة."
+  valeur: duree residence >= 5 an
+cond . condition_casier:
+  titre: "عدم وجود مانع جنائي/أمني"
+  description: "شرط عام لملفات التجنس واكتساب الجنسية وفق القوانين التنظيمية."
+  valeur: casier judiciaire vierge = oui

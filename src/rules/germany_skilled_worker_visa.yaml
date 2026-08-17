@@ -1,0 +1,36 @@
+# تأشيرة العامل المؤهل الألمانية (قانون هجرة الكفاءات) — مكتب الهجرة واللاجئين الألماني (BAMF). المصدر: https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Arbeit/Fachkraft/fachkraft-node.html
+cond:
+  valeur: oui
+
+annees formation:
+  question: "ما عدد سنوات التدريب المهني الأصلية؟"
+  unité: an
+reconnaissance diplome:
+  question: "هل تم الاعتراف الكامل بالمؤهل المهني الأجنبي؟"
+niveau allemand:
+  question: "هل لديك مستوى لغة ألمانية B1 على الأقل؟"
+offre emploi:
+  question: "هل لديك عرض عمل أو عقد عمل فعلي؟"
+assurance subsistance:
+  question: "هل تم تأمين مصدر العيش طوال مدة الإقامة؟"
+
+cond . formation:
+  titre: "مدة التدريب"
+  description: "ألا تقل مدة التدريب المهني الأصلية عن سنتين."
+  valeur: annees formation >= 2 an
+cond . reconnaissance:
+  titre: "الاعتراف بالمؤهل"
+  description: "الاعتراف الكامل بالمؤهل المهني الأجنبي كمعادل للتأهيل الألماني."
+  valeur: reconnaissance diplome = oui
+cond . allemand:
+  titre: "اللغة الألمانية"
+  description: "الحصول على مستوى لغة ألمانية B1 على الأقل."
+  valeur: niveau allemand = oui
+cond . contrat:
+  titre: "عقد العمل"
+  description: "وجود عرض عمل أو عقد عمل فعلي مرتبط بالمؤهل المحصَّل عليه."
+  valeur: offre emploi = oui
+cond . subsistance:
+  titre: "مصدر العيش"
+  description: "تأمين مصدر العيش (Lebensunterhalt) طوال مدة الإقامة."
+  valeur: assurance subsistance = oui

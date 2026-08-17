@@ -1,0 +1,31 @@
+# تخصيص حصة من الصفقات العمومية للمؤسسات المصغرة والناشئة — وزارة المالية (تنظيم الصفقات العمومية). المصدر: https://www.mf.gov.dz/index.php/ar/activites-ar/1212-2023-08-13-15-52-56
+cond:
+  valeur: oui
+
+entreprise type:
+  question: "هل المؤسسة تحمل صفة مؤسسة مصغرة أو ناشئة معتمدة؟"
+registre valide:
+  question: "هل تمتلك سجلاً تجارياً ووثائق قانونية سارية؟"
+chiffre affaire:
+  question: "ما هو رقم الأعمال السنوي بالدينار الجزائري؟"
+  unité: DA
+age entreprise:
+  question: "ما هو عمر المؤسسة بالسنوات؟"
+  unité: an
+
+cond . status:
+  titre: "صفقة مؤسسة مصغّرة أو ناشئة معتمدة"
+  description: "يجب أن تحمل المؤسسة تصنيف مؤسسة مصغرة (وفق قانون التوجيه للمؤسسات الصغيرة والمتوسطة) أو علامة Startup حسب القانون 23-12."
+  valeur: entreprise type = oui
+cond . legal:
+  titre: "الأهلية القانونية والمالية العامة"
+  description: "سجل تجاري، شهادات ضريبية وشبه جبائية سارية بناءً على قواعد الصفقات العمومية القانون 23-12."
+  valeur: registre valide = oui
+cond . financial:
+  titre: "النشاط المالي والقدرة على الإنجاز"
+  description: "امتلاك نشاط مالي معتبر وفقاً لما نص عليه القانون 23-12 للطلب العمومي."
+  valeur: chiffre affaire > 0 DA
+cond . age_limit:
+  titre: "عمر المؤسسة المؤهلة"
+  description: "أن تكون المؤسسة في فترة النشاط القانوني المسموح به للمؤسسات المصغرة والناشئة."
+  valeur: age entreprise >= 1 an

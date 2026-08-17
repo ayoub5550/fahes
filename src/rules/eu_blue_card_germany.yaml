@@ -1,0 +1,30 @@
+# البطاقة الزرقاء الأوروبية بألمانيا (EU Blue Card) — السلطات الألمانية للهجرة / المفوضية الأوروبية (بوابة الهجرة). المصدر: https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-germany_en
+cond:
+  valeur: oui
+
+diplome universitaire:
+  question: "هل تمتلك شهادة جامعية معترف بها أو معادلة؟"
+salaire annuel:
+  question: "ما هو راتبك السنوي الإجمالي باليورو؟"
+  unité: EUR
+contrat travail:
+  question: "هل لديك عقد عمل أو عرض عمل ملزم في ألمانيا؟"
+assurance sante:
+  question: "هل لديك تأمين صحي ساري المفعول؟"
+
+cond . degre:
+  titre: "امتلاك شهادة جامعية معترف بها"
+  description: "يجب امتلاك شهادة جامعية معترف بها أو معادلة عبر قاعدة Anabin أو تقييم ZAB."
+  valeur: diplome universitaire = oui
+cond . contrat:
+  titre: "عقد أو عرض عمل ملزم"
+  description: "يجب وجود عقد عمل أو عرض عمل ملزم بمهنة تناسب المؤهل حسب بوابة الهجرة الأوروبية."
+  valeur: contrat travail = oui
+cond . salaire:
+  titre: "عتبة الأجر السنوي المطلوبة"
+  description: "يجب أن يبلغ الأجر السنوي الإجمالي عتبة الأجر القياسية (48,300 يورو) أو عتبة المهن الشحيحة والخريجين الجدد (43,759.80 يورو) لعام 2025."
+  valeur: salaire annuel >= 43760 EUR
+cond . assurance:
+  titre: "التأمين الصحي الساري"
+  description: "يجب توفر تأمين صحي ساري المفعول يغطي فترة الإقامة في ألمانيا."
+  valeur: assurance sante = oui

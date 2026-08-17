@@ -1,0 +1,37 @@
+# تأشيرة المواهب العالمية البريطانية (Global Talent) — Home Office (المملكة المتحدة) / هيئات مصادِقة (Royal Society، British Academy، Royal Academy of Engineering، Arts Council England، Tech Nation/UKRI). المصدر: https://www.gov.uk/global-talent
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك بالسنوات؟"
+  unité: an
+annees experience:
+  question: "كم عدد سنوات الخبرة لديك؟"
+  unité: an
+has endorsement:
+  question: "هل حصلت على تصديق (endorsement) من هيئة معتمدة؟"
+has award:
+  question: "هل فزت بجائزة دولية مرموقة معتمدة رسمياً؟"
+works in eligible field:
+  question: "هل تعمل في أحد المجالات المشمولة (العلوم، الهندسة، التكنولوجيا، الفنون)؟"
+
+cond . age_min:
+  titre: "الشرط العمري"
+  description: "العمر يجب أن يكون 18 سنة فما فوق بناءً على القواعد الرسمية لتأشيرة المواهب العالمية."
+  valeur: age >= 18 an
+cond . experience_max:
+  titre: "سنوات الخبرة"
+  description: "لمسار الواعد الاستثنائي عادة ما تكون سنوات الخبرة محددة وفق متطلبات الهيئة المعتمدة (GOV.UK)."
+  valeur: annees experience <= 30 an
+cond . endorsement_check:
+  titre: "تصديق الهيئة المعتمدة"
+  description: "الحصول على تصديق (endorsement) من هيئة معتمدة كـ موهبة استثنائية أو واعد استثنائي."
+  valeur: has endorsement = oui
+cond . award_check:
+  titre: "الجائزة المرموقة"
+  description: "الفوز بجائزة مرموقة مدرجة رسميًا يعفي المتقدم من تقديم طلب التصديق."
+  valeur: has award = oui
+cond . field_check:
+  titre: "مجال العمل المؤهل"
+  description: "العمل في أحد المجالات المعتمدة: العلوم، الهندسة، الطب، التكنولوجيا الرقمية، أو الفنون والثقافة."
+  valeur: works in eligible field = oui

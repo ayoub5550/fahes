@@ -1,0 +1,37 @@
+# تأشيرة العامل المؤهل البريطانية — Home Office (المملكة المتحدة) / GOV.UK. المصدر: https://www.gov.uk/skilled-worker-visa/your-job
+cond:
+  valeur: oui
+
+salary:
+  question: "ما هو راتبك السنوي؟"
+  unité: EUR
+rqf level:
+  question: "ما هو مستوى المهنة (RQF)؟"
+  unité: point
+has job offer:
+  question: "هل لديك عرض عمل من صاحب عمل مرخّص؟"
+has english level:
+  question: "هل تستوفي مستوى اللغة الإنجليزية المطلوب CEFR B1؟"
+has funds:
+  question: "هل لديك إثبات أموال كافية (£1,270) أو يتكفل بها صاحب العمل؟"
+
+cond . job_offer:
+  titre: "عرض العمل والكفالة"
+  description: "يتطلب الحصول على التأشيرة عرض عمل من صاحب عمل مرخّص يحمل ترخيص كفالة (Sponsor Licence) ويصدر شهادة كفالة (CoS)."
+  valeur: has job offer = oui
+cond . rqf:
+  titre: "مستوى المهنة المهاري"
+  description: "يجب أن تكون المهنة ضمن المستوى المهاري المطلوب RQF 6 فأعلى وفقاً للتحديثات الرسمية."
+  valeur: rqf level >= 6 point
+cond . min_salary:
+  titre: "الحد الأدنى للأجر"
+  description: "الحد الأدنى العام للأجر هو £41,700 سنويًا أو الأجر المعتمد للمهنة أيهما أعلى، وفقًا لبيانات GOV.UK."
+  valeur: salary >= 41700 EUR
+cond . english:
+  titre: "مستوى اللغة الإنجليزية"
+  description: "يجب إثبات مستوى لغة إنجليزية لا يقل عن CEFR B1 في المهارات الأربع."
+  valeur: has english level = oui
+cond . financial:
+  titre: "إثبات الأموال الكافية"
+  description: "يجب توفر أموال كافية (£1,270) لدعم المعيشة ما لم يتكفل صاحب العمل بذلك في شهادة الكفالة."
+  valeur: has funds = oui

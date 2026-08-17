@@ -30,6 +30,7 @@ montant . total:
   valeur: prix + montant . marge
 montant . mensualite:
   titre: القسط الشهري التقديري
+  non applicable si: duree = 0 an
   valeur: montant . total / (duree * 12 / 1 an)
 montant . capacite:
   titre: أقصى قسط يقبله البنك (30% من الدخل)

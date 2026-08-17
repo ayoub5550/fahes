@@ -1,0 +1,29 @@
+# مسرّعة تكستارز — Techstars (الولايات المتحدة، برامج متعددة حول العالم). المصدر: https://www.techstars.com/apply
+cond:
+  valeur: oui
+
+stage early:
+  question: "هل الشركة ناشئة في مرحلة مبكرة جدا؟"
+presence physique:
+  question: "هل يمكنك الالتزام بالحضور الفعلي لمدة 3 أشهر؟"
+visa possible:
+  question: "هل يمكنك الحصول على تأشيرة لدخول بلد البرنامج؟"
+fondateur temps plein:
+  question: "هل يوجد مؤسس واحد على الأقل متفرغ كلياً للمشروع؟"
+
+cond . stage:
+  titre: "مرحلة الشركة"
+  description: "شركات ناشئة في مرحلة مبكرة جداً (early-stage) بحسب صفحة accelerators الرسمية."
+  valeur: stage early = oui
+cond . presence:
+  titre: "الحضور الشخصي"
+  description: "الالتزام بالحضور الفعلي في مدينة البرنامج لمدة 3 أشهر تقريباً (لا برامج عن بعد بالكامل لمعظم المسارات) بحسب صفحة accelerators الرسمية."
+  valeur: presence physique = oui
+cond . visa:
+  titre: "التأشيرة"
+  description: "الحصول على تأشيرة الحضور في بلد البرنامج (غالباً أمريكا/أوروبا) شرط عملي بحسب صفحة accelerators الرسمية."
+  valeur: visa possible = oui
+cond . fondateur:
+  titre: "فريق المؤسسين"
+  description: "يفضَّل مؤسس واحد على الأقل ملتزم بدوام كامل بالمشروع بحسب صفحة accelerators الرسمية."
+  valeur: fondateur temps plein = oui

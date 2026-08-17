@@ -44,7 +44,7 @@ cond . plateforme:
 cond . delai:
   titre: أجل إدخال الرغبات لم ينقضِ
   description: الآجال قصيرة جداً وتُنشر في المنشور الوزاري السنوي.
-  valeur: delai > 0
+  valeur: delai > 0 jour
 cond . unicite:
   titre: أحادية التسجيل
   description: حامل أكثر من بكالوريا لا يستفيد سوى من تسجيل جامعي واحد.

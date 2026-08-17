@@ -1,0 +1,35 @@
+# الاعتماد كمصدّر / شهادة للمصدّر لدى مديرية التجارة — وزارة التجارة (مديريات التجارة الولائية) بالتنسيق مع الجمارك الجزائرية. المصدر: https://www.dcwalger.dz/index.php/commerce-exterieur/expcc
+cond:
+  valeur: oui
+
+registre:
+  question: "هل تمتلك سجلاً تجارياً بنشاط تصدير؟"
+cahier:
+  question: "هل المنتج خاضع لدفتر شروط وفق المرسوم 07-102؟"
+certification:
+  question: "هل تقدم شهادة المنشأ عند كل عملية تصدير؟"
+douane:
+  question: "هل تقدم الشهادة لمصالح الجمارك قبل التصدير؟"
+respect:
+  question: "هل تحترم قانون الجمارك ودليل المصدّر السنوي؟"
+
+cond . cahier_conditions:
+  titre: "التصدير خاضع لدفتر شروط"
+  description: "ينطبق على المنتجات والأنشطة المصنّفة ضمن دفتر شروط خاص وفق المرسوم التنفيذي 07-102 المؤرخ 2 أفريل 2007."
+  valeur: cahier = oui
+cond . registre_tijari:
+  titre: "سجل تجاري بنشاط تصدير"
+  description: "شرط أساسي لتقديم الطلب لدى مديرية التجارة الولائية حسب توجيهات وزارة التجارة."
+  valeur: registre = oui
+cond . shahada_manshaa:
+  titre: "تقديم شهادة المنشأ عند كل عملية تصدير"
+  description: "استمارة موقعة ومؤشرة من المصدّر مرفقة بفاتورة معتمدة وفق موقع commerce.gov.dz."
+  valeur: certification = oui
+cond . douane_subm:
+  titre: "تقديم الشهادة لمصالح الجمارك قبل التصدير"
+  description: "إلزامي تقديم الشهادة لمصالح الجمارك قبل كل عملية شحن خاضعة لدفتر الشروط."
+  valeur: douane = oui
+cond . customs_law:
+  titre: "احترام قانون الجمارك ودليل المصدّر السنوي"
+  description: "الصادر عن المديرية العامة للجمارك وفق دليل المصدّر 2024."
+  valeur: respect = oui

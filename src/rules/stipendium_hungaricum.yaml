@@ -1,0 +1,38 @@
+# منحة "ستيبنديوم هنغاريكوم" المجرية — Tempus Public Foundation (المجر). المصدر: https://stipendiumhungaricum.hu/apply/
+cond:
+  valeur: oui
+
+nationalite algerienne:
+  question: "هل أنت مواطن جزائري؟"
+score admission:
+  question: "ما هي نقطة اختبار القبول لديك؟"
+  unité: point
+double depot:
+  question: "هل قمت بتقديم الملف عبر النظام الإلكتروني والجهة الوطنية معاً؟"
+nombre programmes:
+  question: "كم عدد البرامج الدراسية المختارة؟"
+  unité: point
+age:
+  question: "ما هو عمرك؟"
+  unité: an
+
+cond . nationality:
+  titre: "الجنسية الجزائرية"
+  description: "مواطن جزائري (مُدرجة صراحة في قائمة الشركاء المؤهلين ببرنامج الليسانس/الماستر/الدكتوراه بدوام كامل حسب نداء الترشح 2026/2027)."
+  valeur: nationalite algerienne = oui
+cond . score:
+  titre: "نتيجة مسابقة القبول"
+  description: "حد أدنى 56/100 نقطة في اختبار القبول لدى الجامعة المختارة حسب نداء الترشح."
+  valeur: score admission >= 56 point
+cond . channel:
+  titre: "قناة الترشح المزدوجة"
+  description: "يجب تقديم الملف عبر النظام الإلكتروني (DreamApply) وأيضًا عبر الجهة الوطنية المسؤولة بالجزائر."
+  valeur: double depot = oui
+cond . choices:
+  titre: "عدد الاختيارات"
+  description: "يُسمح باختيار برنامجين دراسيين فقط كحد أقصى من بين البرامج المتاحة."
+  valeur: nombre programmes <= 2 point
+cond . age_req:
+  titre: "السن القانوني"
+  description: "الحد الأدنى لسن المترشح هو 18 سنة للدراسة الجامعية."
+  valeur: age >= 18 an

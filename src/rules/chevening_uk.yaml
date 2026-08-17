@@ -1,0 +1,37 @@
+# منحة شيفنينغ البريطانية — مكتب الخارجية البريطاني (FCDO) عبر British Council. المصدر: https://www.chevening.org/scholarship/algeria/
+cond:
+  valeur: oui
+
+annees experience:
+  question: "كم عدد سنوات الخبرة المهنية لديك بعد التخرج؟"
+  unité: an
+resident uk:
+  question: "هل أنت مقيم حاليا في المملكة المتحدة؟"
+retour algerie:
+  question: "هل تلتزم بالعودة والإقامة في الجزائر لمدة سنتين بعد المنحة؟"
+offre universitaire:
+  question: "هل لديك عرض قبول جامعي غير مشروط في بريطانيا؟"
+age:
+  question: "ما هو عمرك الحالي؟"
+  unité: an
+
+cond . experience:
+  titre: "الخبرة المهنية"
+  description: "خبرة عمل لا تقل عن سنتين (2800 ساعة عمل) بعد التخرج من الليسانس (chevening.org/resource-hub/guidance/eligibility)"
+  valeur: annees experience >= 2 an
+cond . resident:
+  titre: "عدم الإقامة بالمملكة المتحدة"
+  description: "غير مقيم بالمملكة المتحدة وقت التقديم حسب شروط المنحة الرسمية"
+  valeur: resident uk = non
+cond . retour:
+  titre: "العودة للوطن"
+  description: "الالتزام بالعودة والإقامة في الجزائر لمدة سنتين على الأقل بعد انتهاء المنحة"
+  valeur: retour algerie = oui
+cond . offre:
+  titre: "قبول جامعي"
+  description: "الحصول على عرض قبول غير مشروط (Unconditional Offer) من واحدة من التخصصات المختارة قبل الموعد النهائي"
+  valeur: offre universitaire = oui
+cond . age_limit:
+  titre: "السن القانوني"
+  description: "أن يكون المترشح بالسن القانوني للترشح حسب الشروط العامة"
+  valeur: age >= 18 an

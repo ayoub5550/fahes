@@ -1,0 +1,38 @@
+# منح خدمة التبادل الأكاديمي الألماني (DAAD) — DAAD (الحكومة الألمانية). المصدر: https://www.daad.de/en/studying-in-germany/scholarships/information-for-scholarship-applicants/
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك؟"
+  unité: an
+annees diplome:
+  question: "كم عدد السنوات منذ حصولك على آخر شهادة جامعية؟"
+  unité: an
+annees experience:
+  question: "كم عدد سنوات الخبرة المهنية لديك؟"
+  unité: an
+maitrise langue:
+  question: "هل تملك مستوى اللغة المطلوب (C1 للألمانية أو TOEFL/IELTS للإنجليزية)?"
+resident pays d origine:
+  question: "هل تقيم في بلد المنشأ حالياً؟"
+
+cond . age_requis:
+  titre: "لا يوجد سن أقصى عام"
+  description: "لا يوجد حد سن ثابت في أغلب البرامج، إلا استثناءات محددة يذكرها كل نداء ترشح (daad.de - سؤال شائع رقم 1)."
+  valeur: age >= 18 an
+cond . delai_diplome:
+  titre: "تاريخ آخر شهادة"
+  description: "عادة لا يتجاوز عمر آخر شهادة جامعية 6 سنوات وقت الترشح (مثال برنامج EPOS للدراسات العليا التنموية)."
+  valeur: annees diplome <= 6 an
+cond . experience_professionnelle:
+  titre: "خبرة مهنية"
+  description: "برنامج EPOS تحديدًا يشترط سنتين خبرة مهنية على الأقل بعد التخرج حسب متطلبات DAAD."
+  valeur: annees experience >= 2 an
+cond . niveau_langue:
+  titre: "مستوى اللغة"
+  description: "غالبًا C1 إذا كانت الدراسة بالألمانية (DSH/TestDaF)، أو TOEFL/IELTS إذا بالإنجليزية — يحدَّد لكل برنامج (daad.de)."
+  valeur: maitrise langue = oui
+cond . pays_residence:
+  titre: "بلد الإقامة"
+  description: "يفضَّل التقديم من بلد المنشأ؛ التقديم من بلد إقامة آخر ممكن بشروط خاصة حسب إرشادات DAAD."
+  valeur: resident pays d origine = oui

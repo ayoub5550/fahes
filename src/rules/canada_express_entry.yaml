@@ -1,0 +1,37 @@
+# نظام الدخول السريع الكندي (Express Entry) ونظام النقاط الشامل CRS — Immigration, Refugees and Citizenship Canada (IRCC). المصدر: https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score/crs-criteria.html
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك بالسنوات؟"
+  unité: an
+annees experience:
+  question: "كم عدد سنوات الخبرة المهنية لديك؟"
+  unité: an
+diplome valide:
+  question: "هل تمتلك شهادة أجنبية مع تقرير معادلة ECA معتمد؟"
+fonds suffisant:
+  question: "هل تمتلك إثبات أموال كافية حسب متطلبات IRCC؟"
+test langue:
+  question: "هل أجريت اختبار لغة معتمد حديث؟"
+
+cond . age_condition:
+  titre: "الشرط العمري"
+  description: "أعلى نقاط CRS بين 20-29 سنة، تتناقص تدريجيًا بعد 30 وتنعدم عند 45 فأكثر حسب معايير (canada.ca/crs-criteria)."
+  valeur: age >= 20 an
+cond . experience_condition:
+  titre: "شرط الخبرة المهنية"
+  description: "FSWP يشترط سنة كاملة (أو مكافئها) خبرة بدوام كامل خلال آخر 10 سنوات في مهنة TEER 0/1/2/3 حسب (canada.ca/who-can-apply)."
+  valeur: annees experience >= 1 an
+cond . diplome_condition:
+  titre: "شرط معادلة الشهادة"
+  description: "يجب معادلة الشهادة الأجنبية عبر تقرير ECA (Educational Credential Assessment) من جهة معتمدة من IRCC."
+  valeur: diplome valide = oui
+cond . fonds_condition:
+  titre: "شرط إثبات الأموال"
+  description: "يُشترط لبرنامج FSWP إثبات أموال كافية (Proof of Funds) حسب حجم الأسرة (canada.ca)."
+  valeur: fonds suffisant = oui
+cond . langue_condition:
+  titre: "شرط اختبار اللغة"
+  description: "الحد الأدنى للتأهل العام CLB 7 لمهن TEER 0/1، CLB 5 لمهن TEER 2/3 حسب (canada.ca/who-can-apply)."
+  valeur: test langue = oui
