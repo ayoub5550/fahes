@@ -22,6 +22,7 @@ app.get('/', (req, res) => {
     <p>سكن، منح، قروض، مشاريع، تأشيرات… أجب على أسئلة قصيرة، ويقول لك فاحص أي شرط رسمي ينقصك،
        وما هي وثائقك، وأين تودع الملف رسمياً.</p>
     <a class="btn light" href="#services">ابدأ الفحص ←</a>
+    <a class="btn ghost" style="margin-inline-start:8px" href="/app">📱 حمّل التطبيق</a>
     <div class="stats">
       <div><b>${SERVICES.length + 1}</b><span>خدمة قابلة للفحص</span></div>
       <div><b>${TOTAL_CONDITIONS}</b><span>شرط رسمي مبرمَج</span></div>
@@ -201,6 +202,35 @@ app.post('/s/:id', (req, res) => {
   </div>`;
 
   res.send(layout('نتيجة الفحص · ' + s.name, body, { user: req.user, active: 'services' }));
+});
+
+/* ═══════════ تحميل التطبيق ═══════════ */
+const path = require('path');
+const fs = require('fs');
+const APK_PATH = process.env.FAHES_APK || path.join(__dirname, '..', 'public', 'fahes.apk');
+const APK_VERSION = '1.0';
+
+app.get('/app', (req, res) => {
+  const exists = fs.existsSync(APK_PATH);
+  const size = exists ? (fs.statSync(APK_PATH).size / 1048576).toFixed(1) : null;
+  res.send(layout('تطبيق فاحص للأندرويد', `
+  <section style="text-align:center">
+    <h2 class="sec">📱 حمّل تطبيق فاحص</h2>
+    <p class="sub">نفس الخدمات الـ${SERVICES.length} داخل تطبيق أندرويد خفيف، مع حسابك وملفاتك المحفوظة.</p>
+    <div class="card" style="max-width:430px;margin:0 auto;text-align:center">
+      <div style="font-size:44px">✓</div>
+      <b style="font-size:19px">فاحص ${APK_VERSION}</b>
+      <p class="sub" style="margin:4px 0 14px">${exists ? size + ' ميغا · أندرويد 7.0 فأحدث' : 'الملف غير متوفر حالياً'}</p>
+      ${exists ? '<a class="btn block" href="/app/download">⬇️ تحميل APK</a>' : ''}
+      <div class="src" style="text-align:start">عند التثبيت سيطلب منك الهاتف السماح بتثبيت التطبيقات من مصدر خارجي —
+        هذا طبيعي لأي تطبيق يُحمَّل خارج المتجر. النسخة نفسها مُعدّة أيضاً بصيغة AAB للنشر على Google Play.</div>
+    </div>
+  </section>`, { user: req.user }));
+});
+
+app.get('/app/download', (req, res) => {
+  if (!fs.existsSync(APK_PATH)) return res.redirect('/app');
+  res.download(APK_PATH, `fahes-${APK_VERSION}.apk`);
 });
 
 /* ═══════════ حفظ نتيجة الفحص ═══════════ */

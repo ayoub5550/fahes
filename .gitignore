@@ -7,3 +7,4 @@ android/app/build/
 android/local.properties
 android/fahes-release.jks
 android/build.log
+public/fahes.apk
