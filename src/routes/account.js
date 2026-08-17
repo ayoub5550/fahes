@@ -68,7 +68,18 @@ router.get('/login', (req, res) => {
   }));
 });
 
+const ATTEMPTS = new Map();
+function tooMany(ip) {
+  const now = Date.now();
+  const e = ATTEMPTS.get(ip) || { n: 0, t: now };
+  if (now - e.t > 15 * 60e3) { e.n = 0; e.t = now; }
+  e.n += 1; ATTEMPTS.set(ip, e);
+  if (ATTEMPTS.size > 5000) ATTEMPTS.clear();
+  return e.n > 10;
+}
+
 router.post('/login', (req, res) => {
+  if (tooMany(req.ip)) return res.redirect('/login?e=' + encodeURIComponent('محاولات كثيرة. أعد المحاولة بعد 15 دقيقة.'));
   const user = auth.authenticate(req.body.email, req.body.password);
   if (!user) return res.redirect('/login?e=' + encodeURIComponent('البريد أو كلمة السر غير صحيحة.'));
   res.setHeader('Set-Cookie', auth.sessionCookie(user.id));

@@ -1,0 +1,35 @@
+# رخصة البناء وشهادة المطابقة — وزارة السكن والعمران والمدينة – المجالس الشعبية البلدية والولائية. المصدر: https://www.mhuv.gov.dz/?p=4374
+cond:
+  valeur: oui
+
+delai ecoule:
+  question: "كم عدد الأيام منذ إيداع الطلب؟"
+  unité: jour
+travaux conformes:
+  question: "هل تم تحقيق مطابقة البناية؟"
+exploitation avant certificat:
+  question: "هل تم استغلال البناية قبل الحصول على شهادة المطابقة؟"
+retard achevement:
+  question: "كم عدد أيام التأخير في إتمام الأشغال؟"
+  unité: jour
+
+cond . delai_reponse:
+  titre: "آجال الرد على رخصة البناء"
+  description: "تُسلَّم رخصة البناء خلال 20 يوماً الموالية لتاريخ إيداع الطلب [المصدر: https://www.mhuv.gov.dz/?p=4374]"
+  valeur: delai ecoule <= 20 jour
+cond . recours_wilaya:
+  titre: "آجال الرد من طرف الولاية"
+  description: "في حالة عدم الرد أو عدم الاقتناع بالرد، يمكن إيداع طلب لدى الولاية ويُبت فيه خلال 15 يوماً [المصدر: https://www.mhuv.gov.dz/?p=4374]"
+  valeur: delai ecoule <= 15 jour
+cond . conformite_batiment:
+  titre: "إلزامية مطابقة البناية"
+  description: "تحقيق مطابقة البناية إلزامي قبل استغلالها أو السكن فيها [المصدر: https://www.tribunaldz.com/forum/p4840]"
+  valeur: travaux conformes = oui
+cond . interdiction_exploitation:
+  titre: "منع الاستغلال قبل شهادة المطابقة"
+  description: "استغلال بناية قبل الحصول على شهادة المطابقة يعرض لعقوبات مالية من 20.000 دج إلى 50.000 دج [المصدر: https://www.tribunaldz.com/forum/p4840]"
+  valeur: exploitation avant certificat = non
+cond . delai_achevement:
+  titre: "التزام آجال إتمام الأشغال"
+  description: "من لا يتمم أشغال الإنجاز في الأجل المحدد في رخصة إتمام الإنجاز يتعرض لغرامة من 20.000 دج إلى 50.000 دج [المصدر: https://www.tribunaldz.com/forum/p4840]"
+  valeur: retard achevement <= 0 jour

@@ -1,0 +1,29 @@
+# منحة NL الهولندية — وزارة التعليم والثقافة والعلوم الهولندية (OCW) بالشراكة مع مؤسسة Nuffic والجامعات الهولندية. المصدر: https://www.studyinnl.org/finances/nl-scholarship
+cond:
+  valeur: oui
+
+outside eea:
+  question: "هل جنسيتك من خارج المنطقة الاقتصادية الأوروبية؟"
+full time study:
+  question: "هل تدرس في برنامج بكالوريوس أو ماجستير بدوام كامل في مؤسسة هولندية مشاركة؟"
+previous dutch degree:
+  question: "هل حصلت على شهادة سابقة من مؤسسة تعليمية هولندية؟"
+institution requirements met:
+  question: "هل استوفيت الشروط الخاصة بالمؤسسة التعليمية المختارة؟"
+
+cond . cond_eea:
+  titre: "شرط الجنسية خارج المنطقة الاقتصادية الأوروبية"
+  description: "أن تكون الجنسية من خارج المنطقة الاقتصادية الأوروبية (غير EEA) [المصدر: https://www.studyinnl.org/finances/nl-scholarship]"
+  valeur: outside eea = oui
+cond . cond_study:
+  titre: "شرط الدراسة بدوام كامل"
+  description: "التقديم لبرنامج بكالوريوس أو ماجستير بدوام كامل في مؤسسة هولندية مشاركة [المصدر: https://www.studyinnl.org/finances/nl-scholarship]"
+  valeur: full time study = oui
+cond . cond_degree:
+  titre: "عدم الحصول على شهادة سابقة هولندية"
+  description: "عدم الحصول على شهادة سابقة من مؤسسة تعليمية هولندية [المصدر: https://www.studyinnl.org/finances/nl-scholarship]"
+  valeur: previous dutch degree = non
+cond . cond_inst:
+  titre: "استيفاء شروط المؤسسة التعليمية"
+  description: "استيفاء الشروط الخاصة بالمؤسسة التعليمية المختارة [المصدر: https://www.studyinnl.org/finances/nl-scholarship]"
+  valeur: institution requirements met = oui

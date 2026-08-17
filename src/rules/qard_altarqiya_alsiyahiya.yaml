@@ -1,0 +1,31 @@
+# قرض الترقية السياحية — بنك التنمية المحلية (BDL) بالشراكة مع وزارة السياحة والصناعة التقليدية. المصدر: https://www.bdl.dz/ar/%d8%a7%d9%84%d8%aa%d8%b1%d9%82%d9%8a%d8%a9-%d8%a7%d9%84%d8%b3%d9%8a%d8%a7%d8%ad%d9%8a%d8%a9/
+cond:
+  valeur: oui
+
+duree remboursement:
+  question: "ما هي مدة سداد القرض بالسنوات؟"
+  unité: an
+periode echeance:
+  question: "ما هي فترة الإمهال بالأشهر؟"
+  unité: mois
+garantie presente:
+  question: "هل تتوفر الضمانات البنكية المطلوبة (رهن عقاري أو معدات)؟"
+etude economique:
+  question: "هل تتوفر دراسة تقنو-اقتصادية للمشروع؟"
+
+cond . duree_remboursement:
+  titre: "مدة السداد"
+  description: "مدة سداد القرض تصل إلى 10 سنوات كحد أقصى [المصدر: https://www.bdl.dz/ar/%d8%a7%d9%84%d8%aa%d8%b1%d9%82%d9%8a%d8%a9-%d8%a7%d9%84%d8%b3%d9%8a%d8%a7%d8%ad%d9%8a%d8%a9/]"
+  valeur: duree remboursement <= 10 an
+cond . periode_echeance:
+  titre: "فترة الإمهال"
+  description: "فترة إمهال (تأجيل السداد) تصل إلى 36 شهراً [المصدر: https://www.bdl.dz/ar/%d8%a7%d9%84%d8%aa%d8%b1%d9%82%d9%8a%d8%a9-%d8%a7%d9%84%d8%b3%d9%8a%d8%a7%d8%ad%d9%8a%d8%a9/]"
+  valeur: periode echeance <= 36 mois
+cond . garantie_banque:
+  titre: "الضمانات البنكية"
+  description: "تقديم ضمانات مثل رهن العقار أو رهن الآلات والمعدات [المصدر: https://www.bdl.dz/ar/%d8%a7%d9%84%d8%aa%d8%b1%d9%82%d9%8a%d8%a9-%d8%a7%d9%84%d8%b3%d9%8a%d8%a7%d8%ad%d9%8a%d8%a9/]"
+  valeur: garantie presente = oui
+cond . etude_projet:
+  titre: "الدراسة التقنو-اقتصادية"
+  description: "عقد ملكية أو إيجار المحل ودراسة تقنو-اقتصادية للمشروع [المصدر: https://www.bdl.dz/ar/%d8%a7%d9%84%d8%aa%d8%b1%d9%82%d9%8a%d8%a9-%d8%a7%d9%84%d8%b3%d9%8a%d8%a7%d8%ad%d9%8a%d8%a9/]"
+  valeur: etude economique = oui

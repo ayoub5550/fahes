@@ -1,0 +1,29 @@
+# شهادة السوابق القضائية (القسيمة رقم 3) عبر الإنترنت — وزارة العدل – حافظ الأختام. المصدر: https://e-casier.mjustice.dz
+cond:
+  valeur: oui
+
+resident algerie:
+  question: "هل أنت مقيم في الجزائر؟"
+personne recherchee:
+  question: "هل أنت شخص مبحوث عنه من طرف العدالة؟"
+donnees exactes:
+  question: "هل بيانات الحالة المدنية مطابقة تماماً للسجلات الرسمية؟"
+version electronique:
+  question: "هل تطلب النسخة الإلكترونية للخدمة؟"
+
+cond . residence:
+  titre: "الإقامة بالجزائر"
+  description: "غير متاحة للجزائريين المقيمين خارج الوطن (يلجؤون لقنصلياتهم) [المصدر: https://www.zarkachat.com/casier-judiciaire/]"
+  valeur: resident algerie = oui
+cond . recherche:
+  titre: "المتابعة القضائية"
+  description: "الخدمة متاحة لكل المواطنين المدانين وغير المدانين باستثناء المبحوث عنهم [المصدر: https://radioalgerie.dz/news/ar/article/20210215/207237.html]"
+  valeur: personne recherchee = non
+cond . donnees:
+  titre: "دقة البيانات"
+  description: "يجب أن تكون بيانات الحالة المدنية (رقم عقد الميلاد وأسماء الوالدين) مطابقة تماماً للسجلات الرسمية [المصدر: https://www.upgrowth.dz/ar/casier-judiciaire-algerie]"
+  valeur: donnees exactes = oui
+cond . frais:
+  titre: "الرسوم القضائية"
+  description: "النسخة الإلكترونية معفاة من أي رسوم قضائية [المصدر: https://radioalgerie.dz/news/ar/article/20210215/207237.html]"
+  valeur: version electronique = oui

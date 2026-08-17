@@ -1,0 +1,30 @@
+# اعتماد مهندس أو مكتب دراسات في هندسة قطاع البناء — وزارة السكن والعمران والمدينة. المصدر: https://www.mhuv.gov.dz/?p=5422
+cond:
+  valeur: oui
+
+experience:
+  question: "كم عدد سنوات الخبرة المهنية لديك؟"
+  unité: an
+diplome ingenieur:
+  question: "هل تحوز على شهادة مهندس أو ماستر في هندسة قطاع البناء؟"
+master:
+  question: "هل شهادتك بمرتبة ماستر مع تقديم وثائق مسار التكوين؟"
+cnas:
+  question: "هل لديك شهادة الانتساب لـ CNAS محينة؟"
+
+cond . exp_cond:
+  titre: "شرط الخبرة المهنية"
+  description: "تقديم شهادة(ات) عمل تثبت الخبرة المهنية المطلوبة [المصدر: https://www.mhuv.gov.dz/?p=5422]"
+  valeur: experience >= 1 an
+cond . diplome_cond:
+  titre: "شرط الشهادة الجامعية"
+  description: "حيازة شهادة مهندس أو ماستر على الأقل في ميدان اختصاصات هندسة قطاع البناء [المصدر: https://www.mhuv.gov.dz/?p=5422]"
+  valeur: diplome ingenieur = oui
+cond . master_cond:
+  titre: "وثائق مسار التكوين"
+  description: "بالنسبة لأصحاب شهادات ماستر، تقديم وثائق تبين مسار التكوين البيداغوجي الجامعي [المصدر: https://www.mhuv.gov.dz/?p=5422]"
+  valeur: master = oui
+cond . cnas_cond:
+  titre: "شهادة الانتساب لـ CNAS"
+  description: "احرص على تحيين شهادة الانتساب لـCNAS قبل طلب التجديد [المصدر: https://www.mhuv.gov.dz/?p=5422]"
+  valeur: cnas = oui

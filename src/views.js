@@ -92,6 +92,7 @@ a.card:active{border-color:#f0c6cb}
 .card h3{margin:0 0 4px;font-size:17px;font-weight:800}
 .card p{margin:0;color:var(--ink2);font-size:14px;line-height:1.65}
 .card .agency{margin-top:8px;font-size:12px;color:var(--r700);font-weight:700}
+.ic.num{font-weight:800;font-size:20px}
 .tag{display:inline-flex;align-items:center;gap:5px;display:inline-block;background:#fdf1f2;color:var(--r700);border:1px solid #f7dfe2;border-radius:999px;
   padding:3px 11px;font-size:12px;font-weight:700}
 

@@ -1,0 +1,38 @@
+# التقاعد المسبق — الصندوق الوطني للتقاعد (CNR) بإشراف وزارة العمل والتشغيل والضمان الاجتماعي. المصدر: https://tachri3.com/wp-content/uploads/2019/04/Loi-n%C2%B0-16-15-relative-%C3%A0-la-retraite.pdf
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك بالسنوات؟"
+  unité: an
+annees travail:
+  question: "كم عدد سنوات العمل القابلة للاعتماد في التقاعد؟"
+  unité: an
+annees securite sociale:
+  question: "كم عدد سنوات دفع اشتراكات الضمان الاجتماعي الكاملة؟"
+  unité: an
+sur la liste:
+  question: "هل اسمك مدرج ضمن قائمة العمال المقرر تقليصهم المؤشر عليها من مفتشية العمل؟"
+autre activite:
+  question: "هل تمارس أي نشاط مهني آخر بعد الاستفادة من التقاعد المسبق؟"
+
+cond . age_requis:
+  titre: "السن القانوني الأدنى"
+  description: "بلوغ سن 50 سنة بالنسبة للرجال أو 45 سنة بالنسبة للإناث [المصدر: https://www.allpttn.com/2022/08/2022_6.html]"
+  valeur: age >= 50 an
+cond . duree_travail:
+  titre: "مدة العمل"
+  description: "جمع 20 سنة عمل على الأقل أو ما يماثلها القابلة للاعتماد في التقاعد [المصدر: https://www.allpttn.com/2022/08/2022_6.html]"
+  valeur: annees travail >= 20 an
+cond . cotisations_cnas:
+  titre: "اشتراكات الضمان الاجتماعي"
+  description: "دفع اشتراكات الضمان الاجتماعي لمدة 10 سنوات على الأقل بصفة كاملة [المصدر: https://www.allpttn.com/2022/08/2022_6.html]"
+  valeur: annees securite sociale >= 10 an
+cond . liste_travailleurs:
+  titre: "قائمة العمال المقرر تقليصهم"
+  description: "تسجيل اسم العامل ضمن قائمة العمال المقرر تقليصهم، المؤشر عليها من مفتشية العمل [المصدر: https://www.allpttn.com/2022/08/2022_6.html]"
+  valeur: sur la liste = oui
+cond . pas_activite:
+  titre: "عدم ممارسة نشاط مهني آخر"
+  description: "عدم الاستفادة من أي دخل عائد من نشاط مهني آخر بعد الإحالة على التقاعد المسبق [المصدر: https://www.allpttn.com/2022/08/2022_6.html]"
+  valeur: autre activite = non

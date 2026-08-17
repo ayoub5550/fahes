@@ -1,0 +1,36 @@
+# مسابقة Seedstars World للشركات الناشئة — Seedstars. المصدر: https://www.seedstarsworld.com/local-competitions/
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك؟"
+  unité: an
+operations:
+  question: "هل العمليات التشغيلية للشركة قائمة فعليًا في البلد أو المدينة المتقدم منها؟"
+mvp:
+  question: "هل يوجد نموذج أولي (MVP) وجذب مستخدمين مبدئي للشركة؟"
+employee:
+  question: "هل أنت موظف في الجهات المنظمة للمسابقة؟"
+registered:
+  question: "هل تم تسجيل الشركة ككيان تجاري رسمي واحد؟"
+
+cond . age_check:
+  titre: "الشرط العمر"
+  description: "يجب أن يكون عمر المتقدم 18 سنة فأكثر [المصدر: https://www.seedstarsworld.com/participation-terms-conditions/]"
+  valeur: age >= 18 an
+cond . operations_check:
+  titre: "العمليات التشغيلية"
+  description: "يجب أن تكون العمليات التشغيلية للشركة قائمة فعليًا في البلد/المدينة المتقدم منها [المصدر: https://www.seedstarsworld.com/local-competitions/]"
+  valeur: operations = oui
+cond . mvp_check:
+  titre: "النموذج الأولي وجذب المستخدمين"
+  description: "يجب وجود نموذج أولي (MVP) وجذب مستخدمين مبدئي وليس مجرد فكرة [المصدر: https://www.seedstarsworld.com/local-competitions/]"
+  valeur: mvp = oui
+cond . employee_check:
+  titre: "موظفو الجهات المنظمة"
+  description: "موظفو الأطراف المنظمة للمسابقة غير مؤهلين للمشاركة [المصدر: https://www.seedstarsworld.com/participation-terms-conditions/]"
+  valeur: employee = non
+cond . registered_check:
+  titre: "الكيان التجاري"
+  description: "مشاركة كيان تجاري واحد فقط لكل مجموعة مؤسسين مرتبطة [المصدر: https://www.seedstarsworld.com/participation-terms-conditions/]"
+  valeur: registered = oui

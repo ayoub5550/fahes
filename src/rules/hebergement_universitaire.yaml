@@ -1,0 +1,37 @@
+# الإيواء الجامعي — الديوان الوطني للخدمات الجامعية (ONOU) – وزارة التعليم العالي والبحث العلمي. المصدر: https://progres.mesrs.dz/webonou
+cond:
+  valeur: oui
+
+inscription:
+  question: "هل أنت مسجل بصفة نظامية في إحدى مؤسسات التعليم العالي؟"
+age:
+  question: "كم سنك؟"
+  unité: an
+retard etudes:
+  question: "كم عدد سنوات التأخر الدراسي لديك؟"
+  unité: an
+plateforme:
+  question: "هل قمت بإتمام التسجيل على الأرضية الرقمية ضمن الآجال؟"
+distance conforme:
+  question: "هل تبعد إقامتك عن مقر الجامعة بالمسافة المطلوبة (أكثر من 50 كلم للذكور أو 30 كلم للإناث)؟"
+
+cond . insc:
+  titre: "التسجيل النظامي"
+  description: "أن يكون الطالب مسجلاً بصفة نظامية في إحدى مؤسسات التعليم العالي [المصدر: https://www.elkhadra.com/fr/webonou/]."
+  valeur: inscription = oui
+cond . age_limit:
+  titre: "شرط السن"
+  description: "ألا يتجاوز سن الطالب 28 سنة [المصدر: https://www.a-onec.com/2023/08/progres-webonou-hebergement-bourse.html]."
+  valeur: age <= 28 an
+cond . retard:
+  titre: "التأخر الدراسي"
+  description: "بالنسبة للطلبة القدامى، ألا يكون لديه تأخر دراسي يفوق سنتين (2) أو ما يعادل 4 سداسيات [المصدر: https://www.a-onec.com/2023/08/progres-webonou-hebergement-bourse.html]."
+  valeur: retard etudes <= 2 an
+cond . plateforme_num:
+  titre: "التسجيل الرقمي"
+  description: "إتمام إجراءات التسجيل على الأرضية الرقمية المخصصة للإيواء ضمن الآجال [المصدر: https://www.elkhadra.com/fr/webonou/]."
+  valeur: plateforme = oui
+cond . dist:
+  titre: "شرط المسافة الجغرافية"
+  description: "أن تبعد إقامة الطالب بأكثر من 50 كلم على الأقل بالنسبة للذكور و30 كلم بالنسبة للإناث عن مقر الجامعة [المصدر: https://www.a-onec.com/2023/08/progres-webonou-hebergement-bourse.html]."
+  valeur: distance conforme = oui

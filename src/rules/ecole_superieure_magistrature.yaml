@@ -1,0 +1,38 @@
+# مسابقة الالتحاق بالمدرسة العليا للقضاء — وزارة العدل – المدرسة العليا للقضاء. المصدر: https://www.mjustice.gov.dz/fr/preinscriptions-au-concours-national-de-recrutement-des-eleves-magistrats-au-titre-de-lannee-2025/
+cond:
+  valeur: oui
+
+age:
+  question: "كم سنك بالسنوات؟"
+  unité: an
+nationalite algerienne:
+  question: "هل تحمل الجنسية الجزائرية؟"
+master droit:
+  question: "هل تحوز شهادة الماستر في الحقوق أو شهادة معادلة؟"
+service national:
+  question: "هل أثبت وضعيتك القانونية تجاه الخدمة الوطنية؟"
+aptitude physique:
+  question: "هل تتوفر لديك شروط الكفاءة البدنية والعقلية لممارسة مهنة القضاء؟"
+
+cond . age_condition:
+  titre: "شرط السن"
+  description: "السن بين 27 و40 سنة عند تاريخ إجراء المسابقة [المصدر: https://www.elmizaine.com/2025/12/2025.html]"
+  toutes ces conditions:
+    - age >= 27 an
+    - age <= 40 an
+cond . nationality_condition:
+  titre: "شرط الجنسية"
+  description: "الجنسية الجزائرية [المصدر: https://www.elmizaine.com/2025/12/2025.html]"
+  valeur: nationalite algerienne = oui
+cond . degree_condition:
+  titre: "شرط الشهادة"
+  description: "حيازة شهادة الماستر في الحقوق على الأقل أو شهادة معادلة [المصدر: https://www.elmizaine.com/2025/12/2025.html]"
+  valeur: master droit = oui
+cond . service_condition:
+  titre: "شرط الخدمة الوطنية"
+  description: "إثبات الوضعية القانونية تجاه الخدمة الوطنية [المصدر: https://www.elmizaine.com/2025/12/2025.html]"
+  valeur: service national = oui
+cond . aptitude_condition:
+  titre: "شرط الكفاءة البدنية والعقلية"
+  description: "توفر شروط الكفاءة البدنية والعقلية لممارسة مهنة القضاء [المصدر: https://www.elmizaine.com/2025/12/2025.html]"
+  valeur: aptitude physique = oui

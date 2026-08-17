@@ -1,0 +1,40 @@
+# مسابقة توظيف أعوان الحماية المدنية — المديرية العامة للحماية المدنية. المصدر: https://dgpc.dz
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو سنك؟"
+  unité: an
+nationalite algerienne:
+  question: "هل أنت جزائري الجنسية؟"
+niveau secondaire:
+  question: "هل أتممت السنة الثانية ثانوي على الأقل؟"
+absence tatouage:
+  question: "هل جسمك خاوٍ من الوشم؟"
+residence wilaya:
+  question: "هل تقيم في الولاية التي يودع بها الملف؟"
+
+cond . age_min:
+  titre: "الشرط 2 (الحد الأدنى للسن)"
+  description: "السن بين 19 و25 سنة في تاريخ إجراء المسابقة [المصدر: https://www.algerie360.com/la-protection-civile-recrute-2000-postes-voici-les-conditions-et-les-etapes-pour-postuler/]"
+  valeur: age >= 19 an
+cond . age_max:
+  titre: "الشرط 2 (الحد الأقصى للسن)"
+  description: "السن بين 19 و25 سنة في تاريخ إجراء المسابقة [المصدر: https://www.algerie360.com/la-protection-civile-recrute-2000-postes-voici-les-conditions-et-les-etapes-pour-postuler/]"
+  valeur: age <= 25 an
+cond . nat:
+  titre: "الشرط 1 (الجنسية)"
+  description: "الجنسية الجزائرية [المصدر: https://www.algerie360.com/la-protection-civile-recrute-2000-postes-voici-les-conditions-et-les-etapes-pour-postuler/]"
+  valeur: nationalite algerienne = oui
+cond . niv:
+  titre: "الشرط 5 (المستوى الدراسي)"
+  description: "المستوى الدراسي: إتمام السنة الثانية ثانوي على الأقل [المصدر: https://dgpc.dz/en/the-general-directorate-of-civil-protection-announces-a-competitive-examination-for-the-recruitment-of-1970-male-and-30-female-civil-protection-agents-for-the-year-2025/]"
+  valeur: niveau secondaire = oui
+cond . tat:
+  titre: "الشرط 6 (الوشم والفحص)"
+  description: "عدم وجود وشم، والنجاح في الفحص الطبي والنفسي النهائي [المصدر: https://www.algerie360.com/la-protection-civile-recrute-2000-postes-voici-les-conditions-et-les-etapes-pour-postuler/]"
+  valeur: absence tatouage = oui
+cond . res:
+  titre: "الشرط 7 (الإقامة)"
+  description: "الإقامة في الولاية التي يودع بها الملف [المصدر: https://www.algerie360.com/la-protection-civile-recrute-2000-postes-voici-les-conditions-et-les-etapes-pour-postuler/]"
+  valeur: residence wilaya = oui

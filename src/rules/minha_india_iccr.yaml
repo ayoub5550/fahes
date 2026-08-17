@@ -1,0 +1,32 @@
+# منحة الهند الثقافية للطلاب الجزائريين (ICCR) — المجلس الهندي للعلاقات الثقافية (ICCR) بالتعاون مع السفارة الهندية بالجزائر. المصدر: https://www.indianembassyalgiers.gov.in/section/news/india-africa-maitri-scholarship-scheme-announcement-for-ay-2026-2027/
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك بالسنوات؟"
+  unité: an
+passeport valide:
+  question: "هل جواز سفرك ساري المفعول لمدة سنتين على الأقل؟"
+nationalite algerienne:
+  question: "هل أنت طالب جزائري؟"
+
+cond . age_min:
+  titre: "الحد الأدنى للسن"
+  description: "الحد الأدنى للسن 18 سنة لأي مستوى دراسي [المصدر: https://a2ascholarships.iccr.gov.in/assets/site/docs/Policy_Guidelines.pdf]"
+  valeur: age >= 18 an
+cond . age_max_licence_master:
+  titre: "الحد الأقصى للسن (بكالوريوس وماجستير)"
+  description: "الحد الأقصى للسن للبكالوريوس والماجستير هو 40 سنة حسب إعلان السفارة الخاص بالجزائر [المصدر: https://www.indianembassyalgiers.gov.in/section/news/india-africa-maitri-scholarship-scheme-announcement-for-ay-2026-2027/]"
+  valeur: age <= 40 an
+cond . age_max_doctorat:
+  titre: "الحد الأقصى للسن (دكتوراه)"
+  description: "الحد الأقصى للسن لبرنامج الدكتوراه 50 سنة [المصدر: https://www.indianembassyalgiers.gov.in/section/news/india-africa-maitri-scholarship-scheme-announcement-for-ay-2026-2027/]"
+  valeur: age <= 50 an
+cond . passeport_check:
+  titre: "صلاحية جواز السفر"
+  description: "جواز السفر يجب أن يكون ساري المفعول لمدة سنتين على الأقل اعتبارًا من 1 يوليو 2026 [المصدر: https://a2ascholarships.iccr.gov.in/assets/site/docs/Policy_Guidelines.pdf]"
+  valeur: passeport valide = oui
+cond . algeria_eligibility:
+  titre: "أهلية دولة الجزائر"
+  description: "الجزائر مدرجة ضمن قائمة الدول الأفريقية الـ54 المؤهلة لبرنامج India-Africa Maitri [المصدر: https://iccr.gov.in/scholarship/iccr-scholarship/iccr-scholarship-schemes]"
+  valeur: nationalite algerienne = oui

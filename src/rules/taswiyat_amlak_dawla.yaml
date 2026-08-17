@@ -1,0 +1,35 @@
+# تسوية شاغلي أملاك الدولة عن طريق التنازل عن السكنات — دواوين الترقية والتسيير العقاري ومديريات أملاك الدولة – وزارة السكن والعمران والمدينة. المصدر: https://elmasdareliktissadi.dz/?p=22821
+cond:
+  valeur: oui
+
+shagil shari:
+  question: "هل أنت شاغل شرعي للسكن محل الطلب؟"
+shahada ijarat:
+  question: "هل قدمت شهادة تسوية الإيجارات؟"
+muddat taqsit:
+  question: "ما هي مدة التقسيط المطلوبة بالسنوات؟"
+  unité: an
+thaman maskan:
+  question: "ما هو ثمن الشراء بالدينار الجزائري؟"
+  unité: DA
+
+cond . shagil_cond:
+  titre: "شغل السكن بصفة شرعية"
+  description: "أن يكون طالب الشراء شاغلاً شرعياً للسكن محل الطلب [المصدر: https://elmasdareliktissadi.dz/?p=22821]"
+  valeur: shagil shari = oui
+cond . shahada_cond:
+  titre: "تقديم شهادة تسوية الإيجارات"
+  description: "تقديم شهادة تسوية الإيجارات للاستفادة من خصم المبالغ المدفوعة سابقاً [المصدر: https://elmasdareliktissadi.dz/?p=22821]"
+  valeur: shahada ijarat = oui
+cond . taqsit_max:
+  titre: "الحد الأقصى لمدّة التقسيط"
+  description: "إمكانية التقسيط لمدة أقصاها 25 سنة أو الدفع دفعة واحدة [المصدر: https://elmasdareliktissadi.dz/?p=22821]"
+  valeur: muddat taqsit <= 25 an
+cond . taqsit_min:
+  titre: "الحد الأدنى لمدّة التقسيط"
+  description: "التقسيط متاح لفترات زمنية محددة تصل حتى 25 سنة [المصدر: https://elmasdareliktissadi.dz/?p=22821]"
+  valeur: muddat taqsit >= 1 an
+cond . thaman_cond:
+  titre: "ثمن الشراء"
+  description: "شراء سكنات الدولة لشاغليها الشرعيين بثمن محدد [المصدر: https://elmasdareliktissadi.dz/?p=22821]"
+  valeur: thaman maskan > 0 DA

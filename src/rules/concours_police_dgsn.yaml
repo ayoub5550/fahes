@@ -1,0 +1,38 @@
+# مسابقة توظيف أعوان الشرطة (الأمن الوطني) — المديرية العامة للأمن الوطني (DGSN). المصدر: https://www.unlimited-news.com/algeria-police-recruitment-requirements/
+cond:
+  valeur: oui
+
+age:
+  question: "كم سنك بالسنوات؟"
+  unité: an
+niveau etudes:
+  question: "هل أنهيت مستوى السنة الثالثة ثانوي على الأقل؟"
+nationalite algerienne:
+  question: "هل أنت جزائري وتتمتع بكامل حقوقك المدنية؟"
+service national:
+  question: "هل لديك وضعية قانونية تجاه الخدمة الوطنية وليست للإعفاء الطبي؟"
+vision:
+  question: "هل حدة بصرك 15/15 دون نظارات أو عدسات طبية؟"
+
+cond . age_limite:
+  titre: "شرط السن"
+  description: "السن بين 19 و25 سنة، مع رفع استثنائي إلى 27 سنة بتاريخ إجراء مسابقة 2025 [المصدر: https://elwatan.dz/lage-limite-a-ete-releve-a-27-ans-la-dgsn-lance-un-concours-de-recrutement-dagents-de-police-2/]"
+  toutes ces conditions:
+    - age >= 19 an
+    - age <= 27 an
+cond . niveau:
+  titre: "المستوى الدراسي"
+  description: "إتمام السنة الثالثة ثانوي بفصولها الثلاثة على الأقل [المصدر: https://www.unlimited-news.com/algeria-police-recruitment-requirements/]"
+  valeur: niveau etudes = oui
+cond . nat:
+  titre: "الجنسية والسيادة"
+  description: "الجنسية الجزائرية والتمتع بكامل الحقوق المدنية [المصدر: https://www.unlimited-news.com/algeria-police-recruitment-requirements/]"
+  valeur: nationalite algerienne = oui
+cond . service:
+  titre: "الخدمة الوطنية"
+  description: "وضعية قانونية تجاه الخدمة الوطنية للذكور، ولا يُقبل الإعفاء لأسباب طبية [المصدر: https://www.unlimited-news.com/algeria-police-recruitment-requirements/]"
+  valeur: service national = oui
+cond . vsn:
+  titre: "حدة البصر"
+  description: "حدة بصرية 15/15 دون نظارات أو عدسات طبية [المصدر: https://www.unlimited-news.com/algeria-police-recruitment-requirements/]"
+  valeur: vision = oui

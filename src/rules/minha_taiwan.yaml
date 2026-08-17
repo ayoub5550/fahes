@@ -1,0 +1,36 @@
+# منحة تايوان الحكومية — وزارة الخارجية التايوانية (MOFA) عبر مكتب تايبيه للتمثيل في فرنسا. المصدر: https://taiwanscholarship.moe.gov.tw/web/pages.aspx?p=7
+cond:
+  valeur: oui
+
+niveau bac:
+  question: "هل أنت حاصل على شهادة الثانوية العامة أو ما يعادلها؟"
+etude taiwan:
+  question: "هل التحقت سابقاً بمؤسسة تعليمية تايوانية لنفس مستوى الدرجة؟"
+couverture algerie:
+  question: "هل أنت مقيم في الجزائر ومغطى عبر مكتب تايبيه في فرنسا؟"
+annulation precedente:
+  question: "هل تم إلغاء منحة حكومية تايوانية سابقة لك؟"
+annees etudes:
+  question: "ما هي عدد سنوات البرنامج الدراسي المستهدف؟"
+  unité: an
+
+cond . niveau_bac:
+  titre: "خريج مرحلة ثانوية"
+  description: "أن يكون المتقدم خريج ثانوية على الأقل بسجل أكاديمي ممتاز [المصدر: https://law.mofa.gov.tw/EngLawContent.aspx?id=44&lan=E]."
+  valeur: niveau bac = oui
+cond . etude_taiwan:
+  titre: "عدم الدراسة السابقة في تايوان"
+  description: "عدم الالتحاق سابقًا بمؤسسة تعليمية تايوانية لنفس مستوى الدرجة المطلوبة [المصدر: https://law.mofa.gov.tw/EngLawContent.aspx?id=44&lan=E]."
+  valeur: etude taiwan = non
+cond . couverture_algerie:
+  titre: "التغطية الجغرافية للجزائر"
+  description: "الجزائر مدرجة ضمن الدول التي يديرها مكتب تايبيه للتمثيل في فرنسا لأغراض هذه المنحة [المصدر: https://taiwanscholarship.moe.gov.tw/Apply/Enroll/AvailabilityStatus]."
+  valeur: couverture algerie = oui
+cond . annulation_precedente:
+  titre: "عدم وجود إلغاء لمنحة سابقة"
+  description: "عدم إلغاء منحة سابقة من جهة حكومية تايوانية للمتقدم [المصدر: https://law.mofa.gov.tw/EngLawContent.aspx?id=44&lan=E]."
+  valeur: annulation precedente = non
+cond . duree_etudes:
+  titre: "مدة سنوات الدراسة"
+  description: "مدة المنحة القصوى للبرامج الدراسية المختلفة [المصدر: https://law.mofa.gov.tw/EngLawContent.aspx?id=44&lan=E]."
+  valeur: annees etudes <= 4 an

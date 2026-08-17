@@ -1,0 +1,31 @@
+# برنامج Outreachy للتدريب المفتوح — منظمة Outreachy غير الربحية (بإدارة Software Freedom Conservancy). المصدر: https://www.outreachy.org/
+cond:
+  valeur: oui
+
+age:
+  question: "كم سنك بالسنوات؟"
+  unité: an
+participation prealable:
+  question: "هل شاركت مسبقاً في برنامج Outreachy أو Google Summer of Code؟"
+autre emploi temps plein:
+  question: "هل لديك وظيفة بدوام كامل أو تدريب آخر مدفوع أو غير مدفوع خلال فترة البرنامج؟"
+duree engagement:
+  question: "كم عدد أشهر التفرغ المتاحة لديك للتدريب؟"
+  unité: mois
+
+cond . age_requis:
+  titre: "السن القانوني"
+  description: "يجب أن يكون المتقدم بالغاً ومؤهلاً للتقديم للبرنامج [المصدر: https://www.outreachy.org/]."
+  valeur: age >= 18 an
+cond . pas_participation:
+  titre: "عدم المشاركة السابقة"
+  description: "يجب ألا يكون المتقدم قد شارك سابقًا كمتدرب في Outreachy أو Google Summer of Code [المصدر: https://dev.to/ritika-bhambri/a-practical-guide-to-getting-started-with-outreachy-from-application-to-contributions-2kae]."
+  valeur: participation prealable = non
+cond . pas_emploi:
+  titre: "التفرغ للتدريب"
+  description: "يجب ألا يكون لدى المتقدم وظيفة بدوام كامل أو تدريب آخر مدفوع/غير مدفوع في نفس الفترة [المصدر: https://dev.to/ritika-bhambri/a-practical-guide-to-getting-started-with-outreachy-from-application-to-contributions-2kae]."
+  valeur: autre emploi temps plein = non
+cond . engagement_mois:
+  titre: "مدة الالتزام بالتدريب"
+  description: "مدة الالتزام 3 أشهر بدوام كامل تقريبًا (30 ساعة أسبوعيًا) [المصدر: https://dev.to/ritika-bhambri/a-practical-guide-to-getting-started-with-outreachy-from-application-to-contributions-2kae]."
+  valeur: duree engagement >= 3 mois

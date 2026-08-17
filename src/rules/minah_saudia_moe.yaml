@@ -1,0 +1,35 @@
+# المنح الحكومية السعودية للطلاب الدوليين — وزارة التعليم السعودية. المصدر: https://www.moe.gov.sa/ar/education/ResidentsAndvisitors/Pages/PublicUniversitiesScholarships.aspx
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك بالسنوات؟"
+  unité: an
+annees depuis bac:
+  question: "كم عدد السنوات التي مضت منذ حصولك على شهادة الثانوية العامة؟"
+  unité: an
+bourse anterieure:
+  question: "هل حصلت على منحة دراسية سابقة في السعودية؟"
+approbation gouvernementale:
+  question: "هل لديك موافقة رسمية من حكومة بلدك؟"
+
+cond . age_min:
+  titre: "الحد الأدنى للسن"
+  description: "ألا يقل سن الطالب عن 17 سنة للمرحلة الجامعية ومعهد تعليم اللغة العربية [المصدر: https://www.moe.gov.sa/ar/education/ResidentsAndvisitors/Pages/PublicUniversitiesScholarships.aspx]"
+  valeur: age >= 17 an
+cond . age_max:
+  titre: "الحد الأقصى للسن"
+  description: "ألا يزيد سن الطالب عن 25 سنة للمرحلة الجامعية [المصدر: https://www.moe.gov.sa/ar/education/ResidentsAndvisitors/Pages/PublicUniversitiesScholarships.aspx]"
+  valeur: age <= 25 an
+cond . delai_bac:
+  titre: "مدة الحصول على الثانوية"
+  description: "ألا يكون قد مضى على الحصول على شهادة الثانوية أكثر من خمس سنوات [المصدر: https://www.moe.gov.sa/ar/knowledgecenter/eservices/Pages/unified-admission.aspx]"
+  valeur: annees depuis bac <= 5 an
+cond . pas_de_bourse:
+  titre: "عدم الحصول على منحة سابقة"
+  description: "عدم الحصول على منحة سابقة دراسية في السعودية [المصدر: https://www.moe.gov.sa/ar/knowledgecenter/eservices/Pages/unified-admission.aspx]"
+  valeur: bourse anterieure = non
+cond . approbation:
+  titre: "موافقة الحكومة"
+  description: "موافقة حكومة بلد الطالب على الدراسة [المصدر: https://www.moe.gov.sa/ar/knowledgecenter/eservices/Pages/unified-admission.aspx]"
+  valeur: approbation gouvernementale = oui

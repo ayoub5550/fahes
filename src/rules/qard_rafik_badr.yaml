@@ -1,0 +1,24 @@
+# قرض الرفيق (تمويل قصير المدى للفلاحين ومربي المواشي) — بنك الفلاحة والتنمية الريفية (BADR). المصدر: https://radioalgerie.dz/news/ar/article/20201001/200128.html
+cond:
+  valeur: oui
+
+falah:
+  question: "هل أنت فلاح أو مربي مواشي (فردي أو ضمن تعاونية)؟"
+dion:
+  question: "هل لديك ديون متعثرة تجاه البنك؟"
+experience:
+  question: "كم عدد سنوات الخبرة في النشاط الفلاحي؟"
+  unité: an
+
+cond . cond_falah:
+  titre: "صفة فلاح أو مربي"
+  description: "أن يكون المستفيد مستثمراً فلاحياً بمفهوم قانون التوجيه الفلاحي (فلاح أو مربي مواشٍ) فردياً أو منتظماً في تعاونية/تجمع/جمعية [المصدر: https://elhiwar.dz/national/45514/]"
+  valeur: falah = oui
+cond . cond_dion:
+  titre: "عدم وجود ديون متعثرة"
+  description: "يشترط عدم وجود ديون متعثرة تجاه البنك للاستفادة من القرض [المصدر: https://elhiwar.dz/national/45514/]"
+  valeur: dion = non
+cond . cond_experience:
+  titre: "سنوات الخبرة في النشاط"
+  description: "إثبات النشاط الفلاحي بمفهوم قانون التوجيه الفلاحي لمدة سنة على الأقل [المصدر: https://elhiwar.dz/national/45514/]"
+  valeur: experience >= 1 an

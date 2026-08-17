@@ -1,0 +1,30 @@
+# منح جامعة خليفة للطلاب الدوليين — جامعة خليفة للعلوم والتكنولوجيا (أبوظبي). المصدر: https://www.ku.ac.ae/undergraduate-scholarships
+cond:
+  valeur: oui
+
+maddal tarakoumi:
+  question: "ما هو معدلك التراكمي؟"
+  unité: point
+shahada thanawiya:
+  question: "هل تمتلك شهادة الثانوية العامة أو ما يعادلها؟"
+talab qobool:
+  question: "هل قمت بتقديم طلب القبول الإلكتروني لجامعة خليفة؟"
+international student:
+  question: "هل أنت طالب دولي؟"
+
+cond . thanawiya_req:
+  titre: "شرط شهادة الثانوية"
+  description: "يجب تقديم كشف درجات يشمل الفصل الأول من الصف الثاني عشر على الأقل عند التقديم [المصدر: https://www.ku.ac.ae/undergraduate-admissions]"
+  valeur: shahada thanawiya = oui
+cond . admission_req:
+  titre: "شرط طلب القبول"
+  description: "تقييم الأهلية للمنحة يتم ضمن عملية القبول دون طلب منفصل [المصدر: https://www.ku.ac.ae/undergraduate-scholarships]"
+  valeur: talab qobool = oui
+cond . international_req:
+  titre: "طالب دولي"
+  description: "المنحة مخصصة لطلاب البكالوريوس الدوليين [المصدر: https://www.ku.ac.ae/undergraduate-scholarships]"
+  valeur: international student = oui
+cond . tier_one_gpa:
+  titre: "معدل الإعفاء الكامل"
+  description: "للحفاظ على منحة Tier I (إعفاء 100%) يجب الحفاظ على معدل تراكمي 3.3 من 4.0 [المصدر: https://ku-ae.smartcatalogiq.com/en/2024-2025/undergraduate-catalog/undergraduate-admissions/scholarships/scholarships-for-international-students]"
+  valeur: maddal tarakoumi >= 3.3 point

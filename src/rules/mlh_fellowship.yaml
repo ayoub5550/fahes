@@ -1,0 +1,35 @@
+# زمالة MLH Fellowship — Major League Hacking (MLH). المصدر: https://fellowship.mlh.io/
+cond:
+  valeur: oui
+
+engagement heures:
+  question: "هل يمكنك الالتزام بما لا يقل عن 20 ساعة عمل أسبوعيًا خلال البرنامج؟"
+connaissance programmation:
+  question: "هل لديك معرفة برمجة بلغة واحدة على الأقل؟"
+niveau anglais:
+  question: "هل تجيد اللغة الإنجليزية بمستوى جيد للتواصل؟"
+pays autorise:
+  question: "هل تقيم في بلد غير خاضع لحظر أمريكي؟"
+besoin financier:
+  question: "هل تستوفي شرط الحاجة المالية للمنحة التعليمية؟"
+
+cond . engagement:
+  titre: "الالتزام الأسبوعي"
+  description: "الالتزام بما لا يقل عن 20 ساعة عمل أسبوعيًا خلال البرنامج [المصدر: https://help.mlh.io/en/articles/645889]"
+  valeur: engagement heures = oui
+cond . programmation:
+  titre: "معرفة البرمجة"
+  description: "معرفة برمجة بلغة واحدة على الأقل [المصدر: https://help.mlh.io/en/articles/645889]"
+  valeur: connaissance programmation = oui
+cond . anglais:
+  titre: "إجادة الإنجليزية"
+  description: "إجادة اللغة الإنجليزية بمستوى جيد للتواصل [المصدر: https://help.mlh.io/en/articles/645889]"
+  valeur: niveau anglais = oui
+cond . residence:
+  titre: "بلد الإقامة"
+  description: "الإقامة في بلد غير خاضع لحظر أمريكي (البرنامج مفتوح عالميًا باستثناء الدول المحظورة) [المصدر: https://resources.devweekends.com/resources/open-source-programs/mlh-fellowship]"
+  valeur: pays autorise = oui
+cond . bourse:
+  titre: "الحاجة المالية"
+  description: "المنحة التعليمية مشروطة بالحاجة المالية (need-based) وتُحدَّد حسب تكلفة المعيشة [المصدر: https://resources.devweekends.com/resources/open-source-programs/mlh-fellowship]"
+  valeur: besoin financier = oui

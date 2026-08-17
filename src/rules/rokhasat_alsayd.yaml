@@ -1,0 +1,36 @@
+# رخصة الصيد البري (حمل السلاح لممارسة الصيد) — المحافظة السامية للغابات ومحافظات الغابات بالولايات – وزارة الفلاحة والتنمية الريفية. المصدر: https://leap.unep.org/en/countries/dz/national-legislation/decret-executif-n-06-387-fixant-les-conditions-et-les-modalites-dobtention-et-de-delivrance-de-la-licence-de-chasser-lex-faoc078795
+cond:
+  valeur: oui
+
+age:
+  question: "كم عمرك؟"
+  unité: an
+nationalite algerienne:
+  question: "هل تحمل الجنسية الجزائرية أو لديك إقامة قانونية بالجزائر؟"
+casier judiciaire:
+  question: "هل صحيفة السوابق القضائية خالية من إدانات متعلقة بالسلاح أو العنف؟"
+membre association:
+  question: "هل أنت عضو في جمعية صيادين معتمدة؟"
+assurance:
+  question: "هل لديك بوليصة تأمين سارية للمسؤولية المدنية؟"
+
+cond . age_condition:
+  titre: "شرط العمر"
+  description: "ألا يقل عمر المترشح عن 21 عاماً [المصدر: https://akhbardz.com/ كيفية-الحصول-على-رخصة-الصيد-في-الجزائر/]"
+  valeur: age >= 21 an
+cond . nat_condition:
+  titre: "شرط الجنسية أو الإقامة"
+  description: "حمل الجنسية الجزائرية أو الإقامة القانونية بالجزائر لغير الجزائريين [المصدر: https://akhbardz.com/ كيفية-الحصول-على-رخصة-الصيد-في-الجزائر/]"
+  valeur: nationalite algerienne = oui
+cond . casier_condition:
+  titre: "شرط السوابق القضائية"
+  description: "صحيفة السوابق القضائية خالية من إدانات الحق العام المرتبطة بالسلاح أو العنف [المصدر: https://akhbardz.com/ كيفية-الحصول-على-رخصة-الصيد-في-الجزائر/]"
+  valeur: casier judiciaire = oui
+cond . assoc_condition:
+  titre: "شرط الانضمام للجمعية"
+  description: "أن يكون عضواً في جمعية صيادين معتمدة [المصدر: https://leap.unep.org/en/countries/dz/national-legislation/loi-no-04-07-relative-la-chasse]"
+  valeur: membre association = oui
+cond . assurance_condition:
+  titre: "شرط التأمين"
+  description: "تغطية المسؤولية المدنية والجزائية باستعمال السلاح عبر بوليصة تأمين سارية [المصدر: https://leap.unep.org/en/countries/dz/national-legislation/loi-no-04-07-relative-la-chasse]"
+  valeur: assurance = oui

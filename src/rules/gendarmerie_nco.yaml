@@ -1,0 +1,40 @@
+# مسابقة تجنيد طلبة رتباء متعاقدين بالدرك الوطني — قيادة الدرك الوطني. المصدر: http://preinscription.mdn.dz
+cond:
+  valeur: oui
+
+age:
+  question: "كم سنك؟"
+  unité: an
+algerien:
+  question: "هل أنت جزائري الجنسية أصلاً؟"
+niveau requis:
+  question: "هل مستواك الدراسي بين الرابعة متوسط متممة والثالثة ثانوي غير متممة؟"
+taille acceptable:
+  question: "هل قامتك 1.67 متر فما فوق؟"
+celibataire:
+  question: "هل أنت أعزب؟"
+
+cond . age_min:
+  titre: "الحد الأدنى للسن"
+  description: "السن 18 سنة على الأقل عند 31 ديسمبر من السنة الجارية [المصدر: https://fp-dz.com.news80.org/ar/6714560626348529927.htm]"
+  valeur: age >= 18 an
+cond . age_max:
+  titre: "الحد الأقصى للسن"
+  description: "السن 22 سنة على الأكثر عند 31 ديسمبر من السنة الجارية [المصدر: https://fp-dz.com.news80.org/ar/6714560626348529927.htm]"
+  valeur: age <= 22 an
+cond . nationalite:
+  titre: "الجنسية الجزائرية"
+  description: "الجنسية الجزائرية أصلًا [المصدر: https://fp-dz.com.news80.org/ar/6714560626348529927.htm]"
+  valeur: algerien = oui
+cond . niveau:
+  titre: "المستوى الدراسي"
+  description: "المستوى الدراسي بين الرابعة متوسط متممة والثالثة ثانوي غير متممة [المصدر: https://fp-dz.com.news80.org/ar/6714560626348529927.htm]"
+  valeur: niveau requis = oui
+cond . taille:
+  titre: "القامة"
+  description: "القامة 1.67 م فما فوق [المصدر: https://fp-dz.com.news80.org/ar/6714560626348529927.htm]"
+  valeur: taille acceptable = oui
+cond . statut:
+  titre: "العزوبة"
+  description: "العزوبة [المصدر: https://fp-dz.com.news80.org/ar/6714560626348529927.htm]"
+  valeur: celibataire = oui

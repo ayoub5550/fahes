@@ -1,0 +1,31 @@
+# معاش منحة العجز (التأمين على العجز) لدى CNAS — الصندوق الوطني للتأمينات الاجتماعية للعمال الأجراء (CNAS). المصدر: https://cnas.dz/%d8%a7%d9%84%d8%aa%d8%a3%d9%85%d9%8a%d9%86-%d8%b9%d9%84%d9%89-%d8%a7%d9%84%d8%b9%d8%ac%d8%b2/
+cond:
+  valeur: oui
+
+taux incapacite:
+  question: "ما هي نسبة العجز أو عدم القدرة على العمل؟"
+  unité: point
+retraite:
+  question: "هل بلغت السن القانونية للتقاعد؟"
+annees travail:
+  question: "كم عدد سنوات العمل والاشتراك في الضمان الاجتماعي؟"
+  unité: an
+fin indemnisation:
+  question: "هل انقضت فترة الاستفادة من التعويضات اليومية للتأمين عن المرض؟"
+
+cond . incapacite_min:
+  titre: "نسبة العجز الأدنى"
+  description: "الإصابة بعجز أو مانع عن العمل أو الكسب بقدرة على الأقل تساوي 50% [المصدر: cnas.dz]"
+  valeur: taux incapacite >= 50 point
+cond . age_retraite:
+  titre: "عدم بلوغ سن التقاعد"
+  description: "عدم بلوغ السن القانونية للتقاعد [المصدر: cnas.dz]"
+  valeur: retraite = non
+cond . periode_travail:
+  titre: "فترة العمل والاشتراك"
+  description: "تبرير فترة عمل واشتراك محددة لدى الصندوق [المصدر: cnas.dz]"
+  valeur: annees travail > 0 an
+cond . fin_indemnisation_maladie:
+  titre: "انقضاء فترة تعويضات المرض"
+  description: "انقضاء فترة الاستفادة من التعويضات اليومية للتأمين عن المرض قبل معاينة حقوق العجز [المصدر: cnas.dz]"
+  valeur: fin indemnisation = oui

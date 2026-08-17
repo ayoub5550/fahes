@@ -1,0 +1,37 @@
+# برنامج DigitalOcean Hatch لدعم الشركات الناشئة — DigitalOcean, LLC. المصدر: https://www.digitalocean.com/startups
+cond:
+  valeur: oui
+
+age entreprise:
+  question: "ما هو عمر الشركة بالسنوات؟"
+  unité: an
+total financement:
+  question: "ما هو إجمالي التمويل الذي حصلت عليه الشركة حتى الآن بالدولار الأمريكي؟"
+  unité: USD
+client actuel:
+  question: "هل الشركة عميل حالي يدفع مقابل خدمات DigitalOcean؟"
+produit reel:
+  question: "هل تبني الشركة منتجًا فعليًا وليست وكالة أو شركة استشارات؟"
+compte equipe:
+  question: "هل تستخدم حساب فريق ببريد إلكتروني مطابق لنطاق موقع الشركة؟"
+
+cond . age_entreprise:
+  titre: "عمر الشركة"
+  description: "أن يكون عمر الشركة أقل من 5 سنوات [المصدر: https://www.startupcredits.dev/credits/digitalocean]"
+  valeur: age entreprise <= 5 an
+cond . financement_max:
+  titre: "الحد الأقصى للتمويل"
+  description: "ألا يتجاوز إجمالي التمويل الذي حصلت عليه الشركة 5 ملايين دولار [المصدر: https://www.startupcredits.dev/credits/digitalocean]"
+  valeur: total financement <= 5000000 USD
+cond . client_actuel:
+  titre: "لست عميلاً حالياً"
+  description: "ألا تكون الشركة عميلاً حاليًا يدفع لـ DigitalOcean [المصدر: https://www.startupcredits.dev/credits/digitalocean]"
+  valeur: client actuel = non
+cond . produit_reel:
+  titre: "بناء منتج فعلي"
+  description: "أن تبني الشركة منتجًا فعليًا وليست وكالة أو شركة استشارات أو إعادة بيع [المصدر: https://www.startupcredits.dev/credits/digitalocean]"
+  valeur: produit reel = oui
+cond . compte_equipe:
+  titre: "حساب فريق وبريد نطاق الشركة"
+  description: "يجب استخدام حساب فريق (Team Account) ببريد إلكتروني مطابق لنطاق موقع الشركة [المصدر: https://guptadeepak.com/startup-offers/programs/digitalocean-hatch]"
+  valeur: compte equipe = oui

@@ -1,0 +1,30 @@
+# مسابقة الالتحاق بالمدرسة العليا للأساتذة — وزارة التعليم العالي والبحث العلمي بالتنسيق مع وزارة التربية الوطنية. المصدر: https://services.mesrs.dz/download/bac_2025/circulaire-2025.pdf
+cond:
+  valeur: oui
+
+age:
+  question: "كم سنك؟"
+  unité: an
+bac recent:
+  question: "هل حزت شهادة البكالوريا لنفس سنة التسجيل؟"
+entretien reussi:
+  question: "هل اجتزت بنجاح المقابلة الشفوية؟"
+contrat signe:
+  question: "هل أنت مستعد لتوقيع عقد الالتزام بالعمل بقطاع التربية الوطنية؟"
+
+cond . age_max:
+  titre: "السن الأقصى"
+  description: "السن الأقصى 24 سنة عند 31 ديسمبر من سنة التسجيل [المصدر: منشور البكالوريا 2025]"
+  valeur: age <= 24 an
+cond . bac_recent:
+  titre: "حيازة البكالوريا"
+  description: "حيازة شهادة البكالوريا لنفس سنة التسجيل (بكالوريا جديدة) [المصدر: منشور البكالوريا 2025]"
+  valeur: bac recent = oui
+cond . entretien:
+  titre: "المقابلة الشفوية"
+  description: "اجتياز مقابلة شفوية أمام لجنة تابعة للمؤسسة الموجه إليها المترشح [المصدر: منشور البكالوريا 2025]"
+  valeur: entretien reussi = oui
+cond . contrat:
+  titre: "عقد الالتزام"
+  description: "توقيع عقد التزام مع قطاع التربية الوطنية بعد نهاية التكوين للالتحاق بمنصب التعيين [المصدر: منشور البكالوريا 2025]"
+  valeur: contrat signe = oui

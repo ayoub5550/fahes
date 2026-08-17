@@ -1,0 +1,35 @@
+# برنامج توسعة النشاط للمؤسسات المصغرة (NESDA Extension) — الوكالة الوطنية لدعم وتنمية المقاولاتية (NESDA/ANADE). المصدر: https://www.nesda.dz/Home/NesdaExtension
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك بالسنوات؟"
+  unité: an
+annees activite:
+  question: "كم عدد سنوات نشاط مؤسستك القائمة؟"
+  unité: an
+registre actif:
+  question: "هل أنت مسجل في السجل التجاري أو بطاقة الحرفي ولم يتم شطبك؟"
+respect credit:
+  question: "هل التزمت بجدول تسديد القرض السابق دون تأخر يفوق 5 سنوات؟"
+
+cond . age_min:
+  titre: "الحد الأدنى للسن"
+  description: "أن يتراوح عمر صاحب المشروع بين 20 و58 سنة [المصدر: https://www.nesda.dz/Home/NesdaExtension]"
+  valeur: age >= 20 an
+cond . age_max:
+  titre: "الحد الأقصى للسن"
+  description: "ألا يتجاوز عمر صاحب المشروع 58 سنة [المصدر: https://www.nesda.dz/Home/NesdaExtension]"
+  valeur: age <= 58 an
+cond . activite:
+  titre: "النشاط خلال آخر سنتين"
+  description: "أن يكون نشطاً خلال آخر سنتين مع إثبات ذلك بسجلات محاسبية وتصريحات ضريبية [المصدر: https://www.nesda.dz/Home/NesdaExtension]"
+  valeur: annees activite >= 2 an
+cond . registre:
+  titre: "عدم الشطب من السجل التجاري"
+  description: "ألا يكون مشطوباً من السجل التجاري أو بطاقة الحرفي أو الرخصة [المصدر: https://www.nesda.dz/Home/NesdaExtension]"
+  valeur: registre actif = oui
+cond . credit:
+  titre: "الالتزام بتسديد القرض السابق"
+  description: "الالتزام بجدول تسديد القرض دون تأخر يفوق 5 سنوات عن الجدول الزمني [المصدر: https://www.nesda.dz/Home/NesdaExtension]"
+  valeur: respect credit = oui

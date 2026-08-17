@@ -1,0 +1,30 @@
+# المنح الحكومية الرومانية لغير الأوروبيين — وزارة الخارجية الرومانية. المصدر: https://scholarships.studyinromania.gov.ro/
+cond:
+  valeur: oui
+
+non eu:
+  question: "هل أنت من جنسية دولة من خارج الاتحاد الأوروبي؟"
+score:
+  question: "ما هو معدلك الدراسي من 10؟"
+  unité: point
+previous scholarship:
+  question: "هل استفدت سابقًا من منحة رومانية لنفس المرحلة الدراسية؟"
+medical specialty:
+  question: "هل التخصص المستهدف ضمن تخصصات الطب أو طب الأسنان أو الصيدلة؟"
+
+cond . non_eu:
+  titre: "جنسية من خارج الاتحاد الأوروبي"
+  description: "يشترط أن يكون المتقدم من جنسية دولة من خارج الاتحاد الأوروبي [المصدر: https://scholarships.studyinromania.gov.ro/scholarship-faq]"
+  valeur: non eu = oui
+cond . score_min:
+  titre: "المعدل الدراسي الأدنى"
+  description: "يجب ألا يقل المعدل الدراسي عن 7 من 10 حسب نظام التنقيط الروماني أو تقدير جيد [المصدر: https://scholarships.studyinromania.gov.ro/scholarship-faq]"
+  valeur: score >= 7 point
+cond . no_previous:
+  titre: "عدم الاستفادة السابقة"
+  description: "يشترط عدم الاستفادة سابقًا من منحة رومانية لنفس المرحلة الدراسية [المصدر: https://scholarships.studyinromania.gov.ro/scholarship-faq]"
+  valeur: previous scholarship = non
+cond . exclude_medical:
+  titre: "استثناء التخصصات الطبية"
+  description: "تخصصات الطب وطب الأسنان والصيدلة مستثناة من هذه المنحة [المصدر: https://mae.ro/node/10251]"
+  valeur: medical specialty = non

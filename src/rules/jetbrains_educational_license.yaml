@@ -1,0 +1,30 @@
+# رخصة JetBrains التعليمية المجانية للطلاب — JetBrains s.r.o.. المصدر: https://www.jetbrains.com/shop/eform/students/
+cond:
+  valeur: oui
+
+etudiant:
+  question: "هل أنت طالب مسجل حاليا في مؤسسة تعليمية؟"
+justificatif:
+  question: "هل تتوفر على بريد جامعي أو بطاقة طالب أو وثيقة تسجيل؟"
+usage commercial:
+  question: "هل تستخدم الرخصة لأغراض تجارية؟"
+duree:
+  question: "ما هي مدة الرخصة بالسنوات؟"
+  unité: an
+
+cond . etudiant_valide:
+  titre: "طالب مسجل"
+  description: "أن يكون المتقدم طالبًا مسجلاً حاليًا في مؤسسة تعليمية معترف بها [المصدر: https://sales.jetbrains.com/hc/en-gb/articles/207241195-Do-you-offer-free-educational-licenses-for-students-and-teachers]"
+  valeur: etudiant = oui
+cond . justificatif_valide:
+  titre: "إثبات الطالب"
+  description: "تقديم بريد إلكتروني جامعي، أو بطاقة ISIC، أو وثيقة تسجيل رسمية [المصدر: https://www.studentperks.dev/blog/jetbrains-student-license-guide]"
+  valeur: justificatif = oui
+cond . usage_non_commercial:
+  titre: "استخدام غير تجاري"
+  description: "عدم استخدام الرخصة لأغراض تجارية [المصدر: https://sales.jetbrains.com/hc/en-gb/articles/207241195-Do-you-offer-free-educational-licenses-for-students-and-teachers]"
+  valeur: usage commercial = non
+cond . duree_valide:
+  titre: "مدة الترخيص"
+  description: "الرخصة غير دائمة وصالحة لمدة سنة واحدة فقط قابلة للتجديد [المصدر: https://sales.jetbrains.com/hc/en-gb/articles/11564872502162-Is-a-free-educational-license-perpetual]"
+  valeur: duree <= 1 an

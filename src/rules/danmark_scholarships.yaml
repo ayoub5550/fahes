@@ -1,0 +1,35 @@
+# المنح الحكومية الدنماركية للطلاب الدوليين — الجامعات الدنماركية بتمويل من الدولة الدنماركية. المصدر: https://studyindenmark.dk/study-options/scholarships
+cond:
+  valeur: oui
+
+hors ue:
+  question: "هل أنت من جنسية خارج الاتحاد الأوروبي أو المنطقة الاقتصادية الأوروبية أو سويسرا؟"
+programme complet:
+  question: "هل تلتحق ببرنامج تعليم عالٍ كامل (Full degree)؟"
+permis sejour:
+  question: "هل لديك تصريح إقامة محدود المدة في الدنمارك بسبب الدراسة؟"
+fonds suffisants:
+  question: "هل تتوفر لديك موارد مالية كافية (7426 كرونة شهرياً أو أكثر)؟"
+institution non artistique:
+  question: "هل المؤسسة التعليمية ليست مؤسسة تعليم فني؟"
+
+cond . c:
+  titre: "الجنسية خارج الاتحاد الأوروبي"
+  description: "أن يكون المتقدم من جنسية خارج الاتحاد الأوروبي أو المنطقة الاقتصادية الأوروبية أو سويسرا [المصدر: https://studyindenmark.dk/study-options/scholarships]"
+  valeur: hors ue = oui
+cond . c1:
+  titre: "البرنامج الكامل"
+  description: "الالتحاق ببرنامج تعليم عالٍ كامل (Full degree) [المصدر: https://studyindenmark.dk/study-options/scholarships]"
+  valeur: programme complet = oui
+cond . c2:
+  titre: "تصريح الإقامة"
+  description: "الحصول على تصريح إقامة محدود المدة في الدنمارك بسبب الدراسة [المصدر: https://studyindenmark.dk/study-options/scholarships]"
+  valeur: permis sejour = oui
+cond . c3:
+  titre: "الموارد المالية"
+  description: "إثبات توفر مبلغ معيشي لا يقل عن 7426 كرونة دنماركية شهريًا (مستوى 2026) في حال عدم تغطية المنحة لهذا الجانب [المصدر: https://nyidanmark.dk/en-GB/You-want-to-apply/Study/Higher-Education]"
+  valeur: fonds suffisants = oui
+cond . c4:
+  titre: "استثناء الفنون"
+  description: "عدم التقديم لمؤسسة تعليم فني (Artistic Higher Education Institution) لعدم شمولها بهذه المنحة [المصدر: https://studyindenmark.dk/study-options/scholarships]"
+  valeur: institution non artistique = oui

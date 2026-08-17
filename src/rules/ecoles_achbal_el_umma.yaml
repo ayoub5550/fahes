@@ -1,0 +1,43 @@
+# مسابقة الالتحاق بمدارس أشبال الأمة — وزارة الدفاع الوطني. المصدر: https://preinscription.mdn.dz/cadets
+cond:
+  valeur: oui
+
+nationalite algerienne:
+  question: "هل المترشح يحمل الجنسية الجزائرية؟"
+annee naissance:
+  question: "ما هي سنة ميلاد المترشح؟"
+  unité: an
+moyenne bem:
+  question: "ما هو معدل الحصول على شهادة التعليم المتوسط؟"
+  unité: point
+orientation sciences:
+  question: "هل تم التوجيه نحو شعبة علوم وتكنولوجيا؟"
+succes medical:
+  question: "هل تم اجتياز الفحص الطبي والبدني بنجاح؟"
+statut celibataire:
+  question: "هل المترشح أعزب ويملك موافقة الولي؟"
+
+cond . nat:
+  titre: "الجنسية الجزائرية"
+  description: "الشرط 1: الجنسية الجزائرية [المصدر: https://khedmanews.com/2026/05/preinscription-mdn-dz-cadets-2026-2027.html]"
+  valeur: nationalite algerienne = oui
+cond . birth_year:
+  titre: "سنة الميلاد"
+  description: "الشرط 2: تاريخ الميلاد من سنة 2011 فما بعد (لدورة الدخول المدرسي 2026-2027) [المصدر: https://khedmanews.com/2026/05/preinscription-mdn-dz-cadets-2026-2027.html]"
+  valeur: annee naissance >= 2011 an
+cond . bem_moy:
+  titre: "معدل شهادة التعليم المتوسط"
+  description: "الشرط 4: إحراز معدل يساوي أو يفوق 12/20 في BEM [المصدر: https://khedmanews.com/2026/05/preinscription-mdn-dz-cadets-2026-2027.html]"
+  valeur: moyenne bem >= 12 point
+cond . science_orient:
+  titre: "التوجيه لشعبة علوم وتكنولوجيا"
+  description: "الشرط 5: التوجيه الرسمي نحو شعبة \"علوم وتكنولوجيا\" [المصدر: https://khedmanews.com/2026/05/preinscription-mdn-dz-cadets-2026-2027.html]"
+  valeur: orientation sciences = oui
+cond . medical_check:
+  titre: "الفحص الطبي والبدني"
+  description: "الشرط 6: اجتياز الفحص الطبي والحسي والاختبار البدني بنجاح [المصدر: https://khedmanews.com/2026/05/preinscription-mdn-dz-cadets-2026-2027.html]"
+  valeur: succes medical = oui
+cond . celibacy:
+  titre: "العزوبة وموافقة الولي"
+  description: "الشرط 7: العزوبة وتقديم تصريح موافقة الولي الشرعي [المصدر: https://www.a-onec.com/2025/06/preinscription-mdn-dz.html]"
+  valeur: statut celibataire = oui

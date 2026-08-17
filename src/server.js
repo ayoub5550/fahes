@@ -8,7 +8,15 @@ const accountRouter = require('./routes/account');
 const auth = require('./auth');
 
 const app = express();
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false, limit: '64kb' }));
+app.disable('x-powered-by');
+app.use((req, res, next) => {
+  res.setHeader('x-content-type-options', 'nosniff');
+  res.setHeader('referrer-policy', 'strict-origin-when-cross-origin');
+  res.setHeader('x-frame-options', 'SAMEORIGIN');
+  res.setHeader('permissions-policy', 'geolocation=(), camera=(), microphone=()');
+  next();
+});
 
 /* ═══════════ أداء: ضغط gzip + ملف تنسيق مخزَّن أبدياً ═══════════ */
 const zlib = require('zlib');
@@ -90,12 +98,17 @@ app.get('/', (req, res) => {
   <div id="none" class="card" style="display:none;text-align:center">لا توجد خدمة بهذا الاسم. جرّب كلمة أخرى.</div>
   <script>
   (function(){
+    function norm(v){return (v||'').toString().toLowerCase()
+      .replace(/[\u064B-\u0652\u0640]/g,'')
+      .replace(/[\u0623\u0625\u0622\u0671]/g,'\u0627')
+      .replace(/\u0629/g,'\u0647').replace(/[\u0649]/g,'\u064A')
+      .replace(/[^\p{L}\p{N}]+/gu,' ').trim();}
     var q=document.getElementById('q'), cards=[].slice.call(document.querySelectorAll('.svc')),
         secs=[].slice.call(document.querySelectorAll('.catsec')), chips=[].slice.call(document.querySelectorAll('.chip')), f='all';
     function apply(){
-      var t=(q.value||'').trim().toLowerCase(), n=0;
+      var t=norm(q.value), n=0;
       cards.forEach(function(c){
-        var ok=(f==='all'||c.dataset.c===f)&&(!t||c.dataset.n.toLowerCase().indexOf(t)>-1);
+        var ok=(f==='all'||c.dataset.c===f)&&(!t||t.split(' ').every(function(w){return c._n.indexOf(w)>-1}));
         c.style.display=ok?'':'none'; if(ok)n++;
       });
       secs.forEach(function(s){
@@ -104,7 +117,10 @@ app.get('/', (req, res) => {
       });
       document.getElementById('none').style.display=n?'none':'block';
     }
-    q.addEventListener('input',apply);
+    cards.forEach(function(c){c._n=norm(c.dataset.n)});
+    var qs=new URLSearchParams(location.search).get('q'); if(qs){q.value=qs;}
+    var tm; q.addEventListener('input',function(){clearTimeout(tm);tm=setTimeout(apply,80)});
+    apply();
     chips.forEach(function(c){c.addEventListener('click',function(){
       chips.forEach(function(x){x.classList.remove('on')}); c.classList.add('on'); f=c.dataset.f; apply();
       window.scrollTo({top:document.getElementById('services').offsetTop-70,behavior:'smooth'});
@@ -233,7 +249,7 @@ app.post('/s/:id', (req, res) => {
 const path = require('path');
 const fs = require('fs');
 const APK_PATH = process.env.FAHES_APK || path.join(__dirname, '..', 'public', 'fahes.apk');
-const APK_VERSION = '1.2';
+const APK_VERSION = '1.3';
 
 app.get('/app', (req, res) => {
   const exists = fs.existsSync(APK_PATH);
@@ -286,10 +302,10 @@ app.get('/how', (req, res) => {
   <section><h2 class="sec">كيف يعمل فاحص</h2>
   <p class="sub">لا تخمين ولا ذكاء اصطناعي: شروط مكتوبة في المراسيم والمواقع الرسمية، محوَّلة إلى قواعد حسابية.</p>
   <div class="grid">
-    <div class="card"><span class="ic">1️⃣</span><span><h3>تختار الخدمة</h3><p>سكن، منحة، قرض، مشروع، تأشيرة… ${SERVICES.length + 1} خدمة.</p></span></div>
-    <div class="card"><span class="ic">2️⃣</span><span><h3>تجيب على أسئلة قصيرة</h3><p>سنّك، دخلك، وضعك المهني… بلا اسم ولا هاتف ولا وثيقة.</p></span></div>
-    <div class="card"><span class="ic">3️⃣</span><span><h3>يحسب فاحص كل شرط</h3><p>كل شرط يُقيَّم منفرداً: ✓ مستوفى، × مانع، ؟ معلومة ناقصة.</p></span></div>
-    <div class="card"><span class="ic">4️⃣</span><span><h3>يوجّهك للمكان الرسمي</h3><p>قائمة الوثائق ورابط الإيداع الرسمي، بلا وسيط وبلا رسوم.</p></span></div>
+    <div class="card"><span class="ic num">1</span><span><h3>تختار الخدمة</h3><p>سكن، منحة، قرض، مشروع، تأشيرة… ${SERVICES.length + 1} خدمة.</p></span></div>
+    <div class="card"><span class="ic num">2</span><span><h3>تجيب على أسئلة قصيرة</h3><p>سنّك، دخلك، وضعك المهني… بلا اسم ولا هاتف ولا وثيقة.</p></span></div>
+    <div class="card"><span class="ic num">3</span><span><h3>يحسب فاحص كل شرط</h3><p>كل شرط يُقيَّم منفرداً: ✓ مستوفى، × مانع، ؟ معلومة ناقصة.</p></span></div>
+    <div class="card"><span class="ic num">4</span><span><h3>يوجّهك للمكان الرسمي</h3><p>قائمة الوثائق ورابط الإيداع الرسمي، بلا وسيط وبلا رسوم.</p></span></div>
   </div></section>
   <section><h2 class="sec">لماذا هذا مهم</h2>
   <p>أغلب الملفات لا تُرفض لأن صاحبها غير مستحق، بل بسبب شرط شكلي كان يمكن تصحيحه قبل الإيداع:
@@ -320,6 +336,8 @@ app.get('/about', (req, res) => {
    وهو أساس حساب سقوف الدخل في صيغ السكن والمنح.</div>
   </section>`, { user: req.user }));
 });
+
+app.get('/robots.txt', (_, res) => res.type('text/plain').send('User-agent: *\nAllow: /\n'));
 
 app.use((req, res) => res.status(404).send(layout('غير موجود',
   '<div class="card" style="text-align:center"><h3>الصفحة غير موجودة</h3><p><a href="/">عد إلى الصفحة الرئيسية</a></p></div>')));

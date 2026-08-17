@@ -1,0 +1,34 @@
+# حاضنة ومسرّعة Orange Corners الجزائر — Orange Corners (مبادرة مملكة هولندا) بالشراكة مع منفذ محلي في الجزائر. المصدر: https://orangecorners.com/country/algeria-2
+cond:
+  valeur: oui
+
+age:
+  question: "كم سنك؟"
+  unité: an
+resident algerie:
+  question: "هل أنت مقيم في الجزائر أو تحمل جنسيتها؟"
+projet existant:
+  question: "هل لديك فكرة مشروع أو مشروع ناشئ؟"
+entreprise enregistree:
+  question: "هل لديك سجل تجاري أو إثبات نشاط قائم؟"
+
+cond . age_min:
+  titre: "الحد الأدنى للسن"
+  description: "يجب ألا يقل عمر المتقدم عن 18 سنة [المصدر: https://www.orangecorners.com/country/algeria-2]"
+  valeur: age >= 18 an
+cond . age_max:
+  titre: "الحد الأقصى للسن"
+  description: "يجب ألا يتجاوز عمر المتقدم 35 سنة [المصدر: https://www.orangecorners.com/country/algeria-2]"
+  valeur: age <= 35 an
+cond . residence:
+  titre: "الإقامة أو الجنسية الجزائرية"
+  description: "يجب إثبات الجنسية الجزائرية أو الإقامة القانونية في الجزائر [المصدر: https://www.orangecorners.com/country/algeria-2]"
+  valeur: resident algerie = oui
+cond . project:
+  titre: "وجود فكرة أو مشروع"
+  description: "يجب توفر عرض تقديمي (Pitch) للمشروع أو فكرة ناشئة [المصدر: https://www.orangecorners.com/country/algeria-2]"
+  valeur: projet existant = oui
+cond . registration:
+  titre: "سجل تجاري أو نشاط قائم"
+  description: "يُستحسن وجود سجل تجاري أو إثبات نشاط قائم إن وُجد [المصدر: https://www.orangecorners.com/country/algeria-2]"
+  valeur: entreprise enregistree = oui

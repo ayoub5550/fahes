@@ -1,0 +1,38 @@
+# مسرّعة Founder Institute MENA — Founder Institute (منظمة عالمية، فرع MENA). المصدر: https://fi.co/mena
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك؟"
+  unité: an
+annees experience:
+  question: "كم عدد سنوات خبرتك؟"
+  unité: an
+budget:
+  question: "ما هي ميزانية التسجيل المتاحة؟"
+  unité: USD
+pre seed project:
+  question: "هل مشروعك في مرحلة ما قبل التمويل الأولي؟"
+full time employee:
+  question: "هل أنت موظف بدوام كامل؟"
+
+cond . age_req:
+  titre: "شرط السن القانوني"
+  description: "يستهدف البرنامج المؤسسين البالغين سن الرشد فما فوق [المصدر: https://fi.co/admissions]"
+  valeur: age >= 18 an
+cond . exp_req:
+  titre: "الخبرة المطلوبة"
+  description: "البرنامج يقبل مختلف مستويات الخبرة ابتداءً من صفر سنوات خبرة [المصدر: https://fi.co/admissions]"
+  valeur: annees experience >= 0 an
+cond . budget_req:
+  titre: "رسوم التسجيل"
+  description: "رسوم التسجيل المبكر 199 دولارًا ترتفع إلى 299 دولارًا بعد 29 مارس 2026 [المصدر: https://menastartupdigest.com/apply-now-for-the-founder-institute-mena-pre-seed-accelerator/]"
+  valeur: budget > 0 USD
+cond . stage_req:
+  titre: "مرحلة المشروع"
+  description: "الشركات المؤسَّسة يجب أن تكون قبل مرحلة تمويل أو إيرادات أو جذب مستخدمين كبير (pre-seed) [المصدر: https://fi.co/admissions]"
+  valeur: pre seed project = oui
+cond . employee_req:
+  titre: "قبول الموظفين"
+  description: "يمكن التقديم حتى وأنت موظف بدوام كامل أو مؤسس منفرد [المصدر: https://fi.co/admissions]"
+  valeur: full time employee = oui

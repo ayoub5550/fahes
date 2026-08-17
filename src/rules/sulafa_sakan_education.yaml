@@ -1,0 +1,37 @@
+# سلفة السكن لعمال قطاع التربية — لجنة الخدمات الاجتماعية لعمال قطاع التربية الوطنية (بالولايات) – وزارة التربية الوطنية. المصدر: https://cwoste40.dz/%D8%A7%D9%84%D8%B3%D9%84%D9%81-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A%D8%A9/
+cond:
+  valeur: oui
+
+duree avant retraite:
+  question: "كم عدد الشهور المتبقية لك على التقاعد؟"
+  unité: mois
+delai achat:
+  question: "كم عدد السنوات منذ الشروع الفعلي في الشراء؟"
+  unité: an
+en conge longue duree:
+  question: "هل أنت في عطلة طويلة الأمد (MLD)؟"
+deiteur cnos:
+  question: "هل أنت مدين للجنة الخدمات الاجتماعية؟"
+deja beneficie:
+  question: "هل استفدت من هذه السلفة سابقاً في مسارك المهني؟"
+
+cond . conge:
+  titre: "عدم التواجد في عطلة طويلة الأمد"
+  description: "ألا يكون الموظف في عطلة طويلة الأمد (MLD) [المصدر: https://cwoste40.dz/%D8%A7%D9%84%D8%B3%D9%84%D9%81-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A%D8%A9/]"
+  valeur: en conge longue duree = non
+cond . deynes:
+  titre: "عدم وجود ديون تجاه اللجنة"
+  description: "ألا يكون مديناً للجنة الخدمات الاجتماعية [المصدر: https://cwoste40.dz/%D8%A7%D9%84%D8%B3%D9%84%D9%81-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A%D8%A9/]"
+  valeur: deiteur cnos = non
+cond . retraite:
+  titre: "مدة الإحالة على التقاعد كافية لتسديد القرض"
+  description: "ألا تكون مدة الإحالة على التقاعد أقل من مدة تسديد القرض (50 شهراً) [المصدر: https://cwoste40.dz/%D8%A7%D9%84%D8%B3%D9%84%D9%81-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A%D8%A9/]"
+  valeur: duree avant retraite >= 50 mois
+cond . delai:
+  titre: "عدم تجاوز المدة المحددة للشراء"
+  description: "عدم تجاوز ثلاث سنوات بين تاريخ الشروع الفعلي في الشراء وتاريخ إيداع الملف [المصدر: https://cwoste40.dz/%D8%A7%D9%84%D8%B3%D9%84%D9%81-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A%D8%A9/]"
+  valeur: delai achat <= 3 an
+cond . benefice:
+  titre: "عدم الاستفادة السابقة من السلفة"
+  description: "عدم الاستفادة من هذه السلفة إلا مرة واحدة في المسار المهني [المصدر: https://cwoste40.dz/%D8%A7%D9%84%D8%B3%D9%84%D9%81-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A%D8%A9/]"
+  valeur: deja beneficie = non

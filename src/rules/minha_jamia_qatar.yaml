@@ -1,0 +1,44 @@
+# منحة جامعة قطر للطلاب الدوليين — جامعة قطر. المصدر: https://www.qu.edu.qa/en-us/students/admission/scholarships/types
+cond:
+  valeur: oui
+
+shahada thanawiya:
+  question: "هل لديك شهادة الثانوية العامة أو ما يعادلها؟"
+maddal thanawiya:
+  question: "ما هو معدل شهادة الثانوية العامة؟"
+  unité: point
+qaboul nihai:
+  question: "هل حصلت على القبول النهائي في الجامعة؟"
+monaha okhra:
+  question: "هل تستفيد من منحة أو رعاية أخرى حالياً؟"
+maddal tarakomi:
+  question: "ما هو المعدل التراكمي المطلوب أو المتوقع للحفاظ على المنحة؟"
+  unité: point
+saat motamada:
+  question: "ما عدد الساعات المعتمدة المجتازة في الفصل الدراسي؟"
+  unité: point
+
+cond . sh:
+  titre: "شهادة الثانوية العامة"
+  description: "الحصول على شهادة ثانوية عامة أو ما يعادلها [المصدر: https://www.qu.edu.qa/en-us/students/admission/scholarships/types]"
+  valeur: shahada thanawiya = oui
+cond . sh1:
+  titre: "معدل الثانوية العامة"
+  description: "معدل ثانوية عامة لا يقل عن 95% [المصدر: https://www.qu.edu.qa/en-us/students/admission/scholarships/types]"
+  valeur: maddal thanawiya >= 95 point
+cond . sh2:
+  titre: "القبول النهائي"
+  description: "الحصول على القبول النهائي في الجامعة واستيفاء شروط الكلية المتقدَّم إليها [المصدر: https://www.qu.edu.qa/en-us/students/admission/scholarships/types]"
+  valeur: qaboul nihai = oui
+cond . sh3:
+  titre: "عدم ازدواجية المنح"
+  description: "عدم الاستفادة من هذه المنحة مع منحة أو رعاية أخرى في الوقت نفسه [المصدر: https://www.qu.edu.qa/en-us/students/admission/scholarships/types]"
+  valeur: monaha okhra = non
+cond . sh4:
+  titre: "المعدل التراكمي"
+  description: "الحفاظ على معدل تراكمي لا يقل عن 3.0 من 4.0 لاستمرار المنحة [المصدر: https://www.qu.edu.qa/en-us/students/admission/scholarships/types]"
+  valeur: maddal tarakomi >= 3 point
+cond . sh5:
+  titre: "الساعات المعتمدة"
+  description: "إتمام 12 ساعة معتمدة على الأقل كل فصل دراسي [المصدر: https://www.qu.edu.qa/en-us/students/admission/scholarships/types]"
+  valeur: saat motamada >= 12 point

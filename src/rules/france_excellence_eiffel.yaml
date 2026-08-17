@@ -1,0 +1,31 @@
+# منحة فرنسا إكسيلانس إيفل (France Excellence Eiffel) — وزارة أوروبا والشؤون الخارجية الفرنسية عبر وكالة Campus France. المصدر: https://www.campusfrance.org/en/france-excellence-eiffel-scholarship-program
+cond:
+  valeur: oui
+
+age master:
+  question: "ما هو عمرك؟ (لمستوى الماجستير)"
+  unité: an
+age doctorat:
+  question: "ما هو عمرك؟ (لمستوى الدكتوراه)"
+  unité: an
+etranger:
+  question: "هل أنت من جنسية أجنبية وليست لديك الجنسية الفرنسية؟"
+institution application:
+  question: "هل يتم تقديم الملف حصراً عبر مؤسسة تعليم عالٍ فرنسية؟"
+
+cond . age_master_cond:
+  titre: "شرط السن لمستوى الماجستير"
+  description: "أن يكون عمر المتقدم لمستوى الماجستير 29 سنة كحد أقصى (مولود بعد مارس 1996) [المصدر: https://www.campusfrance.org/system/files/medias/documents/2025-09/guide_depot_candidatures_eiffel_2026.pdf]"
+  valeur: age master <= 29 an
+cond . age_doctorat_cond:
+  titre: "شرط السن لمستوى الدكتوراه"
+  description: "أن يكون عمر المتقدم لمستوى الدكتوراه 35 سنة كحد أقصى (مولود بعد مارس 1990) [المصدر: https://www.campusfrance.org/system/files/medias/documents/2025-09/guide_depot_candidatures_eiffel_2026.pdf]"
+  valeur: age doctorat <= 35 an
+cond . nationality_cond:
+  titre: "شرط الجنسية الأجنبية"
+  description: "أن يكون المتقدم من جنسية أجنبية، والمزدوجو الجنسية مع الفرنسية غير مؤهلين [المصدر: https://www.campusfrance.org/system/files/medias/documents/2025-09/guide_depot_candidatures_eiffel_2026.pdf]"
+  valeur: etranger = oui
+cond . institution_cond:
+  titre: "طريقة التقديم عبر المؤسسة"
+  description: "تقديم الملف حصرًا عبر مؤسسة تعليم عالٍ فرنسية [المصدر: https://www.campusfrance.org/en/france-excellence-eiffel-scholarship-program]"
+  valeur: institution application = oui

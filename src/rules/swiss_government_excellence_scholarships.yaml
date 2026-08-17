@@ -1,0 +1,33 @@
+# المنح الحكومية السويسرية الفدرالية للتميز — الأمانة الدولة السويسرية للتعليم والبحث والابتكار SERI/SBFI عبر اللجنة الفدرالية FCS (ESKAS). المصدر: https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك بالسنوات؟"
+  unité: an
+master:
+  question: "هل حصلت على شهادة الماجستير أو ما يعادلها؟"
+lettre soutien:
+  question: "هل لديك خطاب دعم من مشرف أكاديمي في سويسرا؟"
+duree recherche:
+  question: "ما هي مدة البحث بالشهور؟"
+  unité: mois
+
+cond . age_limit:
+  titre: "الحد الأقصى للسن"
+  description: "الحد الأقصى للسن 35 سنة [المصدر: https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships]"
+  valeur: age <= 35 an
+cond . master_degree:
+  titre: "حيازة شهادة الماجستير"
+  description: "إتمام شهادة الماجستير أو ما يعادلها [المصدر: https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships]"
+  valeur: master = oui
+cond . support_letter:
+  titre: "خطاب الدعم الأكاديمي"
+  description: "يجب وجود خطاب دعم من مشرف أكاديمي في سويسرا [المصدر: https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships-at-a-glance]"
+  valeur: lettre soutien = oui
+cond . research_duration:
+  titre: "مدة البحث"
+  description: "مدة المنحة بين 6 و12 شهرًا دون إمكانية التمديد للفئة [المصدر: https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships-at-a-glance]"
+  toutes ces conditions:
+    - duree recherche >= 6 mois
+    - duree recherche <= 12 mois

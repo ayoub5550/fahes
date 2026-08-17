@@ -1,0 +1,37 @@
+# منحة إرنست ماخ النمساوية العالمية (Ernst Mach Grant worldwide) — وكالة OeAD بتمويل من الوزارة الفدرالية النمساوية للمرأة والعلوم والبحث (BMFWF). المصدر: https://oead.at/en/study-research-teaching/overview-grants-and-scholarships/ernst-mach-grant
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك؟"
+  unité: an
+non autrichien:
+  question: "هل أنت من دولة غير النمسا؟"
+duree mois:
+  question: "ما هي مدة المنحة المطلوبة بالشهور؟"
+  unité: mois
+residence autriche:
+  question: "هل تقيم بشكل دائم في النمسا؟"
+niveau etudes:
+  question: "هل لديك شهادة دراسات عليا؟"
+
+cond . max_age:
+  titre: "السن الأقصى"
+  description: "الحد الأقص للسن 35 سنة عند بدء الإقامة البحثية [المصدر: https://oead.at/en/study-research-teaching/overview-grants-and-scholarships/ernst-mach-grant/faq-ernst-mach-grant-worldwide]"
+  valeur: age <= 35 an
+cond . nationality:
+  titre: "الجنسية غير النمساوية"
+  description: "أن يكون المتقدم باحثًا شابًا من أي دولة عدا النمسا [المصدر: https://oead.at/en/study-research-teaching/overview-grants-and-scholarships/ernst-mach-grant]"
+  valeur: non autrichien = oui
+cond . duration:
+  titre: "مدة المنحة"
+  description: "مدة المنحة من شهر إلى 9 أشهر دون إمكانية تمديد [المصدر: https://oead.at/en/study-research-teaching/overview-grants-and-scholarships/ernst-mach-grant]"
+  valeur: duree mois <= 9 mois
+cond . residence:
+  titre: "عدم الإقامة في النمسا"
+  description: "عدم الإقامة الدائمة في النمسا أو إتمام التعليم الأكاديمي بشكل أساسي فيها [المصدر: https://oead.at/en/study-research-teaching/overview-grants-and-scholarships/ernst-mach-grant/faq-ernst-mach-grant-worldwide]"
+  valeur: residence autriche = non
+cond . studies:
+  titre: "الدراسات العليا"
+  description: "كشف درجات الدراسات العليا مطلوب للباحثين الشباب المتقدمين للمنحة [المصدر: https://oead.at/en/study-research-teaching/overview-grants-and-scholarships/ernst-mach-grant]"
+  valeur: niveau etudes = oui

@@ -1,0 +1,37 @@
+# رخصة استغلال وكالة سياحة وأسفار — وزارة السياحة والصناعة التقليدية – مديريات السياحة بالولايات. المصدر: https://naama.mta.gov.dz/%d9%83%d9%8a%d9%81%d9%8a%d8%a9-%d8%a7%d9%84%d8%a5%d8%b3%d8%aa%d8%ab%d9%85%d8%a7%d8%b1/%d9%83%d9%8a%d9%81-%d8%aa%d8%b5%d8%a8%d8%ad-%d9%88%d9%83%d9%8a%d9%84-%d8%b3%d9%8a%d8%a7%d8%ad%d9%8a-%d8%9f/
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو عمرك بالسنوات؟"
+  unité: an
+annees experience:
+  question: "كم عدد سنوات خبرتك المهنية في الميدان السياحي؟"
+  unité: an
+diplome:
+  question: "هل تحوز شهادة الدراسات العليا أو تقني سامي في السياحة أو الفندقة؟"
+local conforme:
+  question: "هل المحل التجاري مطابق للمواصفات ومساحته 25 متر مربع على الأقل؟"
+etranger:
+  question: "هل أنت أجنبي غير حائز على رخصة عمل بالجزائر؟"
+
+cond . age_requis:
+  titre: "الشرط العمري"
+  description: "ألا يقل سن مقدم الطلب عن 21 سنة [المصدر: https://lechodalgerie.dz/creation-et-exploitation-dagences-de-tourisme-et-de-voyages-de-nouvelles-conditions-publiees-sur-le-jo/]"
+  valeur: age >= 21 an
+cond . experience_requise:
+  titre: "الخبرة المهنية"
+  description: "أن يكون المسير حاصلاً على أقدمية سنة واحدة في الميدان السياحي [المصدر: https://naama.mta.gov.dz/%d9%83%d9%8a%d9%81%d9%8a%d8%a9-%d8%a7%d9%84%d8%a5%d8%b3%d8%aa%d8%ab%d9%85%d8%a7%d8%b1/%d9%83%d9%8a%d9%81-%d8%aa%d8%b5%d8%a8%d8%ad-%d9%88%d9%83%d9%8a%d9%84-%d8%b3%d9%8a%d8%a7%d8%ad%d9%8a-%d8%9f/]"
+  valeur: annees experience >= 1 an
+cond . diplome_requis:
+  titre: "المؤهل العلمي"
+  description: "أن يكون المسير حاصلاً على شهادة الدراسات العليا أو تقني سامي في السياحة أو الفندقة [المصدر: https://naama.mta.gov.dz/%d9%83%d9%8a%d9%81%d9%8a%d8%a9-%d8%a7%d9%84%d8%a5%d8%b3%d8%aa%d8%ab%d9%85%d8%a7%d8%b1/%d9%83%d9%8a%d9%81-%d8%aa%d8%b5%d8%a8%d8%ad-%d9%88%d9%83%d9%8a%d9%84-%d8%b3%d9%8a%d8%a7%d8%ad%d9%8a-%d8%9f/]"
+  valeur: diplome = oui
+cond . local_requis:
+  titre: "مواصفات المحل التجاري"
+  description: "أن تكون مساحة المحل التجاري 25 م² على الأقل ومطابقاً للمواصفات [المصدر: https://naama.mta.gov.dz/%d9%83%d9%8a%d9%81%d9%8a%d8%a9-%d8%a7%d9%84%d8%a5%d8%b3%d8%aa%d8%ab%d9%85%d8%a7%d8%b1/%d9%83%d9%8a%d9%81-%d8%aa%d8%b5%d8%a8%d8%ad-%d9%88%d9%83%d9%8a%d9%84-%d8%b3%d9%8a%d8%a7%d8%ad%d9%8a-%d8%9f/]"
+  valeur: local conforme = oui
+cond . etranger_requis:
+  titre: "الجنسية ورخصة العمل"
+  description: "شروط خاصة بالوكيل ذي الجنسية الأجنبية والحصول على رخصة العمل [المصدر: https://naama.mta.gov.dz/%d9%83%d9%8a%d9%81%d9%8a%d8%a9-%d8%a7%d9%84%d8%a5%d8%b3%d8%aa%d8%ab%d9%85%d8%a7%d8%b1/%d9%83%d9%8a%d9%81-%d8%aa%d8%b5%d8%a8%d8%ad-%d9%88%d9%83%d9%8a%d9%84-%d8%b3%d9%8a%d8%a7%d8%ad%d9%8a-%d8%9f/]"
+  valeur: etranger = non

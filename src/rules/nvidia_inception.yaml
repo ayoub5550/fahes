@@ -1,0 +1,30 @@
+# برنامج NVIDIA Inception للشركات الناشئة في الذكاء الاصطناعي — NVIDIA Corporation. المصدر: https://www.nvidia.com/en-us/startups/
+cond:
+  valeur: oui
+
+is registered:
+  question: "هل الشركة مسجلة قانونيًا ولها كيان قانوني حقيقي؟"
+company age:
+  question: "ما هو عمر الشركة بالسنوات منذ تاريخ التأسيس؟"
+  unité: an
+uses ai:
+  question: "هل يستخدم منتج الشركة تقنيات الذكاء الاصطناعي أو التعلم الآلي؟"
+is consulting firm:
+  question: "هل تعتبر الشركة شركة استشارات أو تطوير برمجي خارجي؟"
+
+cond . legal:
+  titre: "التسجيل القانوني للشركة"
+  description: "أن تكون الشركة مسجلة قانونيًا (كيان قانوني حقيقي) [المصدر: https://radgrants.com/programs/nvidia-inception]"
+  valeur: is registered = oui
+cond . age:
+  titre: "عمر الشركة"
+  description: "أن يكون عمر الشركة أقل من 10 سنوات منذ التأسيس [المصدر: https://radgrants.com/programs/nvidia-inception]"
+  valeur: company age <= 10 an
+cond . ai_tech:
+  titre: "استخدام الذكاء الاصطناعي"
+  description: "أن يستخدم المنتج تقنيات الذكاء الاصطناعي أو التعلم الآلي أو الحوسبة المتسارعة بشكل معقول [المصدر: https://klymentiev.com/blog/nvidia-inception-program]"
+  valeur: uses ai = oui
+cond . not_consulting:
+  titre: "طبيعة الشركة"
+  description: "عدم كون الشركة شركة استشارات أو تطوير برمجي خارجي (outsourced dev firm) [المصدر: https://klymentiev.com/blog/nvidia-inception-program]"
+  valeur: is consulting firm = non

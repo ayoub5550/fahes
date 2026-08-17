@@ -1,0 +1,35 @@
+# مسابقة توظيف الأساتذة — وزارة التربية الوطنية – الديوان الوطني للامتحانات والمسابقات (ONEC). المصدر: https://concours.onec.dz
+cond:
+  valeur: oui
+
+nationalite algerienne:
+  question: "هل تتمتع بالجنسية الجزائرية؟"
+diplome requis:
+  question: "هل تحوز الشهادة المطلوبة في التخصص؟"
+situation service national:
+  question: "هل أنت في وضعية قانونية تجاه الخدمة الوطنية؟"
+droits civiques:
+  question: "هل تتمتع بالحقوق المدنية؟"
+casier judiciaire:
+  question: "هل السوابق القضائية خالية من ملاحظات تتنافى مع التدريس؟"
+
+cond . nat:
+  titre: "الجنسية الجزائرية"
+  description: "الشرط 1: الجنسية الجزائرية [المصدر: https://www.education.gov.dz/2025/12/11/1559/]"
+  valeur: nationalite algerienne = oui
+cond . dip:
+  titre: "الشهادة المطلوبة"
+  description: "الشرط 2: حيازة الشهادة المطلوبة في التخصص (ليسانس/ماستر حسب رتبة الابتدائي والمتوسط، وماستر/ماجستير للثانوي) [المصدر: https://www.education.gov.dz/2025/12/11/1559/]"
+  valeur: diplome requis = oui
+cond . serv:
+  titre: "الخدمة الوطنية"
+  description: "الشرط 3: الوضعية القانونية تجاه الخدمة الوطنية بالنسبة للرجال [المصدر: https://www.education.gov.dz/2025/12/11/1559/]"
+  valeur: situation service national = oui
+cond . droits:
+  titre: "الحقوق المدنية"
+  description: "الشرط 4: التمتع بالحقوق المدنية [المصدر: https://www.education.gov.dz/2025/12/11/1559/]"
+  valeur: droits civiques = oui
+cond . casier:
+  titre: "السوابق القضائية"
+  description: "الشرط 5: شهادة سوابق قضائية خالية من ملاحظات تتنافى وممارسة مهنة التدريس [المصدر: https://www.education.gov.dz/2025/12/11/1559/]"
+  valeur: casier judiciaire = oui

@@ -1,0 +1,35 @@
+# مسابقة توظيف أعوان الرقابة والحراسة بالجمارك — المديرية العامة للجمارك الجزائرية. المصدر: https://douane.gov.dz
+cond:
+  valeur: oui
+
+age:
+  question: "كم سنك؟"
+  unité: an
+service national:
+  question: "هل أنت معفى من التزامات الخدمة الوطنية؟"
+niveau secondaire:
+  question: "هل أنهيت السنة الثانية ثانوي على الأقل؟"
+frais inscription:
+  question: "ما هو مبلغ حقوق المشاركة المتوفر لديك؟"
+  unité: DA
+
+cond . age_min:
+  titre: "السن الأدنى"
+  description: "السن بين 19 و28 سنة عند تاريخ إجراء المسابقة (السن الأدنى 19 سنة) [المصدر: univanet.com]"
+  valeur: age >= 19 an
+cond . age_max:
+  titre: "السن الأقصى"
+  description: "السن بين 19 و28 سنة عند تاريخ إجراء المسابقة (السن الأقصى 28 سنة) [المصدر: univanet.com]"
+  valeur: age <= 28 an
+cond . service_national:
+  titre: "الخدمة الوطنية"
+  description: "الإعفاء من التزامات الخدمة الوطنية [المصدر: univanet.com]"
+  valeur: service national = oui
+cond . niveau_scolaire:
+  titre: "المستوى الدراسي"
+  description: "مستوى دراسي: السنة الثانية ثانوي مستوفاة على الأقل [المصدر: univanet.com]"
+  valeur: niveau secondaire = oui
+cond . frais:
+  titre: "حقوق المشاركة"
+  description: "حقوق مشاركة 200 دج [المصدر: univanet.com]"
+  valeur: frais inscription >= 200 DA

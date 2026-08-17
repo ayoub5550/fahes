@@ -1,0 +1,29 @@
+# مسابقة الالتحاق بالمدرسة الوطنية للإدارة (ENA) — المدرسة الوطنية للإدارة – وزارة الداخلية والجماعات المحلية. المصدر: https://ena.interieur.gov.dz
+cond:
+  valeur: oui
+
+age:
+  question: "ما هو سنك بالسنوات؟"
+  unité: an
+academic average:
+  question: "ما هو معدلك العام في الشهادة الجامعية؟"
+  unité: point
+military status:
+  question: "هل وضعيتك تجاه الخدمة الوطنية مسواة (إعفاء أو تأجيل)؟"
+
+cond . age_limit:
+  titre: "السن الأقصى للمترشحين العاديين"
+  description: "السن حتى 28 سنة على الأكثر للمترشحين العاديين عند تاريخ إجراء المسابقة [المصدر: https://ena.edu.dz/ar/التكوين-الاساسي/مسابقة-الالتحاق-بالمدرسة]"
+  valeur: age <= 28 an
+cond . employee_age:
+  titre: "السن الأقصى للموظفين"
+  description: "السن حتى 32 سنة على الأكثر للمترشحين الموظفين [المصدر: https://ena.edu.dz/ar/التكوين-الاساسي/مسابقة-الالتحاق-بالمدرسة]"
+  valeur: age <= 32 an
+cond . average_limit:
+  titre: "المعدل العام للشهادة"
+  description: "الحصول على معدل عام لا يقل عن 12/20 في الشهادة [المصدر: https://ena.edu.dz/ar/التكوين-الاساسي/مسابقة-الالتحاق-بالمدرسة]"
+  valeur: academic average >= 12 point
+cond . military_service:
+  titre: "تسوية الخدمة الوطنية"
+  description: "تسوية الوضعية تجاه الخدمة الوطنية (شهادة إعفاء أو تأجيل ساري إلى غاية تاريخ المسابقة) [المصدر: https://ena.edu.dz/ar/التكوين-الاساسي/مسابقة-الالتحاق-بالمدرسة]"
+  valeur: military status = oui

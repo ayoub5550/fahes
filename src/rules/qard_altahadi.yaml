@@ -1,0 +1,34 @@
+# قرض التحدي للفلاحة — وزارة الفلاحة والتنمية الريفية بالشراكة مع بنك الفلاحة والتنمية الريفية (BADR). المصدر: https://elhiwar.dz/national/45514/
+cond:
+  valeur: oui
+
+mustathmir falahi:
+  question: "هل أنت مستثمر فلاحي (فردي أو ضمن تعاونية)؟"
+qimat alqard:
+  question: "ما هي قيمة القرض المطلوبة بالدينار؟"
+  unité: DA
+mashroua falahi:
+  question: "هل المشروع موجه لإنشاء أو تجديد هياكل تربية الحيوانات أو التخزين أو البيوت البلاستيكية؟"
+duyoun mutaathira:
+  question: "هل لديك ديون متعثرة تجاه البنك؟"
+
+cond . mustathmir:
+  titre: "صفة مستثمر فلاحي"
+  description: "أن يكون طالب القرض مستثمراً فلاحياً (فردياً أو ضمن تعاونية) [المصدر: https://elhiwar.dz/national/45514/]."
+  valeur: mustathmir falahi = oui
+cond . qardmin:
+  titre: "الحد الأدنى للقرض"
+  description: "قيمة القرض تبدأ من مليون دينار جزائري حسب حجم المشروع [المصدر: https://elhiwar.dz/national/45514/]."
+  valeur: qimat alqard >= 1000000 DA
+cond . qardmax:
+  titre: "الحد الأقصى للقرض"
+  description: "قيمة القرض لا تتجاوز 100 مليون دينار جزائري حسب حجم المشروع [المصدر: https://elhiwar.dz/national/45514/]."
+  valeur: qimat alqard <= 100000000 DA
+cond . mashroua:
+  titre: "مجال المشروع"
+  description: "يوجَّه القرض أساساً لإنشاء أو تجديد هياكل تربية الحيوانات والتخزين والبيوت البلاستيكية [المصدر: https://elhiwar.dz/national/45514/]."
+  valeur: mashroua falahi = oui
+cond . duyoun:
+  titre: "سجل الديون"
+  description: "عدم وجود ديون متعثرة تجاه البنك [المصدر: https://elhiwar.dz/national/45514/]."
+  valeur: duyoun mutaathira = non

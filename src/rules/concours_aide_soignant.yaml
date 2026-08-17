@@ -1,0 +1,37 @@
+# مسابقة الالتحاق بالتكوين شبه الطبي (رتبة مساعد التمريض) — وزارة الصحة والسكان وإصلاح المستشفيات. المصدر: https://formation.sante.gov.dz
+cond:
+  valeur: oui
+
+nationalite algerienne:
+  question: "هل أنت حامل للجنسية الجزائرية؟"
+niveau etudes:
+  question: "ما هو عدد سنوات الدراسة الثانوية المكتملة؟"
+  unité: an
+baccalaureat obtenu:
+  question: "هل أنت متحصل على شهادة البكالوريا؟"
+aptitude physique:
+  question: "هل تتوفر لديك اللياقة البدنية الكافية؟"
+age:
+  question: "كم سنك؟"
+  unité: an
+
+cond . nat:
+  titre: "الجنسية الجزائرية"
+  description: "الشرط 3: الجنسية الجزائرية [المصدر: https://emploidzdz1.blogspot.com/2025/12/formation.sante.gov.dz.html]"
+  valeur: nationalite algerienne = oui
+cond . niveau:
+  titre: "المستوى الدراسي"
+  description: "الشرط 1: إثبات مستوى السنة الثالثة ثانوي كاملة (جميع الشعب) [المصدر: https://www.elkhadra.com/fr/%D8%AA%D8%B3%D8%AC%D9%8A%D9%84%D8%A7%D8%AA-%D8%B4%D8%A8%D9%87-%D8%A7%D9%84%D8%B7%D8%A8%D9%8ي-2026-formation-sante-gov-dz-%D8%A7%D9%84%D8%B4%D8%B1%D9%88%D8%B7-%D9%88%D8%A7%D9%84%D9%88%D8%AA%D8%A7%D8%A6/]"
+  valeur: niveau etudes >= 3 an
+cond . nobac:
+  titre: "عدم حيازة البكالوريا"
+  description: "الشرط 1: إثبات مستوى السنة الثالثة ثانوي دون حيازة شهادة البكالوريا [المصدر: https://www.elkhadra.com/fr/%D8%AA%D8%B3%D8%AC%D9%8A%D9%84%D8%A7%D8%AA-%D8%B4%D8%A8%D9%87-%D8%A7%D9%84%D8%B7%D8%A8%D9%8ي-2026-formation-sante-gov-dz-%D8%A7%D9%84%D8%B4%D8%B1%D9%88%D8%B7-%D9%88%D8%A7%D9%84%D9%88%D8%AA%D8%A7%D8%A6/]"
+  valeur: baccalaureat obtenu = non
+cond . sante:
+  titre: "اللياقة البدنية"
+  description: "الشرط 5: اللياقة البدنية الكافية لممارسة المهنة الصحية مثبتة بشهادة طبية [المصدر: https://emploidzdz1.blogspot.com/2025/12/formation.sante.gov.dz.html]"
+  valeur: aptitude physique = oui
+cond . age_cond:
+  titre: "السن القانوني"
+  description: "السن القانوني الأدنى للترشح [المصدر: منصة وزارة الصحة]"
+  valeur: age >= 18 an

@@ -1,0 +1,35 @@
+# Google for Startups Accelerator: Africa — Google. المصدر: https://startup.google.com/programs/accelerator/africa/
+cond:
+  valeur: oui
+
+company in africa:
+  question: "هل مقر الشركة في أفريقيا أو تبني حلولاً موجهة لأفريقيا؟"
+ai product:
+  question: "هل يعتمد المنتج على تقنيات الذكاء الاصطناعي والتعلم الآلي بشكل أساسي؟"
+series a funding:
+  question: "هل الشركة في مرحلة تمويل Series A أو مرحلة نمو مماثلة؟"
+team commitment:
+  question: "هل يوجد التزام من الرئيس التنفيذي أو المدير التقني بالمشاركة في كامل البرنامج؟"
+scalable product:
+  question: "هل تمتلك الشركة منتجاً أو خدمة قابلة للتوسع وسوقاً مستهدفاً كبيراً؟"
+
+cond . africa_hq:
+  titre: "مقر الشركة في أفريقيا"
+  description: "أن تكون الشركة مقرها في أفريقيا أو تبني حلولاً محورها أفريقيا [المصدر: https://www.legit.ng/business-economy/technology/1696646-google-opens-applications-10th-startups-accelerator-africa/]"
+  valeur: company in africa = oui
+cond . ai_tech:
+  titre: "الاعتماد على الذكاء الاصطناعي"
+  description: "أن يعتمد المنتج على تقنيات الذكاء الاصطناعي/التعلم الآلي بشكل أساسي [المصدر: https://www.techinafrica.com/google-accelerator-africa-returns-with-equity-free-support-cloud-credits-and-early-access-to-ai-products-for-startups/]"
+  valeur: ai product = oui
+cond . funding_stage:
+  titre: "مرحلة التمويل"
+  description: "أن تكون الشركة في مرحلة تمويل Series A أو مرحلة نمو مماثلة [المصدر: https://www.legit.ng/business-economy/technology/1696646-google-opens-applications-10th-startups-accelerator-africa/]"
+  valeur: series a funding = oui
+cond . team_commitment:
+  titre: "التزام الفريق القيادي"
+  description: "التزام الرئيس التنفيذي و/أو المدير التقني بالمشاركة في جميع عناصر البرنامج خلال 12 أسبوعًا [المصدر: https://startup.google.com/programs/accelerator/africa/]"
+  valeur: team commitment = oui
+cond . scalable_solution:
+  titre: "قابلية التوسع"
+  description: "امتلاك منتج أو خدمة قابلة للتوسّع وسوق مستهدف كبير [المصدر: https://www.legit.ng/business-economy/technology/1696646-google-opens-applications-10th-startups-accelerator-africa/]"
+  valeur: scalable product = oui

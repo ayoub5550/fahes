@@ -1,0 +1,38 @@
+# منحة التعاون الفني الماليزي MTCP — وزارة الخارجية الماليزية (KLN). المصدر: https://mtcp.kln.gov.my/scholarship
+cond:
+  valeur: oui
+
+age:
+  question: "كم عمرك؟"
+  unité: an
+maddal:
+  question: "ما هو معدلك التراكمي في البكالوريوس؟"
+  unité: point
+anglais:
+  question: "ما هي نتيجتك في اختبار الإنجليزية (IELTS)؟"
+  unité: point
+algerien:
+  question: "هل أنت من إحدى الدول المستفيدة (كالجزائر)؟"
+rapport medical:
+  question: "هل لديك تقرير طبي سليم صالح لمدة أقل من 6 أشهر؟"
+
+cond . age_max:
+  titre: "شرط العمر"
+  description: "ألا يتجاوز عمر المتقدم 45 سنة عند التقديم [المصدر: https://mtcp.kln.gov.my/scholarship]"
+  valeur: age <= 45 an
+cond . maddal_min:
+  titre: "المعدل التراكمي"
+  description: "الحصول على معدل تراكمي 3.0 في البكالوريوس [المصدر: https://www.moe.go.tz/sw/ufadhili/scholarships-tenable-government-malaysia-2026-2027-academic-year]"
+  valeur: maddal >= 3 point
+cond . anglais_min:
+  titre: "كفاءة اللغة الإنجليزية"
+  description: "إثبات كفاءة اللغة الإنجليزية بحد أدنى 6 في IELTS [المصدر: https://www.moe.go.tz/sw/ufadhili/scholarships-tenable-government-malaysia-2026-2027-academic-year]"
+  valeur: anglais >= 6 point
+cond . pays_eligible:
+  titre: "الدولة المستفيدة"
+  description: "أن يكون المتقدم من إحدى الدول المستفيدة من برنامج MTCP، والجزائر ضمنها [المصدر: https://mtcp.kln.gov.my/register_scholarship]"
+  valeur: algerien = oui
+cond . rapport_medical:
+  titre: "التقرير الطبي"
+  description: "تقديم تقرير طبي سليم صالح لمدة لا تتجاوز 6 أشهر من تاريخ التقديم [المصدر: https://www.moe.go.tz/sw/ufadhili/scholarships-tenable-government-malaysia-2026-2027-academic-year]"
+  valeur: rapport medical = oui

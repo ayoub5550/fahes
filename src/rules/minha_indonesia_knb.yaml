@@ -1,0 +1,30 @@
+# منحة إندونيسيا KNB — وزارة التعليم العالي والعلوم والتكنولوجيا الإندونيسية بالتعاون مع السفارة الإندونيسية بالجزائر. المصدر: https://knb.kemdiktisaintek.go.id/
+cond:
+  valeur: oui
+
+age:
+  question: "كم عمرك بالسنوات؟"
+  unité: an
+anglais:
+  question: "هل تحوز شهادة كفاءة في اللغة الإنجليزية (TOEFL أو IELTS)؟"
+algerie:
+  question: "هل أنت مترشح من الجزائر؟"
+licence precedente:
+  question: "هل لديك شهادة بكالوريوس مسبقاً؟"
+
+cond . age_max:
+  titre: "الشرط 1: الحد الأقصى للسن 21 سنة للبكالوريوس"
+  description: "الحد الأقصى للسن 21 سنة للبكالوريوس بحلول 31 ديسمبر 2026 [المصدر: https://international.unej.ac.id/knb-unej/]"
+  valeur: age <= 21 an
+cond . anglais_req:
+  titre: "الشرط 5: حيازة شهادة كفاءة لغة إنجليزية"
+  description: "حيازة شهادة كفاءة لغة إنجليزية بحد أدنى TOEFL ITP 500 أو IELTS 6 [المصدر: https://international.ui.ac.id/knb/]"
+  valeur: anglais = oui
+cond . algerie_req:
+  titre: "الشرط 4: التوصية من السفارة بالجزائر"
+  description: "الجزائر مدرجة ضمن الدول التي لها سفارة إندونيسية (KBRI Alger) مخوّلة بمنح التوصية [المصدر: https://www.ur.edu.pl/files/ur/import/private/31/Verbal%20Note%20043-Pensosbud-II-2026.pdf]"
+  valeur: algerie = oui
+cond . pas_licence:
+  titre: "الشرط 6: عدم حيازة بكالوريوس مسبقاً"
+  description: "عدم كون المتقدم لدرجة البكالوريوس حاصلًا على شهادة بكالوريوس مسبقًا [المصدر: https://international.unej.ac.id/knb-unej/]"
+  valeur: licence precedente = non
