@@ -1,6 +1,6 @@
 // صفحات الحساب: تسجيل، دخول، ملفاتي.
 const express = require('express');
-const { layout, esc } = require('../views');
+const { layout, esc, icon } = require('../views');
 const { BY_ID } = require('../services');
 const auth = require('../auth');
 
@@ -93,12 +93,12 @@ router.get('/me', auth.requireUser, (req, res) => {
     const docs = (svc ? svc.docs : []).map((d) => `<li class="${done.has(d) ? 'done' : ''}">
         <form method="post" action="/me/doc" style="display:inline">
           <input type="hidden" name="file" value="${f.id}"><input type="hidden" name="doc" value="${esc(d)}">
-          <button type="submit" title="تبديل">${done.has(d) ? '✅' : '⬜'}</button>
+          <button type="submit" title="تبديل">${done.has(d) ? icon('check',18) : icon('grid',18)}</button>
         </form><span>${esc(d)}</span></li>`).join('');
     const missing = (f.missing || []).map((m) => `<li><span>❗ ${esc(m)}</span></li>`).join('');
     return `<div class="filecard">
       <div class="top">
-        <b>${svc ? svc.icon + ' ' + esc(svc.name) : esc(f.service)}</b>
+        <b>${svc ? icon(svc.cat, 18) + ' ' + esc(svc.name) : esc(f.service)}</b>
         <span class="badge ${f.verdict}">${esc(VERDICT_LABEL[f.verdict] || f.verdict)}</span>
       </div>
       <div class="muted" style="font-size:13px">${esc(new Date(f.saved).toLocaleDateString('fr-DZ'))} ·
@@ -123,7 +123,7 @@ router.get('/me', auth.requireUser, (req, res) => {
       <form method="post" action="/logout" style="margin-inline-start:auto">
         <button class="btn ghost" type="submit">خروج</button></form>
     </div>
-    <h2 class="sec">📁 ملفاتي (${files.length})</h2>
+    <h2 class="sec">${icon('folder',21)} ملفاتي (${files.length})</h2>
     ${files.length ? files.map(fileCard).join('')
       : `<div class="filecard"><b>لم تحفظ أي ملف بعد.</b>
           <p class="muted" style="margin:6px 0 12px">افحص أي خدمة، ثم اضغط «احفظ في ملفاتي» أسفل النتيجة لتتابع وثائقك وشروطك الناقصة.</p>

@@ -1,4 +1,5 @@
 const express = require('express');
+const { icon } = require('./icons');
 const { layout, esc, num, CSS, CSS_HASH } = require('./views');
 const { CATEGORIES, SERVICES, BY_ID, byCat } = require('./services');
 const { ruleSet, evaluate, VERDICTS } = require('./engine');
@@ -46,7 +47,7 @@ app.get('/', (req, res) => {
     <p>سكن، منح، قروض، مشاريع، تأشيرات… أجب على أسئلة قصيرة، ويقول لك فاحص أي شرط رسمي ينقصك،
        وما هي وثائقك، وأين تودع الملف رسمياً.</p>
     <a class="btn light" href="#services">ابدأ الفحص ←</a>
-    <a class="btn ghost" style="margin-inline-start:8px" href="/app">📱 حمّل التطبيق</a>
+    <a class="btn ghost" style="margin-inline-start:8px" href="/app">${icon('phone',18)} حمّل التطبيق</a>
     <div class="stats">
       <div><b>${SERVICES.length + 1}</b><span>خدمة قابلة للفحص</span></div>
       <div><b>${TOTAL_CONDITIONS}</b><span>شرط رسمي مبرمَج</span></div>
@@ -55,32 +56,32 @@ app.get('/', (req, res) => {
   </div></div>`;
 
   const card = (s) => `<a class="card svc" href="/s/${s.id}" data-n="${esc(s.name + ' ' + s.agency + ' ' + s.summary)}" data-c="${s.cat}">
-      <span class="ic">${s.icon}</span>
+      <span class="ic">${icon(s.cat, 24)}</span>
       <span><h3>${esc(s.name)}</h3><p>${esc(s.summary)}</p><span class="agency">${esc(s.agency)}</span></span>
     </a>`;
 
   const sections = CATEGORIES.map((c) => `
     <section class="catsec" data-c="${c.id}">
-      <h2 class="sec">${c.icon} ${esc(c.name)}</h2>
+      <h2 class="sec">${icon(c.id, 21)} ${esc(c.name)}</h2>
       <p class="sub">${esc(c.desc)}</p>
       <div class="grid">${byCat(c.id).map(card).join('')}</div>
     </section>`).join('');
 
   const visaCard = `<section class="catsec" data-c="visa">
-      <h2 class="sec">✈️ السفر والتأشيرات</h2>
+      <h2 class="sec">${icon('visa', 21)} السفر والتأشيرات</h2>
       <p class="sub">فحص ملف التأشيرة، المبالغ المرجعية الرسمية، وشروط الدخول لكل دول العالم.</p>
       <div class="grid">
-        <a class="card svc" href="/visa" data-n="تأشيرة شنغن فيزا سفر" data-c="visa"><span class="ic">🛂</span>
+        <a class="card svc" href="/visa" data-n="تأشيرة شنغن فيزا سفر" data-c="visa"><span class="ic">${icon('passport', 24)}</span>
           <span><h3>فاحص ملف التأشيرة</h3><p>قاعدة 90/180، المبلغ المرجعي المطلوب لكل دولة شنغن، صلاحية الجواز، التأمين، والوثائق حسب وضعك.</p>
           <span class="agency">مبالغ رسمية من المفوضية الأوروبية</span></span></a>
-        <a class="card svc" href="/visa/countries" data-n="دول العالم تأشيرة" data-c="visa"><span class="ic">🌍</span>
+        <a class="card svc" href="/visa/countries" data-n="دول العالم تأشيرة" data-c="visa"><span class="ic">${icon('world', 24)}</span>
           <span><h3>كل دول العالم (193 دولة)</h3><p>هل تحتاج تأشيرة مسبقة أم إلكترونية أم لا تحتاج شيئاً بجواز سفر جزائري.</p>
           <span class="agency">مع بحث وتصفية</span></span></a>
       </div>
     </section>`;
 
-  const chips = [['all', 'الكل']].concat(CATEGORIES.map((c) => [c.id, c.icon + ' ' + c.name])).concat([['visa', '✈️ التأشيرات']])
-    .map(([k, l], i) => `<button type="button" class="chip${i === 0 ? ' on' : ''}" data-f="${k}">${esc(l)}</button>`).join('');
+  const chips = [['all', 'الكل']].concat(CATEGORIES.map((c) => [c.id, icon(c.id, 16) + ' ' + esc(c.name)])).concat([['visa', icon('visa', 16) + ' التأشيرات']])
+    .map(([k, l], i) => `<button type="button" class="chip${i === 0 ? ' on' : ''}" data-f="${k}">${l}</button>`).join('');
 
   const body = `<div id="services"></div>
   <div class="search"><input type="search" id="q" placeholder="ابحث عن خدمة… (سكن، منحة، قرض، تأشيرة)"></div>
@@ -135,12 +136,12 @@ function formPage(s, body = {}) {
   const rs = ruleSet(s.id);
   const cat = CATEGORIES.find((c) => c.id === s.cat);
   return `<div class="fhead">
-      <span class="tag" style="background:rgba(255,255,255,.16);color:#fff;border-color:rgba(255,255,255,.3)">${esc(cat ? cat.name : '')}</span>
-      <h1>${s.icon} ${esc(s.name)}</h1>
+      <span class="tag" style="background:rgba(255,255,255,.16);color:#fff;border-color:rgba(255,255,255,.3)">${icon(s.cat,14)} ${esc(cat ? cat.name : '')}</span>
+      <h1>${esc(s.name)}</h1>
       <p>${esc(s.summary)}</p>
     </div>
     <form class="fbody" method="post" action="/s/${s.id}">
-      ${s.money ? `<div class="money" style="margin-top:14px">💰 ${esc(s.money)}</div>` : ''}
+      ${s.money ? `<div class="money" style="margin-top:14px">${icon('money',17)} ${esc(s.money)}</div>` : ''}
       ${rs.fields.map((f) => `<div class="field"><label class="q">${esc(f.label)}</label>${fieldHtml(f, body[f.k])}</div>`).join('')}
       <div class="sticky-cta"><button class="btn block" type="submit">افحص ملفي ←</button></div>
     </form>
@@ -196,9 +197,9 @@ app.post('/s/:id', (req, res) => {
   ${amounts}${tips}
 
   <div class="card" style="margin-bottom:14px">
-    <h2 class="sec" style="font-size:19px">📋 وثائق الملف</h2>
+    <h2 class="sec" style="font-size:19px">${icon('papers',20)} وثائق الملف</h2>
     <ul class="docs">${s.docs.map((d) => `<li>${esc(d)}</li>`).join('')}</ul>
-    ${s.money ? `<div class="money" style="margin-top:14px">💰 ${esc(s.money)}</div>` : ''}
+    ${s.money ? `<div class="money" style="margin-top:14px">${icon('money',17)} ${esc(s.money)}</div>` : ''}
   </div>
 
   ${req.user ? `<form method="post" action="/me/save" class="card" style="text-align:center;margin-bottom:14px">
@@ -207,7 +208,7 @@ app.post('/s/:id', (req, res) => {
         missing: r.checks.filter((c) => c.status !== 'pass').map((c) => c.label) }))}">
       <b>احفظ هذا الفحص في «ملفاتي»</b>
       <p class="sub" style="margin:4px 0 12px">لتتابع الشروط الناقصة ووثائق الملف لاحقاً.</p>
-      <button class="btn block" type="submit">💾 احفظ في ملفاتي</button>
+      <button class="btn block" type="submit">${icon('folder',18)} احفظ في ملفاتي</button>
     </form>`
     : `<div class="card" style="text-align:center;margin-bottom:14px">
       <b>أنشئ حساباً مجانياً لحفظ نتيجتك</b>
@@ -239,13 +240,13 @@ app.get('/app', (req, res) => {
   const size = exists ? (fs.statSync(APK_PATH).size / 1048576).toFixed(1) : null;
   res.send(layout('تطبيق فاحص للأندرويد', `
   <section style="text-align:center">
-    <h2 class="sec">📱 حمّل تطبيق فاحص</h2>
+    <h2 class="sec">${icon('phone',22)} حمّل تطبيق فاحص</h2>
     <p class="sub">نفس الخدمات الـ${SERVICES.length} داخل تطبيق أندرويد خفيف، مع حسابك وملفاتك المحفوظة.</p>
     <div class="card" style="max-width:430px;margin:0 auto;text-align:center">
-      <div style="font-size:44px">✓</div>
+      <div style="color:var(--r600);display:flex;justify-content:center">${icon('shield',44)}</div>
       <b style="font-size:19px">فاحص ${APK_VERSION}</b>
       <p class="sub" style="margin:4px 0 14px">${exists ? size + ' ميغا · أندرويد 7.0 فأحدث' : 'الملف غير متوفر حالياً'}</p>
-      ${exists ? '<a class="btn block" href="/app/download">⬇️ تحميل APK</a>' : ''}
+      ${exists ? `<a class="btn block" href="/app/download">${icon('phone',18)} تحميل APK</a>` : ''}
       <div class="src" style="text-align:start">عند التثبيت سيطلب منك الهاتف السماح بتثبيت التطبيقات من مصدر خارجي —
         هذا طبيعي لأي تطبيق يُحمَّل خارج المتجر. النسخة نفسها مُعدّة أيضاً بصيغة AAB للنشر على Google Play.</div>
     </div>
@@ -315,7 +316,7 @@ app.get('/about', (req, res) => {
   <h2 class="sec" style="font-size:19px">المصادر</h2>
   <p class="sub">كل خدمة تحمل روابط مصادرها أسفل صفحتها: الجريدة الرسمية، مواقع الوزارات والوكالات، والبنوك العمومية.
   إذا تغيّر نصّ رسمي، الموقع الرسمي هو المرجع، لا فاحص.</p>
-  <div class="money">📌 مرجع محيّن: الأجر الوطني الأدنى المضمون (SNMG) = 24.000 دج منذ 01 جانفي 2026 (مرسوم رئاسي 26-01)،
+  <div class="money">${icon('check',17)} مرجع محيّن: الأجر الوطني الأدنى المضمون (SNMG) = 24.000 دج منذ 01 جانفي 2026 (مرسوم رئاسي 26-01)،
    وهو أساس حساب سقوف الدخل في صيغ السكن والمنح.</div>
   </section>`, { user: req.user }));
 });

@@ -1,6 +1,6 @@
 // وحدة التأشيرات داخل فاحص — فحص ملف شنغن + جدول كل دول العالم.
 const express = require('express');
-const { layout, esc } = require('../views');
+const { layout, esc, icon } = require('../views');
 const visa = require('../visa');
 const { COUNTRIES, SOURCE, REFUSAL_REASONS } = require('../data/schengen');
 const { OTHERS } = require('../data/others');
@@ -22,7 +22,7 @@ function form(v = {}) {
   return `
   <div class="fhead">
     <span class="tag" style="background:rgba(255,255,255,.16);color:#fff;border-color:rgba(255,255,255,.3)">السفر</span>
-    <h1>🛂 فاحص ملف التأشيرة</h1>
+    <h1>${icon('passport',26)} فاحص ملف التأشيرة</h1>
     <p>قبل أن تدفع 90 يورو غير قابلة للاسترجاع، تأكّد أن ملفك يحترم الشروط الرسمية المنشورة.</p>
   </div>
   <form class="fbody" method="post" action="/visa">
@@ -101,7 +101,7 @@ router.post('/', (req, res) => {
   <div class="card" style="margin-bottom:14px"><h2 class="sec" style="font-size:19px">تفصيل الفحص</h2>${items}
     <div class="src">المصدر: ${esc(SOURCE.amounts.label)} (تحديث ${esc(SOURCE.amounts.updated)}).</div></div>
   <div class="card" style="margin-bottom:14px">
-    <h2 class="sec" style="font-size:19px">📋 وثائقك — ${esc(visa.PROFILE_LABEL[b.profile] || '')} / ${esc(visa.PURPOSE_LABEL[b.purpose] || '')}</h2>
+    <h2 class="sec" style="font-size:19px">${icon('papers',20)} وثائقك — ${esc(visa.PROFILE_LABEL[b.profile] || '')} / ${esc(visa.PURPOSE_LABEL[b.purpose] || '')}</h2>
     <ul class="docs">${docs.map((d) => `<li>${esc(d)}</li>`).join('')}</ul>
     ${r.country && r.country.site ? `<a class="btn block" style="margin-top:14px" href="${esc(r.country.site)}" target="_blank" rel="noopener">الموقع الرسمي للإيداع ↗</a>` : ''}
   </div>
@@ -130,7 +130,7 @@ router.get('/countries', (req, res) => {
 
   res.send(layout('كل دول العالم', tabs('countries') + `
   <section>
-    <h2 class="sec">🌍 كل دول العالم — ${WORLD.length} دولة بجواز سفر جزائري</h2>
+    <h2 class="sec">${icon('world',21)} كل دول العالم — ${WORLD.length} دولة بجواز سفر جزائري</h2>
     <p class="sub">هل تحتاج تأشيرة مسبقة، أم تكفيك إلكترونية أو عند الوصول، أم تدخل بلا تأشيرة أصلاً.</p>
     <div class="search"><input type="search" id="q" placeholder="اكتب اسم الدولة… (عربي أو إنجليزي)"></div>
     <div class="chips"><button type="button" class="chip on" data-f="all">الكل (${WORLD.length})</button>${chips}</div>

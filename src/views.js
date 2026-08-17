@@ -1,3 +1,4 @@
+const { icon } = require('./icons');
 const esc = (s) => String(s == null ? '' : s)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -87,11 +88,11 @@ p.sub{color:var(--muted);margin:0 0 16px;font-size:14.5px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px;box-shadow:var(--sh)}
 a.card{display:flex;gap:14px;align-items:flex-start;color:inherit}
 a.card:active{border-color:#f0c6cb}
-.card .ic{font-size:26px;line-height:1.2;flex:0 0 auto}
+.card .ic{flex:0 0 auto}
 .card h3{margin:0 0 4px;font-size:17px;font-weight:800}
 .card p{margin:0;color:var(--ink2);font-size:14px;line-height:1.65}
 .card .agency{margin-top:8px;font-size:12px;color:var(--r700);font-weight:700}
-.tag{display:inline-block;background:#fdf1f2;color:var(--r700);border:1px solid #f7dfe2;border-radius:999px;
+.tag{display:inline-flex;align-items:center;gap:5px;display:inline-block;background:#fdf1f2;color:var(--r700);border:1px solid #f7dfe2;border-radius:999px;
   padding:3px 11px;font-size:12px;font-weight:700}
 
 /* الاستمارة */
@@ -164,14 +165,40 @@ footer a{color:#ffb3ba}
   .verdict .ring{width:74px;height:74px;flex-basis:74px;font-size:34px}
 }
 
-/* ── الشريط السفلي (إحساس التطبيق) ── */
-.tabbar{position:fixed;inset-inline:0;bottom:0;z-index:70;display:none;background:rgba(255,255,255,.96);
-  backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
-.tabbar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10.5px;font-weight:700;
-  color:var(--muted);padding:5px 2px;border-radius:12px}
-.tabbar a i{font-style:normal;font-size:19px;line-height:1}
-.tabbar a.on{color:var(--r600);background:#fdf0f1}
-@media(max-width:820px){.tabbar{display:flex}body{padding-bottom:66px}.nav nav{display:none}.nav .wrap{justify-content:space-between}}
+/* ── الشريط السفلي (إحساس التطبيق الأصلي) ── */
+.tabbar{position:fixed;inset-inline:0;bottom:0;z-index:80;display:none;
+  background:rgba(255,255,255,.88);-webkit-backdrop-filter:saturate(180%) blur(18px);backdrop-filter:saturate(180%) blur(18px);
+  border-top:1px solid rgba(0,0,0,.06);box-shadow:0 -8px 26px rgba(63,10,16,.07);
+  padding:7px 6px calc(7px + env(safe-area-inset-bottom));
+  transition:transform .28s cubic-bezier(.22,1,.36,1)}
+.tabbar.hide{transform:translateY(115%)}
+.tabbar .inner{position:relative;display:flex;flex:1;gap:2px}
+.tabbar .pillbg{position:absolute;top:0;height:100%;border-radius:16px;
+  background:linear-gradient(160deg,#fdeff1,#fde3e6);box-shadow:inset 0 0 0 1px rgba(221,36,56,.13);
+  transition:transform .34s cubic-bezier(.22,1,.36,1),width .34s cubic-bezier(.22,1,.36,1),opacity .2s;
+  opacity:0;pointer-events:none;z-index:0}
+.tabbar a{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  font-size:10.5px;font-weight:700;color:#8b8189;padding:7px 2px 5px;border-radius:16px;
+  -webkit-tap-highlight-color:transparent;
+  transition:color .22s ease,transform .18s cubic-bezier(.22,1,.36,1)}
+.tabbar a .ico{transition:transform .3s cubic-bezier(.34,1.56,.64,1),stroke-width .2s ease}
+.tabbar a span{transition:opacity .22s ease,transform .22s ease;letter-spacing:-.1px}
+.tabbar a:active{transform:scale(.9)}
+.tabbar a.on{color:var(--r600)}
+.tabbar a.on .ico{transform:translateY(-2px) scale(1.1);stroke-width:2.1}
+.tabbar a.on span{transform:translateY(-1px)}
+.tabbar a.on::after{content:"";position:absolute;top:2px;inset-inline-start:50%;transform:translateX(50%);
+  width:4px;height:4px;border-radius:50%;background:var(--r500);animation:dotin .3s cubic-bezier(.34,1.56,.64,1)}
+@keyframes dotin{from{transform:translateX(50%) scale(0);opacity:0}to{transform:translateX(50%) scale(1);opacity:1}}
+@media(max-width:820px){.tabbar{display:flex}body{padding-bottom:72px}.nav nav{display:none}.nav .wrap{justify-content:space-between}}
+@media(prefers-reduced-motion:reduce){.tabbar,.tabbar *{transition:none!important;animation:none!important}}
+
+/* ── الأيقونات المتجهية ── */
+.ico{display:block;flex:none}
+.ic{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;flex:none;
+  background:linear-gradient(150deg,#fdeff1,#fbdde1);color:var(--r600);box-shadow:inset 0 0 0 1px rgba(221,36,56,.1)}
+h2.sec .ico,.chip .ico{display:inline-block;vertical-align:-4px;margin-inline-end:6px}
+.chip{display:inline-flex;align-items:center}
 
 /* ── الحساب ── */
 .authcard{max-width:430px;margin:26px auto;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);
@@ -214,14 +241,19 @@ function layout(title, body, opts = {}) {
     ['/about', 'عن فاحص'],
   ].map(([h, t]) => `<a class="link" href="${h}">${t}</a>`).join('');
   const account = user
-    ? `<a class="navuser" href="/me">👤 ${esc((user.name || '').split(' ')[0] || 'حسابي')}</a>`
+    ? `<a class="navuser" href="/me">${icon('user',15)} ${esc((user.name || '').split(' ')[0] || 'حسابي')}</a>`
     : `<a class="navuser" href="/login">دخول</a>`;
-  const tabs = [
-    ['/', '🏠', 'الرئيسية', 'home'],
-    ['/#services', '🗂️', 'الخدمات', 'services'],
-    ['/visa', '✈️', 'التأشيرات', 'visa'],
-    [user ? '/me' : '/login', '👤', user ? 'ملفاتي' : 'حسابي', 'me'],
-  ].map(([h, i, t, k]) => `<a href="${h}" class="${active === k ? 'on' : ''}"><i>${i}</i>${t}</a>`).join('');
+  // الشريط السفلي: أيقونات SVG (بلا إيموجي) + مؤشر منزلق ناعم
+  const tabItems = [
+    ['/', 'home', 'الرئيسية', 'home'],
+    ['/#services', 'grid', 'الخدمات', 'services'],
+    ['/visa', 'passport', 'التأشيرات', 'visa'],
+    [user ? '/me' : '/login', 'folder', 'ملفاتي', 'me'],
+    [user ? '/me' : '/login', 'user', user ? 'حسابي' : 'دخول', 'acct'],
+  ];
+  const tabs = tabItems.map(([h, ic, t, k]) =>
+    `<a href="${h}" class="${active === k ? 'on' : ''}" aria-label="${t}"${active === k ? ' aria-current="page"' : ''}>${icon(ic, 23)}<span>${t}</span></a>`
+  ).join('');
   return `<!doctype html><html lang="ar" dir="rtl"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#3f0a10">
@@ -243,13 +275,41 @@ ${opts.hero || ''}
   <br><span style="opacity:.7">محرّك القواعد: Publicodes مفتوح المصدر · بلا ذكاء اصطناعي</span>
 </div></footer>
 <div id="nprog"></div>
-<div class="tabbar">${tabs}</div>
+<nav class="tabbar" id="tabbar" aria-label="التنقل السريع"><div class="inner"><span class="pillbg" id="pillbg"></span>${tabs}</div></nav>
 <script>(function(){var d={};function p(u){if(d[u]||!u)return;d[u]=1;var l=document.createElement('link');l.rel='prefetch';l.href=u;document.head.appendChild(l);}
 document.addEventListener('touchstart',function(e){var a=e.target.closest&&e.target.closest('a[href^="/"]');if(a)p(a.getAttribute('href'));},{passive:true,capture:true});
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="/"]');
  if(!a||a.hash||a.target)return;var b=document.getElementById('nprog');b.className='on';b.style.width='75%';},{capture:true});
-document.addEventListener('mouseover',function(e){var a=e.target.closest&&e.target.closest('a[href^="/"]');if(a)p(a.getAttribute('href'));},{passive:true,capture:true});})();</script>
+document.addEventListener('mouseover',function(e){var a=e.target.closest&&e.target.closest('a[href^="/"]');if(a)p(a.getAttribute('href'));},{passive:true,capture:true});})();
+// ── الشريط السفلي: مؤشر منزلق + إخفاء عند النزول + اهتزاز خفيف عند اللمس ──
+(function(){
+  var bar=document.getElementById('tabbar'); if(!bar) return;
+  var pill=document.getElementById('pillbg'), on=bar.querySelector('a.on');
+  function place(el,anim){ if(!el){pill.style.opacity=0;return;}
+    if(!anim) pill.style.transition='none';
+    var r=el.getBoundingClientRect(), pr=pill.parentNode.getBoundingClientRect();
+    pill.style.width=r.width+'px';
+    pill.style.transform='translateX('+(r.left-pr.left)+'px)';
+    pill.style.opacity=1;
+    if(!anim) requestAnimationFrame(function(){pill.style.transition='';});
+  }
+  place(on,false);
+  window.addEventListener('resize',function(){place(bar.querySelector('a.on'),false);},{passive:true});
+  bar.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a'); if(!a) return;
+    bar.querySelectorAll('a').forEach(function(x){x.classList.remove('on')});
+    a.classList.add('on'); place(a,true);
+    if(navigator.vibrate) try{navigator.vibrate(8)}catch(_){}
+  },{capture:true});
+  var last=window.pageYOffset;
+  window.addEventListener('scroll',function(){
+    var y=window.pageYOffset;
+    if(y>last+12 && y>140) bar.classList.add('hide');
+    else if(y<last-8) bar.classList.remove('hide');
+    last=y;
+  },{passive:true});
+})();</script>
 </body></html>`;
 }
 
-module.exports = { layout, esc, num, CSS, CSS_HASH };
+module.exports = { layout, esc, num, CSS, CSS_HASH, icon };
