@@ -157,7 +157,7 @@ function formPage(s, body = {}) {
       <p>${esc(s.summary)}</p>
     </div>
     <form class="fbody" method="post" action="/s/${s.id}">
-      ${s.money ? `<div class="money" style="margin-top:14px">${icon('money',17)} ${esc(s.money)}</div>` : ''}
+      ${s.money && !/^لا يوجد/.test(s.money) ? `<div class="money" style="margin-top:14px">${icon('money',17)} ${esc(s.money)}</div>` : ''}
       ${rs.fields.map((f) => `<div class="field"><label class="q">${esc(f.label)}</label>${fieldHtml(f, body[f.k])}</div>`).join('')}
       <div class="sticky-cta"><button class="btn block" type="submit">افحص ملفي ←</button></div>
     </form>
@@ -215,7 +215,7 @@ app.post('/s/:id', (req, res) => {
   <div class="card" style="margin-bottom:14px">
     <h2 class="sec" style="font-size:19px">${icon('papers',20)} وثائق الملف</h2>
     <ul class="docs">${s.docs.map((d) => `<li>${esc(d)}</li>`).join('')}</ul>
-    ${s.money ? `<div class="money" style="margin-top:14px">${icon('money',17)} ${esc(s.money)}</div>` : ''}
+    ${s.money && !/^لا يوجد/.test(s.money) ? `<div class="money" style="margin-top:14px">${icon('money',17)} ${esc(s.money)}</div>` : ''}
   </div>
 
   ${req.user ? `<form method="post" action="/me/save" class="card" style="text-align:center;margin-bottom:14px">
