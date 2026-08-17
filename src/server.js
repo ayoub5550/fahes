@@ -233,7 +233,7 @@ app.post('/s/:id', (req, res) => {
 const path = require('path');
 const fs = require('fs');
 const APK_PATH = process.env.FAHES_APK || path.join(__dirname, '..', 'public', 'fahes.apk');
-const APK_VERSION = '1.0';
+const APK_VERSION = '1.2';
 
 app.get('/app', (req, res) => {
   const exists = fs.existsSync(APK_PATH);
